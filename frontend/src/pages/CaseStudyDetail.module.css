@@ -22,7 +22,7 @@
 }
 
 .page h1 {
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: var(--heading-size-h1);
   margin-bottom: 14px;
   color: var(--forest);
 }
@@ -54,7 +54,7 @@
 }
 
 .blocks h2 {
-  font-size: 1.1rem;
+  font-size: var(--heading-size-h4);
   margin-bottom: 10px;
   color: var(--forest);
 }

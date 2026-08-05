@@ -21,7 +21,7 @@
 }
 
 .title {
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-size: var(--heading-size-h2);
   margin-bottom: 28px;
   text-align: center;
   color: var(--color-text);
@@ -57,7 +57,7 @@
 }
 
 .card h3 {
-  font-size: 1.15rem;
+  font-size: var(--heading-size-h4);
   margin-bottom: 10px;
   color: var(--color-text);
 }

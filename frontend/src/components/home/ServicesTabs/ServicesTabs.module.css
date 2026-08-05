@@ -34,7 +34,7 @@
 }
 
 .left h2 {
-  font-size: clamp(1.8rem, 3.4vw, 2.7rem);
+  font-size: var(--heading-size-h2);
   line-height: 1.15;
   color: #fff;
   max-width: 16ch;
@@ -74,7 +74,7 @@
 
 .detail h3 {
   color: var(--gold);
-  font-size: 1.25rem;
+  font-size: var(--heading-size-h3);
 }
 
 .detail p {

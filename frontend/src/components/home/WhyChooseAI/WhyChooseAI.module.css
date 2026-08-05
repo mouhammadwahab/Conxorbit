@@ -47,7 +47,7 @@
 }
 
 .copy h2 {
-  font-size: clamp(1.7rem, 3.2vw, 2.55rem);
+  font-size: var(--heading-size-h2);
   line-height: 1.18;
   color: var(--forest);
   max-width: 16ch;
@@ -128,7 +128,7 @@
 }
 
 .card h3 {
-  font-size: clamp(1.3rem, 2vw, 1.45rem);
+  font-size: var(--heading-size-h3);
   color: var(--forest);
   margin-bottom: 12px;
 }

@@ -26,7 +26,7 @@
 }
 
 .header h2 {
-  font-size: clamp(1.8rem, 3.4vw, 2.55rem);
+  font-size: var(--heading-size-h2);
   color: #fff;
   line-height: 1.15;
 }
@@ -82,7 +82,7 @@
 }
 
 .card h3 {
-  font-size: 1.3rem;
+  font-size: var(--heading-size-h3);
   color: #fff;
   margin-bottom: 12px;
 }

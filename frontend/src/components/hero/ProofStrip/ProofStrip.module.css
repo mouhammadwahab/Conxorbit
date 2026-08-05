@@ -23,7 +23,7 @@
 }
 
 .header h2 {
-  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  font-size: var(--heading-size-h3);
   color: var(--forest);
 }
 

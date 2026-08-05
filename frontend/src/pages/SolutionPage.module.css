@@ -37,7 +37,7 @@
 }
 
 .devInner h2 {
-  font-size: 1.6rem;
+  font-size: var(--heading-size-h2);
   margin-bottom: 12px;
   color: var(--color-text);
 }

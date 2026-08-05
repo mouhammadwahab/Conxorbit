@@ -34,6 +34,12 @@ h4 {
   font-weight: 800;
   letter-spacing: var(--heading-letter-spacing);
   line-height: var(--heading-line-height);
+  max-height: calc(var(--heading-line-height) * 2em);
+  overflow: hidden;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  hyphens: auto;
+  text-wrap: balance;
 }
 
 h1 {

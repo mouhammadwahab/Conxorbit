@@ -47,7 +47,7 @@
 }
 
 .card h2 {
-  font-size: 1.3rem;
+  font-size: var(--heading-size-h3);
   margin-bottom: 10px;
   color: var(--color-text);
 }

@@ -1,0 +1,68 @@
+.section {
+  padding: 0 clamp(16px, 3.5vw, 48px) var(--section-pad);
+}
+
+.grid {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+  transform-style: preserve-3d;
+}
+
+.hidden .card {
+  opacity: 0;
+}
+
+.visible .card {
+  opacity: 1;
+}
+
+.card {
+  padding: 28px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(
+    155deg,
+    rgba(184, 137, 61, 0.16),
+    rgba(8, 18, 14, 0.82)
+  );
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(12px);
+  min-height: 220px;
+  transform-style: preserve-3d;
+  transition:
+    transform 280ms ease,
+    box-shadow 280ms ease,
+    opacity 450ms ease,
+    border-color 280ms ease;
+}
+
+.badge {
+  display: inline-block;
+  margin-bottom: 14px;
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-primary-soft);
+  background: rgba(90, 107, 59, 0.15);
+  border: 1px solid rgba(90, 107, 59, 0.3);
+}
+
+.card h2 {
+  font-size: 1.35rem;
+  margin-bottom: 12px;
+  color: var(--color-text);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hidden .card,
+  .visible .card,
+  .card:hover {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

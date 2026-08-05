@@ -1,0 +1,158 @@
+.hero {
+  padding: calc(120px + 2rem) clamp(20px, 5vw, 72px) 48px;
+  animation: pageHeroIn 880ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.shellTone {
+  background: transparent;
+}
+
+.solidTone {
+  background: var(--gradient-hero);
+}
+
+.center {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto;
+  transform-style: preserve-3d;
+}
+
+.left {
+  text-align: left;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.eyebrow {
+  display: inline-block;
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 500;
+  font-size: 0.95rem;
+  margin-bottom: 14px;
+  animation: fadeUp 700ms ease both;
+}
+
+.title {
+  font-size: clamp(2.4rem, 5.5vw, 3.75rem);
+  line-height: 1.1;
+  color: var(--color-text);
+  margin-bottom: 16px;
+  text-shadow:
+    0 2px 0 rgba(0, 0, 0, 0.15),
+    0 18px 50px rgba(0, 0, 0, 0.4);
+  animation: fadeUp 850ms ease both;
+  animation-delay: 80ms;
+}
+
+.body {
+  font-size: 1.1rem;
+  color: var(--color-muted);
+  max-width: 42rem;
+  animation: fadeUp 900ms ease both;
+  animation-delay: 140ms;
+}
+
+.center .body {
+  margin-inline: auto;
+}
+
+.ctaBand {
+  padding: var(--section-pad);
+  background: transparent;
+}
+
+.ctaInner {
+  max-width: min(1100px, var(--max-width));
+  margin: 0 auto;
+  text-align: center;
+  padding: clamp(72px, 9vw, 112px) clamp(40px, 5vw, 72px);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(
+    155deg,
+    rgba(184, 137, 61, 0.18),
+    rgba(8, 18, 14, 0.85)
+  );
+  border: 1px solid rgba(184, 137, 61, 0.28);
+  backdrop-filter: blur(16px);
+  transform-style: preserve-3d;
+  transition: transform 280ms ease, box-shadow 280ms ease;
+  animation: fadeUp 700ms ease both;
+}
+
+.card3d:hover {
+  transform: perspective(900px) rotateX(6deg) rotateY(-3deg) translateY(-10px)
+    translateZ(20px);
+  box-shadow: 0 32px 70px rgba(0, 0, 0, 0.4);
+}
+
+.ctaInner h2 {
+  font-size: clamp(1.75rem, 3.2vw, 2.45rem);
+  margin-bottom: 14px;
+  color: var(--color-text);
+}
+
+.ctaInner p {
+  margin-bottom: 32px;
+  max-width: 42rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 24px;
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  box-shadow: 0 12px 32px rgba(184, 137, 61, 0.28);
+  transition: transform 180ms ease, filter 180ms ease;
+}
+
+.ctaButton:hover {
+  transform: translateY(-2px) scale(1.02);
+  filter: brightness(1.06);
+}
+
+@keyframes pageHeroIn {
+  from {
+    opacity: 0;
+    transform: perspective(1100px) translateY(40px) rotateX(14deg) translateZ(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(1100px) translateY(0) rotateX(0) translateZ(0);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: perspective(800px) translateY(18px) rotateX(6deg);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(800px) translateY(0) rotateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero,
+  .eyebrow,
+  .title,
+  .body,
+  .ctaInner {
+    animation: none;
+  }
+
+  .card3d:hover {
+    transform: none;
+  }
+}

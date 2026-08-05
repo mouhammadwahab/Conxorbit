@@ -1,0 +1,49 @@
+.devBanner {
+  padding: var(--section-pad);
+}
+
+.devInner {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 36px 28px;
+  text-align: center;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(
+    145deg,
+    rgba(184, 137, 61, 0.18),
+    rgba(8, 18, 14, 0.85)
+  );
+  border: 1px dashed rgba(184, 137, 61, 0.35);
+  transform-style: preserve-3d;
+  transition: transform 280ms ease, box-shadow 280ms ease;
+}
+
+.card3d:hover {
+  transform: perspective(900px) rotateX(5deg) translateY(-6px) translateZ(16px);
+  box-shadow: 0 28px 55px rgba(0, 0, 0, 0.35);
+}
+
+.devInner span {
+  display: inline-block;
+  margin-bottom: 12px;
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent-bright);
+  background: rgba(184, 137, 61, 0.15);
+  border: 1px solid rgba(184, 137, 61, 0.3);
+}
+
+.devInner h2 {
+  font-size: 1.6rem;
+  margin-bottom: 12px;
+  color: var(--color-text);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card3d:hover {
+    transform: none;
+  }
+}

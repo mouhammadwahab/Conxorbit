@@ -1,0 +1,141 @@
+/* Shared scroll/hover motion primitives — brand-safe, no GSAP pin */
+
+.reveal {
+  opacity: 0;
+  transform: perspective(1000px) translateY(28px) rotateX(8deg);
+  transition:
+    opacity 560ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 560ms cubic-bezier(0.22, 1, 0.36, 1);
+  transform-style: preserve-3d;
+  will-change: opacity, transform;
+}
+
+.revealVisible {
+  opacity: 1;
+  transform: perspective(1000px) translateY(0) rotateX(0);
+}
+
+.stagger1 {
+  transition-delay: 60ms;
+}
+.stagger2 {
+  transition-delay: 120ms;
+}
+.stagger3 {
+  transition-delay: 180ms;
+}
+.stagger4 {
+  transition-delay: 240ms;
+}
+.stagger5 {
+  transition-delay: 300ms;
+}
+.stagger6 {
+  transition-delay: 360ms;
+}
+
+/* Narrow gold edge on hover / click / keyboard focus — use on non-Tilt cards */
+.interactiveCard {
+  transition:
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    transform 280ms ease;
+}
+
+.interactiveCard:hover,
+.interactiveCard:active,
+.interactiveCard:focus-visible {
+  border-color: var(--border-gold-strong) !important;
+  box-shadow:
+    0 22px 48px rgba(0, 0, 0, 0.32),
+    var(--glow-gold);
+  outline: none;
+}
+
+.depthHover {
+  transform-style: preserve-3d;
+  border: 1px solid transparent;
+  transition:
+    transform 280ms ease,
+    box-shadow 280ms ease,
+    border-color 220ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .depthHover:hover {
+    transform: perspective(900px) rotateX(4deg) rotateY(-4deg) translateY(-8px)
+      translateZ(16px);
+    border-color: var(--border-gold-strong);
+    box-shadow:
+      0 28px 55px rgba(0, 0, 0, 0.32),
+      var(--glow-gold);
+  }
+}
+
+.depthHover:active,
+.depthHover:focus-visible {
+  border-color: var(--border-gold-strong);
+  box-shadow:
+    0 28px 55px rgba(0, 0, 0, 0.32),
+    var(--glow-gold);
+  outline: none;
+}
+
+/* Home-like section bands — opaque so they read over PageShell */
+.toneLight {
+  background: var(--bg-light) !important;
+  color: #3a4530;
+}
+
+.toneLight h1,
+.toneLight h2,
+.toneLight h3,
+.toneLight h4 {
+  color: var(--forest);
+}
+
+.toneLight p,
+.toneLight li {
+  color: #3a4530;
+}
+
+.toneDark {
+  background:
+    radial-gradient(ellipse at 80% 10%, rgba(90, 107, 59, 0.22), transparent 50%),
+    radial-gradient(ellipse at 10% 90%, rgba(184, 137, 61, 0.12), transparent 48%),
+    linear-gradient(180deg, #0b1b17 0%, #010f0e 100%) !important;
+  color: var(--color-text);
+}
+
+.toneDark h1,
+.toneDark h2,
+.toneDark h3,
+.toneDark h4 {
+  color: var(--color-text);
+}
+
+.toneDark p,
+.toneDark li {
+  color: var(--color-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .revealVisible {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .depthHover,
+  .depthHover:hover,
+  .depthHover:active,
+  .depthHover:focus-visible {
+    transform: none !important;
+  }
+
+  .depthHover,
+  .interactiveCard {
+    transition: border-color 220ms ease, box-shadow 220ms ease !important;
+  }
+}

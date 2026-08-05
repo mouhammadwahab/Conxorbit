@@ -1,0 +1,117 @@
+.splash {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--gradient-splash);
+}
+
+.glow {
+  position: absolute;
+  width: min(70vw, 520px);
+  height: min(70vw, 520px);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(184, 137, 61, 0.28) 0%,
+    rgba(90, 107, 59, 0.12) 40%,
+    transparent 70%
+  );
+  filter: blur(8px);
+  pointer-events: none;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+
+.logoWrapper {
+  width: 180px;
+  height: 180px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: logoOrbitLeft 2s cubic-bezier(0.12, 0.61, 0.36, 1) forwards;
+}
+
+.logo {
+  width: 100%;
+  object-fit: contain;
+}
+
+.title {
+  color: var(--gold);
+  font-size: 42px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  white-space: nowrap;
+  margin-left: 0;
+  max-width: 0;
+  opacity: 0;
+  overflow: hidden;
+  animation: titleReveal 2s ease forwards;
+  animation-delay: 0.9s;
+}
+
+@keyframes logoOrbitLeft {
+  0% {
+    opacity: 0;
+    transform: scale(0.65);
+  }
+  25% {
+    opacity: 1;
+    transform: translateX(-10px) rotate(180deg) scale(1);
+  }
+  60% {
+    transform: scale(1);
+  }
+  100% {
+    transform: translateX(-18px) rotate(-360deg) scale(0.55);
+  }
+}
+
+@keyframes titleReveal {
+  0% {
+    opacity: 0;
+    max-width: 0;
+    margin-left: 0;
+  }
+  100% {
+    opacity: 1;
+    max-width: 420px;
+    margin-left: 1px;
+  }
+}
+
+.appRoot {
+  min-height: 100vh;
+  transition: opacity 280ms ease;
+}
+
+@media (max-width: 768px) {
+  .logoWrapper {
+    width: 120px;
+    height: 120px;
+  }
+
+  .title {
+    font-size: 24px;
+    letter-spacing: 4px;
+  }
+}

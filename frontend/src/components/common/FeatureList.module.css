@@ -1,0 +1,132 @@
+.section {
+  padding: var(--section-pad);
+  background: transparent;
+}
+
+.hidden .card,
+.hidden .bulletItem {
+  opacity: 0;
+  transform: translateY(28px) rotateX(8deg);
+}
+
+.visible .card,
+.visible .bulletItem {
+  opacity: 1;
+  transform: none;
+}
+
+.inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.title {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  margin-bottom: 28px;
+  text-align: center;
+  color: var(--color-text);
+}
+
+.light .title {
+  color: var(--forest);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+  transform-style: preserve-3d;
+}
+
+.card {
+  padding: 24px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(
+    160deg,
+    rgba(90, 107, 59, 0.22),
+    rgba(8, 18, 14, 0.75)
+  );
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(12px);
+  transform-style: preserve-3d;
+  transition:
+    transform 280ms ease,
+    box-shadow 280ms ease,
+    opacity 420ms ease,
+    border-color 280ms ease;
+}
+
+.card h3 {
+  font-size: 1.15rem;
+  margin-bottom: 10px;
+  color: var(--color-text);
+}
+
+.light .card {
+  background: #fff;
+  border: 1px solid rgba(90, 107, 59, 0.16);
+  box-shadow: 0 18px 40px rgba(20, 48, 46, 0.08);
+}
+
+.light .card h3 {
+  color: var(--forest);
+}
+
+.light .card p {
+  color: #3a4530;
+}
+
+.bullets {
+  list-style: none;
+  display: grid;
+  gap: 14px;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.bulletItem {
+  position: relative;
+  padding: 16px 18px 16px 44px;
+  border-radius: var(--radius-md);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  color: var(--color-muted);
+  transition: opacity 420ms ease, transform 420ms ease, border-color 280ms ease;
+}
+
+.light .bulletItem {
+  background: #fff;
+  border: 1px solid rgba(90, 107, 59, 0.16);
+  color: #3a4530;
+  box-shadow: 0 12px 28px rgba(20, 48, 46, 0.06);
+}
+
+.bulletItem::before {
+  content: "";
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 12px rgba(184, 137, 61, 0.6);
+}
+
+.bulletItem:hover {
+  transform: translateX(4px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hidden .card,
+  .hidden .bulletItem,
+  .visible .card,
+  .visible .bulletItem,
+  .card:hover,
+  .bulletItem:hover {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

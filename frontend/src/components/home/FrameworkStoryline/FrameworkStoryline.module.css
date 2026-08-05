@@ -1,0 +1,237 @@
+.section {
+  position: relative;
+  padding: var(--section-pad);
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 88% 12%, rgba(192, 132, 252, 0.16), transparent 44%),
+    radial-gradient(ellipse at 12% 48%, rgba(245, 158, 11, 0.08), transparent 48%),
+    radial-gradient(ellipse at 70% 92%, rgba(90, 107, 59, 0.14), transparent 42%),
+    linear-gradient(180deg, #05040a 0%, #0b1b17 48%, #010f0e 100%);
+}
+
+.inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 64px;
+  display: grid;
+  gap: 14px;
+  justify-items: center;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(184, 137, 61, 0.35);
+  color: var(--gold);
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+.header h2 {
+  font-size: clamp(1.85rem, 3.5vw, 2.65rem);
+  color: #fff;
+  line-height: 1.15;
+}
+
+.highlight {
+  color: var(--olive);
+}
+
+.body {
+  color: var(--color-muted);
+  font-size: 1.05rem;
+}
+
+.callout {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  text-align: left;
+  max-width: 420px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(184, 137, 61, 0.35);
+  background: rgba(8, 18, 14, 0.65);
+  color: var(--color-text);
+}
+
+.callout span {
+  color: var(--gold);
+}
+
+.story {
+  position: relative;
+  padding: 32px 0 80px;
+}
+
+.pathSvg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: visible;
+}
+
+.iconRail {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.node {
+  position: absolute;
+  width: 56px;
+  height: 56px;
+  transform: translate(-50%, -50%);
+  transition: filter 280ms ease, transform 280ms ease;
+}
+
+.nodeRing {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1.5px solid rgba(243, 201, 105, 0.5);
+  box-shadow:
+    0 0 0 8px rgba(90, 107, 59, 0.1),
+    0 0 22px rgba(192, 132, 252, 0.22);
+  background: radial-gradient(circle at 40% 35%, #14302e, #05040a 72%);
+  transition: border-color 280ms ease, box-shadow 280ms ease;
+}
+
+.nodeIcon {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: #d4b06a;
+}
+
+.nodeIcon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.nodeLit {
+  transform: translate(-50%, -50%) scale(1.06);
+  filter: drop-shadow(0 0 14px rgba(245, 158, 11, 0.45));
+}
+
+.nodeLit .nodeRing {
+  border-color: rgba(245, 158, 11, 0.9);
+  box-shadow:
+    0 0 0 9px rgba(192, 132, 252, 0.14),
+    0 0 30px rgba(245, 158, 11, 0.42);
+}
+
+.nodeLit .nodeIcon {
+  color: #f3c969;
+}
+
+.steps {
+  position: relative;
+  z-index: 1;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  min-height: inherit;
+}
+
+.step {
+  position: absolute;
+  left: auto;
+  /* Fixed width; `right` from JS tracks the circular arc */
+  width: min(480px, 54%);
+  transform: translateY(-50%);
+}
+
+.card {
+  padding: 28px 30px;
+  border-radius: 22px;
+  background: linear-gradient(
+    155deg,
+    rgba(32, 26, 48, 0.94) 0%,
+    rgba(10, 18, 16, 0.96) 55%,
+    rgba(12, 24, 20, 0.97) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 22px 48px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  transition: border-color 280ms ease, box-shadow 280ms ease;
+}
+
+.stepLit .card {
+  border-color: rgba(184, 137, 61, 0.32);
+  box-shadow:
+    0 26px 56px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(192, 132, 252, 0.08);
+}
+
+.num {
+  display: inline-block;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+
+.card h3 {
+  font-size: clamp(1.3rem, 2vw, 1.55rem);
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.card p {
+  color: rgba(219, 237, 190, 0.78);
+  line-height: 1.7;
+  font-size: 0.98rem;
+}
+
+@media (max-width: 800px) {
+  .story {
+    padding-bottom: 40px;
+  }
+
+  .step {
+    left: 0 !important;
+    right: 76px !important;
+    max-width: none;
+  }
+
+  .node {
+    width: 44px;
+    height: 44px;
+  }
+
+  .card {
+    padding: 20px 18px;
+  }
+
+  .card p {
+    font-size: 0.92rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .step {
+    opacity: 1 !important;
+    transform: translateY(-50%) !important;
+  }
+
+  .nodeLit {
+    transform: translate(-50%, -50%);
+  }
+}

@@ -1,0 +1,29 @@
+.section {
+  min-height: 70vh;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  padding: 140px 24px 80px;
+  gap: 12px;
+}
+
+.code {
+  font-size: 4rem;
+  font-weight: 800;
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.section h1 {
+  font-size: 2rem;
+  color: var(--color-text);
+}
+
+.section a {
+  margin-top: 16px;
+  color: var(--color-accent-bright);
+  font-weight: 600;
+  text-decoration: none;
+}

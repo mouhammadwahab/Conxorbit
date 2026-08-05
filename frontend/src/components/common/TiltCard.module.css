@@ -1,0 +1,73 @@
+.tilt {
+  position: relative;
+  transform-style: preserve-3d;
+  transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+  border: 1px solid transparent;
+  transition:
+    box-shadow 220ms ease,
+    border-color 220ms ease;
+  will-change: transform;
+}
+
+.tilt:hover,
+.tilt:active,
+.tilt:focus-visible {
+  border-color: var(--border-gold-strong) !important;
+  box-shadow:
+    0 28px 60px rgba(0, 0, 0, 0.38),
+    var(--glow-gold);
+  outline: none;
+}
+
+.shine {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    125deg,
+    rgba(255, 255, 255, 0.14) 0%,
+    transparent 42%,
+    transparent 100%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 220ms ease;
+  z-index: 0;
+}
+
+.tilt:hover .shine,
+.tilt:active .shine,
+.tilt:focus-visible .shine {
+  opacity: 1;
+}
+
+.inner {
+  display: contents;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tilt,
+  .tilt:hover,
+  .tilt:active,
+  .tilt:focus-visible {
+    transform: none !important;
+  }
+
+  .tilt {
+    transition: border-color 220ms ease, box-shadow 220ms ease;
+  }
+
+  .shine {
+    display: none;
+  }
+
+  .inner {
+    transform: none;
+  }
+}
+
+@media (hover: none) {
+  .tilt {
+    transform: none !important;
+  }
+}

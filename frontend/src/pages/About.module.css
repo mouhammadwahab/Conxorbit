@@ -1,0 +1,477 @@
+/* About — EternaCloud-like layout, ConX Orbit colors only */
+
+.eyebrowGold {
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.eyebrowDark {
+  color: var(--olive);
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+/* —— Glow hero: sticky track, theme bg, text swap inside ring —— */
+.glowTrack {
+  position: relative;
+  min-height: 200vh;
+}
+
+.glowSticky {
+  position: sticky;
+  top: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: clamp(96px, 12vw, 140px) clamp(16px, 3.5vw, 48px);
+  overflow: hidden;
+  background-color: var(--color-bg);
+  background-image:
+    radial-gradient(ellipse at 50% 28%, rgba(20, 48, 46, 0.55) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 20%, rgba(184, 137, 61, 0.12) 0%, transparent 45%),
+    var(--gradient-hero);
+}
+
+.glowNoise {
+  position: absolute;
+  inset: 0;
+  opacity: 0.32;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  z-index: 1;
+}
+
+.glowSideLeft {
+  position: absolute;
+  left: -12%;
+  top: 22%;
+  width: min(48vw, 420px);
+  height: min(48vw, 420px);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(90, 107, 59, 0.28) 0%, transparent 68%);
+  filter: blur(48px);
+  pointer-events: none;
+}
+
+.glowSideRight {
+  position: absolute;
+  right: -10%;
+  top: 28%;
+  width: min(46vw, 400px);
+  height: min(46vw, 400px);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(184, 137, 61, 0.3) 0%, transparent 68%);
+  filter: blur(52px);
+  pointer-events: none;
+}
+
+.glowRingWrap {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.glowRingSvg {
+  width: min(72vw, 520px);
+  height: min(72vw, 520px);
+  overflow: visible;
+}
+
+/* Clockwise spin of the bright arc (SVG y-down: positive rotate = clockwise on screen) */
+.glowArcSpin {
+  transform-origin: 200px 200px;
+  animation: ringSpinClockwise 9s linear infinite;
+  will-change: transform;
+}
+
+/* Center copy constrained inside ring (~55–60% of ring) */
+.glowCopySlot {
+  position: relative;
+  z-index: 2;
+  width: min(42vw, 290px);
+  max-width: 58%;
+  min-height: 7.5rem;
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+
+.glowPhase {
+  grid-area: 1 / 1;
+  margin: 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition:
+    opacity 300ms ease,
+    transform 300ms ease,
+    visibility 300ms ease;
+  pointer-events: none;
+}
+
+.glowPhaseActive {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.glowPhaseLine {
+  font-size: clamp(1rem, 2.1vw, 1.35rem);
+  font-weight: 500;
+  line-height: 1.4;
+  background: linear-gradient(90deg, #8a9e5c 0%, #f3c969 48%, #b8893d 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  max-width: 16ch;
+}
+
+.glowPhaseTitle {
+  display: grid;
+  gap: 0.08em;
+  font-size: clamp(1.55rem, 3.2vw, 2.35rem);
+  line-height: 1.12;
+  color: #fff;
+  letter-spacing: -0.03em;
+  font-weight: 800;
+  text-shadow: 0 8px 40px rgba(0, 0, 0, 0.45);
+  max-width: 12ch;
+}
+
+.glowPhaseTitle span {
+  display: block;
+}
+
+@keyframes ringSpinClockwise {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* —— Offer cards —— */
+.offer {
+  position: relative;
+  z-index: 3;
+  margin-top: -48px;
+  padding: 0 clamp(16px, 3.5vw, 48px) var(--section-pad);
+  background: linear-gradient(180deg, transparent 0%, var(--color-bg) 12%, var(--color-bg-elevated) 100%);
+}
+
+.offerHead {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.offerBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  background: rgba(8, 18, 14, 0.9);
+  border: 1px solid rgba(184, 137, 61, 0.4);
+  color: #f7f7f4;
+  font-size: 0.85rem;
+  margin-bottom: 16px;
+}
+
+.offerHead h2 {
+  font-size: clamp(1.9rem, 3.5vw, 2.75rem);
+  color: #fff;
+}
+
+.offerGrid {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.offerCard {
+  display: flex;
+  flex-direction: column;
+  min-height: 420px;
+  border-radius: 28px;
+  overflow: hidden;
+  background: linear-gradient(165deg, rgba(30, 42, 36, 0.95), rgba(5, 10, 9, 0.98));
+  border: 1px solid rgba(184, 137, 61, 0.22);
+}
+
+.offerArt {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  padding: 28px 16px 8px;
+  color: rgba(184, 137, 61, 0.75);
+}
+
+.cardArt {
+  width: 100%;
+  max-width: 260px;
+  height: auto;
+}
+
+.offerCopy {
+  padding: 8px 24px 28px;
+}
+
+.offerCopy h3 {
+  color: #fff;
+  font-size: clamp(1.15rem, 1.8vw, 1.35rem);
+  margin-bottom: 10px;
+  line-height: 1.25;
+}
+
+.offerCopy p {
+  color: var(--color-muted);
+  line-height: 1.65;
+  font-size: 0.98rem;
+}
+
+/* —— Story —— */
+.story {
+  padding: var(--section-pad);
+}
+
+.storyInner {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.storyInner h2 {
+  font-size: clamp(1.85rem, 3.2vw, 2.5rem);
+  color: var(--forest);
+  margin-bottom: 28px;
+  line-height: 1.2;
+}
+
+.storyProse {
+  display: grid;
+  gap: 18px;
+}
+
+.storyProse p {
+  color: #3a4530;
+  line-height: 1.8;
+  font-size: 1.05rem;
+}
+
+/* —— Founders portrait cards —— */
+.founders {
+  padding: var(--section-pad);
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(90, 107, 59, 0.08), transparent 50%),
+    var(--bg-light);
+}
+
+.foundersTitle {
+  text-align: center;
+  font-size: clamp(2rem, 3.8vw, 2.85rem);
+  color: var(--forest);
+  margin-bottom: 48px;
+}
+
+.founderGrid {
+  list-style: none;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  align-items: start;
+}
+
+.founderCard {
+  display: flex;
+  flex-direction: column;
+}
+
+.founderHit {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-radius: 24px 24px 0 0;
+  overflow: hidden;
+}
+
+.portrait {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  background: linear-gradient(160deg, #1a2420 0%, #0a100e 100%);
+  border-radius: 24px 24px 0 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.portraitInitials {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: #f3c969;
+  text-shadow: 0 0 40px rgba(184, 137, 61, 0.35);
+}
+
+.founderInfo {
+  background: #fff;
+  padding: 22px 20px 24px;
+  border-radius: 0 0 24px 24px;
+  box-shadow: 0 16px 36px rgba(20, 48, 46, 0.08);
+  transition: border-radius 220ms ease;
+}
+
+.founderCard:hover .founderInfo {
+  border-radius: 0;
+}
+
+.founderName {
+  display: block;
+  font-size: clamp(1.35rem, 2vw, 1.65rem);
+  font-weight: 800;
+  color: var(--forest);
+  margin-bottom: 6px;
+  line-height: 1.15;
+}
+
+.founderRole {
+  display: block;
+  font-size: 0.92rem;
+  color: var(--olive);
+}
+
+.quotePanel {
+  overflow: hidden;
+  border-radius: 0 0 24px 24px;
+  max-height: 0;
+  opacity: 0;
+  padding: 0 24px;
+  background:
+    radial-gradient(ellipse at 100% 100%, rgba(184, 137, 61, 0.55) 0%, transparent 55%),
+    radial-gradient(ellipse at 0% 100%, rgba(90, 107, 59, 0.35) 0%, transparent 50%),
+    linear-gradient(165deg, #0a1210 0%, #05080a 100%);
+  transition:
+    max-height 320ms ease,
+    opacity 240ms ease,
+    padding 280ms ease;
+  text-align: center;
+}
+
+.founderCard:hover .quotePanel {
+  max-height: 320px;
+  opacity: 1;
+  padding: 28px 24px 32px;
+}
+
+.quoteText {
+  color: #fff;
+  font-size: clamp(0.98rem, 1.4vw, 1.12rem);
+  line-height: 1.65;
+  margin-bottom: 14px;
+}
+
+.quoteAuthor {
+  color: rgba(243, 201, 105, 0.75);
+  font-size: 0.9rem;
+}
+
+/* —— Values —— */
+.values {
+  padding: var(--section-pad);
+}
+
+.valuesInner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.valuesInner h2 {
+  font-size: clamp(1.85rem, 3.2vw, 2.55rem);
+  color: #fff;
+  margin-bottom: 36px;
+}
+
+.valuesGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  text-align: left;
+}
+
+.valueCard {
+  padding: 26px 24px;
+  border-radius: 24px;
+  background: linear-gradient(155deg, rgba(184, 137, 61, 0.12), rgba(8, 18, 14, 0.88));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.valueCard h3 {
+  color: #fff;
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+
+.valueCard p {
+  color: var(--color-muted);
+  line-height: 1.65;
+}
+
+@media (max-width: 960px) {
+  .offerGrid,
+  .founderGrid {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+  }
+
+  .offer {
+    margin-top: 0;
+  }
+
+  .valuesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .glowCopySlot {
+    width: min(58vw, 240px);
+    max-width: 62%;
+  }
+
+  .glowRingSvg {
+    width: min(82vw, 400px);
+    height: min(82vw, 400px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glowArcSpin {
+    animation: none;
+  }
+
+  .glowPhase {
+    transition: none;
+    transform: none;
+  }
+
+  .quotePanel {
+    transition: none;
+  }
+}

@@ -1,0 +1,86 @@
+.page {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: calc(120px + 2rem) clamp(20px, 5vw, 72px) 100px;
+}
+
+.back {
+  display: inline-block;
+  margin-bottom: 24px;
+  color: var(--color-accent-bright);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.industry {
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.page h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 14px;
+  color: var(--forest);
+}
+
+.summary {
+  font-size: 1.15rem;
+  margin-bottom: 40px;
+  color: #3a4530;
+}
+
+.blocks {
+  display: grid;
+  gap: 24px;
+  margin-bottom: 36px;
+}
+
+.blockCard {
+  padding: 24px;
+  border-radius: var(--radius-md);
+  background: #fff;
+  border: 1px solid rgba(90, 107, 59, 0.16);
+  box-shadow: 0 12px 28px rgba(20, 48, 46, 0.06);
+  transform-style: preserve-3d;
+  transition: transform 280ms ease, border-color 280ms ease;
+}
+
+.blockCard:hover {
+  transform: perspective(900px) rotateX(4deg) translateZ(10px);
+}
+
+.blocks h2 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: var(--forest);
+}
+
+.quote {
+  padding: 28px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(145deg, rgba(90, 107, 59, 0.2), rgba(8, 18, 14, 0.8));
+  border: 1px solid var(--glass-border);
+}
+
+.quote p {
+  font-size: 1.25rem;
+  color: var(--color-text);
+  margin-bottom: 12px;
+  font-style: italic;
+}
+
+.quote cite {
+  color: var(--color-muted);
+  font-style: normal;
+  font-size: 0.95rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blockCard:hover {
+    transform: none;
+  }
+}

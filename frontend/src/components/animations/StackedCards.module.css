@@ -1,0 +1,137 @@
+.section {
+  padding: var(--section-pad);
+  background: transparent;
+}
+
+.header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 40px;
+}
+
+.eyebrow {
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.dark .eyebrow {
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.light .eyebrow {
+  color: var(--olive);
+}
+
+.title {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+}
+
+.dark .title {
+  color: var(--color-text);
+}
+
+.light .title {
+  color: var(--forest);
+}
+
+.stack {
+  max-width: 720px;
+  margin: 0 auto;
+  display: grid;
+  gap: 28px;
+  padding-bottom: 40px;
+}
+
+.card {
+  position: sticky;
+  padding: 36px 32px;
+  border-radius: var(--radius-lg);
+  transform-style: preserve-3d;
+  transition: transform 280ms ease, box-shadow 280ms ease, border-color 280ms ease;
+}
+
+.dark .card {
+  background: linear-gradient(
+    160deg,
+    rgba(90, 107, 59, 0.28) 0%,
+    rgba(8, 18, 14, 0.92) 55%
+  );
+  border: 1px solid rgba(184, 137, 61, 0.22);
+  backdrop-filter: blur(16px);
+  box-shadow: var(--shadow-glass);
+}
+
+.light .card {
+  background: #fff;
+  border: 1px solid rgba(90, 107, 59, 0.28);
+  box-shadow: 0 16px 40px rgba(20, 48, 46, 0.08);
+}
+
+.card:hover {
+  transform: perspective(900px) rotateX(4deg) translateY(-6px) translateZ(12px);
+}
+
+.dark .card:hover {
+  box-shadow: 0 28px 55px rgba(0, 0, 0, 0.35);
+}
+
+.light .card:hover {
+  box-shadow: 0 24px 48px rgba(20, 48, 46, 0.12);
+}
+
+.step {
+  display: inline-block;
+  font-size: 0.85rem;
+  letter-spacing: 0.14em;
+  margin-bottom: 14px;
+}
+
+.dark .step {
+  color: var(--gold);
+}
+
+.light .step {
+  color: var(--olive);
+}
+
+.card h3 {
+  font-size: 1.6rem;
+  margin-bottom: 12px;
+}
+
+.dark .card h3 {
+  color: var(--color-text);
+}
+
+.light .card h3 {
+  color: var(--forest);
+}
+
+.light .card p {
+  color: #3a4530;
+}
+
+@media (max-width: 768px) {
+  .card {
+    position: relative;
+    top: auto !important;
+  }
+
+  .card:hover {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    position: relative;
+    top: auto !important;
+  }
+
+  .card:hover {
+    transform: none;
+  }
+}

@@ -125,6 +125,13 @@
   --radius-md: 18px;
   --radius-lg: 28px;
   --font-sans: "Mazzard H", Arial, sans-serif;
+  --font-heading: var(--font-sans);
+  --heading-letter-spacing: -0.02em;
+  --heading-line-height: 1.15;
+  --heading-size-h1: clamp(2.4rem, 5.5vw, 3.75rem);
+  --heading-size-h2: clamp(1.85rem, 3.2vw, 2.55rem);
+  --heading-size-h3: clamp(1.2rem, 1.9vw, 1.45rem);
+  --heading-size-h4: clamp(1.05rem, 1.35vw, 1.2rem);
   --shadow-glass: 0 18px 45px rgba(0, 0, 0, 0.35);
   --max-width: 1320px;
   --section-pad: clamp(48px, 7vw, 88px) clamp(16px, 3.5vw, 48px);

@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import Reveal from "../../common/Reveal";
-import TiltCard from "../../common/TiltCard";
 import styles from "./FeaturedSolutions.module.css";
 
 export default function FeaturedSolutions({ content }) {
@@ -21,15 +20,8 @@ export default function FeaturedSolutions({ content }) {
       </div>
 
       <div className={styles.grid}>
-        {cards.map((card, index) => (
-          <TiltCard
-            key={card.title}
-            as="article"
-            className={styles.card}
-            max={6}
-            scale={1.015}
-            style={{ transitionDelay: `${index * 80}ms` }}
-          >
+        {cards.map((card) => (
+          <article key={card.title} className={`${styles.card} interactiveCard`}>
             <span className={styles.cardBadge}>
               <span className={styles.dot} aria-hidden="true" />
               {card.badge}
@@ -45,10 +37,12 @@ export default function FeaturedSolutions({ content }) {
                 </li>
               ))}
             </ul>
-            <Link className={styles.cta} to={card.href}>
-              {card.cta}
-            </Link>
-          </TiltCard>
+            <div className={styles.ctaSlot}>
+              <Link className={styles.cta} to={card.href}>
+                {card.cta}
+              </Link>
+            </div>
+          </article>
         ))}
       </div>
     </Reveal>

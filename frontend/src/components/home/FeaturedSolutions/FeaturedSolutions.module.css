@@ -49,8 +49,6 @@
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 16px;
-  perspective: 1200px;
-  transform-style: preserve-3d;
 }
 
 .card {
@@ -65,7 +63,15 @@
   border: 1px solid rgba(90, 107, 59, 0.16);
   box-shadow: 0 16px 36px rgba(20, 48, 46, 0.07);
   overflow: hidden;
-  transform-style: preserve-3d;
+  transition:
+    box-shadow 220ms ease,
+    border-color 220ms ease,
+    transform 220ms ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 44px rgba(20, 48, 46, 0.12);
 }
 
 .cardBadge {
@@ -125,10 +131,15 @@
   font-weight: 700;
 }
 
-.cta {
-  position: relative;
-  z-index: 3;
+.ctaSlot {
   margin-top: auto;
+  min-height: 48px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.cta {
+  width: 100%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -138,17 +149,43 @@
   font-weight: 600;
   color: #fff;
   background: linear-gradient(90deg, var(--olive), var(--gold));
-  opacity: 1;
-  transform: none;
-  pointer-events: auto;
-  transition: filter 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 220ms ease,
+    filter 200ms ease,
+    box-shadow 200ms ease;
   cursor: pointer;
+}
+
+.card:hover .cta,
+.card:focus-within .cta {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .cta:hover {
   filter: brightness(1.06);
-  transform: translateY(-2px);
   box-shadow: 0 10px 24px rgba(90, 107, 59, 0.28);
+}
+
+@media (hover: none) {
+  .card:active .cta,
+  .card:focus-within .cta {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .cta {
+    transition: none;
+  }
+
+  .card:hover {
+    transform: none;
+  }
 }
 
 @media (max-width: 1100px) {

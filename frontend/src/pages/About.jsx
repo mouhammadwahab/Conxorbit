@@ -126,6 +126,29 @@ function GlowHero({ glowHero }) {
         <div className={styles.glowSideLeft} aria-hidden="true" />
         <div className={styles.glowSideRight} aria-hidden="true" />
 
+        <div className={styles.glowDecorLeft} aria-hidden="true">
+          <svg viewBox="0 0 120 360" fill="none">
+            <ellipse cx="60" cy="180" rx="48" ry="140" stroke="rgba(184,137,61,0.22)" strokeWidth="1.2" />
+            <ellipse cx="60" cy="180" rx="32" ry="96" stroke="rgba(90,107,59,0.28)" strokeWidth="1" strokeDasharray="4 8" />
+            <circle cx="60" cy="52" r="3" fill="#f3c969" opacity="0.85" />
+            <circle cx="108" cy="180" r="2.5" fill="#8a9e5c" opacity="0.7" />
+            <circle cx="60" cy="308" r="2.5" fill="#b8893d" opacity="0.75" />
+            <path d="M60 52L108 180" stroke="rgba(243,201,105,0.15)" strokeWidth="1" />
+            <path d="M108 180L60 308" stroke="rgba(138,158,92,0.15)" strokeWidth="1" />
+          </svg>
+        </div>
+        <div className={styles.glowDecorRight} aria-hidden="true">
+          <svg viewBox="0 0 120 360" fill="none">
+            <ellipse cx="60" cy="180" rx="48" ry="140" stroke="rgba(184,137,61,0.22)" strokeWidth="1.2" />
+            <ellipse cx="60" cy="180" rx="32" ry="96" stroke="rgba(90,107,59,0.28)" strokeWidth="1" strokeDasharray="4 8" />
+            <circle cx="60" cy="52" r="3" fill="#f3c969" opacity="0.85" />
+            <circle cx="12" cy="180" r="2.5" fill="#8a9e5c" opacity="0.7" />
+            <circle cx="60" cy="308" r="2.5" fill="#b8893d" opacity="0.75" />
+            <path d="M60 52L12 180" stroke="rgba(243,201,105,0.15)" strokeWidth="1" />
+            <path d="M12 180L60 308" stroke="rgba(138,158,92,0.15)" strokeWidth="1" />
+          </svg>
+        </div>
+
         <div className={styles.glowRingWrap} aria-hidden="true">
           <svg className={styles.glowRingSvg} viewBox="0 0 400 400" fill="none">
             <defs>

@@ -48,26 +48,52 @@
 
 .glowSideLeft {
   position: absolute;
-  left: -12%;
-  top: 22%;
-  width: min(48vw, 420px);
-  height: min(48vw, 420px);
+  left: -8%;
+  top: 18%;
+  width: min(52vw, 480px);
+  height: min(52vw, 480px);
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(90, 107, 59, 0.28) 0%, transparent 68%);
+  background: radial-gradient(circle, rgba(90, 107, 59, 0.32) 0%, transparent 68%);
   filter: blur(48px);
   pointer-events: none;
 }
 
 .glowSideRight {
   position: absolute;
-  right: -10%;
-  top: 28%;
-  width: min(46vw, 400px);
-  height: min(46vw, 400px);
+  right: -6%;
+  top: 24%;
+  width: min(50vw, 460px);
+  height: min(50vw, 460px);
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(184, 137, 61, 0.3) 0%, transparent 68%);
+  background: radial-gradient(circle, rgba(184, 137, 61, 0.34) 0%, transparent 68%);
   filter: blur(52px);
   pointer-events: none;
+}
+
+.glowDecorLeft,
+.glowDecorRight {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: min(16vw, 140px);
+  height: min(62vh, 460px);
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.55;
+}
+
+.glowDecorLeft {
+  left: clamp(8px, 3.5vw, 56px);
+}
+
+.glowDecorRight {
+  right: clamp(8px, 3.5vw, 56px);
+}
+
+.glowDecorLeft svg,
+.glowDecorRight svg {
+  width: 100%;
+  height: 100%;
 }
 
 .glowRingWrap {
@@ -80,8 +106,8 @@
 }
 
 .glowRingSvg {
-  width: min(72vw, 520px);
-  height: min(72vw, 520px);
+  width: min(88vw, 760px);
+  height: min(88vw, 760px);
   overflow: visible;
 }
 
@@ -92,13 +118,13 @@
   will-change: transform;
 }
 
-/* Center copy constrained inside ring (~55–60% of ring) */
+/* Center copy inside ring */
 .glowCopySlot {
   position: relative;
   z-index: 2;
-  width: min(42vw, 290px);
-  max-width: 58%;
-  min-height: 7.5rem;
+  width: min(54vw, 460px);
+  max-width: 68%;
+  min-height: 9rem;
   display: grid;
   place-items: center;
   text-align: center;
@@ -125,26 +151,26 @@
 }
 
 .glowPhaseLine {
-  font-size: clamp(1rem, 2.1vw, 1.35rem);
+  font-size: clamp(1.2rem, 2.6vw, 1.9rem);
   font-weight: 500;
-  line-height: 1.4;
+  line-height: 1.35;
   background: linear-gradient(90deg, #8a9e5c 0%, #f3c969 48%, #b8893d 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  max-width: 16ch;
+  max-width: 18ch;
 }
 
 .glowPhaseTitle {
   display: grid;
   gap: 0.08em;
-  font-size: clamp(1.55rem, 3.2vw, 2.35rem);
-  line-height: 1.12;
+  font-size: clamp(2rem, 4.8vw, 3.4rem);
+  line-height: 1.1;
   color: #fff;
   letter-spacing: -0.03em;
   font-weight: 800;
   text-shadow: 0 8px 40px rgba(0, 0, 0, 0.45);
-  max-width: 12ch;
+  max-width: 14ch;
 }
 
 .glowPhaseTitle span {
@@ -451,13 +477,18 @@
   }
 
   .glowCopySlot {
-    width: min(58vw, 240px);
-    max-width: 62%;
+    width: min(72vw, 320px);
+    max-width: 78%;
   }
 
   .glowRingSvg {
-    width: min(82vw, 400px);
-    height: min(82vw, 400px);
+    width: min(94vw, 520px);
+    height: min(94vw, 520px);
+  }
+
+  .glowDecorLeft,
+  .glowDecorRight {
+    display: none;
   }
 }
 

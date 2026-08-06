@@ -102,7 +102,8 @@
   z-index: 2;
   display: grid;
   gap: 4px;
-  min-width: 148px;
+  min-width: 168px;
+  max-width: 200px;
   padding: 14px 16px;
   border-radius: 16px;
   text-align: left;
@@ -121,11 +122,13 @@
   line-height: 1.1;
 }
 
-.cardLabel {
-  color: var(--color-primary-soft);
-  font-size: 0.72rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+.systemCard .cardLabel {
+  color: #f3c969;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  line-height: 1.35;
 }
 
 .cardMeta {
@@ -204,49 +207,23 @@
 
 .center h1 {
   font-size: var(--heading-size-h1);
-  line-height: 1.12;
-  color: #ffffff;
+  line-height: 1.15;
+  color: #e8edd8;
   margin-top: 22px;
-  max-width: min(22ch, 100%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.12em;
+  max-width: min(32ch, 100%);
+  max-height: none;
+  overflow: visible;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
   text-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
-}
-
-.titlePrefix {
-  color: #ffffff;
-}
-
-.rotator {
-  display: block;
-  min-height: 1.2em;
-  overflow: hidden;
-}
-
-.rotatingLine {
-  display: block;
-  color: var(--olive);
-  animation: lineIn 420ms ease;
-}
-
-@keyframes lineIn {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .center p {
   margin-top: 18px;
   font-size: 1.1rem;
   font-weight: 400;
-  color: #dbedbe;
+  color: rgba(219, 237, 190, 0.62);
   max-width: 38rem;
   text-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
 }
@@ -340,7 +317,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .rotatingLine,
   .graphic,
   .systemCard {
     animation: none;

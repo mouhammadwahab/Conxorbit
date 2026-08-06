@@ -3,10 +3,10 @@
   padding: var(--section-pad);
   overflow: hidden;
   background:
-    radial-gradient(ellipse at 88% 12%, rgba(192, 132, 252, 0.16), transparent 44%),
-    radial-gradient(ellipse at 12% 48%, rgba(245, 158, 11, 0.08), transparent 48%),
+    radial-gradient(ellipse at 88% 12%, rgba(184, 137, 61, 0.16), transparent 44%),
+    radial-gradient(ellipse at 12% 48%, rgba(243, 201, 105, 0.08), transparent 48%),
     radial-gradient(ellipse at 70% 92%, rgba(90, 107, 59, 0.14), transparent 42%),
-    linear-gradient(180deg, #05040a 0%, #0b1b17 48%, #010f0e 100%);
+    linear-gradient(180deg, #010f0e 0%, #0b1b17 48%, #010f0e 100%);
 }
 
 .inner {
@@ -37,12 +37,17 @@
 
 .header h2 {
   font-size: var(--heading-size-h2);
-  color: #fff;
-  line-height: 1.15;
+  color: #e8edd8;
+  line-height: 1.2;
+  max-height: none;
+  overflow: visible;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
 }
 
 .highlight {
-  color: var(--olive);
+  color: var(--color-accent-bright);
 }
 
 .body {
@@ -82,6 +87,21 @@
   overflow: visible;
 }
 
+.trailGlow {
+  /* Soft halo via wide stroke — no blur filter during scrub */
+  opacity: 0.22;
+  will-change: stroke-dashoffset;
+}
+
+.stub {
+  stroke: rgba(184, 137, 61, 0.22);
+  transition: stroke 160ms ease;
+}
+
+.stubLit {
+  stroke: rgba(243, 201, 105, 0.55);
+}
+
 .iconRail {
   position: absolute;
   inset: 0;
@@ -94,7 +114,8 @@
   width: 56px;
   height: 56px;
   transform: translate(-50%, -50%);
-  transition: filter 280ms ease, transform 280ms ease;
+  transition: filter 160ms ease, transform 160ms ease;
+  will-change: transform;
 }
 
 .nodeRing {
@@ -104,9 +125,9 @@
   border: 1.5px solid rgba(243, 201, 105, 0.5);
   box-shadow:
     0 0 0 8px rgba(90, 107, 59, 0.1),
-    0 0 22px rgba(192, 132, 252, 0.22);
+    0 0 22px rgba(184, 137, 61, 0.22);
   background: radial-gradient(circle at 40% 35%, #14302e, #05040a 72%);
-  transition: border-color 280ms ease, box-shadow 280ms ease;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
 }
 
 .nodeIcon {
@@ -124,14 +145,14 @@
 
 .nodeLit {
   transform: translate(-50%, -50%) scale(1.06);
-  filter: drop-shadow(0 0 14px rgba(245, 158, 11, 0.45));
+  filter: drop-shadow(0 0 14px rgba(184, 137, 61, 0.45));
 }
 
 .nodeLit .nodeRing {
-  border-color: rgba(245, 158, 11, 0.9);
+  border-color: rgba(243, 201, 105, 0.9);
   box-shadow:
-    0 0 0 9px rgba(192, 132, 252, 0.14),
-    0 0 30px rgba(245, 158, 11, 0.42);
+    0 0 0 9px rgba(184, 137, 61, 0.14),
+    0 0 30px rgba(184, 137, 61, 0.42);
 }
 
 .nodeLit .nodeIcon {
@@ -168,15 +189,15 @@
   box-shadow:
     0 22px 48px rgba(0, 0, 0, 0.4),
     inset 0 1px 0 rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(12px);
-  transition: border-color 280ms ease, box-shadow 280ms ease;
+  /* Solid look — avoid backdrop-filter during long scrub scroll (major jank source) */
+  transition: border-color 160ms ease, box-shadow 160ms ease;
 }
 
 .stepLit .card {
   border-color: rgba(184, 137, 61, 0.32);
   box-shadow:
     0 26px 56px rgba(0, 0, 0, 0.45),
-    0 0 0 1px rgba(192, 132, 252, 0.08);
+    0 0 0 1px rgba(184, 137, 61, 0.12);
 }
 
 .num {
@@ -190,12 +211,14 @@
 
 .card h3 {
   font-size: var(--heading-size-h3);
-  color: #fff;
+  color: #d9d2bc;
   margin-bottom: 10px;
+  max-height: none;
+  overflow: visible;
 }
 
 .card p {
-  color: rgba(219, 237, 190, 0.78);
+  color: rgba(219, 237, 190, 0.62);
   line-height: 1.7;
   font-size: 0.98rem;
 }
@@ -233,5 +256,16 @@
 
   .nodeLit {
     transform: translate(-50%, -50%);
+  }
+
+  .trailGlow {
+    opacity: 0.22;
+  }
+
+  .stub,
+  .node,
+  .nodeRing,
+  .card {
+    transition: none;
   }
 }

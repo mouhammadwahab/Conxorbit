@@ -3,6 +3,13 @@ import Reveal from "../../common/Reveal";
 import styles from "./ServicesTabs.module.css";
 
 const TAB_ICONS = {
+  workflow: (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <circle cx="9" cy="10" r="3" stroke="currentColor" strokeWidth="1.6" />
+      <circle cx="16" cy="11.5" r="2.5" stroke="currentColor" strokeWidth="1.6" />
+      <path d="M4 19c1-3 2.8-4.5 5-4.5S13 16 14 19" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+    </svg>
+  ),
   strategy: (
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <circle cx="9" cy="10" r="3" stroke="currentColor" strokeWidth="1.6" />
@@ -32,8 +39,16 @@ const TAB_ICONS = {
 };
 
 export default function ServicesTabs({ content }) {
-  const { badge, titleBefore, titleHighlight, titleAfter, image, imageCaption, items = [] } =
-    content;
+  const {
+    badge,
+    titleBefore,
+    titleHighlight,
+    titleAfter,
+    body,
+    image,
+    imageCaption,
+    items = [],
+  } = content;
   const [activeId, setActiveId] = useState(items[0]?.id);
   const active = items.find((item) => item.id === activeId) || items[0];
 
@@ -51,9 +66,10 @@ export default function ServicesTabs({ content }) {
             <span className={styles.highlight}>{titleHighlight}</span>
             {titleAfter}
           </h2>
+          {body ? <p className={styles.intro}>{body}</p> : null}
 
           <div className={`${styles.detail} interactiveCard`} key={active.id}>
-            <span className={styles.detailIcon}>{TAB_ICONS[active.id] || TAB_ICONS.strategy}</span>
+            <span className={styles.detailIcon}>{TAB_ICONS[active.id] || TAB_ICONS.workflow}</span>
             <h3>{active.title}</h3>
             <p>{active.body}</p>
             <ul>
@@ -78,7 +94,7 @@ export default function ServicesTabs({ content }) {
                   className={`${selected ? styles.tabActive : styles.tab} interactiveCard`}
                   onClick={() => setActiveId(item.id)}
                 >
-                  <span className={styles.tabIcon}>{TAB_ICONS[item.id] || TAB_ICONS.strategy}</span>
+                  <span className={styles.tabIcon}>{TAB_ICONS[item.id] || TAB_ICONS.workflow}</span>
                   <span>{item.label}</span>
                 </button>
               );

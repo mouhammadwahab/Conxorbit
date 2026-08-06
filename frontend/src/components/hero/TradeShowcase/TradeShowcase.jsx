@@ -14,8 +14,9 @@ const TRADES = [
   { id: "monitoring", title: "Site Monitoring", tag: "Ops", metric: "Always on", image: siteMonitoring },
 ];
 
-export default function TradeShowcase() {
+export default function TradeShowcase({ content }) {
   const [active, setActive] = useState(0);
+  const { badge, title, body } = content;
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -27,12 +28,9 @@ export default function TradeShowcase() {
   return (
     <section className={styles.section} aria-label="Trades we support">
       <div className={styles.header}>
-        <p className={styles.eyebrow}>Across the envelope</p>
-        <h2>Built for the trades that shape buildings</h2>
-        <p>
-          Real project imagery from façade to site — software tuned to how these
-          teams actually move work.
-        </p>
+        <p className={styles.eyebrow}>{badge}</p>
+        <h2>{title}</h2>
+        <p>{body}</p>
       </div>
 
       <div className={styles.stage}>

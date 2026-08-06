@@ -119,7 +119,7 @@ export default function Navbar() {
       </nav>
 
       <Link className={styles.button} to="/contact">
-        Contact
+        Book a Discovery Call
       </Link>
     </header>
   );

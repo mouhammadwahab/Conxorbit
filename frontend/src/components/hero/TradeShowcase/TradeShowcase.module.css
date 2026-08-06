@@ -24,6 +24,16 @@
   font-size: var(--heading-size-h2);
   color: var(--color-text);
   margin-bottom: 12px;
+  max-height: none;
+  overflow: visible;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+}
+
+.header p {
+  color: rgba(219, 237, 190, 0.62);
+  line-height: 1.7;
 }
 
 .stage {

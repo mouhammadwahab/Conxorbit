@@ -13,8 +13,8 @@
   --color-primary-soft: #8a9e5c;
   --color-accent: var(--gold);
   --color-accent-bright: #f3c969;
-  --color-text: #f7f7f4;
-  --color-muted: rgba(219, 237, 190, 0.78);
+  --color-text: #e8edd8;
+  --color-muted: rgba(219, 237, 190, 0.62);
   --color-border: rgba(255, 255, 255, 0.1);
   --border-gold: rgba(184, 137, 61, 0.55);
   --border-gold-strong: rgba(184, 137, 61, 0.9);

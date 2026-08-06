@@ -1,9 +1,28 @@
 import { Link } from "react-router-dom";
 import Reveal from "../../common/Reveal";
+import facade from "../../../assets/tradeCards/facade.jfif";
+import glass from "../../../assets/tradeCards/glass.jfif";
+import aluminium from "../../../assets/tradeCards/aluminium.jfif";
+import exterior from "../../../assets/tradeCards/exterior.webp";
 import styles from "./FeaturedSolutions.module.css";
 
+const CARD_IMAGES = {
+  facade,
+  glass,
+  aluminium,
+  exterior,
+};
+
 export default function FeaturedSolutions({ content }) {
-  const { badge, titleBefore, titleHighlight, titleAfter, body, cards = [] } = content;
+  const {
+    badge,
+    titleBefore,
+    titleHighlight,
+    titleAfter,
+    body,
+    cards = [],
+    viewAll,
+  } = content;
 
   return (
     <Reveal as="section" className={styles.section} aria-label={badge}>
@@ -26,17 +45,15 @@ export default function FeaturedSolutions({ content }) {
               <span className={styles.dot} aria-hidden="true" />
               {card.badge}
             </span>
+            <div className={styles.mockup}>
+              <img
+                src={CARD_IMAGES[card.imageKey]}
+                alt=""
+                loading="lazy"
+              />
+            </div>
             <h3>{card.title}</h3>
-            <ul>
-              {card.points.map((point) => (
-                <li key={point}>
-                  <span className={styles.check} aria-hidden="true">
-                    ✓
-                  </span>
-                  {point}
-                </li>
-              ))}
-            </ul>
+            <p className={styles.description}>{card.description}</p>
             <div className={styles.ctaSlot}>
               <Link className={styles.cta} to={card.href}>
                 {card.cta}
@@ -45,6 +62,15 @@ export default function FeaturedSolutions({ content }) {
           </article>
         ))}
       </div>
+
+      {viewAll ? (
+        <div className={styles.viewAllRow}>
+          <Link className={styles.viewAll} to={viewAll.href}>
+            {viewAll.label}
+            <span aria-hidden="true">→</span>
+          </Link>
+        </div>
+      ) : null}
     </Reveal>
   );
 }

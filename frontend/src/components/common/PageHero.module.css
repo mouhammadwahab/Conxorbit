@@ -13,7 +13,7 @@
 
 .center {
   text-align: center;
-  max-width: 760px;
+  max-width: min(980px, 94vw);
   margin: 0 auto;
   transform-style: preserve-3d;
 }
@@ -37,15 +37,36 @@
 }
 
 .title {
-  font-size: var(--heading-size-h1);
-  line-height: 1.1;
+  font-size: clamp(1.65rem, 3.6vw, 2.75rem);
+  line-height: 1.2;
   color: var(--color-text);
   margin-bottom: 16px;
+  max-height: none;
+  overflow: visible;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+  text-wrap: unset;
   text-shadow:
     0 2px 0 rgba(0, 0, 0, 0.15),
     0 18px 50px rgba(0, 0, 0, 0.4);
   animation: fadeUp 850ms ease both;
   animation-delay: 80ms;
+}
+
+.titleLine {
+  display: block;
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .title {
+    font-size: clamp(1.4rem, 6.2vw, 1.85rem);
+  }
+
+  .titleLine {
+    white-space: normal;
+  }
 }
 
 .body {
@@ -93,6 +114,12 @@
   font-size: var(--heading-size-h2);
   margin-bottom: 14px;
   color: var(--color-text);
+  max-height: none;
+  overflow: visible;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+  line-height: 1.2;
 }
 
 .ctaInner p {
@@ -100,6 +127,13 @@
   max-width: 42rem;
   margin-left: auto;
   margin-right: auto;
+}
+
+.ctaActions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
 }
 
 .ctaButton {
@@ -119,6 +153,29 @@
 .ctaButton:hover {
   transform: translateY(-2px) scale(1.02);
   filter: brightness(1.06);
+}
+
+.ctaButtonSecondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 24px;
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--color-accent-bright);
+  background: rgba(8, 18, 14, 0.35);
+  border: 1px solid rgba(184, 137, 61, 0.45);
+  transition:
+    transform 180ms ease,
+    background 180ms ease,
+    border-color 180ms ease;
+}
+
+.ctaButtonSecondary:hover {
+  transform: translateY(-2px);
+  background: rgba(184, 137, 61, 0.14);
+  border-color: rgba(184, 137, 61, 0.7);
 }
 
 @keyframes pageHeroIn {

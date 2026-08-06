@@ -45,7 +45,42 @@
 .col h3 {
   font-size: 0.95rem;
   margin-bottom: 14px;
-  color: var(--color-text);
+  color: var(--gold);
+  max-height: none;
+  overflow: visible;
+}
+
+.socials {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.social {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  border: 1px solid rgba(184, 137, 61, 0.4);
+  background: rgba(184, 137, 61, 0.08);
+  transition:
+    background 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+.social svg {
+  width: 18px;
+  height: 18px;
+}
+
+.social:hover {
+  transform: translateY(-2px);
+  background: rgba(184, 137, 61, 0.18);
+  border-color: rgba(184, 137, 61, 0.7);
 }
 
 .col ul {

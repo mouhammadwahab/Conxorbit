@@ -1,54 +1,50 @@
 import styles from "./WhyChooseAI.module.css";
 
 const ICONS = {
-  decisions: (
+  estimation: (
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path
-        d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"
-        stroke="currentColor"
-        strokeWidth="1.6"
-      />
-      <path d="M14 3v5h5M8 13h8M8 17h5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+      <rect x="4" y="3" width="16" height="18" rx="2" stroke="currentColor" strokeWidth="1.6" />
+      <path d="M8 8h8M8 12h8M8 16h5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+      <path d="M16 16l3 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
     </svg>
   ),
-  time: (
+  revisions: (
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <circle cx="12" cy="12" r="8" stroke="currentColor" strokeWidth="1.6" />
-      <path d="M12 8v4.5L15 16" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+      <path d="M7 4h10v14H7z" stroke="currentColor" strokeWidth="1.6" />
+      <path d="M10 4V3M14 4V3M10 18v3M14 18v3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+      <path d="M9 9h6M9 12h6M9 15h4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
     </svg>
   ),
-  risk: (
+  reporting: (
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path
         d="M12 3l8 3v6c0 5-3.4 8.4-8 9-4.6-.6-8-4-8-9V6l8-3z"
         stroke="currentColor"
         strokeWidth="1.6"
       />
-      <path d="M9.5 12.5l1.8 1.8 3.7-3.8" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+      <path d="M9 12h6M9 15h4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
     </svg>
   ),
-  cost: (
+  fabrication: (
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M5 19V10M10 19V6M15 19v-7M20 19V8" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-    </svg>
-  ),
-  future: (
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <circle cx="9" cy="10" r="3" stroke="currentColor" strokeWidth="1.6" />
-      <circle cx="16" cy="11" r="2.4" stroke="currentColor" strokeWidth="1.6" />
-      <path
-        d="M4 19c.8-2.8 2.8-4.2 5-4.2s4.2 1.4 5 4.2M13.2 14.2c1.1-.5 2.4-.5 3.8.2 1.4.8 2.3 2.2 2.7 4.6"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinecap="round"
-      />
+      <path d="M4 18h16M6 18V8l6-4 6 4v10" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
+      <path d="M10 12h4M10 15h4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+      <circle cx="17" cy="7" r="2" stroke="currentColor" strokeWidth="1.6" />
     </svg>
   ),
 };
 
 /** Why Choose AI — CSS sticky stacked cards (no GSAP pin). */
 export default function WhyChooseAI({ content }) {
-  const { badge, titleBefore, titleHighlight, titleAfter, body, cards = [] } = content;
+  const {
+    badge,
+    titleBefore,
+    titleHighlight,
+    titleAfter,
+    body,
+    cards = [],
+    closingLine,
+  } = content;
 
   return (
     <section className={styles.section} aria-label={badge}>
@@ -77,11 +73,14 @@ export default function WhyChooseAI({ content }) {
                 className={`${styles.card} ${styles[card.accent] || ""} interactiveCard`}
                 style={{ zIndex: index + 1, top: `calc(96px + ${index * 14}px)` }}
               >
-                <span className={styles.icon}>{ICONS[card.icon] || ICONS.decisions}</span>
+                <span className={styles.icon}>{ICONS[card.icon] || ICONS.estimation}</span>
                 <h3>{card.title}</h3>
                 <p>{card.body}</p>
               </article>
             ))}
+            {closingLine ? (
+              <p className={styles.closingLine}>{closingLine}</p>
+            ) : null}
           </div>
         </div>
       </div>

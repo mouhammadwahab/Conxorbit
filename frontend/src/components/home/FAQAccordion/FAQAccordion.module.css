@@ -31,7 +31,12 @@
 .header h2 {
   font-size: var(--heading-size-h2);
   color: var(--forest);
-  line-height: 1.15;
+  line-height: 1.2;
+  max-height: none;
+  overflow: visible;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
 }
 
 .highlight {

@@ -23,13 +23,14 @@ export default function CaseStudies() {
           {items.map((item, index) => (
             <TiltCard
               key={item.slug}
-              className={styles.cardTilt}
-              max={6}
-              scale={1.015}
-              style={{ transitionDelay: `${index * 80}ms` }}
+              as="article"
+              className={styles.card}
+              max={11}
+              scale={1.03}
+              style={{ transitionDelay: `${index * 90}ms` }}
             >
-              <Link to={`/case-studies/${item.slug}`} className={styles.card}>
-                <span>{item.industry}</span>
+              <Link to={`/case-studies/${item.slug}`} className={styles.cardLink}>
+                <span className={styles.badge}>{item.industry}</span>
                 <h2>{item.title}</h2>
                 <p>{item.summary}</p>
               </Link>

@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import usePrefersReducedMotion from "../../../hooks/usePrefersReducedMotion";
 import styles from "./Hero.module.css";
@@ -20,11 +19,9 @@ function BuildingGraphic({ className }) {
           <stop offset="100%" stopColor="rgba(90,107,59,0.4)" />
         </linearGradient>
       </defs>
-      {/* Isometric tower */}
       <path d="M140 28 L220 72 L220 250 L140 294 L60 250 L60 72 Z" fill="url(#bldgFace)" stroke="rgba(184,137,61,0.45)" strokeWidth="1.5" />
       <path d="M140 28 L220 72 L140 116 L60 72 Z" fill="url(#bldgTop)" stroke="rgba(243,201,105,0.5)" strokeWidth="1.2" />
       <path d="M140 116 L220 72 L220 250 L140 294 Z" fill="url(#bldgSide)" opacity="0.85" />
-      {/* Window grid */}
       {[0, 1, 2, 3, 4, 5, 6].map((row) =>
         [0, 1, 2].map((col) => (
           <rect
@@ -38,43 +35,36 @@ function BuildingGraphic({ className }) {
           />
         ))
       )}
-      {/* Wireframe satellite tower */}
       <path d="M40 210 L90 185 L90 280 L40 305 Z" fill="rgba(20,48,46,0.65)" stroke="rgba(90,107,59,0.7)" strokeWidth="1.2" />
       <path d="M40 210 L90 185 L65 172 Z" fill="rgba(184,137,61,0.35)" stroke="rgba(184,137,61,0.5)" />
       <path d="M200 195 L250 170 L250 265 L200 290 Z" fill="rgba(8,18,14,0.7)" stroke="rgba(184,137,61,0.4)" strokeWidth="1.2" />
       <path d="M200 195 L250 170 L225 158 Z" fill="rgba(90,107,59,0.45)" />
-      {/* Orbit ring */}
       <ellipse cx="140" cy="170" rx="118" ry="42" stroke="rgba(184,137,61,0.35)" strokeWidth="1.2" strokeDasharray="6 8" />
       <circle cx="248" cy="155" r="5" fill="var(--gold, #b8893d)" />
     </svg>
   );
 }
 
-function SystemCard({ className, label, value, meta }) {
+function StatCard({ className, label }) {
   return (
     <div className={className} aria-hidden="true">
       <span className={styles.cardLabel}>{label}</span>
-      <strong>{value}</strong>
-      <span className={styles.cardMeta}>{meta}</span>
     </div>
   );
 }
 
+const STAT_POSITIONS = ["cardLeft", "cardRight", "cardBottom"];
+
 export default function Hero({ content }) {
-  const { eyebrow, titlePrefix, rotatingLines = [], body, primaryCta, secondaryCta } =
-    content;
+  const {
+    eyebrow,
+    title,
+    body,
+    primaryCta,
+    secondaryCta,
+    statCards = [],
+  } = content;
   const reduced = usePrefersReducedMotion();
-  const [index, setIndex] = useState(0);
-
-  useEffect(() => {
-    if (reduced || rotatingLines.length < 2) return undefined;
-    const id = window.setInterval(() => {
-      setIndex((prev) => (prev + 1) % rotatingLines.length);
-    }, 2500);
-    return () => window.clearInterval(id);
-  }, [reduced, rotatingLines.length]);
-
-  const activeLine = rotatingLines[index] || rotatingLines[0] || "";
 
   return (
     <section className={styles.hero}>
@@ -107,35 +97,17 @@ export default function Hero({ content }) {
       <BuildingGraphic className={`${styles.graphic} ${styles.graphicLeft}`} />
       <BuildingGraphic className={`${styles.graphic} ${styles.graphicRight}`} />
 
-      <SystemCard
-        className={`${styles.systemCard} ${styles.cardLeft} interactiveCard`}
-        label="Panel status"
-        value="98.4%"
-        meta="Live fabrication sync"
-      />
-      <SystemCard
-        className={`${styles.systemCard} ${styles.cardRight} interactiveCard`}
-        label="AI insight"
-        value="24+"
-        meta="Active use cases"
-      />
-      <SystemCard
-        className={`${styles.systemCard} ${styles.cardBottom} interactiveCard`}
-        label="Orbit link"
-        value="3D BIM"
-        meta="Site ↔ shop connected"
-      />
+      {statCards.map((card, index) => (
+        <StatCard
+          key={card.label}
+          className={`${styles.systemCard} ${styles[STAT_POSITIONS[index]] || ""} interactiveCard`}
+          label={card.label}
+        />
+      ))}
 
       <div className={styles.center}>
         <span className={styles.eyebrow}>{eyebrow}</span>
-        <h1>
-          <span className={styles.titlePrefix}>{titlePrefix}</span>
-          <span className={styles.rotator} aria-live="polite">
-            <span key={activeLine} className={styles.rotatingLine}>
-              {activeLine}
-            </span>
-          </span>
-        </h1>
+        <h1>{title}</h1>
         <p>{body}</p>
         <div className={styles.actions}>
           <Link className={styles.btnPrimary} to={primaryCta.href}>

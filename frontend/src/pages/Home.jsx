@@ -7,6 +7,7 @@ import WhyChooseAI from "../components/home/WhyChooseAI/WhyChooseAI";
 import ServicesTabs from "../components/home/ServicesTabs/ServicesTabs";
 import FeaturedSolutions from "../components/home/FeaturedSolutions/FeaturedSolutions";
 import FrameworkStoryline from "../components/home/FrameworkStoryline/FrameworkStoryline";
+import FeaturedCaseStudy from "../components/home/FeaturedCaseStudy/FeaturedCaseStudy";
 import WhyWorkWithUs from "../components/home/WhyWorkWithUs/WhyWorkWithUs";
 import FAQAccordion from "../components/home/FAQAccordion/FAQAccordion";
 import Testimonials from "../components/home/Testimonials/Testimonials";
@@ -16,10 +17,12 @@ export default function Home() {
   const {
     meta,
     hero,
+    tradeShowcase,
     whyChooseAi,
     services,
     featuredSolutions,
     framework,
+    featuredCaseStudy,
     proof,
     whyWorkWithUs,
     faq,
@@ -31,20 +34,23 @@ export default function Home() {
     <>
       <SEO title={meta.title} description={meta.description} path="/" />
       <Hero content={hero} />
-      <TradeShowcase />
+      <TradeShowcase content={tradeShowcase} />
       <WhyChooseAI content={whyChooseAi} />
       <ServicesTabs content={services} />
       <FeaturedSolutions content={featuredSolutions} />
       <FrameworkStoryline content={framework} />
+      <FeaturedCaseStudy content={featuredCaseStudy} />
       <ProofStrip content={proof} />
       <WhyWorkWithUs content={whyWorkWithUs} />
-      <FAQAccordion content={faq} />
       <Testimonials content={testimonials} />
+      <FAQAccordion content={faq} />
       <CTABand
         title={closingCta.title}
         body={closingCta.body}
-        href={closingCta.cta.href}
-        label={closingCta.cta.label}
+        href={closingCta.primaryCta.href}
+        label={closingCta.primaryCta.label}
+        secondaryHref={closingCta.secondaryCta.href}
+        secondaryLabel={closingCta.secondaryCta.label}
       />
     </>
   );

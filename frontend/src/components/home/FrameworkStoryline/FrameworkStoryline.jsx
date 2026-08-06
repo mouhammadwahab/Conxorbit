@@ -122,6 +122,7 @@ export default function FrameworkStoryline({ content }) {
   const glowRef = useRef(null);
   const reduced = usePrefersReducedMotion();
   const [activeIndex, setActiveIndex] = useState(-1);
+  const activeIndexRef = useRef(-1);
 
   const { d: pathD, nodes, connectors, width, height } = buildCircularRadial(steps.length);
   const viewBox = `0 0 ${width} ${height}`;
@@ -137,38 +138,54 @@ export default function FrameworkStoryline({ content }) {
     const path = pathRef.current;
     const glow = glowRef.current;
     const stepEls = root.querySelectorAll(`.${styles.step}`);
+    const nodeEls = root.querySelectorAll(`.${styles.node}`);
+    const stubEls = root.querySelectorAll(`.${styles.stub}`);
     const length = path.getTotalLength();
+    const total = Math.max(steps.length, 1);
 
     const ctx = gsap.context(() => {
       gsap.set([path, glow], {
         strokeDasharray: length,
         strokeDashoffset: length,
+        force3D: true,
       });
-      gsap.set(stepEls, { autoAlpha: 0.35, y: 22 });
+      gsap.set(stepEls, { autoAlpha: 0.35, y: 22, force3D: true });
 
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: root,
-          start: "top 68%",
-          end: "bottom 48%",
-          scrub: 0.5,
+          start: "top 72%",
+          end: "bottom 62%",
+          scrub: true,
           invalidateOnRefresh: true,
+          fastScrollEnd: true,
           onUpdate: (self) => {
-            const idx = Math.min(
-              steps.length - 1,
-              Math.floor(self.progress * steps.length)
-            );
-            setActiveIndex((prev) => (prev === idx ? prev : idx));
+            const idx = Math.min(total - 1, Math.floor(self.progress * total));
+            if (activeIndexRef.current === idx) return;
+            activeIndexRef.current = idx;
+
+            nodeEls.forEach((el, i) => {
+              el.classList.toggle(styles.nodeLit, i <= idx);
+            });
+            stepEls.forEach((el, i) => {
+              el.classList.toggle(styles.stepLit, i <= idx);
+            });
+            stubEls.forEach((el, i) => {
+              el.classList.toggle(styles.stubLit, i <= idx);
+            });
           },
         },
       });
 
-      tl.to([path, glow], { strokeDashoffset: 0, ease: "none", duration: 1 }, 0);
+      // Animate crisp stroke only; glow follows without heavy filter cost
+      tl.to(path, { strokeDashoffset: 0, ease: "none", duration: 1, force3D: true }, 0);
+      tl.to(glow, { strokeDashoffset: 0, ease: "none", duration: 1, force3D: true }, 0);
+
       stepEls.forEach((el, i) => {
         tl.to(
           el,
-          { autoAlpha: 1, y: 0, duration: 0.12 },
-          (i + 0.1) / Math.max(steps.length, 1)
+          { autoAlpha: 1, y: 0, duration: 0.1, force3D: true, ease: "none" },
+          (i + 0.08) / total
         );
       });
     }, root);
@@ -213,13 +230,6 @@ export default function FrameworkStoryline({ content }) {
                 <stop offset="78%" stopColor="#b8893d" />
                 <stop offset="100%" stopColor="#5a6b3b" />
               </linearGradient>
-              <filter id="frameworkGlow" x="-40%" y="-40%" width="180%" height="180%">
-                <feGaussianBlur stdDeviation="8" result="blur" />
-                <feMerge>
-                  <feMergeNode in="blur" />
-                  <feMergeNode in="SourceGraphic" />
-                </feMerge>
-              </filter>
             </defs>
 
             {/* Soft guide arc (same circle, lighter) */}
@@ -232,13 +242,12 @@ export default function FrameworkStoryline({ content }) {
             />
             <path
               ref={glowRef}
+              className={styles.trailGlow}
               d={pathD}
               stroke="url(#frameworkTrail)"
-              strokeWidth="18"
+              strokeWidth="16"
               strokeLinecap="round"
               fill="none"
-              filter="url(#frameworkGlow)"
-              opacity="0.42"
             />
             <path
               ref={pathRef}
@@ -253,8 +262,8 @@ export default function FrameworkStoryline({ content }) {
             {connectors.map((c, i) => (
               <path
                 key={`stub-${i}`}
+                className={`${styles.stub} ${i <= activeIndex ? styles.stubLit : ""}`}
                 d={c.d}
-                stroke={i <= activeIndex ? "rgba(243,201,105,0.55)" : "rgba(184,137,61,0.22)"}
                 strokeWidth="1.5"
                 strokeLinecap="round"
                 fill="none"

@@ -151,28 +151,40 @@
 }
 
 .glowPhaseLine {
-  font-size: var(--heading-size-h1);
-  font-family: var(--font-heading);
-  font-weight: 800;
+  font-size: clamp(1.2rem, 2.6vw, 1.9rem);
+  font-family: var(--font-sans);
+  font-weight: 500;
   line-height: 1.35;
-  color: #fff;
+  letter-spacing: 0.01em;
+  background: linear-gradient(90deg, #8a9e5c 0%, #f3c969 48%, #b8893d 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
   max-width: 18ch;
 }
 
 .glowPhaseTitle {
   display: grid;
   gap: 0.08em;
-  font-size: var(--heading-size-h1);
-  line-height: 1.1;
-  color: var(--color-accent-bright);
+  font-family: var(--font-sans);
+  font-size: clamp(1.85rem, 4.2vw, 3rem);
+  line-height: 1.15;
+  color: #fff;
   letter-spacing: -0.03em;
-  font-weight: 800;
+  font-weight: 600;
   text-shadow: 0 8px 40px rgba(0, 0, 0, 0.45);
-  max-width: 14ch;
+  max-width: 22ch;
+  max-height: none;
+  overflow: visible;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+  text-wrap: unset;
 }
 
 .glowPhaseTitle span {
   display: block;
+  white-space: nowrap;
 }
 
 @keyframes ringSpinClockwise {
@@ -477,6 +489,11 @@
   .glowCopySlot {
     width: min(72vw, 320px);
     max-width: 78%;
+  }
+
+  .glowPhaseTitle {
+    font-size: clamp(1.4rem, 5.2vw, 2rem);
+    max-width: 100%;
   }
 
   .glowRingSvg {

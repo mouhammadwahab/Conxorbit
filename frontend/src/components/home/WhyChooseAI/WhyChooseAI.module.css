@@ -48,9 +48,14 @@
 
 .copy h2 {
   font-size: var(--heading-size-h2);
-  line-height: 1.18;
+  line-height: 1.25;
   color: var(--forest);
-  max-width: 16ch;
+  max-width: min(22ch, 100%);
+  max-height: none;
+  overflow: visible;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
 }
 
 .highlight {
@@ -140,6 +145,31 @@
   max-width: 36rem;
 }
 
+.closingLine {
+  position: relative;
+  margin-top: 8px;
+  padding: 20px 8px 0;
+  color: var(--forest);
+  font-size: 1.08rem;
+  font-style: italic;
+  line-height: 1.65;
+  max-width: 36rem;
+  opacity: 0;
+  animation: fadeInClosing 1.2s ease forwards;
+  animation-delay: 0.4s;
+}
+
+@keyframes fadeInClosing {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @media (max-width: 900px) {
   .grid {
     grid-template-columns: 1fr;
@@ -165,5 +195,11 @@
   .card {
     position: relative;
     top: auto !important;
+  }
+
+  .closingLine {
+    opacity: 1;
+    animation: none;
+    transform: none;
   }
 }

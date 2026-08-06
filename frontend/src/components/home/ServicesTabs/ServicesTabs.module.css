@@ -35,9 +35,21 @@
 
 .left h2 {
   font-size: var(--heading-size-h2);
-  line-height: 1.15;
-  color: #fff;
-  max-width: 16ch;
+  line-height: 1.2;
+  color: #e8edd8;
+  max-width: min(32ch, 100%);
+  max-height: none;
+  overflow: visible;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+}
+
+.intro {
+  color: var(--color-muted);
+  line-height: 1.7;
+  max-width: 36rem;
+  margin: 0;
 }
 
 .highlight {

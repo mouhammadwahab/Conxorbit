@@ -1,5 +1,4 @@
 import Reveal from "../../common/Reveal";
-import TiltCard from "../../common/TiltCard";
 import styles from "./Testimonials.module.css";
 
 export default function Testimonials({ content }) {
@@ -16,24 +15,27 @@ export default function Testimonials({ content }) {
           <span className={styles.highlight}>{titleHighlight}</span>
           {titleAfter}
         </h2>
+        <span className={styles.rule} aria-hidden="true" />
       </div>
 
       <div className={styles.grid}>
-        {items.map((item, index) => (
-          <TiltCard
-            key={item.name + item.role}
-            as="blockquote"
-            className={styles.card}
-            max={8}
-            scale={1.02}
-            style={{ transitionDelay: `${index * 90}ms` }}
-          >
-            <p>“{item.quote}”</p>
+        {items.map((item) => (
+          <blockquote key={item.name + item.role} className={`${styles.card} interactiveCard`}>
+            <div className={styles.avatar} aria-hidden="true">
+              {item.initials || item.name.slice(0, 2).toUpperCase()}
+            </div>
+            <span className={styles.quoteMark} aria-hidden="true">
+              “
+            </span>
+            <p>{item.quote}</p>
+            <span className={styles.quoteMarkEnd} aria-hidden="true">
+              ”
+            </span>
             <footer>
               <strong>{item.name}</strong>
               <span>{item.role}</span>
             </footer>
-          </TiltCard>
+          </blockquote>
         ))}
       </div>
     </Reveal>

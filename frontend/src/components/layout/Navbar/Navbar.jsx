@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { navLinks } from "../../../content/siteContent";
 import brandLogo from "../../../assets/images/Logo.png";
+import { scrollToTop } from "../../../utils/scrollToTop";
 import styles from "./Navbar.module.css";
 
 export default function Navbar() {
@@ -49,7 +50,7 @@ export default function Navbar() {
         mobileOpen ? ` ${styles.mobileOpen}` : ""
       }`}
     >
-      <Link className={styles.brand} to="/">
+      <Link className={styles.brand} to="/" onClick={() => scrollToTop()}>
         <img className={styles.navLogo} src={brandLogo} alt="ConX Orbit logo" />
         <span className={styles.logo}>ConX Orbit</span>
       </Link>
@@ -105,11 +106,23 @@ export default function Navbar() {
                   <NavLink
                     key={child.href}
                     to={child.href}
+                    end={child.href === "/solutions"}
                     role="menuitem"
-                    className={({ isActive }) =>
-                      isActive ? styles.menuActive : styles.menuLink
-                    }
-                    onClick={() => setOpenMenu(null)}
+                    className={({ isActive }) => {
+                      const base = child.emphasis
+                        ? styles.menuViewAll
+                        : isActive
+                          ? styles.menuActive
+                          : styles.menuLink;
+                      return child.emphasis && isActive
+                        ? `${styles.menuViewAll} ${styles.menuViewAllActive}`
+                        : base;
+                    }}
+                    onClick={() => {
+                      setOpenMenu(null);
+                      setMobileOpen(false);
+                      scrollToTop();
+                    }}
                   >
                     {child.label}
                   </NavLink>
@@ -121,6 +134,10 @@ export default function Navbar() {
               key={link.href}
               to={link.href}
               className={({ isActive }) => (isActive ? styles.activeLink : styles.link)}
+              onClick={() => {
+                setMobileOpen(false);
+                scrollToTop();
+              }}
             >
               {link.label}
             </NavLink>
@@ -128,7 +145,11 @@ export default function Navbar() {
         )}
       </nav>
 
-      <Link className={`${styles.button} btnMotion`} to="/contact">
+      <Link
+        className={`${styles.button} btnMotion`}
+        to="/contact"
+        onClick={() => scrollToTop()}
+      >
         Book a Discovery Call
       </Link>
     </header>

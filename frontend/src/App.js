@@ -9,14 +9,22 @@ import Layout from "./components/layout/Layout/Layout";
 import { routes } from "./routes";
 import { initAnalytics, track } from "./utils/analytics";
 import { ensureGsap } from "./utils/gsapSetup";
+import { scrollToTop } from "./utils/scrollToTop";
 
 function RouteAnalytics() {
   const location = useLocation();
 
   useEffect(() => {
     track("page_view", { path: location.pathname });
-    window.scrollTo(0, 0);
-  }, [location.pathname]);
+    scrollToTop();
+    // After paint / pageEnter remount, lock top again
+    const frame = requestAnimationFrame(() => scrollToTop());
+    const timer = window.setTimeout(() => scrollToTop(), 50);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.clearTimeout(timer);
+    };
+  }, [location.pathname, location.key]);
 
   return null;
 }

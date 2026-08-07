@@ -12,7 +12,7 @@ export default function SolutionsGrid({ items = [] }) {
   }
 
   return (
-    <Reveal as="div" className={styles.wrap}>
+    <Reveal as="div" className={styles.wrap} eager>
       <div className={styles.grid}>
         {items.map((item) => (
           <Link

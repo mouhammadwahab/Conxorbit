@@ -13,9 +13,9 @@ export const navLinks = [
     label: "Solutions",
     href: "/solutions",
     children: [
-      { label: "All Solutions", href: "/solutions" },
       { label: "Façade & Curtain Wall", href: "/solutions/facade" },
       { label: "Construction Technology", href: "/solutions/construction" },
+      { label: "View All Solutions", href: "/solutions", emphasis: true },
     ],
   },
   {

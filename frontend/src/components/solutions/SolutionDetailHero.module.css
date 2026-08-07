@@ -1,0 +1,118 @@
+.hero {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: calc(120px + 1.5rem) clamp(20px, 5vw, 72px) 56px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: clamp(28px, 5vw, 56px);
+  align-items: center;
+}
+
+.copy {
+  display: grid;
+  gap: 16px;
+  justify-items: start;
+}
+
+.eyebrow {
+  margin: 0;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: rgba(232, 237, 216, 0.55);
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(1.85rem, 3.6vw, 2.85rem);
+  line-height: 1.15;
+  color: var(--color-accent-bright);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.body {
+  margin: 0;
+  max-width: 36rem;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: rgba(232, 237, 216, 0.72);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.primary,
+.secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 500;
+  transition:
+    background 200ms ease,
+    border-color 200ms ease,
+    transform 200ms ease;
+}
+
+.primary {
+  background: linear-gradient(135deg, rgba(184, 137, 61, 0.98), rgba(243, 201, 105, 0.9));
+  color: #0a1210;
+  border: 1px solid transparent;
+}
+
+.primary:hover {
+  transform: translateY(-1px);
+}
+
+.secondary {
+  border: 1px solid rgba(184, 137, 61, 0.7);
+  color: var(--color-accent-bright);
+  background: transparent;
+}
+
+.secondary:hover {
+  background: rgba(184, 137, 61, 0.1);
+  transform: translateY(-1px);
+}
+
+.media {
+  min-width: 0;
+}
+
+.frame {
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(11, 27, 23, 0.9);
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.35);
+  aspect-ratio: 4 / 5;
+  max-height: 560px;
+  margin-inline: auto;
+}
+
+.frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    padding-top: calc(100px + 1rem);
+  }
+
+  .frame {
+    max-height: 420px;
+    aspect-ratio: 16 / 11;
+  }
+}

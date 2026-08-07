@@ -115,7 +115,7 @@ export default function ServiceApproach({ content }) {
                 <span className={styles.node} aria-hidden="true">
                   {ICONS[step.icon] || ICONS.understand}
                 </span>
-                <article className={styles.card}>
+                <article className={`${styles.card} interactiveCard`}>
                   <h3>{step.title}</h3>
                   <p>{step.body}</p>
                 </article>

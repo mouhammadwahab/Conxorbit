@@ -49,7 +49,7 @@ export default function ServiceValue({ content }) {
 
   return (
     <Reveal as="section" className={styles.section} aria-label={badge}>
-      <div className={styles.header}>
+      <div className={`${styles.header} revealHead`}>
         <span className={styles.badge}>
           <span aria-hidden="true">•</span> {badge}
         </span>
@@ -59,7 +59,7 @@ export default function ServiceValue({ content }) {
         {cards.map((card, index) => (
           <article
             key={card.title}
-            className={`${styles.card} interactiveCard`}
+            className={`${styles.card} interactiveCard cardReveal`}
             style={{ transitionDelay: `${index * 40}ms` }}
           >
             <span className={styles.icon}>{ICONS[card.icon] || ICONS.compare}</span>

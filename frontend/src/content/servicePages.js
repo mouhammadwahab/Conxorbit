@@ -48,16 +48,19 @@ const sharedWhy = {
   cards: [
     {
       number: "01",
+      icon: "industry",
       title: "Construction First",
       body: "We understand drawings, fabrication, inspections, and delivery before designing the system.",
     },
     {
       number: "02",
+      icon: "workflow",
       title: "Workflow Before Technology",
       body: "Technology should adapt to your operations—not force your team into new processes.",
     },
     {
       number: "03",
+      icon: "partnership",
       title: "Founder-Led Collaboration",
       body: "You'll work directly with the engineers designing and building your solution.",
     },
@@ -70,7 +73,7 @@ const sharedFeatured = {
   titleHighlight: "Construction Workflows",
   titleAfter: ".",
   body: "Explore selected platforms shaped around façade and construction delivery—built to cut manual work and keep projects moving.",
-  viewAll: { label: "View All Solutions", href: "/products" },
+  viewAll: { label: "View All Solutions", href: "/solutions" },
   cards: [
     {
       badge: "Façade",
@@ -78,7 +81,7 @@ const sharedFeatured = {
       title: "Panel X",
       description:
         "Panel lifecycle visibility across shop, logistics, and site—so everyone works from one agreed status.",
-      href: "/solutions/facade",
+      href: "/solutions/panel-x",
       cta: "View Solution",
     },
     {
@@ -87,7 +90,7 @@ const sharedFeatured = {
       title: "Flatforge",
       description:
         "Production and flat-pattern workflows that keep fabrication moving without spreadsheet chase.",
-      href: "/products",
+      href: "/solutions",
       cta: "View Solution",
     },
   ],
@@ -98,7 +101,7 @@ const sharedCta = {
   title: "Let's Talk About Your Workflow.",
   body: "Whether you're exploring AI, replacing manual processes, or planning a custom platform, we'd love to understand your goals and discuss what's possible.",
   primary: { label: "Book a Discovery Call", href: "/contact" },
-  secondary: { label: "Explore Solutions", href: "/solutions/facade" },
+  secondary: { label: "Explore Solutions", href: "/solutions" },
 };
 
 const customAiCapabilities = [
@@ -162,10 +165,12 @@ export const servicePages = {
     },
     hero: {
       badge: "OUR SERVICES",
-      title: "Custom AI Development",
+      titleBefore: "Custom ",
+      titleHighlight: "AI",
+      titleAfter: " Development",
       body: "We design intelligent systems around your construction workflows—from drawing intelligence and quotation automation to document analysis and operational decision support.",
       primaryCta: { label: "Book Consultation", href: "/contact" },
-      secondaryCta: { label: "View Related Solutions", href: "/solutions/facade" },
+      secondaryCta: { label: "View Related Solutions", href: "/solutions" },
     },
     value: {
       badge: "WHERE IT CREATES VALUE",
@@ -224,10 +229,12 @@ export const servicePages = {
     },
     hero: {
       badge: "OUR SERVICES",
-      title: "Workflow Analysis & Consulting",
+      titleBefore: "Workflow Analysis & ",
+      titleHighlight: "Consulting",
+      titleAfter: "",
       body: "We study how your teams work today, identify where time and accuracy are being lost, and define the opportunities where custom software or AI can create real impact.",
       primaryCta: { label: "Book Consultation", href: "/contact" },
-      secondaryCta: { label: "View Related Solutions", href: "/solutions/facade" },
+      secondaryCta: { label: "View Related Solutions", href: "/solutions" },
     },
     value: {
       badge: "WHERE IT CREATES VALUE",
@@ -338,10 +345,12 @@ export const servicePages = {
     },
     hero: {
       badge: "OUR SERVICES",
-      title: "Integration Services",
+      titleBefore: "Integration ",
+      titleHighlight: "Services",
+      titleAfter: "",
       body: "New systems should work with the tools you already rely on. We connect platforms, drawings, databases, and business workflows into one coherent digital environment.",
       primaryCta: { label: "Book Consultation", href: "/contact" },
-      secondaryCta: { label: "View Related Solutions", href: "/products" },
+      secondaryCta: { label: "View Related Solutions", href: "/solutions" },
     },
     value: {
       badge: "WHERE IT CREATES VALUE",
@@ -452,10 +461,12 @@ export const servicePages = {
     },
     hero: {
       badge: "OUR SERVICES",
-      title: "Training & Implementation",
+      titleBefore: "Training & ",
+      titleHighlight: "Implementation",
+      titleAfter: "",
       body: "We support your team through onboarding, training, rollout, and continuous improvement so every solution becomes part of daily operations—not a shelfware launch.",
       primaryCta: { label: "Book Consultation", href: "/contact" },
-      secondaryCta: { label: "View Related Solutions", href: "/solutions/facade" },
+      secondaryCta: { label: "View Related Solutions", href: "/solutions" },
     },
     value: {
       badge: "WHERE IT CREATES VALUE",
@@ -566,10 +577,12 @@ export const servicePages = {
     },
     hero: {
       badge: "OUR SERVICES",
-      title: "Construction Website Development",
+      titleBefore: "Construction Website ",
+      titleHighlight: "Development",
+      titleAfter: "",
       body: "We design and build marketing and product sites that feel like your brand—fast, clear, and easy to update—so prospects and partners understand your capabilities without a sales call.",
       primaryCta: { label: "Book Consultation", href: "/contact" },
-      secondaryCta: { label: "View Related Solutions", href: "/products" },
+      secondaryCta: { label: "View Related Solutions", href: "/solutions" },
     },
     value: {
       badge: "WHERE IT CREATES VALUE",

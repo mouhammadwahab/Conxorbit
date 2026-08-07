@@ -6,7 +6,7 @@ export default function Testimonials({ content }) {
 
   return (
     <Reveal as="section" className={styles.section} aria-label={badge}>
-      <div className={styles.header}>
+      <div className={`${styles.header} revealHead`}>
         <span className={styles.badge}>
           <span aria-hidden="true">✦</span> {badge}
         </span>
@@ -20,7 +20,7 @@ export default function Testimonials({ content }) {
 
       <div className={styles.grid}>
         {items.map((item) => (
-          <blockquote key={item.name + item.role} className={`${styles.card} interactiveCard`}>
+          <blockquote key={item.name + item.role} className={`${styles.card} interactiveCard cardReveal`}>
             <div className={styles.avatar} aria-hidden="true">
               {item.initials || item.name.slice(0, 2).toUpperCase()}
             </div>

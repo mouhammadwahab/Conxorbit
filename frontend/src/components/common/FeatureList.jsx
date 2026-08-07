@@ -15,7 +15,7 @@ export default function FeatureList({
     <section
       ref={ref}
       className={`${styles.section} ${toneClass} ${tone === "light" ? styles.light : styles.dark} ${
-        visible ? styles.visible : styles.hidden
+        visible ? `${styles.visible} visible` : styles.hidden
       }`}
     >
       <div className={styles.inner}>
@@ -38,7 +38,7 @@ export default function FeatureList({
               <TiltCard
                 key={item.title}
                 as="article"
-                className={styles.card}
+                className={`${styles.card} interactiveCard cardReveal`}
                 max={12}
                 scale={1.04}
                 style={{ transitionDelay: `${index * 80}ms` }}

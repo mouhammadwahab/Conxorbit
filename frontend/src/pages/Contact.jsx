@@ -1,6 +1,7 @@
 import { useState } from "react";
 import SEO from "../components/common/SEO";
 import PageHero from "../components/common/PageHero";
+import Reveal from "../components/common/Reveal";
 import TiltCard from "../components/common/TiltCard";
 import PageShell from "../components/layout/PageShell/PageShell";
 import { contactContent, site } from "../content/siteContent";
@@ -64,10 +65,10 @@ export default function Contact() {
     <PageShell atmosphere="contact">
       <SEO title={meta.title} description={meta.description} path="/contact" />
       <PageHero {...hero} />
-      <section className={`${styles.section} toneDark`}>
+      <Reveal as="section" className={`${styles.section} toneDark`}>
         <div className={styles.grid}>
-          <TiltCard as="div" className={styles.formTilt} max={6} scale={1.01}>
-            <form className={`${styles.form} ${styles.card3d}`} onSubmit={onSubmit} noValidate>
+          <TiltCard as="div" className={`${styles.formTilt} cardReveal`} max={6} scale={1.01}>
+            <form className={`${styles.form} ${styles.card3d} interactiveCard`} onSubmit={onSubmit} noValidate>
               <label>
                 <span>{form.fields.name}</span>
                 <input
@@ -110,7 +111,7 @@ export default function Contact() {
                   onChange={onChange}
                 />
               </label>
-              <button type="submit" disabled={status === "loading"}>
+              <button className="btnMotion" type="submit" disabled={status === "loading"}>
                 {status === "loading" ? "Sending…" : form.submit}
               </button>
               {status === "success" ? <p className={styles.success}>{form.success}</p> : null}
@@ -118,25 +119,25 @@ export default function Contact() {
             </form>
           </TiltCard>
 
-          <TiltCard as="aside" className={`${styles.aside} ${styles.card3d}`} max={8} scale={1.02}>
+          <TiltCard as="aside" className={`${styles.aside} ${styles.card3d} interactiveCard cardReveal`} max={8} scale={1.02}>
             <h2>{aside.title}</h2>
             <p>
               <span>{aside.emailLabel}</span>
-              <a href={`mailto:${site.email}`}>{site.email}</a>
+              <a className="linkDraw" href={`mailto:${site.email}`}>{site.email}</a>
             </p>
             <p>
               <span>{aside.phoneLabel}</span>
-              <a href={`tel:${site.phone.replace(/\s/g, "")}`}>{site.phone}</a>
+              <a className="linkDraw" href={`tel:${site.phone.replace(/\s/g, "")}`}>{site.phone}</a>
             </p>
             <p>
               <span>{aside.whatsappLabel}</span>
-              <a href={whatsappHref} target="_blank" rel="noreferrer">
+              <a className="linkDraw" href={whatsappHref} target="_blank" rel="noreferrer">
                 {site.whatsappLabel}
               </a>
             </p>
           </TiltCard>
         </div>
-      </section>
+      </Reveal>
     </PageShell>
   );
 }

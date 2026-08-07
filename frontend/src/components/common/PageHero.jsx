@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Reveal from "./Reveal";
 import styles from "./PageHero.module.css";
 
 export default function PageHero({
@@ -10,7 +11,7 @@ export default function PageHero({
 }) {
   return (
     <header
-      className={`${styles.hero} ${align === "left" ? styles.left : styles.center} ${
+      className={`${styles.hero} heroStagger ${align === "left" ? styles.left : styles.center} ${
         tone === "shell" ? styles.shellTone : styles.solidTone
       }`}
     >
@@ -38,22 +39,22 @@ export function CTABand({
   secondaryLabel,
 }) {
   return (
-    <section className={styles.ctaBand}>
-      <div className={`${styles.ctaInner} ${styles.card3d}`}>
+    <Reveal as="section" className={styles.ctaBand}>
+      <div className={`${styles.ctaInner} ${styles.card3d} interactiveCard revealHead`}>
         <h2>{title}</h2>
         {body ? <p>{body}</p> : null}
         <div className={styles.ctaActions}>
-          <Link className={styles.ctaButton} to={href}>
-            {label}
+          <Link className={`${styles.ctaButton} btnMotion`} to={href}>
+            <span>{label}</span>
             <span aria-hidden="true">→</span>
           </Link>
           {secondaryHref && secondaryLabel ? (
-            <Link className={styles.ctaButtonSecondary} to={secondaryHref}>
-              {secondaryLabel}
+            <Link className={`${styles.ctaButtonSecondary} btnMotion`} to={secondaryHref}>
+              <span>{secondaryLabel}</span>
             </Link>
           ) : null}
         </div>
       </div>
-    </section>
+    </Reveal>
   );
 }

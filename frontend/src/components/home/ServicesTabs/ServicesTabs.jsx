@@ -58,15 +58,17 @@ export default function ServicesTabs({ content }) {
     <Reveal as="section" className={styles.section} aria-label={badge}>
       <div className={styles.inner}>
         <div className={styles.left}>
-          <span className={styles.badge}>
-            <span aria-hidden="true">✦</span> {badge}
-          </span>
-          <h2>
-            {titleBefore}
-            <span className={styles.highlight}>{titleHighlight}</span>
-            {titleAfter}
-          </h2>
-          {body ? <p className={styles.intro}>{body}</p> : null}
+          <div className="revealHead">
+            <span className={styles.badge}>
+              <span aria-hidden="true">✦</span> {badge}
+            </span>
+            <h2>
+              {titleBefore}
+              <span className={styles.highlight}>{titleHighlight}</span>
+              {titleAfter}
+            </h2>
+            {body ? <p className={styles.intro}>{body}</p> : null}
+          </div>
 
           <div className={`${styles.detail} interactiveCard`} key={active.id}>
             <span className={styles.detailIcon}>{TAB_ICONS[active.id] || TAB_ICONS.workflow}</span>
@@ -103,7 +105,7 @@ export default function ServicesTabs({ content }) {
         </div>
 
         <div className={styles.right}>
-          <div className={styles.media}>
+          <div className={`${styles.media} mediaZoom`}>
             <img src={image} alt="" />
             {imageCaption ? <span className={styles.caption}>{imageCaption}</span> : null}
           </div>

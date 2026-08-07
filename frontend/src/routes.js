@@ -1,7 +1,8 @@
-import { Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import FacadeSolution from "./pages/FacadeSolution";
 import ConstructionSolution from "./pages/ConstructionSolution";
+import Solutions from "./pages/Solutions";
+import SolutionDetail from "./pages/SolutionDetail";
 import ServiceDetail from "./pages/ServiceDetail";
 import Products from "./pages/Products";
 import CaseStudies from "./pages/CaseStudies";
@@ -10,10 +11,7 @@ import Partners from "./pages/Partners";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
-
-function SolutionsRedirect() {
-  return <Navigate to="/solutions/facade" replace />;
-}
+import { Navigate } from "react-router-dom";
 
 function ServicesRedirect() {
   return <Navigate to="/services/custom-ai-development" replace />;
@@ -21,9 +19,10 @@ function ServicesRedirect() {
 
 export const routes = [
   { path: "/", element: Home },
-  { path: "/solutions", element: SolutionsRedirect },
+  { path: "/solutions", element: Solutions },
   { path: "/solutions/facade", element: FacadeSolution },
   { path: "/solutions/construction", element: ConstructionSolution },
+  { path: "/solutions/:slug", element: SolutionDetail },
   { path: "/services", element: ServicesRedirect },
   { path: "/services/:slug", element: ServiceDetail },
   { path: "/products", element: Products },

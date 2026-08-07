@@ -93,7 +93,7 @@ export default function FeaturedCaseStudy({ content }) {
 
   return (
     <Reveal as="section" className={styles.section} aria-label={badge}>
-      <div className={styles.header}>
+      <div className={`${styles.header} revealHead`}>
         <span className={styles.badge}>
           <span aria-hidden="true">✦</span> {badge}
         </span>
@@ -108,7 +108,7 @@ export default function FeaturedCaseStudy({ content }) {
       <div className={styles.stage}>
         <div className={styles.sideCol}>
           {leftFeatures.map((feature) => (
-            <article key={feature.title} className={`${styles.featureCard} interactiveCard`}>
+            <article key={feature.title} className={`${styles.featureCard} interactiveCard cardReveal`}>
               <span className={styles.featureIcon}>{ICONS[feature.icon]}</span>
               <div>
                 <h3>{feature.title}</h3>
@@ -145,7 +145,7 @@ export default function FeaturedCaseStudy({ content }) {
 
         <div className={styles.sideCol}>
           {rightFeatures.map((feature) => (
-            <article key={feature.title} className={`${styles.featureCard} interactiveCard`}>
+            <article key={feature.title} className={`${styles.featureCard} interactiveCard cardReveal`}>
               <span className={styles.featureIcon}>{ICONS[feature.icon]}</span>
               <div>
                 <h3>{feature.title}</h3>
@@ -159,7 +159,7 @@ export default function FeaturedCaseStudy({ content }) {
       </div>
 
       <div className={styles.ctaRow}>
-        <Link className={styles.cta} to={cta.href}>
+        <Link className={`${styles.cta} linkDraw`} to={cta.href}>
           {cta.label}
           <span aria-hidden="true">→</span>
         </Link>

@@ -1,6 +1,5 @@
 .hero {
   padding: calc(120px + 2rem) clamp(20px, 5vw, 72px) 48px;
-  animation: pageHeroIn 880ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .shellTone {
@@ -33,7 +32,6 @@
   font-weight: 500;
   font-size: 0.95rem;
   margin-bottom: 14px;
-  animation: fadeUp 700ms ease both;
 }
 
 .title {
@@ -50,8 +48,6 @@
   text-shadow:
     0 2px 0 rgba(0, 0, 0, 0.15),
     0 18px 50px rgba(0, 0, 0, 0.4);
-  animation: fadeUp 850ms ease both;
-  animation-delay: 80ms;
 }
 
 .titleLine {
@@ -73,8 +69,6 @@
   font-size: 1.1rem;
   color: var(--color-muted);
   max-width: 42rem;
-  animation: fadeUp 900ms ease both;
-  animation-delay: 140ms;
 }
 
 .center .body {
@@ -101,7 +95,6 @@
   backdrop-filter: blur(16px);
   transform-style: preserve-3d;
   transition: transform 280ms ease, box-shadow 280ms ease;
-  animation: fadeUp 700ms ease both;
 }
 
 .card3d:hover {
@@ -178,37 +171,7 @@
   border-color: rgba(184, 137, 61, 0.7);
 }
 
-@keyframes pageHeroIn {
-  from {
-    opacity: 0;
-    transform: perspective(1100px) translateY(40px) rotateX(14deg) translateZ(-40px);
-  }
-  to {
-    opacity: 1;
-    transform: perspective(1100px) translateY(0) rotateX(0) translateZ(0);
-  }
-}
-
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: perspective(800px) translateY(18px) rotateX(6deg);
-  }
-  to {
-    opacity: 1;
-    transform: perspective(800px) translateY(0) rotateX(0);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .hero,
-  .eyebrow,
-  .title,
-  .body,
-  .ctaInner {
-    animation: none;
-  }
-
   .card3d:hover {
     transform: none;
   }

@@ -105,18 +105,18 @@ export default function Hero({ content }) {
         />
       ))}
 
-      <div className={styles.center}>
+      <div className={`${styles.center} heroStagger`}>
         <span className={styles.eyebrow}>{eyebrow}</span>
         <h1>{title}</h1>
         <p>{body}</p>
         <div className={styles.actions}>
-          <Link className={styles.btnPrimary} to={primaryCta.href}>
+          <Link className={`${styles.btnPrimary} btnMotion`} to={primaryCta.href}>
             <span>{primaryCta.label}</span>
             <span className={styles.btnArrow} aria-hidden="true">
               →
             </span>
           </Link>
-          <Link className={styles.btnOutline} to={secondaryCta.href}>
+          <Link className={`${styles.btnOutline} btnMotion`} to={secondaryCta.href}>
             <span>{secondaryCta.label}</span>
           </Link>
         </div>

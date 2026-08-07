@@ -83,13 +83,15 @@ export default function Footer() {
         {footerContent.columns.map((col, index) => (
           <div
             key={col.title}
-            className={`${styles.col} stagger${Math.min(index + 2, 6)}`}
+            className={`${styles.col} cardReveal stagger${Math.min(index + 2, 6)}`}
           >
             <h3>{col.title}</h3>
             <ul>
               {col.links.map((link) => (
                 <li key={link.href}>
-                  <Link to={link.href}>{link.label}</Link>
+                  <Link className="linkDraw" to={link.href}>
+                    {link.label}
+                  </Link>
                 </li>
               ))}
             </ul>

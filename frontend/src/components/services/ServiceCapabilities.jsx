@@ -69,7 +69,7 @@ export default function ServiceCapabilities({ content }) {
 
   return (
     <Reveal as="section" className={styles.section} aria-label={badge}>
-      <div className={styles.header}>
+      <div className={`${styles.header} revealHead`}>
         <span className={styles.badge}>
           <span aria-hidden="true">✦</span> {badge}
         </span>
@@ -78,9 +78,9 @@ export default function ServiceCapabilities({ content }) {
       </div>
       <div className={styles.grid}>
         {cards.map((card) => (
-          <article key={card.title} className={`${styles.card} interactiveCard`}>
+          <article key={card.title} className={`${styles.card} interactiveCard cardReveal`}>
             {card.image ? (
-              <div className={styles.media}>
+              <div className={`${styles.media} mediaZoom`}>
                 <img src={card.image} alt="" loading="lazy" />
               </div>
             ) : (

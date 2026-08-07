@@ -16,14 +16,14 @@ export default function Partners() {
       <PageHero {...hero} />
       <section
         ref={ref}
-        className={`${styles.section} toneLight ${visible ? styles.visible : styles.hidden}`}
+        className={`${styles.section} toneLight ${visible ? `${styles.visible} visible` : styles.hidden}`}
       >
         <div className={styles.grid}>
           {partners.map((partner, index) => (
             <TiltCard
               key={partner.name}
               as="article"
-              className={styles.card}
+              className={`${styles.card} interactiveCard cardReveal`}
               max={11}
               scale={1.03}
               style={{ transitionDelay: `${index * 80}ms` }}
@@ -38,7 +38,7 @@ export default function Partners() {
               <h2>{partner.name}</h2>
               <p>{partner.description}</p>
               {partner.link && partner.link !== "#" ? (
-                <a href={partner.link} target="_blank" rel="noreferrer">
+                <a className="linkDraw" href={partner.link} target="_blank" rel="noreferrer">
                   Visit →
                 </a>
               ) : (

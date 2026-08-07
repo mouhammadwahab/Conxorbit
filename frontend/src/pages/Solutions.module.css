@@ -1,0 +1,8 @@
+.page {
+  background: #050c0b;
+  padding-bottom: 24px;
+}
+
+.filterWrap {
+  padding: 0 clamp(20px, 5vw, 72px);
+}

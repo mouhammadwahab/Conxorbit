@@ -8,7 +8,7 @@ export default function FAQAccordion({ content }) {
 
   return (
     <Reveal as="section" className={styles.section} aria-label={badge}>
-      <div className={styles.header}>
+      <div className={`${styles.header} revealHead`}>
         <span className={styles.badge}>
           <span aria-hidden="true">✦</span> {badge}
         </span>
@@ -25,7 +25,7 @@ export default function FAQAccordion({ content }) {
           return (
             <div
               key={item.question}
-              className={`${isOpen ? styles.itemOpen : styles.item} depthHover`}
+              className={`${isOpen ? styles.itemOpen : styles.item} depthHover cardReveal`}
               style={{ transitionDelay: `${index * 60}ms` }}
             >
               <button

@@ -77,19 +77,35 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
   display: grid;
   gap: 12px;
-  align-content: end;
+  align-content: start;
 }
 
 .number {
   position: absolute;
   top: 8px;
-  left: 14px;
+  right: 14px;
+  left: auto;
   font-size: clamp(3.5rem, 6vw, 5rem);
   font-weight: 700;
   line-height: 1;
   color: rgba(232, 237, 216, 0.08);
   letter-spacing: -0.04em;
   pointer-events: none;
+}
+
+.icon {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  color: var(--gold);
+  margin-top: 8px;
+}
+
+.icon svg {
+  width: 28px;
+  height: 28px;
 }
 
 .card h3 {

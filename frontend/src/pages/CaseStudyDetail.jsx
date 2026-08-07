@@ -1,5 +1,6 @@
 import { Link, Navigate, useParams } from "react-router-dom";
 import SEO from "../components/common/SEO";
+import Reveal from "../components/common/Reveal";
 import PageShell from "../components/layout/PageShell/PageShell";
 import { caseStudiesContent } from "../content/siteContent";
 import styles from "./CaseStudyDetail.module.css";
@@ -20,27 +21,27 @@ export default function CaseStudyDetail() {
         path={`/case-studies/${item.slug}`}
       />
       <article className={`${styles.page} toneLight`}>
-        <Link className={styles.back} to="/case-studies">
+        <Link className={`${styles.back} linkDraw`} to="/case-studies">
           ← All case studies
         </Link>
         <p className={styles.industry}>{item.industry}</p>
         <h1>{item.title}</h1>
         <p className={styles.summary}>{item.summary}</p>
 
-        <div className={styles.blocks}>
-          <section className={`${styles.blockCard} interactiveCard`}>
+        <Reveal as="div" className={styles.blocks}>
+          <section className={`${styles.blockCard} interactiveCard cardReveal`}>
             <h2>Problem</h2>
             <p>{item.problem}</p>
           </section>
-          <section className={`${styles.blockCard} interactiveCard`}>
+          <section className={`${styles.blockCard} interactiveCard cardReveal`}>
             <h2>What we built</h2>
             <p>{item.built}</p>
           </section>
-          <section className={`${styles.blockCard} interactiveCard`}>
+          <section className={`${styles.blockCard} interactiveCard cardReveal`}>
             <h2>Result</h2>
             <p>{item.result}</p>
           </section>
-        </div>
+        </Reveal>
 
         <blockquote className={`${styles.quote} interactiveCard`}>
           <p>“{item.quote.text}”</p>

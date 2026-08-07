@@ -8,7 +8,7 @@ export default function ProofStrip({ content }) {
   return (
     <Reveal as="section" className={styles.section} aria-label={title}>
       <div className={styles.inner}>
-        <div className={styles.header}>
+        <div className={`${styles.header} revealHead`}>
           <p className={styles.eyebrow}>{eyebrow}</p>
           <h2>{title}</h2>
         </div>

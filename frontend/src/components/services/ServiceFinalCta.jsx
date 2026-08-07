@@ -7,7 +7,7 @@ export default function ServiceFinalCta({ content }) {
 
   return (
     <Reveal as="section" className={styles.section} aria-label={badge}>
-      <div className={styles.inner}>
+      <div className={`${styles.inner} revealHead`}>
         <span className={styles.badge}>
           <span aria-hidden="true">✦</span> {badge}
         </span>
@@ -15,14 +15,14 @@ export default function ServiceFinalCta({ content }) {
         {body ? <p>{body}</p> : null}
         <div className={styles.actions}>
           {primary ? (
-            <Link className={styles.primary} to={primary.href}>
-              {primary.label}
+            <Link className={`${styles.primary} btnMotion`} to={primary.href}>
+              <span>{primary.label}</span>
               <span aria-hidden="true">→</span>
             </Link>
           ) : null}
           {secondary ? (
-            <Link className={styles.secondary} to={secondary.href}>
-              {secondary.label}
+            <Link className={`${styles.secondary} btnMotion`} to={secondary.href}>
+              <span>{secondary.label}</span>
             </Link>
           ) : null}
         </div>

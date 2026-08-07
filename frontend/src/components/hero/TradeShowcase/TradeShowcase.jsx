@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Reveal from "../../common/Reveal";
 import facade from "../../../assets/tradeCards/facade.jfif";
 import glass from "../../../assets/tradeCards/glass.jfif";
 import aluminium from "../../../assets/tradeCards/aluminium.jfif";
@@ -26,8 +27,8 @@ export default function TradeShowcase({ content }) {
   }, []);
 
   return (
-    <section className={styles.section} aria-label="Trades we support">
-      <div className={styles.header}>
+    <Reveal as="section" className={styles.section} aria-label="Trades we support">
+      <div className={`${styles.header} revealHead`}>
         <p className={styles.eyebrow}>{badge}</p>
         <h2>{title}</h2>
         <p>{body}</p>
@@ -44,7 +45,7 @@ export default function TradeShowcase({ content }) {
           return (
             <article
               key={trade.id}
-              className={`${styles.card} ${isCenter ? styles.cardActive : ""} interactiveCard`}
+              className={`${styles.card} ${isCenter ? styles.cardActive : ""} interactiveCard mediaZoom`}
               style={{
                 transform: `translateX(${wrapped * 72}%) translateZ(${
                   isCenter ? 60 : -40
@@ -77,6 +78,6 @@ export default function TradeShowcase({ content }) {
           />
         ))}
       </div>
-    </section>
+    </Reveal>
   );
 }

@@ -43,7 +43,7 @@ export default function WhyWorkWithUs({ content }) {
 
   return (
     <Reveal as="section" className={styles.section} aria-label={badge}>
-      <div className={styles.header}>
+      <div className={`${styles.header} revealHead`}>
         <span className={styles.badge}>
           <span aria-hidden="true">✦</span> {badge}
         </span>
@@ -54,7 +54,7 @@ export default function WhyWorkWithUs({ content }) {
         {cards.map((card, index) => (
           <article
             key={card.title}
-            className={`${styles.card} interactiveCard`}
+            className={`${styles.card} interactiveCard cardReveal`}
             style={{ transitionDelay: `${index * 80}ms` }}
           >
             <span className={styles.icon}>{ICONS[card.icon] || ICONS.industry}</span>

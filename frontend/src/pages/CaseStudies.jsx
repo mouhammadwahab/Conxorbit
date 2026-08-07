@@ -17,14 +17,14 @@ export default function CaseStudies() {
       <PageHero {...hero} />
       <section
         ref={ref}
-        className={`${styles.section} toneLight ${visible ? styles.visible : styles.hidden}`}
+        className={`${styles.section} toneLight ${visible ? `${styles.visible} visible` : styles.hidden}`}
       >
         <div className={styles.grid}>
           {items.map((item, index) => (
             <TiltCard
               key={item.slug}
               as="article"
-              className={styles.card}
+              className={`${styles.card} interactiveCard cardReveal`}
               max={11}
               scale={1.03}
               style={{ transitionDelay: `${index * 90}ms` }}

@@ -1,11 +1,16 @@
 /* Shared scroll/hover motion primitives — brand-safe, no GSAP pin */
 
+:root {
+  --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --motion-duration: 560ms;
+}
+
 .reveal {
   opacity: 0;
   transform: perspective(1000px) translateY(28px) rotateX(8deg);
   transition:
-    opacity 560ms cubic-bezier(0.22, 1, 0.36, 1),
-    transform 560ms cubic-bezier(0.22, 1, 0.36, 1);
+    opacity var(--motion-duration) var(--motion-ease),
+    transform var(--motion-duration) var(--motion-ease);
   transform-style: preserve-3d;
   will-change: opacity, transform;
 }
@@ -34,12 +39,98 @@
   transition-delay: 360ms;
 }
 
+/* Page shell enter on route change */
+.pageEnter {
+  animation: pageEnter 700ms var(--motion-ease) both;
+}
+
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Section header stagger: badge → title → body */
+.revealHead > *:nth-child(1),
+.revealHead > *:nth-child(2),
+.revealHead > *:nth-child(3),
+.revealHead > *:nth-child(4) {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 480ms var(--motion-ease),
+    transform 480ms var(--motion-ease);
+}
+
+.revealVisible .revealHead > *:nth-child(1),
+.visible .revealHead > *:nth-child(1) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 40ms;
+}
+
+.revealVisible .revealHead > *:nth-child(2),
+.visible .revealHead > *:nth-child(2) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 110ms;
+}
+
+.revealVisible .revealHead > *:nth-child(3),
+.visible .revealHead > *:nth-child(3) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 180ms;
+}
+
+.revealVisible .revealHead > *:nth-child(4),
+.visible .revealHead > *:nth-child(4) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 250ms;
+}
+
+/* Hero copy stagger without needing Reveal parent */
+.heroStagger > * {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: heroStaggerIn 640ms var(--motion-ease) both;
+}
+
+.heroStagger > *:nth-child(1) {
+  animation-delay: 60ms;
+}
+.heroStagger > *:nth-child(2) {
+  animation-delay: 140ms;
+}
+.heroStagger > *:nth-child(3) {
+  animation-delay: 220ms;
+}
+.heroStagger > *:nth-child(4) {
+  animation-delay: 300ms;
+}
+.heroStagger > *:nth-child(5) {
+  animation-delay: 380ms;
+}
+
+@keyframes heroStaggerIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Narrow gold edge on hover / click / keyboard focus — use on non-Tilt cards */
 .interactiveCard {
   transition:
     border-color 220ms ease,
     box-shadow 220ms ease,
-    transform 280ms ease;
+    transform 280ms var(--motion-ease);
 }
 
 .interactiveCard:hover,
@@ -52,11 +143,222 @@
   outline: none;
 }
 
+@media (hover: hover) and (pointer: fine) {
+  .interactiveCard:hover {
+    transform: translateY(-6px) scale(1.01);
+  }
+}
+
+/* Staggered scroll-in for cards inside a .reveal / .revealVisible ancestor */
+.cardReveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity var(--motion-duration) var(--motion-ease),
+    transform var(--motion-duration) var(--motion-ease),
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+  will-change: opacity, transform;
+}
+
+.revealVisible .cardReveal,
+.visible .cardReveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.revealVisible .cardReveal:nth-child(1),
+.visible .cardReveal:nth-child(1) {
+  transition-delay: 0ms;
+}
+.revealVisible .cardReveal:nth-child(2),
+.visible .cardReveal:nth-child(2) {
+  transition-delay: 70ms;
+}
+.revealVisible .cardReveal:nth-child(3),
+.visible .cardReveal:nth-child(3) {
+  transition-delay: 140ms;
+}
+.revealVisible .cardReveal:nth-child(4),
+.visible .cardReveal:nth-child(4) {
+  transition-delay: 210ms;
+}
+.revealVisible .cardReveal:nth-child(5),
+.visible .cardReveal:nth-child(5) {
+  transition-delay: 280ms;
+}
+.revealVisible .cardReveal:nth-child(6),
+.visible .cardReveal:nth-child(6) {
+  transition-delay: 350ms;
+}
+.revealVisible .cardReveal:nth-child(7),
+.visible .cardReveal:nth-child(7) {
+  transition-delay: 420ms;
+}
+.revealVisible .cardReveal:nth-child(8),
+.visible .cardReveal:nth-child(8) {
+  transition-delay: 490ms;
+}
+.revealVisible .cardReveal:nth-child(9),
+.visible .cardReveal:nth-child(9) {
+  transition-delay: 560ms;
+}
+.revealVisible .cardReveal:nth-child(10),
+.visible .cardReveal:nth-child(10) {
+  transition-delay: 630ms;
+}
+.revealVisible .cardReveal:nth-child(11),
+.visible .cardReveal:nth-child(11) {
+  transition-delay: 700ms;
+}
+.revealVisible .cardReveal:nth-child(12),
+.visible .cardReveal:nth-child(12) {
+  transition-delay: 770ms;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .revealVisible .cardReveal.interactiveCard:hover,
+  .visible .cardReveal.interactiveCard:hover {
+    transform: translateY(-6px) scale(1.01);
+  }
+}
+
+/* Mockup / image zoom on hover */
+.mediaZoom {
+  overflow: hidden;
+}
+
+.mediaZoom img,
+.mediaZoom > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 420ms var(--motion-ease);
+  will-change: transform;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .mediaZoom:hover img,
+  .interactiveCard:hover .mediaZoom img,
+  article:hover .mediaZoom img {
+    transform: scale(1.05);
+  }
+}
+
+/* CTA / button shine sweep */
+.btnMotion {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition:
+    transform 220ms var(--motion-ease),
+    box-shadow 220ms ease,
+    background 220ms ease,
+    border-color 220ms ease,
+    color 220ms ease;
+}
+
+.btnMotion::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 35%,
+    rgba(243, 201, 105, 0.28) 48%,
+    rgba(90, 107, 59, 0.2) 52%,
+    transparent 65%
+  );
+  transform: translateX(-120%);
+  transition: transform 520ms var(--motion-ease);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.btnMotion > * {
+  position: relative;
+  z-index: 2;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btnMotion:hover {
+    transform: translateY(-2px);
+  }
+
+  .btnMotion:hover::after {
+    transform: translateX(120%);
+  }
+}
+
+/* Text CTA underline draw */
+.linkDraw {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  transition: color 200ms ease, transform 200ms var(--motion-ease);
+}
+
+.linkDraw::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 280ms var(--motion-ease);
+  opacity: 0.85;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .linkDraw:hover {
+    transform: translateX(2px);
+  }
+
+  .linkDraw:hover::after {
+    transform: scaleX(1);
+  }
+}
+
+/* Ambient orb float (PageShell orbs) */
+.orbFloat {
+  animation: orbFloat 12s ease-in-out infinite;
+  will-change: transform;
+}
+
+.orbFloat:nth-child(2),
+.orbFloatDelay2 {
+  animation-delay: -4s;
+}
+
+.orbFloat:nth-child(3),
+.orbFloatDelay3 {
+  animation-delay: -7.5s;
+}
+
+@keyframes orbFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(2.5%, -3%, 0) scale(1.04);
+  }
+  66% {
+    transform: translate3d(-2%, 2.5%, 0) scale(0.97);
+  }
+}
+
 .depthHover {
   transform-style: preserve-3d;
   border: 1px solid transparent;
   transition:
-    transform 280ms ease,
+    transform 280ms var(--motion-ease),
     box-shadow 280ms ease,
     border-color 220ms ease;
 }
@@ -121,9 +423,18 @@
 
 @media (prefers-reduced-motion: reduce) {
   .reveal,
-  .revealVisible {
+  .revealVisible,
+  .pageEnter,
+  .heroStagger > *,
+  .cardReveal,
+  .revealVisible .cardReveal,
+  .visible .cardReveal,
+  .revealHead > *,
+  .revealVisible .revealHead > *,
+  .visible .revealHead > * {
     opacity: 1 !important;
     transform: none !important;
+    animation: none !important;
     transition: none !important;
   }
 
@@ -134,8 +445,35 @@
     transform: none !important;
   }
 
+  .interactiveCard:hover,
+  .btnMotion:hover,
+  .linkDraw:hover {
+    transform: none !important;
+  }
+
+  .btnMotion::after,
+  .linkDraw::after {
+    display: none !important;
+  }
+
+  .mediaZoom img,
+  .mediaZoom > img,
+  .mediaZoom:hover img,
+  .interactiveCard:hover .mediaZoom img {
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .orbFloat,
+  .orbFloatDelay2,
+  .orbFloatDelay3 {
+    animation: none !important;
+  }
+
   .depthHover,
-  .interactiveCard {
-    transition: border-color 220ms ease, box-shadow 220ms ease !important;
+  .interactiveCard,
+  .btnMotion,
+  .linkDraw {
+    transition: border-color 220ms ease, box-shadow 220ms ease, color 220ms ease !important;
   }
 }

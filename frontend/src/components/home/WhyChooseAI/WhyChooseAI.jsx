@@ -1,3 +1,4 @@
+import Reveal from "../../common/Reveal";
 import styles from "./WhyChooseAI.module.css";
 
 const ICONS = {
@@ -47,10 +48,10 @@ export default function WhyChooseAI({ content }) {
   } = content;
 
   return (
-    <section className={styles.section} aria-label={badge}>
+    <Reveal as="section" className={styles.section} aria-label={badge}>
       <div className={styles.inner}>
         <div className={styles.grid}>
-          <div className={styles.copy}>
+          <div className={`${styles.copy} revealHead`}>
             <span className={styles.badge}>
               <span className={styles.star} aria-hidden="true">
                 ✦
@@ -84,6 +85,6 @@ export default function WhyChooseAI({ content }) {
           </div>
         </div>
       </div>
-    </section>
+    </Reveal>
   );
 }

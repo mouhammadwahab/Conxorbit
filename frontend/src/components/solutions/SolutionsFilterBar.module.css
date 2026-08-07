@@ -1,0 +1,111 @@
+.bar {
+  max-width: var(--max-width);
+  margin: 0 auto 32px;
+  padding: 14px 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 16px;
+  background: rgba(20, 48, 46, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.left {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  min-width: 0;
+  flex: 1;
+}
+
+.label {
+  color: rgba(232, 237, 216, 0.7);
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pill,
+.pillActive {
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-size: 0.86rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease;
+}
+
+.pill {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: rgba(232, 237, 216, 0.78);
+}
+
+.pill:hover {
+  border-color: rgba(184, 137, 61, 0.45);
+  color: #f7f7f4;
+}
+
+.pillActive {
+  background: rgba(90, 107, 59, 0.85);
+  border: 1px solid rgba(90, 107, 59, 0.95);
+  color: #f7f7f4;
+}
+
+.search {
+  display: block;
+  min-width: min(260px, 100%);
+}
+
+.search input {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(5, 12, 11, 0.55);
+  color: #f7f7f4;
+  font: inherit;
+  outline: none;
+}
+
+.search input::placeholder {
+  color: rgba(232, 237, 216, 0.45);
+}
+
+.search input:focus {
+  border-color: rgba(184, 137, 61, 0.55);
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 720px) {
+  .bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search {
+    min-width: 0;
+  }
+}

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import SEO from "../components/common/SEO";
 import { CTABand } from "../components/common/PageHero";
+import Reveal from "../components/common/Reveal";
 import PageShell from "../components/layout/PageShell/PageShell";
 import usePrefersReducedMotion from "../hooks/usePrefersReducedMotion";
 import { aboutContent } from "../content/siteContent";
@@ -236,8 +237,8 @@ function GlowHero({ glowHero }) {
 
 function OfferSection({ offer }) {
   return (
-    <section className={styles.offer} aria-label={offer.badge}>
-      <div className={styles.offerHead}>
+    <Reveal as="section" className={styles.offer} aria-label={offer.badge}>
+      <div className={`${styles.offerHead} revealHead`}>
         <span className={styles.offerBadge}>
           <span aria-hidden="true">✦</span> {offer.badge}
         </span>
@@ -247,7 +248,7 @@ function OfferSection({ offer }) {
         {offer.pillars.map((pillar) => {
           const Art = GRAPHICS[pillar.graphic] || GraphicOrbit;
           return (
-            <article key={pillar.title} className={`${styles.offerCard} interactiveCard`}>
+            <article key={pillar.title} className={`${styles.offerCard} interactiveCard cardReveal`}>
               <div className={styles.offerArt}>
                 <Art />
               </div>
@@ -259,14 +260,14 @@ function OfferSection({ offer }) {
           );
         })}
       </div>
-    </section>
+    </Reveal>
   );
 }
 
 function StorySection({ story }) {
   return (
-    <section className={`${styles.story} toneLight`} aria-label={story.eyebrow}>
-      <div className={styles.storyInner}>
+    <Reveal as="section" className={`${styles.story} toneLight`} aria-label={story.eyebrow}>
+      <div className={`${styles.storyInner} revealHead`}>
         <p className={styles.eyebrowDark}>{story.eyebrow}</p>
         <h2>{story.title}</h2>
         <div className={styles.storyProse}>
@@ -275,7 +276,7 @@ function StorySection({ story }) {
           ))}
         </div>
       </div>
-    </section>
+    </Reveal>
   );
 }
 
@@ -283,13 +284,13 @@ function TeamSection({ team }) {
   const { title, members = [] } = team;
 
   return (
-    <section className={styles.founders} aria-label={title}>
+    <Reveal as="section" className={styles.founders} aria-label={title}>
       <h2 className={styles.foundersTitle}>{title}</h2>
       <ul className={styles.founderGrid}>
         {members.map((member) => (
-          <li key={member.name} className={styles.founderCard}>
+          <li key={member.name} className={`${styles.founderCard} interactiveCard cardReveal`}>
             <div className={styles.founderHit}>
-              <div className={styles.portrait}>
+              <div className={`${styles.portrait} mediaZoom`}>
                 {member.image ? (
                   <img src={member.image} alt="" />
                 ) : (
@@ -308,26 +309,28 @@ function TeamSection({ team }) {
           </li>
         ))}
       </ul>
-    </section>
+    </Reveal>
   );
 }
 
 function ValuesSection({ values }) {
   return (
-    <section className={`${styles.values} toneDark`} aria-label={values.eyebrow}>
+    <Reveal as="section" className={`${styles.values} toneDark`} aria-label={values.eyebrow}>
       <div className={styles.valuesInner}>
-        <p className={styles.eyebrowGold}>{values.eyebrow}</p>
-        <h2>{values.title}</h2>
+        <div className="revealHead">
+          <p className={styles.eyebrowGold}>{values.eyebrow}</p>
+          <h2>{values.title}</h2>
+        </div>
         <div className={styles.valuesGrid}>
           {values.items.map((item) => (
-            <article key={item.title} className={`${styles.valueCard} interactiveCard`}>
+            <article key={item.title} className={`${styles.valueCard} interactiveCard cardReveal`}>
               <h3>{item.title}</h3>
               <p>{item.body}</p>
             </article>
           ))}
         </div>
       </div>
-    </section>
+    </Reveal>
   );
 }
 

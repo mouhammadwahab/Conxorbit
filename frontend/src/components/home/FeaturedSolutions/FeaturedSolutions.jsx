@@ -26,7 +26,7 @@ export default function FeaturedSolutions({ content }) {
 
   return (
     <Reveal as="section" className={styles.section} aria-label={badge}>
-      <div className={styles.header}>
+      <div className={`${styles.header} revealHead`}>
         <span className={styles.badge}>
           <span aria-hidden="true">✦</span> {badge}
         </span>
@@ -42,18 +42,18 @@ export default function FeaturedSolutions({ content }) {
         {cards.map((card) => {
           const src = card.image || CARD_IMAGES[card.imageKey];
           return (
-            <article key={card.title} className={`${styles.card} interactiveCard`}>
+            <article key={card.title} className={`${styles.card} interactiveCard cardReveal`}>
               <span className={styles.cardBadge}>
                 <span className={styles.dot} aria-hidden="true" />
                 {card.badge}
               </span>
-              <div className={styles.mockup}>
+              <div className={`${styles.mockup} mediaZoom`}>
                 {src ? <img src={src} alt="" loading="lazy" /> : null}
               </div>
               <h3>{card.title}</h3>
               <p className={styles.description}>{card.description}</p>
               <div className={styles.ctaSlot}>
-                <Link className={styles.cta} to={card.href}>
+                <Link className={`${styles.cta} linkDraw`} to={card.href}>
                   {card.cta}
                 </Link>
               </div>
@@ -64,7 +64,7 @@ export default function FeaturedSolutions({ content }) {
 
       {viewAll ? (
         <div className={styles.viewAllRow}>
-          <Link className={styles.viewAll} to={viewAll.href}>
+          <Link className={`${styles.viewAll} linkDraw`} to={viewAll.href}>
             {viewAll.label}
             <span aria-hidden="true">→</span>
           </Link>

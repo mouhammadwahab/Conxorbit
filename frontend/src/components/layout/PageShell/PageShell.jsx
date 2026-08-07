@@ -25,9 +25,9 @@ export default function PageShell({ atmosphere = "services", children }) {
         {depthSrc ? (
           <img className={styles.depthImage} src={depthSrc} alt="" />
         ) : null}
-        <span className={`${styles.orb} ${styles.orbOne}`} />
-        <span className={`${styles.orb} ${styles.orbTwo}`} />
-        <span className={`${styles.orb} ${styles.orbThree}`} />
+        <span className={`${styles.orb} ${styles.orbOne} orbFloat`} />
+        <span className={`${styles.orb} ${styles.orbTwo} orbFloat orbFloatDelay2`} />
+        <span className={`${styles.orb} ${styles.orbThree} orbFloat orbFloatDelay3`} />
         <span className={styles.mesh} />
       </div>
       <div className={styles.content}>{children}</div>

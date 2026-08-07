@@ -11,8 +11,9 @@ export const site = {
 export const navLinks = [
   {
     label: "Solutions",
-    href: "/solutions/facade",
+    href: "/solutions",
     children: [
+      { label: "All Solutions", href: "/solutions" },
       { label: "Façade & Curtain Wall", href: "/solutions/facade" },
       { label: "Construction Technology", href: "/solutions/construction" },
     ],
@@ -54,7 +55,7 @@ export const homeContent = {
     title: "Intelligent Systems for the Façade & Construction Industry",
     body: "We design AI-powered platforms, automation, and custom software that streamline construction workflows—from drawings and estimation to site operations and project delivery.",
     primaryCta: { label: "Book a Discovery Call", href: "/contact" },
-    secondaryCta: { label: "Explore Solutions", href: "/solutions/facade" },
+    secondaryCta: { label: "Explore Solutions", href: "/solutions" },
     statCards: [
       { label: "Workflow-First Approach" },
       { label: "Custom-Built Systems" },
@@ -167,7 +168,7 @@ export const homeContent = {
     titleHighlight: "Construction Workflows",
     titleAfter: ".",
     body: "Explore a selection of client systems, internal products, and innovation projects designed to streamline operations, reduce manual work, and improve the way construction teams deliver projects.",
-    viewAll: { label: "View All Solutions", href: "/products" },
+    viewAll: { label: "View All Solutions", href: "/solutions" },
     cards: [
       {
         badge: "Façade",
@@ -190,7 +191,7 @@ export const homeContent = {
         imageKey: "aluminium",
         title: "Materials Delivery",
         description: "Receive the right materials on site without drama.",
-        href: "/products",
+        href: "/solutions",
         cta: "View Solution",
       },
       {

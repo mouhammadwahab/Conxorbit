@@ -128,7 +128,7 @@ export default function Navbar() {
         )}
       </nav>
 
-      <Link className={styles.button} to="/contact">
+      <Link className={`${styles.button} btnMotion`} to="/contact">
         Book a Discovery Call
       </Link>
     </header>

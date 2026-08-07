@@ -2,13 +2,14 @@ import facadeImg from "../../../assets/tradeCards/facade.jfif";
 import siteImg from "../../../assets/tradeCards/site-monitoring.jpg";
 import waveBg from "../../../assets/images/wave-bg5.png";
 import waveSoft from "../../../assets/images/wavenew.png";
+import { serviceShellImage } from "../../../assets/services";
 import styles from "./PageShell.module.css";
 
 const DEPTH = {
   facade: facadeImg,
   construction: siteImg,
   partners: waveBg,
-  services: waveSoft,
+  services: serviceShellImage,
   products: waveSoft,
   cases: facadeImg,
   about: waveBg,

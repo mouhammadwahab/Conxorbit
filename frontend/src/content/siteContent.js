@@ -17,7 +17,26 @@ export const navLinks = [
       { label: "Construction Technology", href: "/solutions/construction" },
     ],
   },
-  { label: "Services", href: "/services" },
+  {
+    label: "Services",
+    href: "/services/custom-ai-development",
+    children: [
+      { label: "Custom AI Development", href: "/services/custom-ai-development" },
+      {
+        label: "Workflow Analysis & Consulting",
+        href: "/services/workflow-analysis-consulting",
+      },
+      { label: "Integration Services", href: "/services/integration-services" },
+      {
+        label: "Training & Implementation",
+        href: "/services/training-implementation",
+      },
+      {
+        label: "Construction Website Development",
+        href: "/services/construction-website-development",
+      },
+    ],
+  },
   { label: "Products", href: "/products" },
   { label: "Case Studies", href: "/case-studies" },
   { label: "Partners", href: "/partners" },
@@ -458,38 +477,7 @@ export const constructionContent = {
   },
 };
 
-export const servicesContent = {
-  meta: {
-    title: "Services — ConX Orbit",
-    description:
-      "Custom software development, AI & automation, and website development for construction and façade companies.",
-  },
-  hero: {
-    eyebrow: "What we do",
-    title: "Services that stay close to the work",
-    body: "Three clear offers. One team that understands construction and façade delivery.",
-  },
-  steps: [
-    {
-      title: "Custom Software Development",
-      body: "Web and mobile systems shaped around your people — from first workshop to stable production.",
-    },
-    {
-      title: "AI & Automation",
-      body: "Practical AI: assistants, document help, and workflow automation that earn trust before they scale.",
-    },
-    {
-      title: "Website Development",
-      body: "Marketing and product sites that feel like your brand — fast, clear, and easy to update.",
-    },
-  ],
-  cta: {
-    title: "Need a build partner?",
-    body: "Tell us what you’re looking for. We’ll respond with scope options and a suggested starting point.",
-    href: "/contact",
-    label: "Contact us",
-  },
-};
+export { servicePages, getServicePage, serviceSlugs } from "./servicePages";
 
 export const productsContent = {
   meta: {
@@ -763,11 +751,27 @@ export const footerContent = {
       ],
     },
     {
-      title: "Work",
+      title: "Services",
       links: [
-        { label: "Services", href: "/services" },
-        { label: "Products", href: "/products" },
+        { label: "Custom AI Development", href: "/services/custom-ai-development" },
+        {
+          label: "Workflow Analysis & Consulting",
+          href: "/services/workflow-analysis-consulting",
+        },
+        { label: "Integration Services", href: "/services/integration-services" },
+        {
+          label: "Training & Implementation",
+          href: "/services/training-implementation",
+        },
+        {
+          label: "Construction Website Development",
+          href: "/services/construction-website-development",
+        },
       ],
+    },
+    {
+      title: "Work",
+      links: [{ label: "Products", href: "/products" }],
     },
   ],
   legal: "© ConX Orbit. All rights reserved.",

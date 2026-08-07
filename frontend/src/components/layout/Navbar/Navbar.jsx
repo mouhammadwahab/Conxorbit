@@ -6,9 +6,9 @@ import styles from "./Navbar.module.css";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState(false);
+  const [openMenu, setOpenMenu] = useState(null);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const dropdownRef = useRef(null);
+  const menuRefs = useRef({});
   const location = useLocation();
 
   useEffect(() => {
@@ -20,24 +20,28 @@ export default function Navbar() {
 
   useEffect(() => {
     setMobileOpen(false);
-    setOpenDropdown(false);
+    setOpenMenu(null);
   }, [location.pathname]);
 
   useEffect(() => {
-    if (!openDropdown) return undefined;
+    if (!openMenu) return undefined;
 
     const onDoc = (event) => {
-      if (!dropdownRef.current?.contains(event.target)) {
-        setOpenDropdown(false);
+      const current = menuRefs.current[openMenu];
+      if (!current?.contains(event.target)) {
+        setOpenMenu(null);
       }
     };
 
-    // Use click (not pointerdown) so the opening click is not raced
     document.addEventListener("click", onDoc);
     return () => document.removeEventListener("click", onDoc);
-  }, [openDropdown]);
+  }, [openMenu]);
 
-  const isSolutionsActive = location.pathname.startsWith("/solutions");
+  const isLinkActive = (link) => {
+    if (link.label === "Solutions") return location.pathname.startsWith("/solutions");
+    if (link.label === "Services") return location.pathname.startsWith("/services");
+    return false;
+  };
 
   return (
     <header
@@ -66,20 +70,24 @@ export default function Navbar() {
           link.children ? (
             <div
               key={link.label}
-              className={`${styles.dropdown}${openDropdown ? ` ${styles.dropdownOpen}` : ""}`}
-              ref={dropdownRef}
-              onMouseEnter={() => setOpenDropdown(true)}
-              onMouseLeave={() => setOpenDropdown(false)}
+              className={`${styles.dropdown}${
+                openMenu === link.label ? ` ${styles.dropdownOpen}` : ""
+              }`}
+              ref={(el) => {
+                menuRefs.current[link.label] = el;
+              }}
+              onMouseEnter={() => setOpenMenu(link.label)}
+              onMouseLeave={() => setOpenMenu(null)}
             >
               <button
                 type="button"
-                className={isSolutionsActive ? styles.activeLink : styles.link}
-                aria-expanded={openDropdown}
+                className={isLinkActive(link) ? styles.activeLink : styles.link}
+                aria-expanded={openMenu === link.label}
                 aria-haspopup="true"
                 onClick={(event) => {
                   event.preventDefault();
                   event.stopPropagation();
-                  setOpenDropdown((prev) => !prev);
+                  setOpenMenu((prev) => (prev === link.label ? null : link.label));
                 }}
               >
                 {link.label}
@@ -88,7 +96,9 @@ export default function Navbar() {
                 </span>
               </button>
               <div
-                className={`${styles.menu}${openDropdown ? ` ${styles.menuOpen}` : ""}`}
+                className={`${styles.menu}${
+                  openMenu === link.label ? ` ${styles.menuOpen}` : ""
+                }`}
                 role="menu"
               >
                 {link.children.map((child) => (
@@ -99,7 +109,7 @@ export default function Navbar() {
                     className={({ isActive }) =>
                       isActive ? styles.menuActive : styles.menuLink
                     }
-                    onClick={() => setOpenDropdown(false)}
+                    onClick={() => setOpenMenu(null)}
                   >
                     {child.label}
                   </NavLink>

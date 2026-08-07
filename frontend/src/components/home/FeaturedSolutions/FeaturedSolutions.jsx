@@ -39,28 +39,27 @@ export default function FeaturedSolutions({ content }) {
       </div>
 
       <div className={styles.grid}>
-        {cards.map((card) => (
-          <article key={card.title} className={`${styles.card} interactiveCard`}>
-            <span className={styles.cardBadge}>
-              <span className={styles.dot} aria-hidden="true" />
-              {card.badge}
-            </span>
-            <div className={styles.mockup}>
-              <img
-                src={CARD_IMAGES[card.imageKey]}
-                alt=""
-                loading="lazy"
-              />
-            </div>
-            <h3>{card.title}</h3>
-            <p className={styles.description}>{card.description}</p>
-            <div className={styles.ctaSlot}>
-              <Link className={styles.cta} to={card.href}>
-                {card.cta}
-              </Link>
-            </div>
-          </article>
-        ))}
+        {cards.map((card) => {
+          const src = card.image || CARD_IMAGES[card.imageKey];
+          return (
+            <article key={card.title} className={`${styles.card} interactiveCard`}>
+              <span className={styles.cardBadge}>
+                <span className={styles.dot} aria-hidden="true" />
+                {card.badge}
+              </span>
+              <div className={styles.mockup}>
+                {src ? <img src={src} alt="" loading="lazy" /> : null}
+              </div>
+              <h3>{card.title}</h3>
+              <p className={styles.description}>{card.description}</p>
+              <div className={styles.ctaSlot}>
+                <Link className={styles.cta} to={card.href}>
+                  {card.cta}
+                </Link>
+              </div>
+            </article>
+          );
+        })}
       </div>
 
       {viewAll ? (

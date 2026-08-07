@@ -1,0 +1,7 @@
+.page {
+  background: #050c0b;
+}
+
+.page :global(section) {
+  position: relative;
+}

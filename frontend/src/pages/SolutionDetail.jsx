@@ -2,8 +2,16 @@ import { Link, Navigate, useParams } from "react-router-dom";
 import SEO from "../components/common/SEO";
 import PageShell from "../components/layout/PageShell/PageShell";
 import SolutionDetailHero from "../components/solutions/SolutionDetailHero";
+import SolutionStats from "../components/solutions/SolutionStats";
+import SolutionChallenge from "../components/solutions/SolutionChallenge";
+import SolutionCapabilities from "../components/solutions/SolutionCapabilities";
+import SolutionHowItWorks from "../components/solutions/SolutionHowItWorks";
+import SolutionBuiltFor from "../components/solutions/SolutionBuiltFor";
+import SolutionDemo from "../components/solutions/SolutionDemo";
+import SolutionMore from "../components/solutions/SolutionMore";
 import SolutionsFinalCta from "../components/solutions/SolutionsFinalCta";
-import { getSolution, solutionsListing } from "../content/solutionsContent";
+import FAQAccordion from "../components/home/FAQAccordion/FAQAccordion";
+import { getSolution } from "../content/solutionsContent";
 import styles from "./SolutionDetail.module.css";
 
 export default function SolutionDetail() {
@@ -14,6 +22,8 @@ export default function SolutionDetail() {
     return <Navigate to="/solutions" replace />;
   }
 
+  const { detail } = solution;
+
   return (
     <PageShell atmosphere="services">
       <SEO
@@ -23,12 +33,20 @@ export default function SolutionDetail() {
       />
       <div className={styles.page}>
         <div className={styles.top}>
-          <Link className={styles.back} to="/solutions">
+          <Link className={`${styles.back} linkDraw`} to="/solutions">
             ← All Solutions
           </Link>
         </div>
         <SolutionDetailHero solution={solution} />
-        <SolutionsFinalCta content={solutionsListing.cta} />
+        <SolutionStats stats={detail.stats} />
+        <SolutionChallenge content={detail.challenge} />
+        <SolutionCapabilities content={detail.capabilities} />
+        <SolutionHowItWorks content={detail.howItWorks} />
+        <SolutionBuiltFor content={detail.builtFor} />
+        <SolutionDemo content={detail.demo} fallbackPoster={solution.image} />
+        <SolutionMore content={detail.more} />
+        {detail.faq ? <FAQAccordion content={detail.faq} /> : null}
+        {detail.cta ? <SolutionsFinalCta content={detail.cta} /> : null}
       </div>
     </PageShell>
   );

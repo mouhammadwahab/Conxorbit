@@ -213,22 +213,26 @@ function GlowHero({ glowHero }) {
         </div>
 
         <div className={styles.glowCopySlot}>
-          <p
-            className={`${styles.glowPhase} ${styles.glowPhaseLine} ${
+          <div
+            className={`${styles.glowPhase} ${styles.glowPhaseIntro} ${
               phase === 0 ? styles.glowPhaseActive : ""
             }`}
             aria-hidden={phase !== 0}
           >
-            {glowHero.phase1}
-          </p>
-          <h1
+            <span className={styles.glowRule} aria-hidden="true" />
+            <p className={styles.glowEyebrow}>{glowHero.phase1.eyebrow}</p>
+            <h1 className={styles.glowIntroTitle}>
+              <span>{glowHero.phase1.titleLine1}</span>
+              <span>{glowHero.phase1.titleLine2}</span>
+            </h1>
+          </div>
+          <p
             className={`${styles.glowPhase} ${styles.glowPhaseTitle} ${
               phase === 1 ? styles.glowPhaseActive : ""
             }`}
           >
-            <span>{glowHero.phase2.line1}</span>
-            <span>{glowHero.phase2.line2}</span>
-          </h1>
+            {glowHero.phase2}
+          </p>
         </div>
       </div>
     </section>
@@ -266,17 +270,53 @@ function OfferSection({ offer }) {
 
 function StorySection({ story }) {
   return (
-    <Reveal as="section" className={`${styles.story} toneLight`} aria-label={story.eyebrow}>
+    <Reveal as="section" className={styles.story} aria-label={story.eyebrow}>
       <div className={`${styles.storyInner} revealHead`}>
-        <p className={styles.eyebrowDark}>{story.eyebrow}</p>
-        <h2>{story.title}</h2>
+        <div className={styles.storyHead}>
+          <span className={styles.storyEyebrow}>
+            <span className={styles.storyRule} aria-hidden="true" />
+            {story.eyebrow}
+          </span>
+          <h2>{story.title}</h2>
+        </div>
+
         <div className={styles.storyProse}>
-          {story.paragraphs.map((p) => (
-            <p key={p.slice(0, 40)}>{p}</p>
+          {(story.opening || []).map((p) => (
+            <p key={p.slice(0, 48)}>{p}</p>
           ))}
         </div>
+
+        {story.pullQuote ? (
+          <blockquote className={styles.storyPull}>
+            <p>{story.pullQuote}</p>
+          </blockquote>
+        ) : null}
+
+        <div className={styles.storyProse}>
+          {(story.body || []).map((p) => (
+            <p key={p.slice(0, 48)}>{p}</p>
+          ))}
+        </div>
+
+        {story.closing ? (
+          <p className={styles.storyClosing}>
+            <span className={styles.storyClosingRule} aria-hidden="true" />
+            {story.closing}
+          </p>
+        ) : null}
       </div>
     </Reveal>
+  );
+}
+
+function LinkedInIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path
+        fill="currentColor"
+        d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"
+      />
+    </svg>
   );
 }
 
@@ -296,6 +336,18 @@ function TeamSection({ team }) {
                 ) : (
                   <span className={styles.portraitInitials}>{initials(member.name)}</span>
                 )}
+                {member.linkedin ? (
+                  <a
+                    className={styles.linkedinBtn}
+                    href={member.linkedin}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`${member.name} on LinkedIn`}
+                    onClick={(event) => event.stopPropagation()}
+                  >
+                    <LinkedInIcon />
+                  </a>
+                ) : null}
               </div>
               <div className={styles.founderInfo}>
                 <span className={styles.founderName}>{member.name}</span>
@@ -348,7 +400,7 @@ export default function About() {
       <CTABand
         title="Want to work with us?"
         body="Tell us what you’re building. We’ll reply from the founder inbox with a clear next step."
-        href="/contact"
+        href="/book-discovery"
         label="Start a project"
       />
     </PageShell>

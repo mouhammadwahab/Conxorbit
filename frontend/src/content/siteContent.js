@@ -38,9 +38,7 @@ export const navLinks = [
       },
     ],
   },
-  { label: "Products", href: "/products" },
-  { label: "Case Studies", href: "/case-studies" },
-  { label: "Partners", href: "/partners" },
+  { label: "Portfolio", href: "/portfolio" },
   { label: "About", href: "/about" },
 ];
 
@@ -54,7 +52,7 @@ export const homeContent = {
     eyebrow: "Built for Façade & Construction Teams",
     title: "Intelligent Systems for the Façade & Construction Industry",
     body: "We design AI-powered platforms, automation, and custom software that streamline construction workflows—from drawings and estimation to site operations and project delivery.",
-    primaryCta: { label: "Book a Discovery Call", href: "/contact" },
+    primaryCta: { label: "Book a Discovery Call", href: "/book-discovery" },
     secondaryCta: { label: "Explore Solutions", href: "/solutions" },
     statCards: [
       { label: "Workflow-First Approach" },
@@ -167,7 +165,7 @@ export const homeContent = {
     titleBefore: "Systems Built for Real ",
     titleHighlight: "Construction Workflows",
     titleAfter: ".",
-    body: "Explore a selection of client systems, internal products, and innovation projects designed to streamline operations, reduce manual work, and improve the way construction teams deliver projects.",
+    body: "Explore a selection of client systems and workflow solutions designed to streamline operations, reduce manual work, and improve the way construction teams deliver projects.",
     viewAll: { label: "View All Solutions", href: "/solutions" },
     cards: [
       {
@@ -199,7 +197,7 @@ export const homeContent = {
         imageKey: "exterior",
         title: "Commissioning Platform",
         description: "Commission with curated context, not backtracking.",
-        href: "/case-studies",
+        href: "/portfolio",
         cta: "View Solution",
       },
     ],
@@ -249,7 +247,7 @@ export const homeContent = {
     titleAfter: "",
     body: "A custom platform that unifies drawings, panel status, site photos, and project documents—so façade teams work from one live source of truth.",
     mockupLabel: "A SINGLE SOURCE OF TRUTH",
-    cta: { label: "Explore the Case Study", href: "/case-studies" },
+    cta: { label: "Explore the Case Study", href: "/portfolio" },
     features: [
       {
         icon: "drawing",
@@ -273,18 +271,6 @@ export const homeContent = {
       },
     ],
   },
-  proof: {
-    eyebrow: "Trusted By",
-    title: "Built with industry partners in mind",
-    companies: [
-      { name: "Partner One", initials: "P1" },
-      { name: "Partner Two", initials: "P2" },
-      { name: "Partner Three", initials: "P3" },
-      { name: "Partner Four", initials: "P4" },
-      { name: "Partner Five", initials: "P5" },
-      { name: "Partner Six", initials: "P6" },
-    ],
-  },
   whyWorkWithUs: {
     badge: "What Makes Us Different",
     title: "Built around how construction teams actually work.",
@@ -303,7 +289,7 @@ export const homeContent = {
       },
       {
         icon: "partnership",
-        badge: "Engineering Partnership",
+        badge: "Founder-Led",
         title: "Founder-Led Collaboration",
         body: "You work directly with the people designing and building your solution. Faster decisions, clearer communication, and a shared focus on solving the right problems.",
       },
@@ -345,7 +331,7 @@ export const homeContent = {
   },
   testimonials: {
     badge: "Testimonials",
-    titleBefore: "What partners say about ",
+    titleBefore: "What clients say about ",
     titleHighlight: "working with us",
     titleAfter: "",
     items: [
@@ -375,8 +361,8 @@ export const homeContent = {
   closingCta: {
     title: "Let's Talk About the Way Your Business Works.",
     body: "Whether you're exploring automation, improving an existing workflow, or planning a new platform, we'll help you identify where technology can create the greatest operational impact.",
-    primaryCta: { label: "Book a Discovery Call", href: "/contact" },
-    secondaryCta: { label: "View Portfolio", href: "/case-studies" },
+    primaryCta: { label: "Book a Discovery Call", href: "/book-discovery" },
+    secondaryCta: { label: "View Portfolio", href: "/portfolio" },
   },
 };
 
@@ -424,7 +410,7 @@ export const facadeContent = {
   cta: {
     title: "Talk façade systems with us",
     body: "Share how your shop and site run today. We’ll map where software can remove the most friction.",
-    href: "/contact",
+    href: "/book-discovery",
     label: "Start a project",
   },
 };
@@ -473,41 +459,12 @@ export const constructionContent = {
   cta: {
     title: "Build the next layer of your stack",
     body: "Describe the bottleneck. We’ll propose a practical path — custom build, AI, or both.",
-    href: "/contact",
+    href: "/book-discovery",
     label: "Start a project",
   },
 };
 
 export { servicePages, getServicePage, serviceSlugs } from "./servicePages";
-
-export const productsContent = {
-  meta: {
-    title: "Products — ConX Orbit",
-    description: "ConX Orbit product teasers — platforms in development for façade and construction teams.",
-  },
-  hero: {
-    eyebrow: "Products",
-    title: "In development — growing with every\nclient engagement",
-    body: "These are early product directions. Details and naming will firm up as we ship with partners.",
-  },
-  products: [
-    {
-      title: "Façade Operations Hub",
-      status: "In development",
-      body: "A shared home for drawings, panel status, and project questions — starting with curtain wall teams.",
-    },
-    {
-      title: "Site Clarity Suite",
-      status: "In development",
-      body: "Lightweight field and office tools that keep progress visible without another bloated platform.",
-    },
-    {
-      title: "Orbit AI Assist",
-      status: "In development",
-      body: "Project-aware chat and automation hooks you can grow into as your data readiness improves.",
-    },
-  ],
-};
 
 export const caseStudiesContent = {
   meta: {
@@ -571,40 +528,6 @@ export const caseStudiesContent = {
   ],
 };
 
-export const partnersContent = {
-  meta: {
-    title: "Partners — ConX Orbit",
-    description: "Companies and collaborators working with ConX Orbit.",
-  },
-  hero: {
-    eyebrow: "Partners",
-    title: "People we build alongside",
-    body: "Logo and description slots — replace with real partners as relationships go live.",
-  },
-  partners: [
-    {
-      name: "Partner Alpha",
-      description: "Façade specialist — collaboration placeholder for joint delivery.",
-      link: "#",
-    },
-    {
-      name: "Partner Beta",
-      description: "Construction technology ally — integration and go-to-market placeholder.",
-      link: "#",
-    },
-    {
-      name: "Partner Gamma",
-      description: "Industry consultant network — advisory and introductions placeholder.",
-      link: "#",
-    },
-    {
-      name: "Partner Delta",
-      description: "Fabrication ecosystem partner — shop-floor tooling placeholder.",
-      link: "#",
-    },
-  ],
-};
-
 export const aboutContent = {
   meta: {
     title: "About — ConX Orbit",
@@ -612,11 +535,12 @@ export const aboutContent = {
       "ConX Orbit builds custom software and AI for construction and façade. Meet our team.",
   },
   glowHero: {
-    phase1: "Our business is clarity, consistency & craft",
-    phase2: {
-      line1: "We are value creators",
-      line2: "with hyperfocus.",
+    phase1: {
+      eyebrow: "ABOUT CONX ORBIT",
+      titleLine1: "Technology Should Understand",
+      titleLine2: "the Work It Is Built For.",
     },
+    phase2: "Understand the workflow. Build around it. Make it work better.",
   },
   offer: {
     badge: "We offer",
@@ -640,14 +564,18 @@ export const aboutContent = {
     ],
   },
   story: {
-    eyebrow: "Our story",
-    title: "Designed for builders, built by understanding",
-    paragraphs: [
-      "We set out to create software that turns isolated moments of excellence on a project into a seamless, repeatable experience. Construction and façade teams deserve tools that respect how they work — not another generic dashboard that creates more chasing than clarity.",
-      "Simplicity is easy to say and hard to do. We spent years watching where friction lives: missing context at decision points, unclear dependencies between shop and site, incomplete validations, and information that arrives too late or too loud. When those gaps drag on, teams spend their energy managing the tool instead of the work.",
-      "There’s no better feeling than knowing something will be done correctly — on time, with the right people informed. That confidence is what lets crews focus on what matters. We built ConX Orbit to deliver that standard: custom software and practical AI that remove real friction, with direct communication and designs operators can trust.",
-      "We take on problems where a custom build or AI can earn its place. If a spreadsheet is enough, we’ll say so. Where we’re going is deeper façade platforms, durable partnerships, and software that keeps compounding value long after launch — not a catalogue of abandoned apps.",
+    eyebrow: "OUR STORY",
+    title: "Built From How the Work Actually Happens.",
+    opening: [
+      "Construction and façade teams work with enormous amounts of information — drawings, specifications, quantities, documents, fabrication data, site updates, and countless decisions. Yet much of that work still depends on disconnected tools, spreadsheets, repetitive processes, and manual coordination.",
     ],
+    pullQuote: "We saw an opportunity to build technology differently.",
+    body: [
+      "ConX Orbit started with a focus on understanding the work before building the technology. Instead of forcing teams into generic software, we work closely with real workflows to identify where information gets lost, where repetitive work slows teams down, and where AI and automation can genuinely make a difference.",
+      "Today, we work directly with companies to build custom platforms and intelligent systems around their operations. At the same time, we're developing our own products around recurring challenges we see across the industry.",
+    ],
+    closing:
+      "Our direction is simple: build technology that understands the industry, solves real problems, and makes complex work easier to move forward.",
   },
   team: {
     title: "Meet our team",
@@ -655,6 +583,7 @@ export const aboutContent = {
       {
         name: "Ghulam Murtaza",
         role: "Founder | CEO",
+        linkedin: site.linkedin,
         quote:
           "Well done is better than well said — especially on a live project.",
         quoteAuthor: "ConX Orbit",
@@ -664,6 +593,7 @@ export const aboutContent = {
       {
         name: "Mustafa",
         role: "Co-Founder | Ops & Technical Lead",
+        linkedin: site.linkedin,
         quote: "Great systems are created by people free to solve the real problem.",
         quoteAuthor: "ConX Orbit",
         detail:
@@ -703,35 +633,6 @@ export const aboutContent = {
   },
 };
 
-export const contactContent = {
-  meta: {
-    title: "Start a Project — ConX Orbit",
-    description: "Contact ConX Orbit to start a custom software or AI project for construction or façade.",
-  },
-  hero: {
-    eyebrow: "Contact",
-    title: "Start a project",
-    body: "Share a few details. We’ll follow up from the founder inbox with a clear next step.",
-  },
-  form: {
-    fields: {
-      name: "Name",
-      email: "Email",
-      company: "Company",
-      message: "What are you looking to build?",
-    },
-    submit: "Send message",
-    success: "Thanks — we’ll be in touch soon.",
-    error: "Something went wrong. Please email us directly.",
-  },
-  aside: {
-    title: "Reach us directly",
-    emailLabel: "Email",
-    phoneLabel: "Phone",
-    whatsappLabel: "WhatsApp",
-  },
-};
-
 export const footerContent = {
   blurb: "Custom software and AI for construction and façade teams.",
   columns: [
@@ -746,9 +647,8 @@ export const footerContent = {
       title: "Company",
       links: [
         { label: "About", href: "/about" },
-        { label: "Partners", href: "/partners" },
-        { label: "Case Studies", href: "/case-studies" },
-        { label: "Contact", href: "/contact" },
+        { label: "Portfolio", href: "/portfolio" },
+        { label: "Book a Discovery Call", href: "/book-discovery" },
       ],
     },
     {
@@ -769,10 +669,6 @@ export const footerContent = {
           href: "/services/construction-website-development",
         },
       ],
-    },
-    {
-      title: "Work",
-      links: [{ label: "Products", href: "/products" }],
     },
   ],
   legal: "© ConX Orbit. All rights reserved.",

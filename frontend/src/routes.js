@@ -4,17 +4,27 @@ import ConstructionSolution from "./pages/ConstructionSolution";
 import Solutions from "./pages/Solutions";
 import SolutionDetail from "./pages/SolutionDetail";
 import ServiceDetail from "./pages/ServiceDetail";
-import Products from "./pages/Products";
-import CaseStudies from "./pages/CaseStudies";
+import Portfolio from "./pages/Portfolio";
 import CaseStudyDetail from "./pages/CaseStudyDetail";
-import Partners from "./pages/Partners";
 import About from "./pages/About";
-import Contact from "./pages/Contact";
+import BookDiscovery from "./pages/BookDiscovery";
 import NotFound from "./pages/NotFound";
 import { Navigate } from "react-router-dom";
 
 function ServicesRedirect() {
   return <Navigate to="/services/custom-ai-development" replace />;
+}
+
+function CaseStudiesRedirect() {
+  return <Navigate to="/portfolio" replace />;
+}
+
+function HomeRedirect() {
+  return <Navigate to="/" replace />;
+}
+
+function DiscoveryRedirect() {
+  return <Navigate to="/book-discovery" replace />;
 }
 
 export const routes = [
@@ -25,11 +35,13 @@ export const routes = [
   { path: "/solutions/:slug", element: SolutionDetail },
   { path: "/services", element: ServicesRedirect },
   { path: "/services/:slug", element: ServiceDetail },
-  { path: "/products", element: Products },
-  { path: "/case-studies", element: CaseStudies },
+  { path: "/products", element: HomeRedirect },
+  { path: "/portfolio", element: Portfolio },
+  { path: "/case-studies", element: CaseStudiesRedirect },
   { path: "/case-studies/:slug", element: CaseStudyDetail },
-  { path: "/partners", element: Partners },
+  { path: "/partners", element: HomeRedirect },
   { path: "/about", element: About },
-  { path: "/contact", element: Contact },
+  { path: "/book-discovery", element: BookDiscovery },
+  { path: "/contact", element: DiscoveryRedirect },
   { path: "*", element: NotFound },
 ];

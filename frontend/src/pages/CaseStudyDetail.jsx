@@ -10,7 +10,7 @@ export default function CaseStudyDetail() {
   const item = caseStudiesContent.items.find((c) => c.slug === slug);
 
   if (!item) {
-    return <Navigate to="/case-studies" replace />;
+    return <Navigate to="/portfolio" replace />;
   }
 
   return (
@@ -21,7 +21,7 @@ export default function CaseStudyDetail() {
         path={`/case-studies/${item.slug}`}
       />
       <article className={`${styles.page} toneLight`}>
-        <Link className={`${styles.back} linkDraw`} to="/case-studies">
+        <Link className={`${styles.back} linkDraw`} to="/portfolio">
           ← All case studies
         </Link>
         <p className={styles.industry}>{item.industry}</p>

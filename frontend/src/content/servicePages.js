@@ -44,7 +44,7 @@ const sharedWhy = {
   badge: "WHY CONX ORBIT",
   title: "Built Like an Engineering Partner, Not Just a Development Agency.",
   body: "Every solution is shaped around your operations, your people, and the way your projects move—not around pre-built templates or generic AI tools.",
-  cta: { label: "Book Consultation", href: "/contact" },
+  cta: { label: "Book Consultation", href: "/book-discovery" },
   cards: [
     {
       number: "01",
@@ -100,7 +100,7 @@ const sharedCta = {
   badge: "DISCUSS YOUR WORKFLOW",
   title: "Let's Talk About Your Workflow.",
   body: "Whether you're exploring AI, replacing manual processes, or planning a custom platform, we'd love to understand your goals and discuss what's possible.",
-  primary: { label: "Book a Discovery Call", href: "/contact" },
+  primary: { label: "Book a Discovery Call", href: "/book-discovery" },
   secondary: { label: "Explore Solutions", href: "/solutions" },
 };
 
@@ -169,7 +169,7 @@ export const servicePages = {
       titleHighlight: "AI",
       titleAfter: " Development",
       body: "We design intelligent systems around your construction workflows—from drawing intelligence and quotation automation to document analysis and operational decision support.",
-      primaryCta: { label: "Book Consultation", href: "/contact" },
+      primaryCta: { label: "Book Consultation", href: "/book-discovery" },
       secondaryCta: { label: "View Related Solutions", href: "/solutions" },
     },
     value: {
@@ -233,7 +233,7 @@ export const servicePages = {
       titleHighlight: "Consulting",
       titleAfter: "",
       body: "We study how your teams work today, identify where time and accuracy are being lost, and define the opportunities where custom software or AI can create real impact.",
-      primaryCta: { label: "Book Consultation", href: "/contact" },
+      primaryCta: { label: "Book Consultation", href: "/book-discovery" },
       secondaryCta: { label: "View Related Solutions", href: "/solutions" },
     },
     value: {
@@ -349,7 +349,7 @@ export const servicePages = {
       titleHighlight: "Services",
       titleAfter: "",
       body: "New systems should work with the tools you already rely on. We connect platforms, drawings, databases, and business workflows into one coherent digital environment.",
-      primaryCta: { label: "Book Consultation", href: "/contact" },
+      primaryCta: { label: "Book Consultation", href: "/book-discovery" },
       secondaryCta: { label: "View Related Solutions", href: "/solutions" },
     },
     value: {
@@ -465,7 +465,7 @@ export const servicePages = {
       titleHighlight: "Implementation",
       titleAfter: "",
       body: "We support your team through onboarding, training, rollout, and continuous improvement so every solution becomes part of daily operations—not a shelfware launch.",
-      primaryCta: { label: "Book Consultation", href: "/contact" },
+      primaryCta: { label: "Book Consultation", href: "/book-discovery" },
       secondaryCta: { label: "View Related Solutions", href: "/solutions" },
     },
     value: {
@@ -581,7 +581,7 @@ export const servicePages = {
       titleHighlight: "Development",
       titleAfter: "",
       body: "We design and build marketing and product sites that feel like your brand—fast, clear, and easy to update—so prospects and partners understand your capabilities without a sales call.",
-      primaryCta: { label: "Book Consultation", href: "/contact" },
+      primaryCta: { label: "Book Consultation", href: "/book-discovery" },
       secondaryCta: { label: "View Related Solutions", href: "/solutions" },
     },
     value: {

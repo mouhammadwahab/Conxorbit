@@ -147,7 +147,7 @@ export default function Navbar() {
 
       <Link
         className={`${styles.button} btnMotion`}
-        to="/contact"
+        to="/book-discovery"
         onClick={() => scrollToTop()}
       >
         Book a Discovery Call

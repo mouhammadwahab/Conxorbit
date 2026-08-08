@@ -1,0 +1,9 @@
+.page {
+  position: relative;
+  z-index: 1;
+  background: #071411;
+}
+
+.page :global(section) {
+  scroll-margin-top: 96px;
+}

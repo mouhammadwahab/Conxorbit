@@ -150,41 +150,60 @@
   pointer-events: auto;
 }
 
-.glowPhaseLine {
-  font-size: clamp(1.2rem, 2.6vw, 1.9rem);
+.glowPhaseIntro {
+  display: grid;
+  gap: 12px;
+  justify-items: center;
+  max-width: min(92%, 34rem);
+}
+
+.glowRule {
+  display: block;
+  width: 48px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #b8893d 20%, #f3c969 50%, #b8893d 80%, transparent);
+  border-radius: 2px;
+}
+
+.glowEyebrow {
+  margin: 0;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: rgba(247, 247, 244, 0.72);
+}
+
+.glowIntroTitle {
+  margin: 0;
+  display: grid;
+  gap: 0.12em;
   font-family: var(--font-sans);
-  font-weight: 500;
-  line-height: 1.35;
-  letter-spacing: 0.01em;
-  background: linear-gradient(90deg, #8a9e5c 0%, #f3c969 48%, #b8893d 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  max-width: 18ch;
+  font-size: clamp(1.15rem, 2.4vw, 1.75rem);
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 8px 40px rgba(0, 0, 0, 0.45);
+  text-align: center;
+  max-width: 100%;
+}
+
+.glowIntroTitle span {
+  display: block;
+  white-space: nowrap;
 }
 
 .glowPhaseTitle {
-  display: grid;
-  gap: 0.08em;
+  margin: 0;
   font-family: var(--font-sans);
-  font-size: clamp(1.85rem, 4.2vw, 3rem);
-  line-height: 1.15;
+  font-size: clamp(1.55rem, 3.4vw, 2.35rem);
+  line-height: 1.25;
   color: #fff;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   font-weight: 600;
   text-shadow: 0 8px 40px rgba(0, 0, 0, 0.45);
   max-width: 22ch;
-  max-height: none;
-  overflow: visible;
-  overflow-wrap: normal;
-  word-break: normal;
-  hyphens: none;
-  text-wrap: unset;
-}
-
-.glowPhaseTitle span {
-  display: block;
-  white-space: nowrap;
 }
 
 @keyframes ringSpinClockwise {
@@ -279,33 +298,123 @@
 
 /* —— Story —— */
 .story {
-  padding: var(--section-pad);
+  padding: var(--section-pad) clamp(20px, 5vw, 72px);
+  background:
+    radial-gradient(ellipse 60% 50% at 10% 0%, rgba(90, 107, 59, 0.18), transparent 55%),
+    #071411;
 }
 
 .storyInner {
-  max-width: 760px;
+  max-width: 820px;
   margin: 0 auto;
+  display: grid;
+  gap: 28px;
+}
+
+.storyHead {
+  display: grid;
+  gap: 14px;
+}
+
+.storyEyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--gold, #b8893d);
+}
+
+.storyRule {
+  display: inline-block;
+  width: 36px;
+  height: 1px;
+  background: rgba(184, 137, 61, 0.7);
 }
 
 .storyInner h2 {
-  font-size: var(--heading-size-h2);
-  color: var(--forest);
-  margin-bottom: 28px;
+  margin: 0;
+  font-size: clamp(1.7rem, 3.2vw, 2.5rem);
+  color: #f7f7f4;
   line-height: 1.2;
+  letter-spacing: -0.02em;
+  max-width: 16ch;
 }
 
 .storyProse {
   display: grid;
-  gap: 18px;
+  gap: 16px;
 }
 
 .storyProse p {
-  color: #3a4530;
-  line-height: 1.8;
+  margin: 0;
+  color: rgba(232, 237, 216, 0.72);
+  line-height: 1.75;
   font-size: 1.05rem;
 }
 
-/* —— Founders portrait cards —— */
+.storyPull {
+  margin: 4px 0;
+  padding: 22px 0 22px 22px;
+  border-left: 2px solid rgba(184, 137, 61, 0.7);
+  background: linear-gradient(90deg, rgba(184, 137, 61, 0.08), transparent 70%);
+}
+
+.storyPull p {
+  margin: 0;
+  color: #f7f7f4;
+  font-size: clamp(1.2rem, 2.4vw, 1.55rem);
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+  max-width: 22ch;
+}
+
+.storyClosing {
+  margin: 0;
+  display: grid;
+  gap: 14px;
+  color: rgba(232, 237, 216, 0.78);
+  line-height: 1.7;
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+.storyClosingRule {
+  display: block;
+  width: 56px;
+  height: 1px;
+  background: rgba(184, 137, 61, 0.55);
+}
+
+.linkedinBtn {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #0a66c2;
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.linkedinBtn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.linkedinBtn:hover {
+  transform: scale(1.06);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
+}
 .founders {
   padding: var(--section-pad);
   background:
@@ -487,13 +596,28 @@
   }
 
   .glowCopySlot {
-    width: min(72vw, 320px);
-    max-width: 78%;
+    width: min(88vw, 420px);
+    max-width: 90%;
+  }
+
+  .glowIntroTitle {
+    font-size: clamp(0.98rem, 3.6vw, 1.35rem);
+  }
+
+  .glowIntroTitle span {
+    white-space: nowrap;
+  }
+
+  @media (max-width: 420px) {
+    .glowIntroTitle {
+      font-size: clamp(0.88rem, 4.2vw, 1.1rem);
+    }
   }
 
   .glowPhaseTitle {
-    font-size: clamp(1.4rem, 5.2vw, 2rem);
+    font-size: clamp(1.15rem, 4.2vw, 1.65rem);
     max-width: 100%;
+    white-space: normal;
   }
 
   .glowRingSvg {

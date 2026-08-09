@@ -27,17 +27,27 @@ function DiscoveryRedirect() {
   return <Navigate to="/book-discovery" replace />;
 }
 
+function FacadeRedirect() {
+  return <Navigate to="/case-studies/facade" replace />;
+}
+
+function ConstructionRedirect() {
+  return <Navigate to="/case-studies/construction" replace />;
+}
+
 export const routes = [
   { path: "/", element: Home },
   { path: "/solutions", element: Solutions },
-  { path: "/solutions/facade", element: FacadeSolution },
-  { path: "/solutions/construction", element: ConstructionSolution },
+  { path: "/solutions/facade", element: FacadeRedirect },
+  { path: "/solutions/construction", element: ConstructionRedirect },
   { path: "/solutions/:slug", element: SolutionDetail },
   { path: "/services", element: ServicesRedirect },
   { path: "/services/:slug", element: ServiceDetail },
   { path: "/products", element: HomeRedirect },
   { path: "/portfolio", element: Portfolio },
   { path: "/case-studies", element: CaseStudiesRedirect },
+  { path: "/case-studies/facade", element: FacadeSolution },
+  { path: "/case-studies/construction", element: ConstructionSolution },
   { path: "/case-studies/:slug", element: CaseStudyDetail },
   { path: "/partners", element: HomeRedirect },
   { path: "/about", element: About },

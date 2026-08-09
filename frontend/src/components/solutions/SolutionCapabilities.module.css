@@ -1,5 +1,5 @@
 .section {
-  padding: 56px clamp(20px, 5vw, 72px);
+  padding: var(--section-pad);
 }
 
 .header {
@@ -99,9 +99,12 @@
 .index {
   margin-top: auto;
   padding-top: 14px;
-  color: rgba(232, 237, 216, 0.45);
-  font-size: 0.8rem;
+  color: var(--color-accent-bright);
+  font-size: 0.82rem;
+  font-weight: 600;
   letter-spacing: 0.08em;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.85;
 }
 
 .index::after {

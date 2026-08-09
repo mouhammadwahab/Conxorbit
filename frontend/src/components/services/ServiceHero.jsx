@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import SectionBadge from "../common/SectionBadge";
 import styles from "./ServiceHero.module.css";
 
 export default function ServiceHero({ content }) {
@@ -23,7 +24,7 @@ export default function ServiceHero({ content }) {
       <div className={styles.glow} aria-hidden="true" />
       <div className={styles.arc} aria-hidden="true" />
       <div className={`${styles.inner} heroStagger`}>
-        <p className={styles.badge}>{badge}</p>
+        <SectionBadge variant="gold">{badge}</SectionBadge>
         <h1 className={styles.title}>
           {titleHighlight != null ? (
             <>

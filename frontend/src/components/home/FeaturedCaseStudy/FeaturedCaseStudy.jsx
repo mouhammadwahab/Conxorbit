@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Reveal from "../../common/Reveal";
+import SectionBadge from "../../common/SectionBadge";
 import usePrefersReducedMotion from "../../../hooks/usePrefersReducedMotion";
 import styles from "./FeaturedCaseStudy.module.css";
 
@@ -94,9 +95,7 @@ export default function FeaturedCaseStudy({ content }) {
   return (
     <Reveal as="section" className={styles.section} aria-label={badge}>
       <div className={`${styles.header} revealHead`}>
-        <span className={styles.badge}>
-          <span aria-hidden="true">✦</span> {badge}
-        </span>
+        <SectionBadge>{badge}</SectionBadge>
         <h2>
           {titleBefore}
           <span className={styles.highlight}>{titleHighlight}</span>

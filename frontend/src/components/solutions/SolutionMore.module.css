@@ -1,5 +1,5 @@
 .section {
-  padding: 56px clamp(20px, 5vw, 72px);
+  padding: var(--section-pad);
 }
 
 .header {

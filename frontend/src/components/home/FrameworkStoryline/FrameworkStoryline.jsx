@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import SectionBadge from "../../common/SectionBadge";
 import usePrefersReducedMotion from "../../../hooks/usePrefersReducedMotion";
 import { ensureGsap } from "../../../utils/gsapSetup";
 import styles from "./FrameworkStoryline.module.css";
@@ -40,69 +41,57 @@ const STEP_ICONS = [
 ];
 
 /**
- * One proper circular arc (single radius + center).
- * Icons sit on the arc; cards sit to the left with connectors.
- * Equal Y gaps first so card text never overlaps.
+ * Arc stays on the right; cards stay in a fixed left column so nothing clips.
  */
 function buildCircularRadial(count) {
-  const W = 1100;
-  // Clear space between card centers (cards ~160–190px tall)
-  const gap = 390;
-  const padY = 180;
+  const W = 1000;
+  const cardRightX = 300;
+  const gap = 300;
+  const padY = 120;
   const n = Math.max(count, 1);
   const height = padY * 2 + Math.max(n - 1, 0) * gap;
   const cy = height / 2;
 
-  // Radius covers the Y span; keep the arc inside the viewBox
   const ySpan = Math.max(n - 1, 0) * gap;
   const yMax = ySpan / 2;
-  const R = n <= 1 ? 520 : Math.max(yMax + 80, ySpan / 1.85 + 40);
+  const R = n <= 1 ? 420 : Math.max(yMax + 60, ySpan / 1.9 + 30);
 
-  // Place circle so the leftmost bulge and the end icons stay in view
-  const xMid = 640;
-  const cx = xMid + R;
-  // End icon x must stay ≤ ~W - 48
-  const endChord = Math.sqrt(Math.max(R * R - yMax * yMax, 0));
-  const xEnd = cx - endChord;
-  const shift = Math.max(0, xEnd - (W - 48));
-  const cxFit = cx - shift;
+  // Keep the leftmost point of the arc clear of the card column
+  const minNodeX = cardRightX + 88;
+  const cx = minNodeX + R;
 
   const nodes = Array.from({ length: count }, (_, i) => {
     const y = padY + i * gap;
     const dy = y - cy;
     const under = Math.max(R * R - dy * dy, 0);
-    const x = cxFit - Math.sqrt(under);
-    return { x, y };
+    const x = cx - Math.sqrt(under);
+    return { x: Math.max(x, minNodeX), y };
   });
 
   if (!nodes.length) {
-    return { d: "", nodes: [], connectors: [], width: W, height, cx: cxFit, cy, R };
+    return { d: "", nodes: [], connectors: [], width: W, height, cardRightX };
   }
 
   const first = nodes[0];
   const last = nodes[nodes.length - 1];
-  const leadY = first.y - 70;
-  const trailY = last.y + 70;
-  const leadX = cxFit - Math.sqrt(Math.max(R * R - (leadY - cy) ** 2, 0));
-  const trailX = cxFit - Math.sqrt(Math.max(R * R - (trailY - cy) ** 2, 0));
+  const leadY = first.y - 56;
+  const trailY = last.y + 56;
+  const leadX = cx - Math.sqrt(Math.max(R * R - (leadY - cy) ** 2, 0));
+  const trailX = cx - Math.sqrt(Math.max(R * R - (trailY - cy) ** 2, 0));
 
   const deltaY = trailY - leadY;
   const largeArc = Math.abs(deltaY) > 2 * R ? 1 : 0;
-  // Counter-clockwise = arc runs through icons on the left face
-  const d = `M ${leadX} ${leadY} A ${R} ${R} 0 ${largeArc} 0 ${trailX} ${trailY}`;
+  const d = `M ${Math.max(leadX, minNodeX - 12)} ${leadY} A ${R} ${R} 0 ${largeArc} 0 ${Math.max(
+    trailX,
+    minNodeX - 12
+  )} ${trailY}`;
 
-  const iconClear = 34;
-  const stubLen = 56;
-  const connectors = nodes.map((node) => {
-    const stubEnd = node.x - iconClear;
-    const stubStart = stubEnd - stubLen;
-    return {
-      d: `M ${stubStart} ${node.y} L ${stubEnd} ${node.y}`,
-      cardRightX: stubStart,
-    };
-  });
+  const iconClear = 30;
+  const connectors = nodes.map((node) => ({
+    d: `M ${cardRightX} ${node.y} L ${node.x - iconClear} ${node.y}`,
+  }));
 
-  return { d, nodes, connectors, width: W, height, cx: cxFit, cy, R };
+  return { d, nodes, connectors, width: W, height, cardRightX };
 }
 
 /** Circular-radial storyline — scrub draw only, never pins. */
@@ -124,8 +113,11 @@ export default function FrameworkStoryline({ content }) {
   const [activeIndex, setActiveIndex] = useState(-1);
   const activeIndexRef = useRef(-1);
 
-  const { d: pathD, nodes, connectors, width, height } = buildCircularRadial(steps.length);
+  const { d: pathD, nodes, connectors, width, height, cardRightX } = buildCircularRadial(
+    steps.length
+  );
   const viewBox = `0 0 ${width} ${height}`;
+  const cardWidthPct = (cardRightX / width) * 100;
 
   useEffect(() => {
     if (reduced || !rootRef.current || !pathRef.current || !pathD) {
@@ -177,7 +169,6 @@ export default function FrameworkStoryline({ content }) {
         },
       });
 
-      // Animate crisp stroke only; glow follows without heavy filter cost
       tl.to(path, { strokeDashoffset: 0, ease: "none", duration: 1, force3D: true }, 0);
       tl.to(glow, { strokeDashoffset: 0, ease: "none", duration: 1, force3D: true }, 0);
 
@@ -197,9 +188,7 @@ export default function FrameworkStoryline({ content }) {
     <section ref={rootRef} className={styles.section} aria-label={badge}>
       <div className={styles.inner}>
         <div className={styles.header}>
-          <span className={styles.badge}>
-            <span aria-hidden="true">✦</span> {badge}
-          </span>
+          <SectionBadge>{badge}</SectionBadge>
           <h2>
             {titleBefore}
             <span className={styles.highlight}>{titleHighlight}</span>
@@ -232,7 +221,6 @@ export default function FrameworkStoryline({ content }) {
               </linearGradient>
             </defs>
 
-            {/* Soft guide arc (same circle, lighter) */}
             <path
               d={pathD}
               stroke="rgba(184,137,61,0.16)"
@@ -258,7 +246,6 @@ export default function FrameworkStoryline({ content }) {
               fill="none"
             />
 
-            {/* Connectors: card → icon */}
             {connectors.map((c, i) => (
               <path
                 key={`stub-${i}`}
@@ -296,18 +283,13 @@ export default function FrameworkStoryline({ content }) {
             {steps.map((step, index) => {
               const lit = index <= activeIndex;
               const node = nodes[index];
-              const link = connectors[index];
-              // Card right edge = start of connector stub → follows the arc
-              const rightPct = link
-                ? 100 - (link.cardRightX / width) * 100
-                : 30;
               return (
                 <li
                   key={step.title}
                   className={`${styles.step} ${lit ? styles.stepLit : ""}`}
                   style={{
                     top: node ? `${(node.y / height) * 100}%` : undefined,
-                    right: `${rightPct}%`,
+                    width: `${cardWidthPct}%`,
                   }}
                 >
                   <article className={`${styles.card} interactiveCard`}>

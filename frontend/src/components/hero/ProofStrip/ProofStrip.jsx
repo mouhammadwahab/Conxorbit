@@ -1,4 +1,5 @@
 import Reveal from "../../common/Reveal";
+import SectionBadge from "../../common/SectionBadge";
 import styles from "./ProofStrip.module.css";
 
 export default function ProofStrip({ content }) {
@@ -9,7 +10,7 @@ export default function ProofStrip({ content }) {
     <Reveal as="section" className={styles.section} aria-label={title}>
       <div className={styles.inner}>
         <div className={`${styles.header} revealHead`}>
-          <p className={styles.eyebrow}>{eyebrow}</p>
+          <SectionBadge as="p">{eyebrow}</SectionBadge>
           <h2>{title}</h2>
         </div>
         <div className={styles.marquee} aria-hidden="true">

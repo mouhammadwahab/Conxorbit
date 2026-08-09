@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Reveal from "../../common/Reveal";
+import SectionBadge from "../../common/SectionBadge";
 import facade from "../../../assets/tradeCards/facade.jfif";
 import glass from "../../../assets/tradeCards/glass.jfif";
 import aluminium from "../../../assets/tradeCards/aluminium.jfif";
@@ -27,9 +28,7 @@ export default function FeaturedSolutions({ content }) {
   return (
     <Reveal as="section" className={styles.section} aria-label={badge}>
       <div className={`${styles.header} revealHead`}>
-        <span className={styles.badge}>
-          <span aria-hidden="true">✦</span> {badge}
-        </span>
+        <SectionBadge>{badge}</SectionBadge>
         <h2>
           {titleBefore}
           <span className={styles.highlight}>{titleHighlight}</span>

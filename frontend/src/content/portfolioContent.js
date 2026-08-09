@@ -104,9 +104,9 @@ export const portfolioContent = {
     ],
   },
   internalProducts: {
-    badge: "OUR PRODUCTS",
-    title: "Products We're Building for the Industry.",
-    body: "Alongside client work, we're developing our own products around recurring problems we've identified across construction and specialist trades.",
+    badge: "Our Products",
+    title: "Products We’re Building for the Industry",
+    body: "Alongside client work, we’re developing our own products around recurring challenges we see across construction and specialist trades — turning real industry problems into focused, scalable technology.",
     cards: [
       {
         label: "INTERNAL PRODUCT",
@@ -129,9 +129,10 @@ export const portfolioContent = {
     ],
   },
   workflowSolutions: {
-    badge: "WORKFLOW SOLUTIONS",
-    title: "Turning Complex Workflows into Intelligent Systems.",
-    body: "From estimating and permitting to drawing analysis and material optimization, we explore how AI and automation can remove repetitive work.",
+    badge: "Workflow Solutions",
+    title: "Intelligence Applied to Real Workflows",
+    body:
+      "A collection of AI-powered workflow demonstrations built around real construction challenges, showing how repetitive and complex processes can be made faster, smarter, and more connected.",
     cards: [
       {
         label: "WORKFLOW SOLUTION",

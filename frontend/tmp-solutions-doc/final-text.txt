@@ -1,0 +1,61 @@
+0: Solutions Page (All solutions on one page)
+1: Hero:
+2: Badge: Solutions
+3: Heading: Solutions Built Around Real Construction Workflows.
+4: Paragraph: Explore the platforms, AI systems, and workflow solutions we've engineered to solve practical challenges across façade and construction operations.
+5: Note: 
+6: In the below image:
+7: Move the hero section to the centre of the page. 
+8: Don’t add image on hero section.  
+9: Don’t show stats on hero section. Skip the stats. 
+10: On each row there should be only 3 solution cards. 
+11: Total make 9 cards for solutions
+12: For each solution card, add badge, mock-up, solution name, solution short description, short cards for category, and button for Explore solution. 
+13: Skip the last CTA section. Second last CTA section should be last section of solutions page. 
+14: Keep CTA section in centre of page (don’t add image on CTA section). 
+15: Individual Solution Page
+16: 1-Hero:
+17: Structure should be like this. Left side content and right-side image of solution. 
+18: Write solution name on top as Badge. 
+19: Below hero section Add a stats section like this:
+20: Just write 3 things:Best For, Core Function, Platform. Don’t write Workflow. 
+21: 2-The Challenge
+22: Badge: THE CHALLENGE
+23: Heading: Disconnected Workflows Slow Down Every Project.
+24: Paragraph: 
+25: Façade teams often work across drawings, spreadsheets, documents, site photos, and disconnected project tools. Panel information becomes difficult to track, updates are scattered, and site visibility suffers.
+26: Problem Cards:
+27: Manual Tracking
+28: Disconnected Drawings
+29: Scattered Documents
+30: Limited Site Visibility
+31: 3-Solution Capabilities
+32: Badge: CAPABILITIES
+33: Heading: Everything Needed to Manage Façade Operations.
+34: Large Capabilities Card
+35: 1-Drawing Viewer
+36: Open and navigate drawings directly inside the platform.
+37: 2-Panel Tracking
+38: Track every panel through fabrication and installation.
+39: 3-Document Management
+40: Keep RFIs, reports and technical documents connected - at one place.
+41: 4-Site Documentation
+42: Capture progress with linked photos and reports.
+43: 5-Search & Filtering
+44: Locate any panel or drawing instantly.
+45: 6-Installation Monitoring
+46: View live installation progress across projects.
+47: 4-How it Works
+48: Make progress bar for this section. Add icons
+49: 5-Built for
+50: 6-Demo
+51: A video section simply with heading
+52: Heading: See it in Action
+53: When user clicks on Watch Demo button on hero section it should scroll the user down to this section. 
+54: 7-More Solutions Section
+55: 8- FAQ
+56: 9- CTA
+57: Badge: EXPLORE WHAT'S POSSIBLE
+58: Heading: Could a System Like This Work for Your Workflow?
+59: Paragraph: Tell us how your team works today. We'll explore the challenges you're facing and discuss what a tailored solution could look like for your business.
+60: Button: Book a Consultation →, Explore Solutions →

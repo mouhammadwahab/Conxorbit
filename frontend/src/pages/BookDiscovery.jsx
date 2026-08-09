@@ -1,6 +1,7 @@
 import { useState } from "react";
 import SEO from "../components/common/SEO";
 import Reveal from "../components/common/Reveal";
+import SectionBadge from "../components/common/SectionBadge";
 import PageShell from "../components/layout/PageShell/PageShell";
 import { discoveryContent } from "../content/discoveryContent";
 import { site } from "../content/siteContent";
@@ -92,11 +93,7 @@ export default function BookDiscovery() {
       <SEO title={meta.title} description={meta.description} path="/book-discovery" />
       <Reveal as="section" className={styles.page} eager aria-label={hero.title}>
         <div className={`${styles.header} revealHead`}>
-          {hero.badge ? (
-            <span className={styles.badge}>
-              <span aria-hidden="true">◆</span> {hero.badge}
-            </span>
-          ) : null}
+          {hero.badge ? <SectionBadge>{hero.badge}</SectionBadge> : null}
           <h1 className={styles.title}>{hero.title}</h1>
           <p className={styles.subtitle}>{hero.body}</p>
         </div>

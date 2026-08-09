@@ -1,4 +1,5 @@
 import Reveal from "../common/Reveal";
+import SectionBadge from "../common/SectionBadge";
 import { SolutionIcon } from "./solutionIcons";
 import styles from "./SolutionBuiltFor.module.css";
 
@@ -10,9 +11,9 @@ export default function SolutionBuiltFor({ content }) {
     <Reveal as="section" className={styles.section} aria-label={badge}>
       <div className={styles.inner}>
         <div className={`${styles.copy} revealHead`}>
-          <span className={styles.badge}>
-            <span aria-hidden="true">•</span> {badge}
-          </span>
+          <SectionBadge variant="gold" size="sm">
+            {badge}
+          </SectionBadge>
           <h2>{title}</h2>
           {body ? <p>{body}</p> : null}
         </div>

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import SectionBadge from "../common/SectionBadge";
 import usePrefersReducedMotion from "../../hooks/usePrefersReducedMotion";
 import styles from "./PinnedScrollSection.module.css";
 
@@ -48,7 +49,7 @@ export default function PinnedScrollSection({ eyebrow, title, panels = [] }) {
         <div className={styles.bg} aria-hidden="true" />
         <div className={styles.inner}>
           <aside className={styles.rail}>
-            {eyebrow ? <p className={styles.eyebrow}>{eyebrow}</p> : null}
+            {eyebrow ? <SectionBadge as="p">{eyebrow}</SectionBadge> : null}
             <h2 className={styles.title}>{title}</h2>
             <ol className={styles.nav} aria-label="Story chapters">
               {panels.map((panel, index) => (

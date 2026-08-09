@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Reveal from "../common/Reveal";
+import SectionBadge from "../common/SectionBadge";
 import styles from "./PortfolioClientSystems.module.css";
 
 export default function PortfolioClientSystems({ content }) {
@@ -8,14 +9,11 @@ export default function PortfolioClientSystems({ content }) {
 
   return (
     <section className={styles.section} aria-label={badge}>
-      <Reveal className={`${styles.header} revealHead`} eager>
-        <span className={styles.badge}>
-          <span aria-hidden="true">✦</span> {badge}
-          <span className={styles.badgeRule} aria-hidden="true" />
-        </span>
+      <div className={styles.header}>
+        <SectionBadge variant="gold">{badge}</SectionBadge>
         <h2 className={styles.title}>{title}</h2>
         {body ? <p className={styles.body}>{body}</p> : null}
-      </Reveal>
+      </div>
 
       <div className={styles.list}>
         {items.map((item, i) => {

@@ -1,5 +1,5 @@
 .section {
-  padding: 56px clamp(20px, 5vw, 72px);
+  padding: var(--section-pad);
 }
 
 .inner {
@@ -48,12 +48,13 @@
 .panel {
   display: grid;
   gap: 0;
-  padding: 8px 8px 8px 12px;
-  border-radius: 22px;
+  padding: 12px 14px 12px 16px;
+  border-radius: 18px;
   background:
     radial-gradient(circle at 90% 0%, rgba(184, 137, 61, 0.18), transparent 45%),
-    rgba(14, 28, 24, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+    rgba(14, 28, 24, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
 }
 
 .row {

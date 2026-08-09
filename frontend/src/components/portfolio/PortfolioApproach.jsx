@@ -1,4 +1,5 @@
 import Reveal from "../common/Reveal";
+import SectionBadge from "../common/SectionBadge";
 import styles from "./PortfolioApproach.module.css";
 
 export default function PortfolioApproach({ content }) {
@@ -8,10 +9,7 @@ export default function PortfolioApproach({ content }) {
   return (
     <section className={styles.section} aria-label={badge}>
       <Reveal className={`${styles.header} revealHead`} eager>
-        <span className={styles.badge}>
-          <span aria-hidden="true">◆</span> {badge}
-          <span className={styles.badgeRule} aria-hidden="true" />
-        </span>
+        <SectionBadge>{badge}</SectionBadge>
         <h2 className={styles.title}>{title}</h2>
         {body ? <p className={styles.body}>{body}</p> : null}
       </Reveal>

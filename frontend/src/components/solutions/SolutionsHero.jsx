@@ -1,3 +1,4 @@
+import SectionBadge from "../common/SectionBadge";
 import styles from "./SolutionsHero.module.css";
 
 export default function SolutionsHero({ content }) {
@@ -5,9 +6,7 @@ export default function SolutionsHero({ content }) {
 
   return (
     <section className={`${styles.hero} heroStagger`} aria-label={badge}>
-      <p className={styles.badge}>
-        <span aria-hidden="true">—</span> {badge}
-      </p>
+      <SectionBadge variant="gold">{badge}</SectionBadge>
       <h1 className={styles.title}>
         {titleBefore}
         <span className={styles.highlight}>{titleHighlight}</span>

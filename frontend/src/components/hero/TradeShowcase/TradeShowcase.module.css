@@ -107,11 +107,43 @@
   color: var(--color-muted);
 }
 
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid rgba(184, 137, 61, 0.55);
+  background: rgba(8, 18, 14, 0.55);
+  color: var(--gold);
+  font-size: 1.55rem;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background 200ms ease,
+    border-color 200ms ease,
+    transform 200ms ease;
+}
+
+.arrow:hover {
+  background: rgba(184, 137, 61, 0.18);
+  border-color: rgba(243, 201, 105, 0.75);
+  transform: translateY(-1px);
+}
+
 .dots {
   display: flex;
   justify-content: center;
   gap: 8px;
-  margin-top: 28px;
 }
 
 .dot,

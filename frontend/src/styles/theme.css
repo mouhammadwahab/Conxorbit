@@ -134,6 +134,8 @@
   --heading-size-h4: clamp(1rem, 1.7vw, 1.22rem);
   --shadow-glass: 0 18px 45px rgba(0, 0, 0, 0.35);
   --max-width: 1320px;
-  --section-pad: clamp(48px, 7vw, 88px) clamp(16px, 3.5vw, 48px);
+  --cta-max-width: 920px;
+  --section-pad: clamp(64px, 9vw, 112px) clamp(20px, 4vw, 72px);
+  --hero-pad-top: calc(132px + 2.5rem);
   --muted: var(--color-muted);
 }

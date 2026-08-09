@@ -1,4 +1,5 @@
 import Reveal from "../common/Reveal";
+import SectionBadge from "../common/SectionBadge";
 import styles from "./PortfolioProof.module.css";
 
 export default function PortfolioProof({ content }) {
@@ -8,10 +9,7 @@ export default function PortfolioProof({ content }) {
   return (
     <Reveal as="section" className={styles.section} eager aria-label={badge}>
       <div className={`${styles.inner} revealHead`}>
-        <span className={styles.badge}>
-          <span aria-hidden="true">◆</span> {badge}
-          <span className={styles.badgeRule} aria-hidden="true" />
-        </span>
+        <SectionBadge>{badge}</SectionBadge>
         <div className={styles.grid}>
           {items.map((item) => (
             <div key={item.label} className={styles.item}>

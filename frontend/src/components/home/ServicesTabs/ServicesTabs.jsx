@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Reveal from "../../common/Reveal";
+import SectionBadge from "../../common/SectionBadge";
 import styles from "./ServicesTabs.module.css";
 
 const TAB_ICONS = {
@@ -59,9 +60,7 @@ export default function ServicesTabs({ content }) {
       <div className={styles.inner}>
         <div className={styles.left}>
           <div className="revealHead">
-            <span className={styles.badge}>
-              <span aria-hidden="true">✦</span> {badge}
-            </span>
+            <SectionBadge>{badge}</SectionBadge>
             <h2>
               {titleBefore}
               <span className={styles.highlight}>{titleHighlight}</span>

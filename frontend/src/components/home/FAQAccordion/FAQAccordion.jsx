@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Reveal from "../../common/Reveal";
+import SectionBadge from "../../common/SectionBadge";
 import styles from "./FAQAccordion.module.css";
 
 export default function FAQAccordion({ content }) {
@@ -9,9 +10,7 @@ export default function FAQAccordion({ content }) {
   return (
     <Reveal as="section" className={styles.section} aria-label={badge}>
       <div className={`${styles.header} revealHead`}>
-        <span className={styles.badge}>
-          <span aria-hidden="true">✦</span> {badge}
-        </span>
+        <SectionBadge>{badge}</SectionBadge>
         <h2>
           {titleBefore}
           <span className={styles.highlight}>{titleHighlight}</span>
@@ -25,8 +24,7 @@ export default function FAQAccordion({ content }) {
           return (
             <div
               key={item.question}
-              className={`${isOpen ? styles.itemOpen : styles.item} depthHover cardReveal`}
-              style={{ transitionDelay: `${index * 60}ms` }}
+              className={isOpen ? styles.itemOpen : styles.item}
             >
               <button
                 type="button"

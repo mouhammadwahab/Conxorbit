@@ -5,7 +5,7 @@
   min-height: min(88vh, 820px);
   display: grid;
   place-items: center;
-  padding: calc(120px + 2rem) clamp(20px, 5vw, 72px) 96px;
+  padding: var(--hero-pad-top) clamp(20px, 5vw, 72px) 96px;
   background: #050c0b;
   text-align: center;
 }

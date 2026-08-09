@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Reveal from "../common/Reveal";
+import SectionBadge from "../common/SectionBadge";
 import styles from "./PortfolioFeatured.module.css";
 
 export default function PortfolioFeatured({ content }) {
@@ -9,13 +10,9 @@ export default function PortfolioFeatured({ content }) {
   return (
     <Reveal as="section" className={styles.section} eager aria-label={badge}>
       <div className={styles.inner}>
-        <p className={styles.badge}>
-          <span aria-hidden="true">◆</span>
-          <span>{badge}</span>
-          <span className={styles.badgeRule} aria-hidden="true" />
-        </p>
         <div className={styles.grid}>
           <div className={`${styles.copy} revealHead`}>
+            <SectionBadge>{badge}</SectionBadge>
             <span className={styles.label}>
               {label}
               <span className={styles.labelRule} aria-hidden="true" />

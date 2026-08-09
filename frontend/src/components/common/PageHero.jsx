@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Reveal from "./Reveal";
+import SectionBadge from "./SectionBadge";
 import styles from "./PageHero.module.css";
 
 export default function PageHero({
@@ -15,7 +16,11 @@ export default function PageHero({
         tone === "shell" ? styles.shellTone : styles.solidTone
       }`}
     >
-      {eyebrow ? <p className={styles.eyebrow}>{eyebrow}</p> : null}
+      {eyebrow ? (
+        <div className={styles.badgeRow}>
+          <SectionBadge>{eyebrow}</SectionBadge>
+        </div>
+      ) : null}
       <h1 className={styles.title}>
         {typeof title === "string" && title.includes("\n")
           ? title.split("\n").map((line) => (
@@ -40,7 +45,7 @@ export function CTABand({
 }) {
   return (
     <Reveal as="section" className={styles.ctaBand}>
-      <div className={`${styles.ctaInner} ${styles.card3d} interactiveCard revealHead`}>
+      <div className={`${styles.ctaInner} revealHead`}>
         <h2>{title}</h2>
         {body ? <p>{body}</p> : null}
         <div className={styles.ctaActions}>

@@ -1,4 +1,5 @@
 import Reveal from "../../common/Reveal";
+import SectionBadge from "../../common/SectionBadge";
 import styles from "./WhyChooseAI.module.css";
 
 const ICONS = {
@@ -52,12 +53,7 @@ export default function WhyChooseAI({ content }) {
       <div className={styles.inner}>
         <div className={styles.grid}>
           <div className={`${styles.copy} revealHead`}>
-            <span className={styles.badge}>
-              <span className={styles.star} aria-hidden="true">
-                ✦
-              </span>
-              {badge}
-            </span>
+            <SectionBadge>{badge}</SectionBadge>
             <h2>
               {titleBefore}
               <span className={styles.highlight}>{titleHighlight}</span>

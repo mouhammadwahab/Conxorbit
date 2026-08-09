@@ -1,7 +1,7 @@
 .section {
   position: relative;
   padding: var(--section-pad);
-  overflow: hidden;
+  overflow: visible;
   background:
     radial-gradient(ellipse at 88% 12%, rgba(184, 137, 61, 0.16), transparent 44%),
     radial-gradient(ellipse at 12% 48%, rgba(243, 201, 105, 0.08), transparent 48%),
@@ -74,7 +74,8 @@
 
 .story {
   position: relative;
-  padding: 32px 0 80px;
+  padding: 24px 8px 64px;
+  overflow: visible;
 }
 
 .pathSvg {
@@ -170,15 +171,15 @@
 
 .step {
   position: absolute;
-  left: auto;
-  /* Fixed width; `right` from JS tracks the circular arc */
-  width: min(480px, 54%);
+  left: 0;
+  right: auto;
+  max-width: 300px;
   transform: translateY(-50%);
 }
 
 .card {
-  padding: 28px 30px;
-  border-radius: 22px;
+  padding: 18px 18px 20px;
+  border-radius: 16px;
   background: linear-gradient(
     155deg,
     rgba(32, 26, 48, 0.94) 0%,
@@ -187,40 +188,39 @@
   );
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow:
-    0 22px 48px rgba(0, 0, 0, 0.4),
+    0 16px 36px rgba(0, 0, 0, 0.38),
     inset 0 1px 0 rgba(255, 255, 255, 0.04);
-  /* Solid look — avoid backdrop-filter during long scrub scroll (major jank source) */
   transition: border-color 160ms ease, box-shadow 160ms ease;
 }
 
 .stepLit .card {
   border-color: rgba(184, 137, 61, 0.32);
   box-shadow:
-    0 26px 56px rgba(0, 0, 0, 0.45),
+    0 20px 44px rgba(0, 0, 0, 0.42),
     0 0 0 1px rgba(184, 137, 61, 0.12);
 }
 
 .num {
   display: inline-block;
-  font-size: 0.75rem;
+  font-size: 0.68rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--gold);
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .card h3 {
-  font-size: var(--heading-size-h3);
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
   color: #d9d2bc;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   max-height: none;
   overflow: visible;
 }
 
 .card p {
   color: rgba(219, 237, 190, 0.62);
-  line-height: 1.7;
-  font-size: 0.98rem;
+  line-height: 1.55;
+  font-size: 0.88rem;
 }
 
 @media (max-width: 800px) {
@@ -230,7 +230,8 @@
 
   .step {
     left: 0 !important;
-    right: 76px !important;
+    right: 64px !important;
+    width: auto !important;
     max-width: none;
   }
 
@@ -240,11 +241,11 @@
   }
 
   .card {
-    padding: 20px 18px;
+    padding: 16px 14px;
   }
 
   .card p {
-    font-size: 0.92rem;
+    font-size: 0.86rem;
   }
 }
 

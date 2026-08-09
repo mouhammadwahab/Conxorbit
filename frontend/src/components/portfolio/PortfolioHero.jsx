@@ -1,4 +1,5 @@
 import Reveal from "../common/Reveal";
+import SectionBadge from "../common/SectionBadge";
 import styles from "./PortfolioHero.module.css";
 
 export default function PortfolioHero({ content }) {
@@ -6,9 +7,7 @@ export default function PortfolioHero({ content }) {
 
   return (
     <Reveal as="section" className={`${styles.hero} heroStagger`} eager aria-label={badge}>
-      <span className={styles.badge}>
-        <span aria-hidden="true">◆</span> {badge}
-      </span>
+      <SectionBadge variant="gold">{badge}</SectionBadge>
       <h1 className={styles.title}>
         {titleBefore}
         <span className={styles.highlight}>{titleHighlight}</span>

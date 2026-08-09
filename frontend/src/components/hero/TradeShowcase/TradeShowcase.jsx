@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Reveal from "../../common/Reveal";
+import SectionBadge from "../../common/SectionBadge";
 import facade from "../../../assets/tradeCards/facade.jfif";
 import glass from "../../../assets/tradeCards/glass.jfif";
 import aluminium from "../../../assets/tradeCards/aluminium.jfif";
@@ -17,6 +18,7 @@ const TRADES = [
 
 export default function TradeShowcase({ content }) {
   const [active, setActive] = useState(0);
+  const [tick, setTick] = useState(0);
   const { badge, title, body } = content;
 
   useEffect(() => {
@@ -24,12 +26,20 @@ export default function TradeShowcase({ content }) {
       setActive((prev) => (prev + 1) % TRADES.length);
     }, 3200);
     return () => clearInterval(timer);
-  }, []);
+  }, [tick]);
+
+  const goTo = (index) => {
+    setActive(((index % TRADES.length) + TRADES.length) % TRADES.length);
+    setTick((n) => n + 1);
+  };
+
+  const goPrev = () => goTo(active - 1);
+  const goNext = () => goTo(active + 1);
 
   return (
     <Reveal as="section" className={styles.section} aria-label="Trades we support">
       <div className={`${styles.header} revealHead`}>
-        <p className={styles.eyebrow}>{badge}</p>
+        <SectionBadge as="p">{badge}</SectionBadge>
         <h2>{title}</h2>
         <p>{body}</p>
       </div>
@@ -53,7 +63,7 @@ export default function TradeShowcase({ content }) {
                 opacity: Math.abs(wrapped) > 1 ? 0 : isCenter ? 1 : 0.5,
                 zIndex: 10 - Math.abs(wrapped),
               }}
-              onClick={() => setActive(index)}
+              onClick={() => goTo(index)}
             >
               <img src={trade.image} alt={trade.title} />
               <div className={styles.overlay}>
@@ -66,17 +76,35 @@ export default function TradeShowcase({ content }) {
         })}
       </div>
 
-      <div className={styles.dots} role="tablist" aria-label="Trade slides">
-        {TRADES.map((trade, index) => (
-          <button
-            key={trade.id}
-            type="button"
-            className={index === active ? styles.dotActive : styles.dot}
-            aria-label={trade.title}
-            aria-current={index === active ? "true" : undefined}
-            onClick={() => setActive(index)}
-          />
-        ))}
+      <div className={styles.controls}>
+        <button
+          type="button"
+          className={`${styles.arrow} btnMotion`}
+          aria-label="Previous trade"
+          onClick={goPrev}
+        >
+          ‹
+        </button>
+        <div className={styles.dots} role="tablist" aria-label="Trade slides">
+          {TRADES.map((trade, index) => (
+            <button
+              key={trade.id}
+              type="button"
+              className={index === active ? styles.dotActive : styles.dot}
+              aria-label={trade.title}
+              aria-current={index === active ? "true" : undefined}
+              onClick={() => goTo(index)}
+            />
+          ))}
+        </div>
+        <button
+          type="button"
+          className={`${styles.arrow} btnMotion`}
+          aria-label="Next trade"
+          onClick={goNext}
+        >
+          ›
+        </button>
       </div>
     </Reveal>
   );

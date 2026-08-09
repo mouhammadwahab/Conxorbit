@@ -1,4 +1,5 @@
 import panelX from "../assets/solutions/panel-x.jpg";
+import panelXHero from "../assets/solutions/panel-x-hero.png";
 import electraX from "../assets/solutions/electra-x.jpg";
 import constructionInspection from "../assets/solutions/construction-inspection.jpg";
 import quoteAutomation from "../assets/solutions/quote-automation.jpg";
@@ -42,7 +43,7 @@ const sharedDetailCta = {
   badge: "EXPLORE WHAT'S POSSIBLE",
   title: "Could a System Like This Work for Your Workflow?",
   body: "Tell us how your team works today. We'll explore the challenges you're facing and discuss what a tailored solution could look like for your business.",
-  primary: { label: "Book a Consultation", href: "/book-discovery" },
+  primary: { label: "Book a Discovery Call", href: "/book-discovery" },
   secondary: { label: "Explore Solutions", href: "/solutions" },
 };
 
@@ -90,13 +91,15 @@ const panelXDetail = {
   titleBefore: "Connected Façade Operations From ",
   titleHighlight: "Shop to Site.",
   titleAfter: "",
-  body: "PanelX is a custom-built façade management platform that keeps drawings, panels, documents, and site progress connected in one operational record.",
-  primaryCta: { label: "Book a Consultation", href: "/book-discovery" },
+  body: "PanelX is a custom-built façade management platform that connects drawings, panel information, documentation, and installation progress into a single operational workspace for engineering and site teams.",
+  primaryCta: { label: "Book a Discovery Call", href: "/book-discovery" },
   demoCta: { label: "Watch Demo", targetId: "demo" },
+  heroImage: panelXHero,
   stats: {
     bestFor: "Façade Contractors",
     coreFunction: "Panel & Drawing Management",
     platform: "Web Platform",
+    workflow: "Design → Fabrication → Installation",
   },
   challenge: {
     badge: "THE CHALLENGE",
@@ -193,7 +196,7 @@ function adaptDetail({
   return {
     title,
     body,
-    primaryCta: { label: "Book a Consultation", href: "/book-discovery" },
+    primaryCta: { label: "Book a Discovery Call", href: "/book-discovery" },
     demoCta: { label: "Watch Demo", targetId: "demo" },
     stats,
     challenge: {
@@ -258,7 +261,12 @@ export const solutions = [
       name: "ElectraX",
       title: "Validate electrical design before it hits the site",
       body: "ElectraX helps engineering teams check layouts, catch coordination issues early, and keep validation evidence tied to the live design set.",
-      stats: { bestFor: "Electrical Design Teams", coreFunction: "Design Validation", platform: "Web Platform" },
+      stats: {
+        bestFor: "Electrical Design Teams",
+        coreFunction: "Design Validation",
+        platform: "Web Platform",
+        workflow: "Design → Validate → Release",
+      },
       challengeTitle: "Coordination Gaps Reach Site Too Late.",
       challengeBody: "Electrical packages move through multiple tools and reviewers. Conflicts surface late, evidence is hard to find, and site teams inherit unresolved design risk.",
       problems: [
@@ -309,7 +317,12 @@ export const solutions = [
       name: "Construction Inspection",
       title: "Turn site inspections into structured, shareable evidence",
       body: "Capture checks on mobile, flag issues with visual AI support, and sync results back to office workflows without end-of-day admin pile-ups.",
-      stats: { bestFor: "Quality & Site Teams", coreFunction: "Field Inspection", platform: "Mobile + Web" },
+      stats: {
+        bestFor: "Quality & Site Teams",
+        coreFunction: "Field Inspection",
+        platform: "Mobile + Web",
+        workflow: "Capture → Flag → Close-Out",
+      },
       challengeTitle: "Inspection Evidence Gets Lost Between Site and Office.",
       challengeBody: "Checks live in notebooks, chats, and camera rolls. Defects are hard to track, and close-out becomes a scramble.",
       problems: [
@@ -360,7 +373,12 @@ export const solutions = [
       name: "Quote Automation",
       title: "Cut estimating hours without cutting accuracy",
       body: "Quote Automation reads project inputs, structures line items, and gives estimators a clear draft to refine—so proposals move faster with fewer re-entry errors.",
-      stats: { bestFor: "Estimating Teams", coreFunction: "Quote Generation", platform: "Web Platform" },
+      stats: {
+        bestFor: "Estimating Teams",
+        coreFunction: "Quote Generation",
+        platform: "Web Platform",
+        workflow: "Inputs → Draft → Proposal",
+      },
       challengeTitle: "Estimating Burns Hours on Re-Entry and Rework.",
       challengeBody: "Specs, drawings, and historical rates live in different places. Building a quote means copying, checking, and re-checking under deadline pressure.",
       problems: [
@@ -411,7 +429,12 @@ export const solutions = [
       name: "Waste Optimization",
       title: "Plan material cuts for yield, not leftover piles",
       body: "Waste Optimization helps fabrication teams model nesting and material use so planning decisions reduce scrap and protect margins.",
-      stats: { bestFor: "Fabrication Teams", coreFunction: "Nesting & Yield", platform: "Web Platform" },
+      stats: {
+        bestFor: "Fabrication Teams",
+        coreFunction: "Nesting & Yield",
+        platform: "Web Platform",
+        workflow: "Plan → Nest → Fabricate",
+      },
       challengeTitle: "Material Waste Quietly Erodes Project Margins.",
       challengeBody: "Cut lists and nesting decisions are rushed. Scrap piles grow, reorders appear late, and nobody sees the pattern until the job is closed.",
       problems: [
@@ -462,7 +485,12 @@ export const solutions = [
       name: "Drawing Intelligence",
       title: "See drawing changes without side-by-side grind",
       body: "Drawing Intelligence compares sets, surfaces revisions, and extracts structured data so engineering hours go to decisions—not hunting differences.",
-      stats: { bestFor: "Engineering Teams", coreFunction: "Drawing Analysis", platform: "Web Platform" },
+      stats: {
+        bestFor: "Engineering Teams",
+        coreFunction: "Drawing Analysis",
+        platform: "Web Platform",
+        workflow: "Upload → Compare → Publish",
+      },
       challengeTitle: "Drawing Review Still Means Manual Hunting.",
       challengeBody: "Revision packs arrive dense and frequent. Teams burn hours comparing sheets, missing changes, and re-entering data that already lives on the page.",
       problems: [
@@ -513,7 +541,12 @@ export const solutions = [
       name: "Project Intelligence",
       title: "One operating picture for planning and delivery",
       body: "Project Intelligence consolidates status, risks, and progress signals into dashboards leadership and project teams can act on together.",
-      stats: { bestFor: "Project Leadership", coreFunction: "Operational Dashboards", platform: "Web Platform" },
+      stats: {
+        bestFor: "Project Leadership",
+        coreFunction: "Operational Dashboards",
+        platform: "Web Platform",
+        workflow: "Connect → Monitor → Act",
+      },
       challengeTitle: "Status Lives in Too Many Places to Act Fast.",
       challengeBody: "Reports, trackers, and meetings each tell a partial story. Leaders spend time assembling the picture instead of making decisions.",
       problems: [
@@ -564,7 +597,12 @@ export const solutions = [
       name: "Permit AI",
       title: "Spot permit and compliance gaps before they stall work",
       body: "Permit AI reviews submissions and supporting documents so teams catch missing items earlier—reducing rework and approval delay.",
-      stats: { bestFor: "Compliance Teams", coreFunction: "Permit Review", platform: "Web Platform" },
+      stats: {
+        bestFor: "Compliance Teams",
+        coreFunction: "Permit Review",
+        platform: "Web Platform",
+        workflow: "Assemble → Review → Submit",
+      },
       challengeTitle: "Permit Gaps Surface When It Is Already Expensive.",
       challengeBody: "Submission packs are large and checklist-heavy. Missing items and mismatches are found late—after reviewers push the package back.",
       problems: [
@@ -615,7 +653,12 @@ export const solutions = [
       name: "BOQ Extraction",
       title: "Extract BOQ data without retyping every line",
       body: "BOQ Extraction turns drawings and specs into structured quantities your estimating and commercial teams can review, edit, and reuse.",
-      stats: { bestFor: "Commercial & Estimating", coreFunction: "BOQ Structuring", platform: "Web Platform" },
+      stats: {
+        bestFor: "Commercial & Estimating",
+        coreFunction: "BOQ Structuring",
+        platform: "Web Platform",
+        workflow: "Extract → Review → Hand Off",
+      },
       challengeTitle: "BOQ Building Still Starts With Manual Re-Typing.",
       challengeBody: "Quantities hide in drawings and long specs. Teams copy line by line into spreadsheets, introducing delay and avoidable error.",
       problems: [

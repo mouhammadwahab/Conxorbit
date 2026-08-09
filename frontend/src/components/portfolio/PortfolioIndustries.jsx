@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Reveal from "../common/Reveal";
+import SectionBadge from "../common/SectionBadge";
 import styles from "./PortfolioIndustries.module.css";
 
 export default function PortfolioIndustries({ content }) {
@@ -14,10 +15,7 @@ export default function PortfolioIndustries({ content }) {
     <Reveal as="section" className={styles.section} aria-label={badge}>
       <div className={styles.sectionInner}>
         <div className={`${styles.header} revealHead`}>
-          <span className={styles.badge}>
-            <span aria-hidden="true">◆</span> {badge}
-            <span className={styles.badgeRule} aria-hidden="true" />
-          </span>
+          <SectionBadge>{badge}</SectionBadge>
           <h2 className={styles.title}>
             <span>{titleLine1}</span>
             <span className={styles.titleMuted}>{titleLine2}</span>

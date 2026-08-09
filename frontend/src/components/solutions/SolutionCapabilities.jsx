@@ -1,4 +1,5 @@
 import Reveal from "../common/Reveal";
+import SectionBadge from "../common/SectionBadge";
 import { SolutionIcon } from "./solutionIcons";
 import styles from "./SolutionCapabilities.module.css";
 
@@ -9,15 +10,15 @@ export default function SolutionCapabilities({ content }) {
   return (
     <Reveal as="section" className={styles.section} aria-label={badge}>
       <div className={`${styles.header} revealHead`}>
-        <span className={styles.badge}>
-          <span aria-hidden="true">•</span> {badge}
-        </span>
+        <SectionBadge variant="gold" size="sm">
+          {badge}
+        </SectionBadge>
         <h2>{title}</h2>
         {body ? <p>{body}</p> : null}
       </div>
       <div className={styles.grid}>
         {cards.map((card, index) => (
-          <article key={card.title} className={`${styles.card} interactiveCard cardReveal`}>
+          <article key={card.title} className={`${styles.card} cardReveal`}>
             <SolutionIcon name={card.icon} className={styles.icon} />
             <h3>{card.title}</h3>
             <p>{card.body}</p>

@@ -12,7 +12,7 @@ export default function ConstructionSolution() {
       <SEO
         title={meta.title}
         description={meta.description}
-        path="/solutions/construction"
+        path="/case-studies/construction"
       />
       <PageHero {...hero} />
       <FeatureList

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Reveal from "../common/Reveal";
+import SectionBadge from "../common/SectionBadge";
 import usePrefersReducedMotion from "../../hooks/usePrefersReducedMotion";
 import styles from "./SolutionHowItWorks.module.css";
 
@@ -28,9 +29,9 @@ export default function SolutionHowItWorks({ content }) {
       <div className={styles.inner}>
         <div className={styles.top}>
           <div className={`${styles.copy} revealHead`}>
-            <span className={styles.badge}>
-              <span aria-hidden="true">•</span> {badge}
-            </span>
+            <SectionBadge variant="gold" size="sm">
+              {badge}
+            </SectionBadge>
             <h2>{title}</h2>
           </div>
           {stagesLabel ? (

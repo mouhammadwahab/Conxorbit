@@ -1,4 +1,5 @@
 import Reveal from "../common/Reveal";
+import SectionBadge from "../common/SectionBadge";
 import styles from "./ServiceValue.module.css";
 
 const ICONS = {
@@ -50,9 +51,7 @@ export default function ServiceValue({ content }) {
   return (
     <Reveal as="section" className={styles.section} aria-label={badge}>
       <div className={`${styles.header} revealHead`}>
-        <span className={styles.badge}>
-          <span aria-hidden="true">•</span> {badge}
-        </span>
+        <SectionBadge>{badge}</SectionBadge>
         <h2>{title}</h2>
       </div>
       <div className={styles.grid}>

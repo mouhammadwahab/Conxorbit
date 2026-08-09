@@ -1,0 +1,18 @@
+0: Solutions Page (All solutions on one page)
+1: Hero:
+2: Badge: Solutions
+3: Heading: Solutions Built Around Real Construction Workflows.
+4: Paragraph: Explore the platforms, AI systems, and workflow solutions we've engineered to solve practical challenges across façade and construction operations.
+5: Note: 
+6: In the below image:
+7: Move the hero section to the centre of the page. 
+8: Don’t add image on hero section.  
+9: Don’t show stats on hero section. Skip the stats. 
+10: On each row there should be only 3 solution cards. 
+11: Total make 9 cards for solutions
+12: For each solution card, add badge, mock-up, solution name, solution short description, short cards for category, and button for Explore solution. 
+13: Skip the last CTA section. Second last CTA section should be last section of solutions page. 
+14: Keep CTA section in centre of page (don’t add image on CTA section). 
+15: Individual Solution Page
+16: Hero:
+17: Structure should be like this. Left side content and right-side image of solution. 

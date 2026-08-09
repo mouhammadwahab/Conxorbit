@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Reveal from "../common/Reveal";
+import SectionBadge from "../common/SectionBadge";
 import styles from "./PortfolioProductGrid.module.css";
 
 export default function PortfolioProductGrid({ content }) {
@@ -7,15 +8,12 @@ export default function PortfolioProductGrid({ content }) {
   const { badge, title, body, cards = [] } = content;
 
   return (
-    <section className={styles.section} aria-label={badge}>
-      <Reveal className={`${styles.header} revealHead`} eager>
-        <span className={styles.badge}>
-          <span aria-hidden="true">◆</span> {badge}
-          <span className={styles.badgeRule} aria-hidden="true" />
-        </span>
-        <h2 className={styles.title}>{title}</h2>
+    <section className={styles.section} aria-label={title || badge}>
+      <div className={styles.header}>
+        {badge ? <SectionBadge variant="gold">{badge}</SectionBadge> : null}
+        {title ? <h2 className={styles.title}>{title}</h2> : null}
         {body ? <p className={styles.body}>{body}</p> : null}
-      </Reveal>
+      </div>
 
       <Reveal className={styles.gridWrap} eager>
         <div className={styles.grid}>

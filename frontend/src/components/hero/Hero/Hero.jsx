@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import SectionBadge from "../../common/SectionBadge";
 import usePrefersReducedMotion from "../../../hooks/usePrefersReducedMotion";
 import styles from "./Hero.module.css";
 
@@ -106,7 +107,7 @@ export default function Hero({ content }) {
       ))}
 
       <div className={`${styles.center} heroStagger`}>
-        <span className={styles.eyebrow}>{eyebrow}</span>
+        <SectionBadge>{eyebrow}</SectionBadge>
         <h1>{title}</h1>
         <p>{body}</p>
         <div className={styles.actions}>

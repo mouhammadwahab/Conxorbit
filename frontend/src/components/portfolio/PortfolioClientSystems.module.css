@@ -1,5 +1,5 @@
 .section {
-  padding: 40px clamp(20px, 5vw, 72px);
+  padding: clamp(64px, 8vw, 96px) clamp(20px, 5vw, 72px) 48px;
   background: #0a1613;
 }
 
@@ -161,9 +161,9 @@
 .tag {
   padding: 7px 11px;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-size: 0.7rem;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  font-size: 0.78rem;
   color: var(--gold, #b8893d);
 }
 

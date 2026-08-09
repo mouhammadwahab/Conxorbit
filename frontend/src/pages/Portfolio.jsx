@@ -35,7 +35,7 @@ export default function Portfolio() {
         <PortfolioClientSystems content={clientSystems} />
         <PortfolioApproach content={approach} />
         <PortfolioProductGrid content={internalProducts} />
-        <PortfolioProductGrid content={workflowSolutions} />
+        <PortfolioProductGrid content={workflowSolutions} key="workflow-solutions" />
         <PortfolioIndustries content={industries} />
         <SolutionsFinalCta content={cta} />
       </div>

@@ -1,4 +1,5 @@
 import Reveal from "../../common/Reveal";
+import SectionBadge from "../../common/SectionBadge";
 import styles from "./WhyWorkWithUs.module.css";
 
 const ICONS = {
@@ -44,9 +45,7 @@ export default function WhyWorkWithUs({ content }) {
   return (
     <Reveal as="section" className={styles.section} aria-label={badge}>
       <div className={`${styles.header} revealHead`}>
-        <span className={styles.badge}>
-          <span aria-hidden="true">✦</span> {badge}
-        </span>
+        <SectionBadge>{badge}</SectionBadge>
         <h2 className={styles.titleOneLine}>{title}</h2>
       </div>
 

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import SEO from "../components/common/SEO";
 import { CTABand } from "../components/common/PageHero";
 import Reveal from "../components/common/Reveal";
+import SectionBadge from "../components/common/SectionBadge";
 import PageShell from "../components/layout/PageShell/PageShell";
 import usePrefersReducedMotion from "../hooks/usePrefersReducedMotion";
 import { aboutContent } from "../content/siteContent";
@@ -370,7 +371,7 @@ function ValuesSection({ values }) {
     <Reveal as="section" className={`${styles.values} toneDark`} aria-label={values.eyebrow}>
       <div className={styles.valuesInner}>
         <div className="revealHead">
-          <p className={styles.eyebrowGold}>{values.eyebrow}</p>
+          <SectionBadge as="p">{values.eyebrow}</SectionBadge>
           <h2>{values.title}</h2>
         </div>
         <div className={styles.valuesGrid}>

@@ -13,9 +13,20 @@ export const navLinks = [
     label: "Solutions",
     href: "/solutions",
     children: [
-      { label: "Façade & Curtain Wall", href: "/solutions/facade" },
-      { label: "Construction Technology", href: "/solutions/construction" },
+      { label: "PanelX", href: "/solutions/panel-x" },
+      { label: "ElectraX", href: "/solutions/electra-x" },
+      { label: "Construction Inspection", href: "/solutions/construction-inspection" },
+      { label: "Quote Automation", href: "/solutions/quote-automation" },
+      { label: "Drawing Intelligence", href: "/solutions/drawing-intelligence" },
       { label: "View All Solutions", href: "/solutions", emphasis: true },
+    ],
+  },
+  {
+    label: "Trades",
+    href: "/case-studies/facade",
+    children: [
+      { label: "Façade & Curtain Wall", href: "/case-studies/facade" },
+      { label: "Construction Technology", href: "/case-studies/construction" },
     ],
   },
   {
@@ -173,7 +184,7 @@ export const homeContent = {
         imageKey: "facade",
         title: "Façade Intelligence",
         description: "Realize new ideas and opportunities without the hassle.",
-        href: "/solutions/facade",
+        href: "/case-studies/facade",
         cta: "View Solution",
       },
       {
@@ -181,7 +192,7 @@ export const homeContent = {
         imageKey: "glass",
         title: "Project Onboarding",
         description: "Qualify equipment with far fewer interactions.",
-        href: "/solutions/construction",
+        href: "/case-studies/construction",
         cta: "View Solution",
       },
       {
@@ -373,7 +384,7 @@ export const facadeContent = {
       "Custom software for façade and curtain wall teams: DWG viewing, panel tracking, AI chat, and fabrication tools in development.",
   },
   hero: {
-    eyebrow: "Lead specialty",
+    eyebrow: "Lead Specialty",
     title: "Façade & Curtain Wall",
     body: "Purpose-built software for the people who design, fabricate, and install the building envelope.",
   },
@@ -536,7 +547,7 @@ export const aboutContent = {
   },
   glowHero: {
     phase1: {
-      eyebrow: "ABOUT CONX ORBIT",
+      eyebrow: "About ConX Orbit",
       titleLine1: "Technology Should Understand",
       titleLine2: "the Work It Is Built For.",
     },
@@ -639,8 +650,19 @@ export const footerContent = {
     {
       title: "Solutions",
       links: [
-        { label: "Façade & Curtain Wall", href: "/solutions/facade" },
-        { label: "Construction Technology", href: "/solutions/construction" },
+        { label: "PanelX", href: "/solutions/panel-x" },
+        { label: "ElectraX", href: "/solutions/electra-x" },
+        { label: "Construction Inspection", href: "/solutions/construction-inspection" },
+        { label: "Quote Automation", href: "/solutions/quote-automation" },
+        { label: "Drawing Intelligence", href: "/solutions/drawing-intelligence" },
+        { label: "All Solutions", href: "/solutions" },
+      ],
+    },
+    {
+      title: "Trades",
+      links: [
+        { label: "Façade & Curtain Wall", href: "/case-studies/facade" },
+        { label: "Construction Technology", href: "/case-studies/construction" },
       ],
     },
     {

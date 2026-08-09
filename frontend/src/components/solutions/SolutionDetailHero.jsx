@@ -15,6 +15,7 @@ export default function SolutionDetailHero({ solution }) {
     demoCta,
   } = detail;
   const reduced = usePrefersReducedMotion();
+  const heroImage = detail.heroImage || image;
 
   const scrollToDemo = (event) => {
     event.preventDefault();
@@ -52,15 +53,25 @@ export default function SolutionDetailHero({ solution }) {
           ) : null}
           {demoCta ? (
             <button type="button" className={`${styles.secondary} btnMotion`} onClick={scrollToDemo}>
-              <span aria-hidden="true">▶</span>
+              <span className={styles.play} aria-hidden="true">
+                ▶
+              </span>
               <span>{demoCta.label}</span>
             </button>
           ) : null}
         </div>
       </div>
       <div className={styles.media}>
-        <div className={`${styles.frame} interactiveCard mediaZoom`}>
-          <img src={image} alt="" loading="eager" />
+        <div className={`${styles.browser} interactiveCard`}>
+          <div className={styles.chrome} aria-hidden="true">
+            <span className={styles.dot} />
+            <span className={styles.dot} />
+            <span className={styles.dot} />
+            <span className={styles.url}>{name.toLowerCase().replace(/\s+/g, "")}.app</span>
+          </div>
+          <div className={`${styles.viewport} mediaZoom`}>
+            <img src={heroImage} alt="" loading="eager" />
+          </div>
         </div>
       </div>
     </Reveal>

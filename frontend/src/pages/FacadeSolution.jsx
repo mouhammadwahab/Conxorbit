@@ -10,7 +10,7 @@ export default function FacadeSolution() {
 
   return (
     <PageShell atmosphere="facade">
-      <SEO title={meta.title} description={meta.description} path="/solutions/facade" />
+      <SEO title={meta.title} description={meta.description} path="/case-studies/facade" />
       <PageHero {...hero} />
       <FeatureList
         title={painPoints.title}
@@ -20,7 +20,7 @@ export default function FacadeSolution() {
       />
       <FeatureList title={platform.title} items={platform.items} tone="dark" />
       <section className={`${styles.devBanner} toneDark`}>
-        <div className={`${styles.devInner} ${styles.card3d}`}>
+        <div className={styles.devInner}>
           <span>In development</span>
           <h2>{inDevelopment.title}</h2>
           <p>{inDevelopment.body}</p>

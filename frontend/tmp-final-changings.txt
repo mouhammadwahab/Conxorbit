@@ -1,0 +1,41 @@
+0: Add trades button on navbar.
+1: Current hero section 3D building and Text is too big. Make buildings element little bit small and reduce the heading and paragraph size of Hero.
+2: Make hero section buttons plan gradient instead of glassmorphysm.
+3: Every badge should be made like this. Instead of plane text. 
+4: In below image Add left right arrows to scroll the trade cards
+5: In the below image:Fix this timeline. Currently the cards are not visible completely, half part of the cards are not visible. 
+6: Make storyline cards little bit small, and adjust it within page width
+7: In the Below image make the badge like a badge not like text:
+8: In All Solutions Page:
+9: Move the Hero section little bit below. 
+10: There should be enough space between hero and solutions grid. Increase the space between solutions grid and hero section. Currently it feels congested. The hero section should have a proper feel. 
+11: Make Solutions text on hero section as Golden Badge. 
+12: In below image: The blue lined area should be white (Keep the CTA card same green as current)
+13: Reduce the font size of badg
+14: In below image: Make it Golden badge
+15: In below Image: Move the hero section a bit below. Currently it is touching the navbar. 
+16: There should be proper space between Featured section and hero section. 
+17: On Portfolio page:  Every solution type should have a heading before it. 
+18: In the below Image: There should be heading like Internap Products. 
+19: With Paragraph: The solutions we made after analysing the problems of industry. 
+20: For Internal Products:
+21: Badge: Our ProductsHeading: Products We’re Building for the Industry 
+22: Paragraph: Alongside client work, we’re developing our own products around recurring challenges we see across construction and specialist trades — turning real industry problems into focused, scalable technology.
+23: Then below show the solutions.
+24: Same for the Workflow Solutions section. 
+25: In the below imageAdd heading and paragraph in the Blue highlighted section:
+26: Badge: Workflow Solutions
+27: Heading: Intelligence Applied to Real Workflows
+28: Paragraph: A collection of AI-powered workflow demonstrations built around real construction challenges, showing how repetitive and complex processes can be made faster, smarter, and more connected.
+29: In the below Image: Make these cards in camel case, instead of All capital. 
+30: About section:
+31: In the below Image:
+32: Make the circle a bit small
+33: Change the color of ABOUT CONX ORBIT to golden. Also make it camel Case Instead of All Capital. Example: About ConX Orbit.
+34: Make the teams card a bit small (reduce the size of team card). 
+35: Other Changings:
+36: Remove animation from CTA section. Currently when hover over any CTA section it 
+37: Remove effect from FAQ section. When hover over a question, it should just change its border colour. 
+38: All CTA sections on the website should have same width. 
+39: There should be proper space between every 2 sections on the website. AND HERO SECTION should have a proper feel and space. 
+40: Individual Solutions Page is not implemented yet as it was given. 

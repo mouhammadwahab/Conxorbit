@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Reveal from "../common/Reveal";
+import SectionBadge from "../common/SectionBadge";
 import styles from "./ServiceWhy.module.css";
 
 const ICONS = {
@@ -38,9 +39,7 @@ export default function ServiceWhy({ content }) {
   return (
     <Reveal as="section" className={styles.section} aria-label={badge}>
       <div className={`${styles.header} revealHead`}>
-        <span className={styles.badge}>
-          <span aria-hidden="true">✦</span> {badge}
-        </span>
+        <SectionBadge>{badge}</SectionBadge>
         <h2>{title}</h2>
         {body ? <p>{body}</p> : null}
         {cta ? (

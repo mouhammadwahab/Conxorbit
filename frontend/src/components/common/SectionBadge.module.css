@@ -1,0 +1,64 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  line-height: 1.2;
+  -webkit-background-clip: border-box !important;
+  background-clip: border-box !important;
+}
+
+.light {
+  background: #ffffff !important;
+  border: 1px solid rgba(20, 48, 46, 0.12);
+  box-shadow: 0 6px 18px rgba(1, 15, 14, 0.12);
+  color: #1d2a1c !important;
+  -webkit-text-fill-color: #1d2a1c;
+}
+
+.gold {
+  background: linear-gradient(
+    135deg,
+    rgba(184, 137, 61, 0.22),
+    rgba(243, 201, 105, 0.14)
+  ) !important;
+  border: 1px solid rgba(184, 137, 61, 0.65);
+  box-shadow:
+    0 8px 22px rgba(184, 137, 61, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  color: #f3c969 !important;
+  -webkit-text-fill-color: #f3c969;
+}
+
+.icon {
+  flex-shrink: 0;
+  color: var(--gold, #b8893d);
+  font-size: 0.82rem;
+  line-height: 1;
+}
+
+.gold .icon {
+  color: #f3c969;
+}
+
+.label {
+  min-width: 0;
+}
+
+.sm {
+  padding: 5px 12px;
+  font-size: 0.72rem;
+  gap: 6px;
+}
+
+.sm .icon {
+  font-size: 0.7rem;
+}

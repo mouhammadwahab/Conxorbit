@@ -1,3 +1,4 @@
+import SectionBadge from "../common/SectionBadge";
 import styles from "./StackedCards.module.css";
 
 /**
@@ -10,7 +11,7 @@ export default function StackedCards({ eyebrow, title, cards = [], tone = "dark"
       className={`${styles.section} ${tone === "light" ? styles.light : styles.dark}`}
     >
       <div className={styles.header}>
-        {eyebrow ? <p className={styles.eyebrow}>{eyebrow}</p> : null}
+        {eyebrow ? <SectionBadge as="p">{eyebrow}</SectionBadge> : null}
         <h2 className={styles.title}>{title}</h2>
       </div>
       <div className={styles.stack}>

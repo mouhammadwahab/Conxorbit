@@ -40,6 +40,7 @@ export default function Navbar() {
 
   const isLinkActive = (link) => {
     if (link.label === "Solutions") return location.pathname.startsWith("/solutions");
+    if (link.label === "Trades") return location.pathname.startsWith("/case-studies");
     if (link.label === "Services") return location.pathname.startsWith("/services");
     return false;
   };

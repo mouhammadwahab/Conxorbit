@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Reveal from "../common/Reveal";
+import SectionBadge from "../common/SectionBadge";
 import { getRelatedSolutions } from "../../content/solutionsContent";
 import styles from "./SolutionMore.module.css";
 
@@ -13,9 +14,9 @@ export default function SolutionMore({ content }) {
   return (
     <Reveal as="section" className={styles.section} aria-label={badge}>
       <div className={`${styles.header} revealHead`}>
-        <span className={styles.badge}>
-          <span aria-hidden="true">•</span> {badge}
-        </span>
+        <SectionBadge variant="gold" size="sm">
+          {badge}
+        </SectionBadge>
         <h2>{title}</h2>
       </div>
       <div className={styles.grid}>
@@ -23,7 +24,7 @@ export default function SolutionMore({ content }) {
           <Link
             key={item.slug}
             to={`/solutions/${item.slug}`}
-            className={`${styles.card} interactiveCard cardReveal`}
+            className={`${styles.card} cardReveal`}
           >
             <div className={`${styles.media} mediaZoom`}>
               <span className={styles.tag}>{item.badge}</span>

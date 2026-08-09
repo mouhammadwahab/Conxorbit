@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import SectionBadge from "../common/SectionBadge";
 import usePrefersReducedMotion from "../../hooks/usePrefersReducedMotion";
 import { ensureGsap } from "../../utils/gsapSetup";
 import styles from "./ConnectedStoryline.module.css";
@@ -55,7 +56,7 @@ export default function ConnectedStoryline({
     >
       <div className={styles.inner}>
         <div className={styles.header}>
-          {eyebrow ? <p className={styles.eyebrow}>{eyebrow}</p> : null}
+          {eyebrow ? <SectionBadge as="p">{eyebrow}</SectionBadge> : null}
           <h2 className={styles.title}>{title}</h2>
           {body ? <p className={styles.body}>{body}</p> : null}
         </div>

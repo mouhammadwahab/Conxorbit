@@ -1,5 +1,5 @@
 .section {
-  padding: 28px clamp(20px, 5vw, 72px) 36px;
+  padding: 28px clamp(20px, 5vw, 72px) clamp(40px, 5vw, 56px);
   background: #0a1613;
   border-block: 1px solid rgba(255, 255, 255, 0.06);
 }

@@ -14,55 +14,6 @@
   justify-items: start;
 }
 
-.badges {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 12px;
-  width: 100%;
-}
-
-.systemBadge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 12px;
-  border: 1px solid rgba(184, 137, 61, 0.45);
-  border-radius: 4px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  font-size: 0.72rem;
-  font-weight: 500;
-  color: rgba(232, 237, 216, 0.78);
-  background: rgba(15, 28, 24, 0.55);
-}
-
-.systemBadge::before {
-  content: "";
-  width: 7px;
-  height: 7px;
-  border-radius: 1px;
-  background: var(--olive);
-  flex-shrink: 0;
-}
-
-.badgeRule {
-  flex: 1;
-  min-width: 28px;
-  max-width: 96px;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.2);
-}
-
-.eyebrow {
-  margin: 0;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: #f7f7f4;
-}
-
 .title {
   margin: 0;
   font-size: clamp(1.85rem, 3.6vw, 2.85rem);

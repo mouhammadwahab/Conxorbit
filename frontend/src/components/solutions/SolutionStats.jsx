@@ -12,7 +12,7 @@ export default function SolutionStats({ stats }) {
   ].filter((item) => item.value);
 
   return (
-    <Reveal as="section" className={styles.section} eager aria-label="Solution snapshot">
+    <Reveal as="section" className={styles.section} aria-label="Solution snapshot">
       <div className={styles.inner}>
         <div className={styles.head}>
           <SectionBadge variant="gold" size="sm">

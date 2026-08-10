@@ -1,0 +1,388 @@
+.section {
+  padding: var(--section-pad);
+  background:
+    radial-gradient(ellipse 50% 35% at 20% 10%, rgba(184, 137, 61, 0.1), transparent 55%),
+    linear-gradient(180deg, #071411 0%, #050c0b 100%);
+}
+
+.inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  gap: clamp(28px, 4vw, 44px);
+}
+
+.header {
+  display: grid;
+  gap: 12px;
+  max-width: 44rem;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #d4b06a;
+}
+
+.eyebrowRule {
+  width: 28px;
+  height: 1.5px;
+  background: #d4b06a;
+  flex-shrink: 0;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(1.65rem, 3vw, 2.4rem);
+  line-height: 1.2;
+  color: #f7f7f4;
+  letter-spacing: -0.02em;
+}
+
+.body {
+  margin: 0;
+  color: rgba(196, 208, 178, 0.7);
+  font-size: 1.02rem;
+  line-height: 1.65;
+  max-width: 52ch;
+}
+
+.mockWrap {
+  width: 100%;
+}
+
+.mockup {
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(160deg, #122428 0%, #0a1618 55%, #081214 100%);
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+}
+
+.mockTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.78rem;
+  color: rgba(220, 230, 210, 0.7);
+}
+
+.mockTopRight {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.synced {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(120, 190, 140, 0.35);
+  background: rgba(40, 90, 60, 0.25);
+  color: #9decc0;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.syncedDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #4ade80;
+}
+
+.mockIcon {
+  opacity: 0.55;
+}
+
+.mockBody {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  min-height: 340px;
+}
+
+.mockSide {
+  padding: 14px;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.mockSearch {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(196, 208, 178, 0.45);
+  font-size: 0.78rem;
+  margin-bottom: 14px;
+}
+
+.mockSideLabel {
+  margin: 0 0 8px;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(196, 208, 178, 0.5);
+}
+
+.mockSide ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 4px;
+}
+
+.mockSide li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 0.86rem;
+  color: rgba(232, 237, 216, 0.72);
+}
+
+.panelActive {
+  background: rgba(255, 255, 255, 0.08);
+  color: #f7f7f4 !important;
+}
+
+.panelDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(184, 137, 61, 0.35);
+}
+
+.panelActive .panelDot {
+  background: #d4b06a;
+}
+
+.mockViewport {
+  position: relative;
+  padding: 16px;
+  background-image:
+    linear-gradient(rgba(120, 170, 190, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(120, 170, 190, 0.06) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.mockTools {
+  position: absolute;
+  left: 16px;
+  top: 16px;
+  display: grid;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(8, 16, 18, 0.85);
+  z-index: 2;
+  font-size: 0.75rem;
+  color: rgba(232, 237, 216, 0.55);
+}
+
+.toolActive {
+  color: #d4b06a;
+}
+
+.mockGrid {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 6px;
+  margin: 28px 24px 24px 56px;
+  max-width: 520px;
+}
+
+.mockGrid span {
+  aspect-ratio: 1.4 / 1;
+  border: 1px solid rgba(150, 190, 200, 0.18);
+  border-radius: 3px;
+  background: rgba(20, 40, 48, 0.35);
+}
+
+.cellActive {
+  border: 1.5px dashed #d4b06a !important;
+  background: rgba(184, 137, 61, 0.12) !important;
+  box-shadow: 0 0 0 1px rgba(184, 137, 61, 0.2);
+}
+
+.measure {
+  position: absolute;
+  left: 56%;
+  top: 42%;
+  display: grid;
+  gap: 4px;
+  justify-items: center;
+  color: #d4b06a;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+}
+
+.measureLine {
+  width: 72px;
+  height: 1px;
+  background: #d4b06a;
+  position: relative;
+}
+
+.measureLine::before,
+.measureLine::after {
+  content: "";
+  position: absolute;
+  top: -3px;
+  width: 1px;
+  height: 7px;
+  background: #d4b06a;
+}
+
+.measureLine::before {
+  left: 0;
+}
+
+.measureLine::after {
+  right: 0;
+}
+
+.detailCard {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  width: min(220px, 46%);
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(8, 16, 18, 0.88);
+  backdrop-filter: blur(8px);
+  display: grid;
+  gap: 6px;
+}
+
+.detailCard strong {
+  font-size: 0.88rem;
+  color: #f7f7f4;
+  margin-bottom: 2px;
+}
+
+.detailCard p {
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 0.74rem;
+  color: rgba(196, 208, 178, 0.65);
+}
+
+.detailCard em {
+  font-style: normal;
+  color: #d4b06a;
+}
+
+.features {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.feature {
+  display: grid;
+  gap: 10px;
+  justify-items: start;
+  align-content: start;
+}
+
+.featureIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  border: 1px solid rgba(184, 137, 61, 0.55);
+  color: #d4b06a;
+  display: grid;
+  place-items: center;
+}
+
+.featureIcon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.feature strong {
+  font-size: 1rem;
+  color: #f7f7f4;
+  font-weight: 650;
+}
+
+.feature span {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: rgba(196, 208, 178, 0.62);
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  padding: 12px 18px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.92rem;
+  background: linear-gradient(135deg, #d4b06a, #b8893d);
+  color: #0a100e;
+}
+
+.cta:hover {
+  filter: brightness(1.05);
+}
+
+@media (max-width: 1000px) {
+  .features {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 800px) {
+  .mockBody {
+    grid-template-columns: 1fr;
+  }
+
+  .mockSide {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .mockSide ul {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .features {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .features {
+    grid-template-columns: 1fr;
+  }
+
+  .mockGrid {
+    margin-left: 48px;
+  }
+}

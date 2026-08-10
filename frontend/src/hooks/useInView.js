@@ -1,13 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 
-function isNearViewport(node) {
-  const rect = node.getBoundingClientRect();
-  return rect.top < window.innerHeight && rect.bottom > 0;
-}
-
 /**
  * Adds visibility when the element enters the viewport (transform/opacity only).
- * @param {{ eager?: boolean }} [options]
+ * @param {{ eager?: boolean }} [options] eager = true for first-viewport heroes only
  */
 export default function useInView(options = {}) {
   const { eager = false } = options;
@@ -16,12 +11,13 @@ export default function useInView(options = {}) {
 
   useEffect(() => {
     const node = ref.current;
-    if (!node || typeof IntersectionObserver === "undefined") {
-      setVisible(true);
-      return undefined;
-    }
+    if (!node) return undefined;
 
-    if (eager || isNearViewport(node)) {
+    const reduced =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (reduced || eager || typeof IntersectionObserver === "undefined") {
       setVisible(true);
       return undefined;
     }
@@ -33,21 +29,12 @@ export default function useInView(options = {}) {
           observer.disconnect();
         }
       },
-      { threshold: 0, rootMargin: "0px 0px -40px 0px" }
+      { threshold: 0.12, rootMargin: "0px 0px -10% 0px" }
     );
 
     observer.observe(node);
 
-    // Route enter / layout race: re-check after paint
-    const frame = requestAnimationFrame(() => {
-      if (isNearViewport(node)) {
-        setVisible(true);
-        observer.disconnect();
-      }
-    });
-
     return () => {
-      cancelAnimationFrame(frame);
       observer.disconnect();
     };
   }, [eager]);

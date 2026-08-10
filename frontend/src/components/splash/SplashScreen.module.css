@@ -64,8 +64,8 @@
 
 .logoStage {
   position: relative;
-  width: clamp(148px, 28vw, 200px);
-  height: clamp(148px, 28vw, 200px);
+  width: clamp(112px, 20vw, 148px);
+  height: clamp(112px, 20vw, 148px);
   display: grid;
   place-items: center;
 }

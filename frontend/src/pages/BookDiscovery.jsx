@@ -20,7 +20,7 @@ const emptyValues = {
 };
 
 export default function BookDiscovery() {
-  const { meta, hero, form } = discoveryContent;
+  const { meta, hero, form, fit } = discoveryContent;
   const [status, setStatus] = useState("idle");
   const [values, setValues] = useState(emptyValues);
   const [topics, setTopics] = useState([]);
@@ -91,14 +91,14 @@ export default function BookDiscovery() {
   return (
     <PageShell atmosphere="contact">
       <SEO title={meta.title} description={meta.description} path="/book-discovery" />
-      <Reveal as="section" className={styles.page} eager aria-label={hero.title}>
-        <div className={`${styles.header} revealHead`}>
+      <div className={styles.page}>
+        <Reveal as="header" className={`${styles.header} revealHead`} eager aria-label={hero.title}>
           {hero.badge ? <SectionBadge>{hero.badge}</SectionBadge> : null}
           <h1 className={styles.title}>{hero.title}</h1>
           <p className={styles.subtitle}>{hero.body}</p>
-        </div>
+        </Reveal>
 
-        <form className={styles.card} onSubmit={onSubmit} noValidate>
+        <Reveal as="form" className={styles.card} onSubmit={onSubmit} noValidate>
           <div className={styles.cardTop}>
             <span className={styles.cardBadge}>{form.badge}</span>
             <span className={styles.cardStatus}>
@@ -225,8 +225,45 @@ export default function BookDiscovery() {
             {status === "success" ? <p className={styles.success}>{form.success}</p> : null}
             {status === "error" ? <p className={styles.error}>{form.error}</p> : null}
           </div>
-        </form>
-      </Reveal>
+        </Reveal>
+
+        {fit ? (
+          <Reveal as="section" className={styles.fit} aria-label={fit.title}>
+            <div className={styles.fitHead}>
+              <span className={styles.fitEyebrow}>
+                <span className={styles.fitRule} aria-hidden="true" />
+                {fit.eyebrow}
+              </span>
+              <h2 className={styles.fitTitle}>{fit.title}</h2>
+            </div>
+            <div className={styles.fitGrid}>
+              {fit.columns.map((column) => (
+                <div key={column.heading} className={styles.fitCol}>
+                  <h3 className={styles.fitColHeading}>{column.heading}</h3>
+                  <ul className={styles.fitList}>
+                    {column.items.map((item) => (
+                      <li key={item}>
+                        <span className={styles.fitCheck} aria-hidden="true">
+                          <svg viewBox="0 0 16 16" fill="none">
+                            <path
+                              d="M3.5 8.2l3 3 6-6.5"
+                              stroke="currentColor"
+                              strokeWidth="1.6"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                        </span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+        ) : null}
+      </div>
     </PageShell>
   );
 }

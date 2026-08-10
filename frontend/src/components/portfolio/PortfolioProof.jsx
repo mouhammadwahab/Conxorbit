@@ -7,7 +7,7 @@ export default function PortfolioProof({ content }) {
   const { badge, items = [] } = content;
 
   return (
-    <Reveal as="section" className={styles.section} eager aria-label={badge}>
+    <Reveal as="section" className={styles.section} aria-label={badge}>
       <div className={`${styles.inner} revealHead`}>
         <SectionBadge>{badge}</SectionBadge>
         <div className={styles.grid}>

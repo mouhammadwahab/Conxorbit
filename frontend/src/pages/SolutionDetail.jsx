@@ -1,4 +1,4 @@
-import { Link, Navigate, useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import SEO from "../components/common/SEO";
 import PageShell from "../components/layout/PageShell/PageShell";
 import SolutionDetailHero from "../components/solutions/SolutionDetailHero";
@@ -32,11 +32,6 @@ export default function SolutionDetail() {
         path={`/solutions/${solution.slug}`}
       />
       <div className={styles.page}>
-        <div className={styles.top}>
-          <Link className={`${styles.back} linkDraw`} to="/solutions">
-            ← All Solutions
-          </Link>
-        </div>
         <SolutionDetailHero solution={solution} />
         <SolutionStats stats={detail.stats} />
         <SolutionChallenge content={detail.challenge} />

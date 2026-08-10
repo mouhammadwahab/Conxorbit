@@ -7,7 +7,7 @@ export default function SolutionChallenge({ content }) {
   const { badge, title, body, problems = [] } = content;
 
   return (
-    <Reveal as="section" className={styles.section} eager aria-label={badge}>
+    <Reveal as="section" className={styles.section} aria-label={badge}>
       <div className={styles.inner}>
         <div className={`${styles.copy} revealHead`}>
           <SectionBadge variant="gold" size="sm">

@@ -4,17 +4,16 @@ export default function SectionBadge({
   children,
   className = "",
   as: Tag = "span",
-  variant = "light",
+  variant = "gold",
   size = "md",
 }) {
   if (!children) return null;
 
-  const variantClass = variant === "gold" ? styles.gold : styles.light;
   const sizeClass = size === "sm" ? styles.sm : "";
 
   return (
     <Tag
-      className={`${styles.badge} ${variantClass}${sizeClass ? ` ${sizeClass}` : ""}${
+      className={`${styles.badge}${sizeClass ? ` ${sizeClass}` : ""}${
         className ? ` ${className}` : ""
       }`}
     >

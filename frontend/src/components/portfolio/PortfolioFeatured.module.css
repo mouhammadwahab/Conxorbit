@@ -21,10 +21,6 @@
   justify-items: start;
 }
 
-.copy > :first-child {
-  margin-bottom: clamp(12px, 2vw, 20px);
-}
-
 .label {
   display: inline-flex;
   align-items: center;

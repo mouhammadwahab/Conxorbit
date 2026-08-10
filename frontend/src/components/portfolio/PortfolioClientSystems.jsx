@@ -22,7 +22,6 @@ export default function PortfolioClientSystems({ content }) {
             <Reveal
               key={item.name}
               className={`${styles.row} ${reverse ? styles.reverse : ""}`}
-              eager={i === 0}
             >
               <div className={`${styles.media} mediaZoom`}>
                 {item.badge ? (

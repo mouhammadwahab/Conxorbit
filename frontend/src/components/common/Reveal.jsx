@@ -3,7 +3,7 @@ import useInView from "../../hooks/useInView";
 /**
  * Scroll reveal wrapper — CSS classes from motion.css (.reveal / .revealVisible).
  * as: polymorphic element tag (default section).
- * eager: reveal as soon as the block is in/near the viewport (tall grids).
+ * eager: immediate reveal for first-viewport heroes only.
  */
 export default function Reveal({
   children,

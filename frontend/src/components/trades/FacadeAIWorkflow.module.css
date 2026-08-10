@@ -1,0 +1,239 @@
+.section {
+  position: relative;
+  padding: var(--section-pad);
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 40% 30% at 50% 0%, rgba(184, 137, 61, 0.08), transparent 55%),
+    linear-gradient(180deg, #050c0b 0%, #071411 100%);
+}
+
+.section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.09;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 36px 36px;
+  pointer-events: none;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  max-width: 920px;
+  margin: 0 auto;
+  display: grid;
+  gap: clamp(40px, 6vw, 64px);
+}
+
+.header {
+  display: grid;
+  gap: 16px;
+  justify-items: center;
+  text-align: center;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 7px 12px;
+  border: 1px solid rgba(184, 137, 61, 0.55);
+  border-radius: 4px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #d4b06a;
+}
+
+.badgeIcon {
+  width: 7px;
+  height: 7px;
+  background: #d4b06a;
+  flex-shrink: 0;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(1.55rem, 3.4vw, 2.35rem);
+  line-height: 1.15;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #f7f7f4;
+  font-weight: 700;
+}
+
+.titleLine {
+  display: block;
+}
+
+.body {
+  margin: 0;
+  max-width: 46ch;
+  color: rgba(196, 208, 178, 0.72);
+  font-size: 1.02rem;
+  line-height: 1.65;
+}
+
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.step {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(160px, 220px) minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.sideLeft,
+.sideRight {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  padding-top: 28px;
+}
+
+.sideLeft {
+  justify-content: flex-end;
+}
+
+.sideRight {
+  justify-content: flex-start;
+}
+
+.center {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  gap: 8px;
+  position: relative;
+}
+
+.index {
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: rgba(196, 208, 178, 0.42);
+}
+
+.node {
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  border: 1.5px solid #d4b06a;
+  background: #071411;
+  box-shadow: 0 0 0 4px rgba(184, 137, 61, 0.1);
+}
+
+.accentOlive .node {
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  border-color: #8a9e5c;
+  background: rgba(90, 107, 59, 0.4);
+  box-shadow: 0 0 0 5px rgba(90, 107, 59, 0.16), 0 0 18px rgba(138, 158, 92, 0.28);
+}
+
+.center h3 {
+  margin: 0;
+  font-size: clamp(0.95rem, 1.6vw, 1.12rem);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #f7f7f4;
+  font-weight: 700;
+}
+
+.accentOlive .center h3 {
+  color: #c5d48a;
+}
+
+.center p {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: rgba(196, 208, 178, 0.6);
+  max-width: 22ch;
+}
+
+.segment {
+  width: 1px;
+  height: 36px;
+  margin-top: 4px;
+  background: linear-gradient(180deg, #d4b06a, rgba(184, 137, 61, 0.2));
+}
+
+.endArrow {
+  color: #d4b06a;
+  font-size: 0.95rem;
+  line-height: 1;
+  margin-top: 2px;
+}
+
+.callout {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 6px;
+  background: rgba(12, 22, 20, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.78rem;
+  letter-spacing: 0.03em;
+  color: rgba(232, 237, 216, 0.78);
+  white-space: nowrap;
+}
+
+.calloutLeft {
+  border-right: 2px solid #d4b06a;
+}
+
+.calloutRight {
+  border-left: 2px solid #d4b06a;
+}
+
+@media (max-width: 760px) {
+  .step {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .sideLeft,
+  .sideRight {
+    justify-content: center;
+    padding-top: 0;
+    min-height: 0;
+    order: 2;
+  }
+
+  .center {
+    order: 1;
+  }
+
+  .sideLeft {
+    order: 3;
+  }
+
+  .callout {
+    white-space: normal;
+    text-align: center;
+  }
+
+  .calloutLeft,
+  .calloutRight {
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid #d4b06a;
+  }
+
+  .segment {
+    height: 24px;
+  }
+}

@@ -4,7 +4,6 @@ import PortfolioHero from "../components/portfolio/PortfolioHero";
 import PortfolioFeatured from "../components/portfolio/PortfolioFeatured";
 import PortfolioProof from "../components/portfolio/PortfolioProof";
 import PortfolioClientSystems from "../components/portfolio/PortfolioClientSystems";
-import PortfolioApproach from "../components/portfolio/PortfolioApproach";
 import PortfolioProductGrid from "../components/portfolio/PortfolioProductGrid";
 import PortfolioIndustries from "../components/portfolio/PortfolioIndustries";
 import SolutionsFinalCta from "../components/solutions/SolutionsFinalCta";
@@ -18,7 +17,6 @@ export default function Portfolio() {
     featured,
     proof,
     clientSystems,
-    approach,
     internalProducts,
     workflowSolutions,
     industries,
@@ -33,7 +31,6 @@ export default function Portfolio() {
         <PortfolioFeatured content={featured} />
         <PortfolioProof content={proof} />
         <PortfolioClientSystems content={clientSystems} />
-        <PortfolioApproach content={approach} />
         <PortfolioProductGrid content={internalProducts} />
         <PortfolioProductGrid content={workflowSolutions} key="workflow-solutions" />
         <PortfolioIndustries content={industries} />

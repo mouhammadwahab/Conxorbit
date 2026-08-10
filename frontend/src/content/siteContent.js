@@ -381,12 +381,131 @@ export const facadeContent = {
   meta: {
     title: "Façade & Curtain Wall Solutions — ConX Orbit",
     description:
-      "Custom software for façade and curtain wall teams: DWG viewing, panel tracking, AI chat, and fabrication tools in development.",
+      "From design and drawings to fabrication, quantities and installation — intelligent systems that connect the workflows behind modern façade projects.",
   },
   hero: {
-    eyebrow: "Lead Specialty",
-    title: "Façade & Curtain Wall",
-    body: "Purpose-built software for the people who design, fabricate, and install the building envelope.",
+    eyebrow: "Façade & Curtain Wall Technology",
+    titleBefore: "Engineering the intelligence behind the ",
+    titleHighlight: "building envelope.",
+    titleAfter: "",
+    body: "From design and drawings to fabrication, quantities and installation, ConX Orbit builds intelligent systems that connect the workflows behind modern façade projects.",
+    primaryCta: { label: "Explore Façade Solutions", href: "/solutions" },
+    secondaryCta: { label: "Talk to Our Team", href: "/book-discovery" },
+    footerNote: "Connected data\nBetter decisions",
+    callouts: [
+      { label: "Mullion", code: "CW-04", side: "Left", top: "12%", left: "4%", right: "auto" },
+      { label: "Vision Panel", code: "P-204", side: "Left", top: "58%", left: "0%", right: "auto" },
+      { label: "Glass Unit", code: "IGU-28", side: "Right", top: "18%", left: "auto", right: "2%" },
+      { label: "Pressure Plate", code: "AL-6063-T6", side: "Right", top: "48%", left: "auto", right: "0%" },
+    ],
+  },
+  workflow: {
+    eyebrow: "The Façade Workflow",
+    title: "From Design Intent to Installed Panel.",
+    body: "A façade project moves through interconnected stages — each producing information that the next team depends on.",
+    steps: [
+      { icon: "design", title: "Design", details: ["Drawings", "Revisions"] },
+      { icon: "engineering", title: "Engineering", details: ["Details", "Coordination"] },
+      { icon: "quantification", title: "Quantification", details: ["BOQ", "Takeoff"] },
+      { icon: "fabrication", title: "Fabrication", details: ["Panels", "Assembly"] },
+      { icon: "documentation", title: "Documentation", details: ["Approvals", "Records"] },
+      { icon: "installation", title: "Installation", details: ["Site", "Handover"] },
+    ],
+  },
+  complexity: {
+    eyebrow: "Where Complexity Builds",
+    title: "The Façade Is More Than a Building Skin.",
+    body: "Behind every panel is a chain of drawings, quantities, documents, components and decisions. When that information becomes fragmented, small inefficiencies multiply across the project.",
+    left: [
+      { label: "Drawings", detail: "Revision comparison & coordination" },
+      { label: "Quantities", detail: "Manual takeoffs & spreadsheets" },
+      { label: "Fabrication", detail: "Panel and component tracking" },
+    ],
+    right: [
+      { label: "Documents", detail: "Information scattered across files" },
+      { label: "Site", detail: "Inspection & progress reporting" },
+      { label: "Coordination", detail: "Information moving between teams" },
+    ],
+  },
+  panelX: {
+    eyebrow: "Featured Façade System",
+    title: "PanelX — A Digital Layer for Façade Operations.",
+    body: "PanelX brings drawings, panel information, documentation and field activity into one connected environment — giving façade teams a clearer view of what is happening across the project.",
+    features: [
+      { icon: "dwg", title: "DWG Viewer", body: "View drawings in browser" },
+      { icon: "tracking", title: "Panel Tracking", body: "Search and track individual panels" },
+      { icon: "field", title: "Field Documentation", body: "Capture photos and reports" },
+      { icon: "info", title: "Project Information", body: "Connect documentation to panels" },
+      { icon: "measure", title: "Measurement", body: "Measure directly from drawings" },
+    ],
+    cta: { label: "Explore PanelX", href: "/solutions/panel-x" },
+  },
+  solutions: {
+    eyebrow: "Our Façade Solutions",
+    title: "Purpose-Built Systems for Complex Façade Work.",
+    body: "From drawing intelligence to field operations, our solutions are designed around specific points where façade teams lose time, information or accuracy.",
+    cards: [
+      {
+        badge: "Client System",
+        imageKey: "panelX",
+        title: "PanelX",
+        body: "Drawings, panel status, and field activity in one connected façade workspace.",
+        href: "/solutions/panel-x",
+        ctaLabel: "View Solution",
+      },
+      {
+        badge: "Capability Showcase",
+        imageKey: "drawing",
+        title: "Drawing Intelligence",
+        body: "Compare revisions and extract what teams need from dense drawing sets.",
+        href: "/solutions/drawing-intelligence",
+        ctaLabel: "View Solution",
+      },
+      {
+        badge: "Capability Showcase",
+        imageKey: "quote",
+        title: "Quote Automation",
+        body: "Turn specs and drawings into structured quantities and quote-ready outputs.",
+        href: "/solutions/quote-automation",
+        ctaLabel: "View Solution",
+      },
+    ],
+  },
+  aiWorkflow: {
+    eyebrow: "Intelligent Façade Technology",
+    title: "Where Façade Expertise\nMeets AI.",
+    body: "We apply AI where it can meaningfully reduce manual work — from understanding drawings and documents to extracting quantities, comparing revisions and automating repetitive decisions.",
+    steps: [
+      {
+        title: "Drawings",
+        body: "Shop drawings, DWGs, PDFs, spec sheets",
+        accent: "gold",
+        leftCallout: "Drawing Analysis",
+        rightCallout: "Document Intelligence",
+      },
+      {
+        title: "Computer Vision",
+        body: "Reads geometry, layers and annotations",
+        accent: "olive",
+      },
+      {
+        title: "Structured Data",
+        body: "Quantities, dimensions, materials, revisions",
+        accent: "gold",
+        leftCallout: "AI Extraction",
+      },
+      {
+        title: "Workflow Automation",
+        body: "Applies rules, flags changes, drafts outputs",
+        accent: "olive",
+      },
+      {
+        title: "Action",
+        body: "Synced to estimating, PM and BIM tools",
+        accent: "gold",
+        rightCallout: "System Integration",
+      },
+    ],
   },
   painPoints: {
     title: "What slows teams down",
@@ -419,10 +538,11 @@ export const facadeContent = {
     body: "Fabrication and bending AI — early work to assist shop decisions with clearer, faster guidance. Available as a roadmap conversation, not a finished product yet.",
   },
   cta: {
-    title: "Talk façade systems with us",
-    body: "Share how your shop and site run today. We’ll map where software can remove the most friction.",
-    href: "/book-discovery",
-    label: "Start a project",
+    eyebrow: "Façade Workflow",
+    title: "Have a Façade Workflow Worth Improving?",
+    body: "Tell us where the process gets difficult. We'll explore whether AI, automation or a purpose-built system can make it work better.",
+    primary: { label: "Book a Discovery Call", href: "/book-discovery" },
+    secondary: { label: "Explore Our Solutions", href: "/solutions" },
   },
 };
 
@@ -576,7 +696,7 @@ export const aboutContent = {
   },
   story: {
     eyebrow: "OUR STORY",
-    title: "Built From How the Work Actually Happens.",
+    title: "Built From How the Work\nActually Happens.",
     opening: [
       "Construction and façade teams work with enormous amounts of information — drawings, specifications, quantities, documents, fabrication data, site updates, and countless decisions. Yet much of that work still depends on disconnected tools, spreadsheets, repetitive processes, and manual coordination.",
     ],
@@ -622,21 +742,28 @@ export const aboutContent = {
   },
   values: {
     eyebrow: "Our core values",
-    title: "We build as one team",
+    titleBefore: "We build as ",
+    titleHighlight: "one team",
+    titleAfter: "",
+    body: "Our values shape the way we think, collaborate, and deliver technology that makes a real difference.",
     items: [
       {
+        icon: "clarity",
         title: "Clarity first",
         body: "Every decision and screen should reduce noise, not add it.",
       },
       {
+        icon: "field",
         title: "Field truth",
         body: "We design from how work actually happens on site and in the shop.",
       },
       {
+        icon: "honest",
         title: "Honest delivery",
         body: "Visible progress, real timelines, and no theatre.",
       },
       {
+        icon: "craft",
         title: "Lasting craft",
         body: "We ship software meant to earn its place for years, not a demo week.",
       },
@@ -663,6 +790,10 @@ export const footerContent = {
       links: [
         { label: "Façade & Curtain Wall", href: "/case-studies/facade" },
         { label: "Construction Technology", href: "/case-studies/construction" },
+        { label: "Aluminium", href: "/portfolio" },
+        { label: "Exterior", href: "/portfolio" },
+        { label: "Site Operations", href: "/case-studies/construction" },
+        { label: "Engineering", href: "/case-studies/facade" },
       ],
     },
     {
@@ -670,6 +801,8 @@ export const footerContent = {
       links: [
         { label: "About", href: "/about" },
         { label: "Portfolio", href: "/portfolio" },
+        { label: "Our Team", href: "/about" },
+        { label: "Careers", href: "mailto:founder@conxorbit.com?subject=Careers" },
         { label: "Book a Discovery Call", href: "/book-discovery" },
       ],
     },
@@ -693,5 +826,5 @@ export const footerContent = {
       ],
     },
   ],
-  legal: "© ConX Orbit. All rights reserved.",
+  legal: "© 2026 ConX Orbit. All rights reserved.",
 };

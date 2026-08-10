@@ -151,89 +151,91 @@ function GlowHero({ glowHero }) {
           </svg>
         </div>
 
-        <div className={styles.glowRingWrap} aria-hidden="true">
-          <svg className={styles.glowRingSvg} viewBox="0 0 400 400" fill="none">
-            <defs>
-              <linearGradient id="aboutArcGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#5a6b3b" stopOpacity="0.15" />
-                <stop offset="25%" stopColor="#8a9e5c" stopOpacity="0.85" />
-                <stop offset="50%" stopColor="#f3c969" stopOpacity="1" />
-                <stop offset="75%" stopColor="#b8893d" stopOpacity="0.95" />
-                <stop offset="100%" stopColor="#5a6b3b" stopOpacity="0.2" />
-              </linearGradient>
-              <filter id="aboutArcGlow" x="-40%" y="-40%" width="180%" height="180%">
-                <feGaussianBlur stdDeviation="6" result="blur" />
-                <feMerge>
-                  <feMergeNode in="blur" />
-                  <feMergeNode in="blur" />
-                  <feMergeNode in="SourceGraphic" />
-                </feMerge>
-              </filter>
-            </defs>
+        <div className={styles.glowStage}>
+          <div className={styles.glowRingWrap} aria-hidden="true">
+            <svg className={styles.glowRingSvg} viewBox="0 0 400 400" fill="none">
+              <defs>
+                <linearGradient id="aboutArcGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#5a6b3b" stopOpacity="0.15" />
+                  <stop offset="25%" stopColor="#8a9e5c" stopOpacity="0.85" />
+                  <stop offset="50%" stopColor="#f3c969" stopOpacity="1" />
+                  <stop offset="75%" stopColor="#b8893d" stopOpacity="0.95" />
+                  <stop offset="100%" stopColor="#5a6b3b" stopOpacity="0.2" />
+                </linearGradient>
+                <filter id="aboutArcGlow" x="-40%" y="-40%" width="180%" height="180%">
+                  <feGaussianBlur stdDeviation="6" result="blur" />
+                  <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+              </defs>
 
-            <circle
-              cx="200"
-              cy="200"
-              r={r}
-              stroke="rgba(184,137,61,0.28)"
-              strokeWidth="1.75"
-            />
-            <circle
-              cx="200"
-              cy="200"
-              r={r}
-              stroke="rgba(90,107,59,0.18)"
-              strokeWidth="3"
-              opacity="0.7"
-            />
-
-            <g className={styles.glowArcSpin}>
               <circle
                 cx="200"
                 cy="200"
                 r={r}
-                stroke="url(#aboutArcGrad)"
-                strokeWidth="10"
-                strokeLinecap="round"
-                strokeDasharray={`${arc} ${gap}`}
-                filter="url(#aboutArcGlow)"
-                opacity="0.55"
+                stroke="rgba(184,137,61,0.28)"
+                strokeWidth="1.75"
               />
               <circle
                 cx="200"
                 cy="200"
                 r={r}
-                stroke="url(#aboutArcGrad)"
-                strokeWidth="2.75"
-                strokeLinecap="round"
-                strokeDasharray={`${arc} ${gap}`}
-                filter="url(#aboutArcGlow)"
+                stroke="rgba(90,107,59,0.18)"
+                strokeWidth="3"
+                opacity="0.7"
               />
-            </g>
-          </svg>
-        </div>
 
-        <div className={styles.glowCopySlot}>
-          <div
-            className={`${styles.glowPhase} ${styles.glowPhaseIntro} ${
-              phase === 0 ? styles.glowPhaseActive : ""
-            }`}
-            aria-hidden={phase !== 0}
-          >
-            <span className={styles.glowRule} aria-hidden="true" />
-            <p className={styles.glowEyebrow}>{glowHero.phase1.eyebrow}</p>
-            <h1 className={styles.glowIntroTitle}>
-              <span>{glowHero.phase1.titleLine1}</span>
-              <span>{glowHero.phase1.titleLine2}</span>
-            </h1>
+              <g className={styles.glowArcSpin}>
+                <circle
+                  cx="200"
+                  cy="200"
+                  r={r}
+                  stroke="url(#aboutArcGrad)"
+                  strokeWidth="10"
+                  strokeLinecap="round"
+                  strokeDasharray={`${arc} ${gap}`}
+                  filter="url(#aboutArcGlow)"
+                  opacity="0.55"
+                />
+                <circle
+                  cx="200"
+                  cy="200"
+                  r={r}
+                  stroke="url(#aboutArcGrad)"
+                  strokeWidth="2.75"
+                  strokeLinecap="round"
+                  strokeDasharray={`${arc} ${gap}`}
+                  filter="url(#aboutArcGlow)"
+                />
+              </g>
+            </svg>
           </div>
-          <p
-            className={`${styles.glowPhase} ${styles.glowPhaseTitle} ${
-              phase === 1 ? styles.glowPhaseActive : ""
-            }`}
-          >
-            {glowHero.phase2}
-          </p>
+
+          <div className={styles.glowCopySlot}>
+            <div
+              className={`${styles.glowPhase} ${styles.glowPhaseIntro} ${
+                phase === 0 ? styles.glowPhaseActive : ""
+              }`}
+              aria-hidden={phase !== 0}
+            >
+              <span className={styles.glowRule} aria-hidden="true" />
+              <p className={styles.glowEyebrow}>{glowHero.phase1.eyebrow}</p>
+              <h1 className={styles.glowIntroTitle}>
+                <span>{glowHero.phase1.titleLine1}</span>
+                <span>{glowHero.phase1.titleLine2}</span>
+              </h1>
+            </div>
+            <p
+              className={`${styles.glowPhase} ${styles.glowPhaseTitle} ${
+                phase === 1 ? styles.glowPhaseActive : ""
+              }`}
+            >
+              {glowHero.phase2}
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -278,7 +280,13 @@ function StorySection({ story }) {
             <span className={styles.storyRule} aria-hidden="true" />
             {story.eyebrow}
           </span>
-          <h2>{story.title}</h2>
+          <h2 className={styles.storyTitle}>
+            {story.title.split("\n").map((line) => (
+              <span key={line} className={styles.storyTitleLine}>
+                {line}
+              </span>
+            ))}
+          </h2>
         </div>
 
         <div className={styles.storyProse}>
@@ -366,22 +374,104 @@ function TeamSection({ team }) {
   );
 }
 
-function ValuesSection({ values }) {
+function ValuesIcon({ name }) {
+  if (name === "field") {
+    return (
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="9" cy="9" r="3.2" stroke="currentColor" strokeWidth="1.5" />
+        <path
+          d="M3.5 19.5c.8-3.2 2.9-5 5.5-5s4.7 1.8 5.5 5"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+        />
+        <circle cx="16.5" cy="8.5" r="2.6" stroke="currentColor" strokeWidth="1.5" />
+        <path
+          d="M13.2 19.5c.5-2.2 1.9-3.5 3.3-3.5 1.2 0 2.3.8 3 2.2"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+        />
+      </svg>
+    );
+  }
+  if (name === "honest") {
+    return (
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="12" cy="12" r="8" stroke="currentColor" strokeWidth="1.5" />
+        <path
+          d="M8.2 12.2l2.4 2.4 5.2-5.2"
+          stroke="currentColor"
+          strokeWidth="1.6"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    );
+  }
+  if (name === "craft") {
+    return (
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path
+          d="M12 4.5l7 3.5v8l-7 3.5-7-3.5v-8l7-3.5z"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinejoin="round"
+        />
+        <path d="M12 4.5v15M5 8l7 3.5L19 8" stroke="currentColor" strokeWidth="1.5" />
+      </svg>
+    );
+  }
   return (
-    <Reveal as="section" className={`${styles.values} toneDark`} aria-label={values.eyebrow}>
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <circle cx="12" cy="12" r="7.5" stroke="currentColor" strokeWidth="1.5" />
+      <circle cx="12" cy="12" r="2.2" fill="currentColor" />
+      <path d="M12 4.5v2.2M12 17.3v2.2M4.5 12h2.2M17.3 12h2.2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function ValuesSection({ values }) {
+  const items = values.items || [];
+
+  return (
+    <Reveal as="section" className={styles.values} aria-label={values.eyebrow}>
       <div className={styles.valuesInner}>
-        <div className="revealHead">
+        <div className={`${styles.valuesHead} revealHead`}>
           <SectionBadge as="p">{values.eyebrow}</SectionBadge>
-          <h2>{values.title}</h2>
+          <h2>
+            {values.titleBefore}
+            <span className={styles.valuesHighlight}>{values.titleHighlight}</span>
+            {values.titleAfter}
+          </h2>
+          {values.body ? <p className={styles.valuesBody}>{values.body}</p> : null}
         </div>
-        <div className={styles.valuesGrid}>
-          {values.items.map((item) => (
-            <article key={item.title} className={`${styles.valueCard} interactiveCard cardReveal`}>
-              <h3>{item.title}</h3>
-              <p>{item.body}</p>
-            </article>
+
+        <ol className={styles.valuesRail}>
+          {items.map((item, index) => (
+            <li key={item.title} className={`${styles.valueStep} cardReveal`}>
+              <div className={styles.valueNode} aria-hidden="true">
+                <span className={styles.valueRing}>
+                  <span className={styles.valueIcon}>
+                    <ValuesIcon name={item.icon} />
+                  </span>
+                </span>
+                {index < items.length - 1 ? (
+                  <span className={styles.valueConnector}>
+                    <span className={styles.valueDot} />
+                  </span>
+                ) : null}
+              </div>
+              <div className={styles.valueCopy}>
+                <span className={styles.valueNum}>
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <h3>{item.title}</h3>
+                <p>{item.body}</p>
+              </div>
+            </li>
           ))}
-        </div>
+        </ol>
       </div>
     </Reveal>
   );

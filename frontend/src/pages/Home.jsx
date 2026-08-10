@@ -1,3 +1,4 @@
+import { useCallback, useEffect, useState } from "react";
 import SEO from "../components/common/SEO";
 import { CTABand } from "../components/common/PageHero";
 import Hero from "../components/hero/Hero/Hero";
@@ -10,6 +11,11 @@ import FeaturedCaseStudy from "../components/home/FeaturedCaseStudy/FeaturedCase
 import WhyWorkWithUs from "../components/home/WhyWorkWithUs/WhyWorkWithUs";
 import FAQAccordion from "../components/home/FAQAccordion/FAQAccordion";
 import Testimonials from "../components/home/Testimonials/Testimonials";
+import GlanceModal, {
+  markGlanceModalDismissed,
+  wasGlanceModalDismissed,
+} from "../components/home/GlanceModal/GlanceModal";
+import { glanceModalContent } from "../content/glanceModalContent";
 import { homeContent } from "../content/siteContent";
 
 export default function Home() {
@@ -27,6 +33,20 @@ export default function Home() {
     testimonials,
     closingCta,
   } = homeContent;
+
+  const [modalOpen, setModalOpen] = useState(false);
+
+  useEffect(() => {
+    if (wasGlanceModalDismissed()) return undefined;
+
+    const timer = window.setTimeout(() => setModalOpen(true), 5000);
+    return () => window.clearTimeout(timer);
+  }, []);
+
+  const closeModal = useCallback(() => {
+    markGlanceModalDismissed();
+    setModalOpen(false);
+  }, []);
 
   return (
     <>
@@ -48,6 +68,11 @@ export default function Home() {
         label={closingCta.primaryCta.label}
         secondaryHref={closingCta.secondaryCta.href}
         secondaryLabel={closingCta.secondaryCta.label}
+      />
+      <GlanceModal
+        content={glanceModalContent}
+        open={modalOpen}
+        onClose={closeModal}
       />
     </>
   );

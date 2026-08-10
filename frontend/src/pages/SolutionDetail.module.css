@@ -2,25 +2,3 @@
   background: #050c0b;
   padding-bottom: 24px;
 }
-
-.top {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  width: 100%;
-  padding: var(--hero-pad-top) clamp(20px, 5vw, 72px) 0;
-  /* Pull hero up so its --hero-pad-top clears the navbar once; back-link sits in that zone */
-  margin-bottom: calc(-1 * var(--hero-pad-top) + 2.5rem);
-  box-sizing: border-box;
-  position: relative;
-  z-index: 2;
-}
-
-.back {
-  color: rgba(232, 237, 216, 0.65);
-  text-decoration: none;
-  font-size: 0.92rem;
-}
-
-.back:hover {
-  color: var(--color-accent-bright);
-}

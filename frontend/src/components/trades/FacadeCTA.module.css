@@ -1,0 +1,125 @@
+.section {
+  position: relative;
+  padding: var(--section-pad);
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 50% 60% at 50% 50%, rgba(184, 137, 61, 0.1), transparent 70%),
+    linear-gradient(180deg, #071411 0%, #050c0b 100%);
+}
+
+.section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.07;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 36px 36px;
+  pointer-events: none;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+  margin: 0 auto;
+  display: grid;
+  gap: 16px;
+  justify-items: center;
+  text-align: center;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 7px 12px;
+  border: 1px solid rgba(184, 137, 61, 0.55);
+  border-radius: 4px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #d4b06a;
+}
+
+.badgeIcon {
+  width: 7px;
+  height: 7px;
+  background: #d4b06a;
+  flex-shrink: 0;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(1.55rem, 3.2vw, 2.2rem);
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  color: #f7f7f4;
+  font-weight: 700;
+}
+
+.body {
+  margin: 0;
+  max-width: 42ch;
+  color: rgba(196, 208, 178, 0.72);
+  font-size: 1.02rem;
+  line-height: 1.65;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.primary,
+.secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 18px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.primary {
+  background: linear-gradient(135deg, #d4b06a, #b8893d);
+  color: #0a100e;
+  border: 1px solid transparent;
+}
+
+.primary:hover {
+  filter: brightness(1.05);
+}
+
+.secondary {
+  background: transparent;
+  color: #f7f7f4;
+  border: 1px solid rgba(212, 176, 106, 0.7);
+}
+
+.secondary:hover {
+  border-color: #f3c969;
+  color: #f3c969;
+}
+
+@media (max-width: 640px) {
+  .actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .primary,
+  .secondary {
+    width: 100%;
+  }
+}

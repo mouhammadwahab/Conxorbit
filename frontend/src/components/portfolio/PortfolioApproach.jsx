@@ -8,13 +8,13 @@ export default function PortfolioApproach({ content }) {
 
   return (
     <section className={styles.section} aria-label={badge}>
-      <Reveal className={`${styles.header} revealHead`} eager>
+      <Reveal className={`${styles.header} revealHead`}>
         <SectionBadge>{badge}</SectionBadge>
         <h2 className={styles.title}>{title}</h2>
         {body ? <p className={styles.body}>{body}</p> : null}
       </Reveal>
 
-      <Reveal className={styles.steps} eager>
+      <Reveal className={styles.steps}>
         {steps.map((step, i) => (
           <article key={step.title} className={`${styles.step} cardReveal`}>
             <span className={styles.index}>{String(i + 1).padStart(2, "0")}</span>

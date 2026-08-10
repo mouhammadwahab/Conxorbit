@@ -50,4 +50,32 @@ export const discoveryContent = {
     success: "Thanks — we've received your request and will follow up shortly.",
     error: "Something went wrong. Please try again or email us directly.",
   },
+  fit: {
+    eyebrow: "Is this for you?",
+    title: "ConX Orbit Is a Good Fit If...",
+    columns: [
+      {
+        heading: "You're dealing with",
+        items: [
+          "A workflow that's heavily manual",
+          "Information spread across multiple tools",
+          "Repetitive document processing",
+          "Drawing-heavy processes",
+          "Difficult reporting or tracking",
+          "A process that doesn't fit existing software",
+        ],
+      },
+      {
+        heading: "You're looking for",
+        items: [
+          "A purpose-built system",
+          "AI-powered automation",
+          "Better workflow visibility",
+          "Connected project information",
+          "A technology partner who understands the problem first",
+          "A practical path from idea to working system",
+        ],
+      },
+    ],
+  },
 };

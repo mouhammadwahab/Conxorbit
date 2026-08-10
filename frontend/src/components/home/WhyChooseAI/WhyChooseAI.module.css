@@ -22,7 +22,7 @@
   position: sticky;
   top: 112px;
   display: grid;
-  gap: 16px;
+  gap: 12px;
   align-content: start;
   padding-top: 8px;
 }

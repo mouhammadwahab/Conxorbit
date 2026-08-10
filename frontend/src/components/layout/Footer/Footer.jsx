@@ -16,9 +16,19 @@ function IconEmail() {
 function IconLinkedIn() {
   return (
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" strokeWidth="1.6" />
-      <path d="M8 10v7M8 7.5v.2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-      <path d="M12 17v-4.2c0-1.8 2.5-2 2.5 0V17M12 10v7" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+      <path
+        d="M6.5 9.5v8M6.5 7.2v.2"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+      />
+      <path
+        d="M10.5 17.5v-4.5c0-2.4 3.2-2.6 3.2 0v4.5M10.5 10.5v7"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }
@@ -39,6 +49,22 @@ function IconWhatsApp() {
   );
 }
 
+function FooterLink({ link }) {
+  const external = /^(mailto:|https?:)/i.test(link.href);
+  if (external) {
+    return (
+      <a className="linkDraw" href={link.href}>
+        {link.label}
+      </a>
+    );
+  }
+  return (
+    <Link className="linkDraw" to={link.href}>
+      {link.label}
+    </Link>
+  );
+}
+
 export default function Footer() {
   const whatsappHref = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
 
@@ -47,59 +73,56 @@ export default function Footer() {
       <Reveal className={styles.inner}>
         <div className={styles.brandCol}>
           <Link to="/" className={styles.brand}>
-            <img src={brandLogo} alt="ConX Orbit logo" className={styles.logo} />
+            <img src={brandLogo} alt="" className={styles.logo} />
             <span>{site.name}</span>
           </Link>
-          <p>{footerContent.blurb}</p>
-          <div className={styles.socials}>
-            <a
-              className={styles.social}
-              href={`mailto:${site.email}`}
-              aria-label="Email"
-            >
-              <IconEmail />
-            </a>
-            <a
-              className={styles.social}
-              href={site.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="LinkedIn"
-            >
-              <IconLinkedIn />
-            </a>
-            <a
-              className={styles.social}
-              href={whatsappHref}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="WhatsApp"
-            >
-              <IconWhatsApp />
-            </a>
-          </div>
+          <p className={styles.blurb}>{footerContent.blurb}</p>
+          <span className={styles.brandRule} aria-hidden="true" />
         </div>
 
         {footerContent.columns.map((col, index) => (
-          <div
+          <nav
             key={col.title}
             className={`${styles.col} cardReveal stagger${Math.min(index + 2, 6)}`}
+            aria-label={col.title}
           >
             <h3>{col.title}</h3>
             <ul>
               {col.links.map((link) => (
-                <li key={link.href}>
-                  <Link className="linkDraw" to={link.href}>
-                    {link.label}
-                  </Link>
+                <li key={`${col.title}-${link.label}`}>
+                  <FooterLink link={link} />
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
         ))}
       </Reveal>
+
       <div className={styles.bottom}>
         <p>{footerContent.legal}</p>
+        <div className={styles.socials}>
+          <a className={styles.social} href={`mailto:${site.email}`} aria-label="Email">
+            <IconEmail />
+          </a>
+          <a
+            className={styles.social}
+            href={whatsappHref}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="WhatsApp"
+          >
+            <IconWhatsApp />
+          </a>
+          <a
+            className={styles.social}
+            href={site.linkedin}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="LinkedIn"
+          >
+            <IconLinkedIn />
+          </a>
+        </div>
       </div>
     </footer>
   );

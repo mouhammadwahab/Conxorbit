@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Reveal from "../common/Reveal";
 import SectionBadge from "../common/SectionBadge";
 import styles from "./ServiceHero.module.css";
 
@@ -20,7 +21,7 @@ export default function ServiceHero({ content }) {
       : title;
 
   return (
-    <section className={styles.hero} aria-label={heading}>
+    <Reveal as="section" className={styles.hero} eager aria-label={heading}>
       <div className={styles.glow} aria-hidden="true" />
       <div className={styles.arc} aria-hidden="true" />
       <div className={`${styles.inner} heroStagger`}>
@@ -51,6 +52,6 @@ export default function ServiceHero({ content }) {
           ) : null}
         </div>
       </div>
-    </section>
+    </Reveal>
   );
 }

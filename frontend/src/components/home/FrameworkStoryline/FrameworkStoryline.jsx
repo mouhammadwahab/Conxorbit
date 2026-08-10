@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import Reveal from "../../common/Reveal";
 import SectionBadge from "../../common/SectionBadge";
 import usePrefersReducedMotion from "../../../hooks/usePrefersReducedMotion";
 import { ensureGsap } from "../../../utils/gsapSetup";
@@ -18,16 +19,30 @@ const STEP_ICONS = [
     <circle cx="12" cy="12" r="1.6" fill="currentColor" />
   </svg>,
   <svg key="de" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-    <path d="M12 3l7 4v6l-7 4-7-4V7l7-4z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
+    <path
+      d="M12 3l7 4v6l-7 4-7-4V7l7-4z"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinejoin="round"
+    />
   </svg>,
   <svg key="dv" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-    <path d="M8 8l-4 4 4 4M16 8l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+    <path
+      d="M8 8l-4 4 4 4M16 8l4 4-4 4"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+    />
   </svg>,
   <svg key="i" viewBox="0 0 24 24" fill="none" aria-hidden="true">
     <circle cx="12" cy="7" r="2" stroke="currentColor" strokeWidth="1.5" />
     <circle cx="7" cy="16" r="2" stroke="currentColor" strokeWidth="1.5" />
     <circle cx="17" cy="16" r="2" stroke="currentColor" strokeWidth="1.5" />
-    <path d="M12 9v3M10.2 14.2l-1.4 1M13.8 14.2l1.4 1" stroke="currentColor" strokeWidth="1.5" />
+    <path
+      d="M12 9v3M10.2 14.2l-1.4 1M13.8 14.2l1.4 1"
+      stroke="currentColor"
+      strokeWidth="1.5"
+    />
   </svg>,
   <svg key="t" viewBox="0 0 24 24" fill="none" aria-hidden="true">
     <circle cx="11" cy="11" r="6" stroke="currentColor" strokeWidth="1.6" />
@@ -35,66 +50,156 @@ const STEP_ICONS = [
   </svg>,
   <svg key="o" viewBox="0 0 24 24" fill="none" aria-hidden="true">
     <circle cx="12" cy="12" r="2.2" fill="currentColor" />
-    <ellipse cx="12" cy="12" rx="8" ry="3.5" stroke="currentColor" strokeWidth="1.4" transform="rotate(60 12 12)" />
-    <ellipse cx="12" cy="12" rx="8" ry="3.5" stroke="currentColor" strokeWidth="1.4" transform="rotate(-60 12 12)" />
+    <ellipse
+      cx="12"
+      cy="12"
+      rx="8"
+      ry="3.5"
+      stroke="currentColor"
+      strokeWidth="1.4"
+      transform="rotate(60 12 12)"
+    />
+    <ellipse
+      cx="12"
+      cy="12"
+      rx="8"
+      ry="3.5"
+      stroke="currentColor"
+      strokeWidth="1.4"
+      transform="rotate(-60 12 12)"
+    />
   </svg>,
 ];
 
+const W = 1000;
+const CARD_W = 340;
+const NODE_CLEAR = 36;
+const STUB_GAP = 10;
+
 /**
- * Arc stays on the right; cards stay in a fixed left column so nothing clips.
+ * Snaking path: nodes sit on the curve; cards alternate left/right and
+ * connect with short stubs so the line visibly follows each step.
  */
-function buildCircularRadial(count) {
-  const W = 1000;
-  const cardRightX = 300;
-  const gap = 300;
-  const padY = 120;
+function buildSnakePath(count) {
+  const gap = 290;
+  const padY = 90;
   const n = Math.max(count, 1);
-  const height = padY * 2 + Math.max(n - 1, 0) * gap;
-  const cy = height / 2;
+  const height = padY * 2 + Math.max(n - 1, 0) * gap + 40;
 
-  const ySpan = Math.max(n - 1, 0) * gap;
-  const yMax = ySpan / 2;
-  const R = n <= 1 ? 420 : Math.max(yMax + 60, ySpan / 1.9 + 30);
-
-  // Keep the leftmost point of the arc clear of the card column
-  const minNodeX = cardRightX + 88;
-  const cx = minNodeX + R;
+  const leftX = 210;
+  const rightX = 790;
 
   const nodes = Array.from({ length: count }, (_, i) => {
-    const y = padY + i * gap;
-    const dy = y - cy;
-    const under = Math.max(R * R - dy * dy, 0);
-    const x = cx - Math.sqrt(under);
-    return { x: Math.max(x, minNodeX), y };
+    const onLeft = i % 2 === 0;
+    return {
+      x: onLeft ? leftX : rightX,
+      y: padY + i * gap,
+      side: onLeft ? "left" : "right",
+    };
   });
 
   if (!nodes.length) {
-    return { d: "", nodes: [], connectors: [], width: W, height, cardRightX };
+    return { d: "", nodes: [], connectors: [], cards: [], width: W, height };
   }
 
+  // Lead-in above first node, trail below last — matches reference sweep
   const first = nodes[0];
   const last = nodes[nodes.length - 1];
-  const leadY = first.y - 56;
-  const trailY = last.y + 56;
-  const leadX = cx - Math.sqrt(Math.max(R * R - (leadY - cy) ** 2, 0));
-  const trailX = cx - Math.sqrt(Math.max(R * R - (trailY - cy) ** 2, 0));
+  const lead = { x: Math.max(40, first.x - 120), y: first.y - 70 };
+  const trail = {
+    x: last.side === "left" ? last.x + 80 : last.x - 80,
+    y: last.y + 70,
+  };
 
-  const deltaY = trailY - leadY;
-  const largeArc = Math.abs(deltaY) > 2 * R ? 1 : 0;
-  const d = `M ${Math.max(leadX, minNodeX - 12)} ${leadY} A ${R} ${R} 0 ${largeArc} 0 ${Math.max(
-    trailX,
-    minNodeX - 12
-  )} ${trailY}`;
+  const pts = [lead, ...nodes, trail];
 
-  const iconClear = 30;
-  const connectors = nodes.map((node) => ({
-    d: `M ${cardRightX} ${node.y} L ${node.x - iconClear} ${node.y}`,
+  // Smooth cubic through waypoints
+  let d = `M ${pts[0].x} ${pts[0].y}`;
+  for (let i = 0; i < pts.length - 1; i += 1) {
+    const a = pts[i];
+    const b = pts[i + 1];
+    const dy = b.y - a.y;
+    const c1x = a.x;
+    const c1y = a.y + dy * 0.45;
+    const c2x = b.x;
+    const c2y = b.y - dy * 0.45;
+    d += ` C ${c1x} ${c1y}, ${c2x} ${c2y}, ${b.x} ${b.y}`;
+  }
+
+  const cards = nodes.map((node) => {
+    if (node.side === "left") {
+      const left = node.x + NODE_CLEAR + STUB_GAP;
+      return {
+        left,
+        width: CARD_W,
+        top: node.y,
+        stubFrom: node.x + NODE_CLEAR,
+        stubTo: left,
+        y: node.y,
+      };
+    }
+    const right = node.x - NODE_CLEAR - STUB_GAP;
+    const left = right - CARD_W;
+    return {
+      left,
+      width: CARD_W,
+      top: node.y,
+      stubFrom: right,
+      stubTo: node.x - NODE_CLEAR,
+      y: node.y,
+    };
+  });
+
+  const connectors = cards.map((card) => ({
+    d: `M ${card.stubFrom} ${card.y} L ${card.stubTo} ${card.y}`,
   }));
 
-  return { d, nodes, connectors, width: W, height, cardRightX };
+  return { d, nodes, connectors, cards, width: W, height };
 }
 
-/** Circular-radial storyline — scrub draw only, never pins. */
+function buildMobilePath(count) {
+  const gap = 260;
+  const padY = 70;
+  const n = Math.max(count, 1);
+  const height = padY * 2 + Math.max(n - 1, 0) * gap + 24;
+  const nodeX = 920;
+  const cardRight = 860;
+
+  const nodes = Array.from({ length: count }, (_, i) => ({
+    x: nodeX,
+    y: padY + i * gap,
+    side: "right",
+  }));
+
+  const lead = { x: nodeX, y: Math.max(20, (nodes[0]?.y ?? padY) - 40) };
+  const trail = {
+    x: nodeX,
+    y: (nodes[nodes.length - 1]?.y ?? padY) + 40,
+  };
+
+  let d = `M ${lead.x} ${lead.y}`;
+  nodes.forEach((node) => {
+    d += ` L ${node.x} ${node.y}`;
+  });
+  d += ` L ${trail.x} ${trail.y}`;
+
+  const cards = nodes.map((node) => ({
+    left: 20,
+    width: cardRight - 20,
+    top: node.y,
+    stubFrom: cardRight,
+    stubTo: node.x - NODE_CLEAR,
+    y: node.y,
+  }));
+
+  const connectors = cards.map((card) => ({
+    d: `M ${card.stubFrom} ${card.y} L ${card.stubTo} ${card.y}`,
+  }));
+
+  return { d, nodes, connectors, cards, width: W, height };
+}
+
+/** Scroll-scrub storyline — path draws through cards; never pins. */
 export default function FrameworkStoryline({ content }) {
   const {
     badge,
@@ -112,12 +217,20 @@ export default function FrameworkStoryline({ content }) {
   const reduced = usePrefersReducedMotion();
   const [activeIndex, setActiveIndex] = useState(-1);
   const activeIndexRef = useRef(-1);
+  const [isMobile, setIsMobile] = useState(false);
 
-  const { d: pathD, nodes, connectors, width, height, cardRightX } = buildCircularRadial(
-    steps.length
-  );
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 800px)");
+    const apply = () => setIsMobile(mq.matches);
+    apply();
+    mq.addEventListener("change", apply);
+    return () => mq.removeEventListener("change", apply);
+  }, []);
+
+  const { d: pathD, nodes, connectors, cards, width, height } = isMobile
+    ? buildMobilePath(steps.length)
+    : buildSnakePath(steps.length);
   const viewBox = `0 0 ${width} ${height}`;
-  const cardWidthPct = (cardRightX / width) * 100;
 
   useEffect(() => {
     if (reduced || !rootRef.current || !pathRef.current || !pathD) {
@@ -141,13 +254,13 @@ export default function FrameworkStoryline({ content }) {
         strokeDashoffset: length,
         force3D: true,
       });
-      gsap.set(stepEls, { autoAlpha: 0.35, y: 22, force3D: true });
+      gsap.set(stepEls, { autoAlpha: 0.15, y: 28, force3D: true });
 
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: root,
-          start: "top 72%",
-          end: "bottom 62%",
+          start: "top 70%",
+          end: "bottom 55%",
           scrub: true,
           invalidateOnRefresh: true,
           fastScrollEnd: true,
@@ -155,6 +268,7 @@ export default function FrameworkStoryline({ content }) {
             const idx = Math.min(total - 1, Math.floor(self.progress * total));
             if (activeIndexRef.current === idx) return;
             activeIndexRef.current = idx;
+            setActiveIndex(idx);
 
             nodeEls.forEach((el, i) => {
               el.classList.toggle(styles.nodeLit, i <= idx);
@@ -175,19 +289,19 @@ export default function FrameworkStoryline({ content }) {
       stepEls.forEach((el, i) => {
         tl.to(
           el,
-          { autoAlpha: 1, y: 0, duration: 0.1, force3D: true, ease: "none" },
-          (i + 0.08) / total
+          { autoAlpha: 1, y: 0, duration: 0.12, force3D: true, ease: "none" },
+          (i + 0.06) / total
         );
       });
     }, root);
 
     return () => ctx.revert();
-  }, [reduced, pathD, steps.length]);
+  }, [reduced, pathD, steps.length, isMobile]);
 
   return (
     <section ref={rootRef} className={styles.section} aria-label={badge}>
       <div className={styles.inner}>
-        <div className={styles.header}>
+        <Reveal className={`${styles.header} revealHead`}>
           <SectionBadge>{badge}</SectionBadge>
           <h2>
             {titleBefore}
@@ -201,7 +315,7 @@ export default function FrameworkStoryline({ content }) {
               <p>{callout}</p>
             </div>
           ) : null}
-        </div>
+        </Reveal>
 
         <div className={styles.story} style={{ minHeight: height }}>
           <svg
@@ -209,23 +323,26 @@ export default function FrameworkStoryline({ content }) {
             viewBox={viewBox}
             fill="none"
             aria-hidden="true"
-            preserveAspectRatio="xMidYMin meet"
+            preserveAspectRatio="none"
           >
             <defs>
               <linearGradient id="frameworkTrail" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#c084fc" />
-                <stop offset="28%" stopColor="#e879f9" />
-                <stop offset="52%" stopColor="#f59e0b" />
-                <stop offset="78%" stopColor="#b8893d" />
-                <stop offset="100%" stopColor="#5a6b3b" />
+                <stop offset="0%" stopColor="#f3c969" />
+                <stop offset="18%" stopColor="#f59e0b" />
+                <stop offset="36%" stopColor="#38bdf8" />
+                <stop offset="54%" stopColor="#a855f7" />
+                <stop offset="72%" stopColor="#ec4899" />
+                <stop offset="88%" stopColor="#f97316" />
+                <stop offset="100%" stopColor="#b8893d" />
               </linearGradient>
             </defs>
 
             <path
               d={pathD}
-              stroke="rgba(184,137,61,0.16)"
-              strokeWidth="2"
-              strokeDasharray="2 12"
+              stroke="rgba(160, 170, 190, 0.22)"
+              strokeWidth="2.5"
+              strokeDasharray="3 14"
+              strokeLinecap="round"
               fill="none"
             />
             <path
@@ -233,7 +350,7 @@ export default function FrameworkStoryline({ content }) {
               className={styles.trailGlow}
               d={pathD}
               stroke="url(#frameworkTrail)"
-              strokeWidth="16"
+              strokeWidth="18"
               strokeLinecap="round"
               fill="none"
             />
@@ -241,7 +358,7 @@ export default function FrameworkStoryline({ content }) {
               ref={pathRef}
               d={pathD}
               stroke="url(#frameworkTrail)"
-              strokeWidth="4.5"
+              strokeWidth="5"
               strokeLinecap="round"
               fill="none"
             />
@@ -251,7 +368,7 @@ export default function FrameworkStoryline({ content }) {
                 key={`stub-${i}`}
                 className={`${styles.stub} ${i <= activeIndex ? styles.stubLit : ""}`}
                 d={c.d}
-                strokeWidth="1.5"
+                strokeWidth="2"
                 strokeLinecap="round"
                 fill="none"
               />
@@ -282,14 +399,16 @@ export default function FrameworkStoryline({ content }) {
           <ol className={styles.steps}>
             {steps.map((step, index) => {
               const lit = index <= activeIndex;
-              const node = nodes[index];
+              const card = cards[index];
+              if (!card) return null;
               return (
                 <li
                   key={step.title}
                   className={`${styles.step} ${lit ? styles.stepLit : ""}`}
                   style={{
-                    top: node ? `${(node.y / height) * 100}%` : undefined,
-                    width: `${cardWidthPct}%`,
+                    top: `${(card.top / height) * 100}%`,
+                    left: `${(card.left / width) * 100}%`,
+                    width: `${(card.width / width) * 100}%`,
                   }}
                 >
                   <article className={`${styles.card} interactiveCard`}>

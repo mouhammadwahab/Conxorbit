@@ -8,7 +8,7 @@ export default function PortfolioFeatured({ content }) {
   const { badge, label, name, title, body, tags = [], cta, image, imageFallback } = content;
 
   return (
-    <Reveal as="section" className={styles.section} eager aria-label={badge}>
+    <Reveal as="section" className={styles.section} aria-label={badge}>
       <div className={styles.inner}>
         <div className={styles.grid}>
           <div className={`${styles.copy} revealHead`}>

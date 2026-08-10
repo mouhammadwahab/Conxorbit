@@ -1,59 +1,125 @@
 .footer {
-  padding: 64px clamp(20px, 5vw, 72px) 28px;
-  border-top: 1px solid var(--glass-border);
-  background: linear-gradient(180deg, transparent, rgba(1, 15, 14, 0.95));
+  padding: 72px clamp(20px, 5vw, 72px) 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  background:
+    radial-gradient(ellipse at 12% 0%, rgba(90, 107, 59, 0.12), transparent 42%),
+    radial-gradient(ellipse at 88% 20%, rgba(184, 137, 61, 0.08), transparent 40%),
+    linear-gradient(180deg, #010f0e 0%, #061410 100%);
 }
 
 .inner {
   max-width: var(--max-width);
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1.4fr repeat(3, 1fr);
-  gap: 32px;
+  grid-template-columns: minmax(200px, 1.35fr) repeat(4, minmax(0, 1fr));
+  gap: clamp(28px, 3.5vw, 48px);
+  align-items: start;
+}
+
+.brandCol {
+  padding-right: 12px;
 }
 
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   text-decoration: none;
-  color: var(--color-text);
-  font-weight: 600;
-  margin-bottom: 14px;
+  color: #f2f4ec;
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: 0.01em;
+  margin-bottom: 16px;
 }
 
 .logo {
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   object-fit: contain;
 }
 
-.brandCol p {
-  margin-bottom: 14px;
-  max-width: 280px;
+.blurb {
+  margin: 0 0 18px;
+  max-width: 260px;
+  color: rgba(196, 208, 178, 0.72);
+  font-size: 0.92rem;
+  line-height: 1.55;
 }
 
-.email {
-  color: var(--color-accent-bright);
-  text-decoration: none;
-}
-
-.email:hover {
-  text-decoration: underline;
+.brandRule {
+  display: block;
+  width: 44px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--gold), rgba(184, 137, 61, 0.2));
 }
 
 .col h3 {
-  font-size: 0.95rem;
-  margin-bottom: 14px;
+  position: relative;
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin: 0 0 18px;
+  padding-bottom: 10px;
   color: var(--gold);
   max-height: none;
   overflow: visible;
 }
 
+.col h3::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 36px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--gold);
+}
+
+.col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 11px;
+}
+
+.col a {
+  text-decoration: none;
+  color: rgba(196, 208, 178, 0.72);
+  font-size: 0.92rem;
+  line-height: 1.35;
+  transition: color 160ms ease;
+}
+
+.col a:hover {
+  color: #f2f4ec;
+}
+
+.bottom {
+  max-width: var(--max-width);
+  margin: 48px auto 0;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.bottom p {
+  margin: 0;
+  font-size: 0.86rem;
+  color: rgba(196, 208, 178, 0.62);
+}
+
 .socials {
   display: flex;
-  gap: 10px;
-  margin-top: 16px;
+  gap: 12px;
+  flex-shrink: 0;
 }
 
 .social {
@@ -64,64 +130,56 @@
   align-items: center;
   justify-content: center;
   color: var(--gold);
-  border: 1px solid rgba(184, 137, 61, 0.4);
-  background: rgba(184, 137, 61, 0.08);
+  border: 1px solid rgba(184, 137, 61, 0.55);
+  background: transparent;
   transition:
     background 180ms ease,
     border-color 180ms ease,
-    transform 180ms ease;
+    color 180ms ease;
 }
 
 .social svg {
-  width: 18px;
-  height: 18px;
+  width: 17px;
+  height: 17px;
 }
 
 .social:hover {
-  transform: translateY(-2px);
-  background: rgba(184, 137, 61, 0.18);
-  border-color: rgba(184, 137, 61, 0.7);
+  background: rgba(184, 137, 61, 0.12);
+  border-color: rgba(243, 201, 105, 0.85);
+  color: #f3c969;
 }
 
-.col ul {
-  list-style: none;
-  display: grid;
-  gap: 10px;
-}
-
-.col a {
-  text-decoration: none;
-  color: var(--color-muted);
-  font-size: 0.95rem;
-}
-
-.col a:hover {
-  color: var(--color-text);
-}
-
-.bottom {
-  max-width: var(--max-width);
-  margin: 40px auto 0;
-  padding-top: 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.bottom p {
-  font-size: 0.85rem;
-}
-
-@media (max-width: 860px) {
+@media (max-width: 1100px) {
   .inner {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 36px 28px;
   }
 
   .brandCol {
     grid-column: 1 / -1;
+    max-width: 420px;
+  }
+}
+
+@media (max-width: 700px) {
+  .inner {
+    grid-template-columns: 1fr 1fr;
   }
 }
 
 @media (max-width: 520px) {
+  .footer {
+    padding-top: 56px;
+  }
+
   .inner {
     grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .bottom {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    margin-top: 36px;
   }
 }

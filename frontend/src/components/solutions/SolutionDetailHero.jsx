@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 import Reveal from "../common/Reveal";
+import SectionBadge from "../common/SectionBadge";
 import usePrefersReducedMotion from "../../hooks/usePrefersReducedMotion";
 import styles from "./SolutionDetailHero.module.css";
 
 export default function SolutionDetailHero({ solution }) {
-  const { name, badge, image, detail } = solution;
+  const { name, image, detail } = solution;
   const {
     title,
     titleBefore,
@@ -27,11 +28,7 @@ export default function SolutionDetailHero({ solution }) {
   return (
     <Reveal as="section" className={styles.hero} eager aria-label={name}>
       <div className={`${styles.copy} heroStagger`}>
-        <div className={styles.badges}>
-          {badge ? <span className={styles.systemBadge}>{badge}</span> : null}
-          {badge ? <span className={styles.badgeRule} aria-hidden="true" /> : null}
-          <p className={styles.eyebrow}>{name}</p>
-        </div>
+        <SectionBadge>{name}</SectionBadge>
         <h1 className={styles.title}>
           {titleHighlight != null ? (
             <>

@@ -15,7 +15,7 @@ export default function PortfolioProductGrid({ content }) {
         {body ? <p className={styles.body}>{body}</p> : null}
       </div>
 
-      <Reveal className={styles.gridWrap} eager>
+      <Reveal className={styles.gridWrap}>
         <div className={styles.grid}>
           {cards.map((card) => (
             <article key={card.name} className={`${styles.card} interactiveCard cardReveal`}>

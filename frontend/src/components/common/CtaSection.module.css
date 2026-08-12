@@ -1,9 +1,9 @@
 .section {
   padding: var(--section-pad);
-  background: #f7f7f4;
+  background: transparent;
 }
 
-.inner {
+.panel {
   max-width: var(--cta-max-width);
   width: 100%;
   margin: 0 auto;
@@ -12,38 +12,26 @@
   gap: 14px;
   justify-items: center;
   padding: clamp(48px, 6vw, 72px) clamp(28px, 4vw, 48px);
-  border-radius: 24px;
-  border: 1px solid rgba(184, 137, 61, 0.28);
-  background: rgba(11, 27, 23, 0.92);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-olive-gold);
+  background: var(--cta-panel-bg);
+  box-shadow: var(--cta-panel-shadow), inset 0 1px 0 rgba(138, 158, 92, 0.08);
 }
 
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 14px;
-  border-radius: 999px;
-  border: 1px solid rgba(184, 137, 61, 0.45);
-  color: var(--gold);
-  font-size: 0.78rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  font-weight: 500;
-}
-
-.inner h2 {
+.panel h2 {
   margin: 0;
   font-size: var(--heading-size-h2);
   color: #f7f7f4;
   line-height: 1.2;
+  max-height: none;
+  overflow: visible;
 }
 
-.inner p {
+.panel p {
   margin: 0;
   color: rgba(232, 237, 216, 0.72);
-  line-height: 1.6;
-  max-width: 36rem;
+  line-height: 1.65;
+  max-width: 42rem;
 }
 
 .actions {
@@ -58,35 +46,44 @@
 .secondary {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  padding: 12px 20px;
-  border-radius: 999px;
+  padding: 13px 18px;
+  border-radius: 10px;
   text-decoration: none;
-  font-weight: 500;
+  font-size: 0.92rem;
+  font-weight: 600;
+  white-space: nowrap;
   transition:
-    background 200ms ease,
+    filter 200ms ease,
     border-color 200ms ease,
+    color 200ms ease,
     transform 200ms ease;
 }
 
 .primary {
-  background: linear-gradient(135deg, rgba(184, 137, 61, 0.95), rgba(90, 107, 59, 0.95));
-  color: #0a1210;
+  background: var(--cta-primary-bg);
+  color: var(--cta-primary-color);
   border: 1px solid transparent;
 }
 
 .primary:hover {
+  filter: brightness(1.05);
   transform: translateY(-1px);
 }
 
 .secondary {
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  color: #f7f7f4;
+  border: 1px solid var(--border-olive);
+  color: var(--olive-light);
   background: transparent;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 600;
 }
 
 .secondary:hover {
-  border-color: rgba(255, 255, 255, 0.4);
+  border-color: var(--color-accent-bright);
+  color: var(--color-accent-bright);
   transform: translateY(-1px);
 }
 
@@ -98,7 +95,6 @@
 
   .primary,
   .secondary {
-    justify-content: center;
     width: 100%;
   }
 }

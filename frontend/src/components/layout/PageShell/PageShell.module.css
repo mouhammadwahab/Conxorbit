@@ -3,7 +3,9 @@
   min-height: 100vh;
   overflow-x: clip;
   isolation: isolate;
-  background: #010f0e;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(184, 137, 61, 0.12), transparent 48%),
+    linear-gradient(180deg, #0b1b17 0%, #14302e 45%, #0b1b17 100%);
 }
 
 .layers {
@@ -80,16 +82,37 @@
   transform-style: preserve-3d;
 }
 
-/* Soft atmosphere tint only — sections paint opaque tones */
-.facade,
-.construction,
-.services,
-.products,
-.cases,
-.about,
-.partners,
+/* Soft atmosphere tint — forest / olive gradients, never flat black */
+.facade {
+  background: var(--atmosphere-facade);
+}
+
+.construction {
+  background: var(--atmosphere-construction);
+}
+
+.services {
+  background: var(--atmosphere-services);
+}
+
+.products {
+  background: var(--atmosphere-products);
+}
+
+.cases {
+  background: var(--atmosphere-cases);
+}
+
+.about {
+  background: var(--atmosphere-about);
+}
+
+.partners {
+  background: var(--atmosphere-partners);
+}
+
 .contact {
-  background: #010f0e;
+  background: var(--atmosphere-contact);
 }
 
 .products .mesh {

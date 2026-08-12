@@ -5,7 +5,7 @@
   --olive: #5a6b3b;
   --gold: #b8893d;
 
-  --color-bg: #010f0e;
+  --color-bg: #0b1b17;
   --bg-light: #f7f7f4;
   --color-bg-elevated: #0b1b17;
   --color-surface: rgba(20, 48, 46, 0.72);
@@ -20,22 +20,29 @@
   --border-gold-strong: rgba(184, 137, 61, 0.9);
   --glow-gold: 0 0 0 1px rgba(184, 137, 61, 0.28), 0 0 22px rgba(184, 137, 61, 0.18);
 
+  /* Default page / section surfaces — forest + olive + soft gold, never flat black */
+  --page-bg:
+    radial-gradient(ellipse 70% 50% at 50% 0%, rgba(184, 137, 61, 0.12), transparent 55%),
+    radial-gradient(ellipse 55% 45% at 10% 60%, rgba(90, 107, 59, 0.2), transparent 50%),
+    linear-gradient(180deg, #0b1b17 0%, #14302e 42%, #0f2b27 100%);
+  --section-surface: var(--section-band-bg);
+
   --gradient-hero: radial-gradient(
     circle at 50% 28%,
     #14302e 0%,
     #0b1b17 42%,
-    #010f0e 78%,
-    #000806 100%
+    #0f2b27 78%,
+    #0b1b17 100%
   );
   --gradient-trades: radial-gradient(
     ellipse at 50% 0%,
     rgba(184, 137, 61, 0.18) 0%,
     transparent 50%
   ),
-    linear-gradient(180deg, #010f0e 0%, #14302e 45%, #0b1b17 100%);
+    linear-gradient(180deg, #0b1b17 0%, #14302e 45%, #0b1b17 100%);
   --gradient-proof: linear-gradient(
     180deg,
-    rgba(1, 15, 14, 0.55) 0%,
+    rgba(11, 27, 23, 0.55) 0%,
     rgba(20, 48, 46, 0.75) 100%
   );
   --gradient-section: radial-gradient(
@@ -43,31 +50,31 @@
     rgba(90, 107, 59, 0.22) 0%,
     transparent 55%
   ),
-    linear-gradient(180deg, #010f0e 0%, #0f2b27 50%, #010f0e 100%);
+    linear-gradient(180deg, #0b1b17 0%, #0f2b27 50%, #0b1b17 100%);
   --gradient-work: radial-gradient(
     circle at 30% 40%,
     rgba(62, 74, 40, 0.45) 0%,
-    rgba(1, 15, 14, 0.95) 65%
+    rgba(11, 27, 23, 0.95) 65%
   );
   --gradient-about: radial-gradient(
     circle at 40% 40%,
     rgba(90, 107, 59, 0.35) 0%,
     rgba(20, 48, 46, 0.2) 35%,
-    #010f0e 70%
+    #0b1b17 70%
   );
   --gradient-cta: linear-gradient(
     135deg,
     rgba(184, 137, 61, 0.32) 0%,
     rgba(90, 107, 59, 0.28) 45%,
-    rgba(1, 15, 14, 0.92) 100%
+    rgba(11, 27, 23, 0.92) 100%
   );
   --gradient-text: linear-gradient(90deg, #f3c969 0%, #8a9e5c 100%);
   --gradient-splash: radial-gradient(
     circle at 50% 42%,
     #3e4a28 0%,
     #14302e 38%,
-    #010f0e 72%,
-    #000605 100%
+    #0b1b17 72%,
+    #0f2b27 100%
   );
 
   /* Per-page atmospheres (olive / gold / forest only) */
@@ -77,32 +84,33 @@
       transparent 42%
     ),
     radial-gradient(circle at 18% 70%, rgba(90, 107, 59, 0.28) 0%, transparent 45%),
-    linear-gradient(165deg, #14302e 0%, #010f0e 55%, #0b1b17 100%);
+    linear-gradient(165deg, #14302e 0%, #0b1b17 55%, #0f2b27 100%);
   --atmosphere-construction: radial-gradient(
       ellipse at 20% 10%,
       rgba(62, 74, 40, 0.5) 0%,
       transparent 50%
     ),
-    linear-gradient(180deg, #0b1b17 0%, #010f0e 40%, #14302e 100%);
+    linear-gradient(180deg, #0b1b17 0%, #14302e 40%, #0f2b27 100%);
   --atmosphere-services: repeating-linear-gradient(
       -28deg,
       transparent 0 42px,
       rgba(90, 107, 59, 0.07) 42px 44px
     ),
     radial-gradient(circle at 50% 0%, rgba(184, 137, 61, 0.18), transparent 55%),
-    linear-gradient(180deg, #010f0e, #0f2b27 50%, #010f0e);
+    linear-gradient(180deg, #0b1b17, #14302e 50%, #0b1b17);
   --atmosphere-products: radial-gradient(
       circle at 50% 0%,
       rgba(184, 137, 61, 0.22),
       transparent 50%
     ),
-    linear-gradient(180deg, #010f0e 0%, #14302e 100%);
+    radial-gradient(ellipse at 20% 60%, rgba(90, 107, 59, 0.22), transparent 48%),
+    linear-gradient(180deg, #0b1b17 0%, #14302e 45%, #0f2b27 100%);
   --atmosphere-cases: linear-gradient(
     120deg,
-    #010f0e 0%,
+    #0b1b17 0%,
     #14302e 35%,
-    #0b1b17 65%,
-    #010f0e 100%
+    #0f2b27 65%,
+    #0b1b17 100%
   );
   --atmosphere-about: var(--gradient-about);
   --atmosphere-partners: radial-gradient(
@@ -110,13 +118,13 @@
       rgba(90, 107, 59, 0.3),
       transparent 55%
     ),
-    linear-gradient(180deg, #0b1b17, #010f0e);
+    linear-gradient(180deg, #0b1b17, #0f2b27);
   --atmosphere-contact: radial-gradient(
       circle at 50% 30%,
       rgba(184, 137, 61, 0.28) 0%,
       transparent 45%
     ),
-    radial-gradient(circle at 50% 80%, rgba(20, 48, 46, 0.6), #010f0e 70%);
+    radial-gradient(circle at 50% 80%, rgba(20, 48, 46, 0.6), #0b1b17 70%);
 
   --glass-bg: rgba(8, 18, 14, 0.55);
   --glass-bg-strong: rgba(8, 18, 14, 0.78);
@@ -134,7 +142,31 @@
   --heading-size-h4: clamp(1rem, 1.7vw, 1.22rem);
   --shadow-glass: 0 18px 45px rgba(0, 0, 0, 0.35);
   --max-width: 1320px;
+  --olive-light: #c5d48a;
+  --olive-soft: #8a9e5c;
+  --accent-duo-text: linear-gradient(90deg, var(--olive-light) 0%, var(--color-accent-bright) 100%);
+  --badge-fill: linear-gradient(135deg, rgba(90, 107, 59, 0.34), rgba(184, 137, 61, 0.16));
+  --badge-stroke: rgba(138, 158, 92, 0.5);
+  --icon-fill: linear-gradient(145deg, rgba(90, 107, 59, 0.38), rgba(184, 137, 61, 0.14));
+  --icon-stroke: rgba(138, 158, 92, 0.48);
+  --section-band-bg:
+    radial-gradient(ellipse at 18% 0%, rgba(90, 107, 59, 0.16), transparent 50%),
+    radial-gradient(ellipse at 82% 100%, rgba(184, 137, 61, 0.1), transparent 45%),
+    linear-gradient(180deg, #0b1b17 0%, #14302e 50%, #0b1b17 100%);
+  --card-surface: linear-gradient(165deg, rgba(90, 107, 59, 0.12), rgba(8, 18, 14, 0.88));
+  --accent-label: var(--olive-light);
+  --border-olive: rgba(138, 158, 92, 0.42);
+  --border-olive-gold: rgba(184, 137, 61, 0.32);
+  --tag-fill: rgba(90, 107, 59, 0.14);
+  --tag-stroke: rgba(138, 158, 92, 0.45);
+  --tag-text: var(--olive-light);
   --cta-max-width: 920px;
+  --cta-panel-bg: rgba(11, 27, 23, 0.92);
+  --cta-panel-border: rgba(138, 158, 92, 0.38);
+  --cta-panel-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
+  --cta-primary-bg: linear-gradient(135deg, #8a9e5c, #d4b06a);
+  --cta-primary-color: #0a100e;
+  --cta-secondary-border: rgba(212, 176, 106, 0.7);
   --section-pad: clamp(64px, 9vw, 112px) clamp(20px, 4vw, 72px);
   --hero-pad-top: calc(132px + 2.5rem);
   --badge-heading-gap: clamp(24px, 3vw, 36px);

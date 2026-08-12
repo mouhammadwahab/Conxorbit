@@ -2,7 +2,7 @@
   padding: var(--section-pad);
   background:
     radial-gradient(ellipse at 15% 10%, rgba(184, 137, 61, 0.16), transparent 42%),
-    linear-gradient(180deg, #0b1b17 0%, #010f0e 100%);
+    linear-gradient(180deg, #0b1b17 0%, #14302e 100%);
 }
 
 .inner {
@@ -28,7 +28,7 @@
   padding: 8px 14px;
   border-radius: var(--radius-pill);
   border: 1px solid rgba(184, 137, 61, 0.35);
-  color: var(--gold);
+  color: var(--olive-light);
   font-size: 0.88rem;
   font-weight: 500;
 }
@@ -53,7 +53,7 @@
 }
 
 .highlight {
-  color: var(--gold);
+  color: var(--olive-light);
 }
 
 .detail {
@@ -76,7 +76,7 @@
 .detailIcon {
   width: 42px;
   height: 42px;
-  color: var(--gold);
+  color: var(--color-accent-bright);
 }
 
 .detailIcon svg {
@@ -85,7 +85,7 @@
 }
 
 .detail h3 {
-  color: var(--gold);
+  color: var(--olive-light);
   font-size: var(--heading-size-h3);
 }
 
@@ -110,7 +110,7 @@
 }
 
 .detail li span {
-  color: var(--gold);
+  color: var(--olive-light);
   font-weight: 700;
 }
 
@@ -149,7 +149,7 @@
 .tabIcon {
   width: 28px;
   height: 28px;
-  color: var(--gold);
+  color: var(--olive-light);
 }
 
 .tabIcon svg {

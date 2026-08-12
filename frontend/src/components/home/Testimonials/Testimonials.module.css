@@ -100,7 +100,7 @@
 .quoteMark,
 .quoteMarkEnd {
   display: block;
-  color: var(--gold);
+  color: var(--olive-light);
   font-size: 2.4rem;
   line-height: 1;
   font-family: Georgia, "Times New Roman", serif;
@@ -128,7 +128,7 @@
 }
 
 .card strong {
-  color: var(--gold);
+  color: var(--olive-light);
   font-size: 1rem;
 }
 

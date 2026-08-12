@@ -301,20 +301,22 @@ export default function FrameworkStoryline({ content }) {
   return (
     <section ref={rootRef} className={styles.section} aria-label={badge}>
       <div className={styles.inner}>
-        <Reveal className={`${styles.header} revealHead`}>
-          <SectionBadge>{badge}</SectionBadge>
-          <h2>
-            {titleBefore}
-            <span className={styles.highlight}>{titleHighlight}</span>
-            {titleAfter}
-          </h2>
-          {body ? <p className={styles.body}>{body}</p> : null}
-          {callout ? (
-            <div className={`${styles.callout} interactiveCard`}>
-              <span aria-hidden="true">✦</span>
-              <p>{callout}</p>
-            </div>
-          ) : null}
+        <Reveal as="div" className={styles.headerWrap}>
+          <div className={`${styles.header} revealHead`}>
+            <SectionBadge>{badge}</SectionBadge>
+            <h2>
+              {titleBefore}
+              <span className={styles.highlight}>{titleHighlight}</span>
+              {titleAfter}
+            </h2>
+            {body ? <p className={styles.body}>{body}</p> : null}
+            {callout ? (
+              <div className={`${styles.callout} interactiveCard`}>
+                <span aria-hidden="true">✦</span>
+                <p>{callout}</p>
+              </div>
+            ) : null}
+          </div>
         </Reveal>
 
         <div className={styles.story} style={{ minHeight: height }}>
@@ -328,12 +330,10 @@ export default function FrameworkStoryline({ content }) {
             <defs>
               <linearGradient id="frameworkTrail" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0%" stopColor="#f3c969" />
-                <stop offset="18%" stopColor="#f59e0b" />
-                <stop offset="36%" stopColor="#38bdf8" />
-                <stop offset="54%" stopColor="#a855f7" />
-                <stop offset="72%" stopColor="#ec4899" />
-                <stop offset="88%" stopColor="#f97316" />
-                <stop offset="100%" stopColor="#b8893d" />
+                <stop offset="28%" stopColor="#b8893d" />
+                <stop offset="55%" stopColor="#8a9e5c" />
+                <stop offset="78%" stopColor="#5a6b3b" />
+                <stop offset="100%" stopColor="#d4b06a" />
               </linearGradient>
             </defs>
 

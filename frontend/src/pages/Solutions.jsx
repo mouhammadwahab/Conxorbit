@@ -31,7 +31,7 @@ export default function Solutions() {
   }, [activeFilter, search]);
 
   return (
-    <PageShell atmosphere="services">
+    <PageShell atmosphere="products">
       <SEO title={meta.title} description={meta.description} path="/solutions" />
       <div className={styles.page}>
         <SolutionsHero content={hero} />

@@ -1,6 +1,6 @@
 .section {
   padding: clamp(40px, 6vw, 72px) clamp(20px, 5vw, 72px) clamp(56px, 7vw, 80px);
-  background: #071411;
+  background: var(--section-band-bg);
 }
 
 .inner {
@@ -35,7 +35,7 @@
   display: inline-block;
   width: 44px;
   height: 1px;
-  background: rgba(232, 237, 216, 0.25);
+  background: linear-gradient(90deg, var(--olive-soft), var(--gold));
 }
 
 .name {
@@ -72,11 +72,12 @@
 
 .tag {
   padding: 7px 11px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--tag-stroke);
+  background: var(--tag-fill);
   letter-spacing: 0.02em;
   text-transform: none;
   font-size: 0.78rem;
-  color: rgba(232, 237, 216, 0.82);
+  color: var(--tag-text);
 }
 
 .cta {
@@ -84,7 +85,10 @@
   align-items: center;
   gap: 8px;
   margin-top: 10px;
-  color: var(--gold, #b8893d);
+  background: var(--accent-duo-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   text-decoration: none;
   font-weight: 600;
   letter-spacing: 0.08em;

@@ -69,7 +69,7 @@ export default function ServicesTabs({ content }) {
             {body ? <p className={styles.intro}>{body}</p> : null}
           </div>
 
-          <div className={`${styles.detail} interactiveCard`} key={active.id}>
+          <div className={`${styles.detail} interactiveCard cardReveal`} key={active.id}>
             <span className={styles.detailIcon}>{TAB_ICONS[active.id] || TAB_ICONS.workflow}</span>
             <h3>{active.title}</h3>
             <p>{active.body}</p>
@@ -103,7 +103,7 @@ export default function ServicesTabs({ content }) {
           </div>
         </div>
 
-        <div className={styles.right}>
+        <div className={`${styles.right} cardReveal`}>
           <div className={`${styles.media} mediaZoom`}>
             <img src={image} alt="" />
             {imageCaption ? <span className={styles.caption}>{imageCaption}</span> : null}

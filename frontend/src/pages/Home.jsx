@@ -39,7 +39,7 @@ export default function Home() {
   useEffect(() => {
     if (wasGlanceModalDismissed()) return undefined;
 
-    const timer = window.setTimeout(() => setModalOpen(true), 5000);
+    const timer = window.setTimeout(() => setModalOpen(true), 8000);
     return () => window.clearTimeout(timer);
   }, []);
 

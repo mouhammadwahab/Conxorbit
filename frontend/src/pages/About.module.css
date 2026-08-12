@@ -181,7 +181,7 @@
   text-transform: none;
   font-size: clamp(0.82rem, 1.5vw, 0.95rem);
   font-weight: 600;
-  color: #f3c969;
+  color: var(--olive-light);
 }
 
 .glowIntroTitle {
@@ -250,6 +250,8 @@
   border: 1px solid rgba(184, 137, 61, 0.4);
   color: #f7f7f4;
   font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   margin-bottom: 16px;
 }
 
@@ -312,7 +314,7 @@
   padding: var(--section-pad) clamp(20px, 5vw, 72px);
   background:
     radial-gradient(ellipse 60% 50% at 10% 0%, rgba(90, 107, 59, 0.18), transparent 55%),
-    #071411;
+    #0b1b17;
 }
 
 .storyInner {
@@ -498,8 +500,8 @@
   font-size: clamp(1.85rem, 3.5vw, 2.45rem);
   font-weight: 800;
   letter-spacing: 0.04em;
-  color: #f3c969;
-  text-shadow: 0 0 40px rgba(184, 137, 61, 0.35);
+  color: var(--olive-light);
+  text-shadow: 0 0 40px rgba(90, 107, 59, 0.35);
 }
 
 .founderInfo {
@@ -570,7 +572,7 @@
   background:
     radial-gradient(ellipse 50% 55% at 0% 45%, rgba(90, 107, 59, 0.16), transparent 58%),
     radial-gradient(ellipse 40% 40% at 100% 20%, rgba(184, 137, 61, 0.08), transparent 50%),
-    #071411;
+    #0b1b17;
 }
 
 .valuesInner {
@@ -703,7 +705,7 @@
   font-size: 0.78rem;
   letter-spacing: 0.12em;
   font-weight: 600;
-  color: var(--gold);
+  color: var(--olive-light);
 }
 
 .valueCopy h3 {

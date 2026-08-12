@@ -9,13 +9,8 @@ html {
 }
 
 body {
-  background: radial-gradient(
-    circle at 50% 30%,
-    #0b1b17 0%,
-    #010f0e 55%,
-    #000806 100%
-  );
-  background-color: var(--color-bg);
+  background: var(--page-bg);
+  background-color: #0b1b17;
   background-attachment: fixed;
   font-family: var(--font-sans);
   color: var(--color-text);

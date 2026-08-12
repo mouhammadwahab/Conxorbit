@@ -2,12 +2,12 @@
 
 :root {
   --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
-  --motion-duration: 560ms;
+  --motion-duration: 640ms;
 }
 
 .reveal {
   opacity: 0;
-  transform: perspective(1000px) translateY(22px) rotateX(4deg);
+  transform: perspective(1000px) translateY(28px) rotateX(4deg);
   transition:
     opacity var(--motion-duration) var(--motion-ease),
     transform var(--motion-duration) var(--motion-ease);
@@ -55,44 +55,72 @@
   }
 }
 
-/* Section header stagger: badge → title → body */
+/* Section header stagger: badge → title → body (ancestor or same element) */
 .revealHead > *:nth-child(1),
 .revealHead > *:nth-child(2),
 .revealHead > *:nth-child(3),
-.revealHead > *:nth-child(4) {
+.revealHead > *:nth-child(4),
+.revealHead > *:nth-child(5),
+.revealHead > *:nth-child(6) {
   opacity: 0;
-  transform: translateY(16px);
+  transform: translateY(18px);
   transition:
-    opacity 480ms var(--motion-ease),
-    transform 480ms var(--motion-ease);
+    opacity 520ms var(--motion-ease),
+    transform 520ms var(--motion-ease);
 }
 
 .revealVisible .revealHead > *:nth-child(1),
-.visible .revealHead > *:nth-child(1) {
+.visible .revealHead > *:nth-child(1),
+.revealVisible.revealHead > *:nth-child(1),
+.visible.revealHead > *:nth-child(1) {
   opacity: 1;
   transform: translateY(0);
-  transition-delay: 40ms;
+  transition-delay: 80ms;
 }
 
 .revealVisible .revealHead > *:nth-child(2),
-.visible .revealHead > *:nth-child(2) {
-  opacity: 1;
-  transform: translateY(0);
-  transition-delay: 110ms;
-}
-
-.revealVisible .revealHead > *:nth-child(3),
-.visible .revealHead > *:nth-child(3) {
+.visible .revealHead > *:nth-child(2),
+.revealVisible.revealHead > *:nth-child(2),
+.visible.revealHead > *:nth-child(2) {
   opacity: 1;
   transform: translateY(0);
   transition-delay: 180ms;
 }
 
-.revealVisible .revealHead > *:nth-child(4),
-.visible .revealHead > *:nth-child(4) {
+.revealVisible .revealHead > *:nth-child(3),
+.visible .revealHead > *:nth-child(3),
+.revealVisible.revealHead > *:nth-child(3),
+.visible.revealHead > *:nth-child(3) {
   opacity: 1;
   transform: translateY(0);
-  transition-delay: 250ms;
+  transition-delay: 280ms;
+}
+
+.revealVisible .revealHead > *:nth-child(4),
+.visible .revealHead > *:nth-child(4),
+.revealVisible.revealHead > *:nth-child(4),
+.visible.revealHead > *:nth-child(4) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 380ms;
+}
+
+.revealVisible .revealHead > *:nth-child(5),
+.visible .revealHead > *:nth-child(5),
+.revealVisible.revealHead > *:nth-child(5),
+.visible.revealHead > *:nth-child(5) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 480ms;
+}
+
+.revealVisible .revealHead > *:nth-child(6),
+.visible .revealHead > *:nth-child(6),
+.revealVisible.revealHead > *:nth-child(6),
+.visible.revealHead > *:nth-child(6) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 580ms;
 }
 
 /* Hero copy stagger without needing Reveal parent */
@@ -169,51 +197,51 @@
 
 .revealVisible .cardReveal:nth-child(1),
 .visible .cardReveal:nth-child(1) {
-  transition-delay: 0ms;
+  transition-delay: 120ms;
 }
 .revealVisible .cardReveal:nth-child(2),
 .visible .cardReveal:nth-child(2) {
-  transition-delay: 70ms;
+  transition-delay: 220ms;
 }
 .revealVisible .cardReveal:nth-child(3),
 .visible .cardReveal:nth-child(3) {
-  transition-delay: 140ms;
+  transition-delay: 320ms;
 }
 .revealVisible .cardReveal:nth-child(4),
 .visible .cardReveal:nth-child(4) {
-  transition-delay: 210ms;
+  transition-delay: 420ms;
 }
 .revealVisible .cardReveal:nth-child(5),
 .visible .cardReveal:nth-child(5) {
-  transition-delay: 280ms;
+  transition-delay: 520ms;
 }
 .revealVisible .cardReveal:nth-child(6),
 .visible .cardReveal:nth-child(6) {
-  transition-delay: 350ms;
+  transition-delay: 620ms;
 }
 .revealVisible .cardReveal:nth-child(7),
 .visible .cardReveal:nth-child(7) {
-  transition-delay: 420ms;
+  transition-delay: 720ms;
 }
 .revealVisible .cardReveal:nth-child(8),
 .visible .cardReveal:nth-child(8) {
-  transition-delay: 490ms;
+  transition-delay: 820ms;
 }
 .revealVisible .cardReveal:nth-child(9),
 .visible .cardReveal:nth-child(9) {
-  transition-delay: 560ms;
+  transition-delay: 920ms;
 }
 .revealVisible .cardReveal:nth-child(10),
 .visible .cardReveal:nth-child(10) {
-  transition-delay: 630ms;
+  transition-delay: 1020ms;
 }
 .revealVisible .cardReveal:nth-child(11),
 .visible .cardReveal:nth-child(11) {
-  transition-delay: 700ms;
+  transition-delay: 1120ms;
 }
 .revealVisible .cardReveal:nth-child(12),
 .visible .cardReveal:nth-child(12) {
-  transition-delay: 770ms;
+  transition-delay: 1220ms;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -405,7 +433,7 @@
   background:
     radial-gradient(ellipse at 80% 10%, rgba(90, 107, 59, 0.22), transparent 50%),
     radial-gradient(ellipse at 10% 90%, rgba(184, 137, 61, 0.12), transparent 48%),
-    linear-gradient(180deg, #0b1b17 0%, #010f0e 100%) !important;
+    linear-gradient(180deg, #0b1b17 0%, #14302e 100%) !important;
   color: var(--color-text);
 }
 
@@ -431,7 +459,9 @@
   .visible .cardReveal,
   .revealHead > *,
   .revealVisible .revealHead > *,
-  .visible .revealHead > * {
+  .visible .revealHead > *,
+  .revealVisible.revealHead > *,
+  .visible.revealHead > * {
     opacity: 1 !important;
     transform: none !important;
     animation: none !important;

@@ -46,42 +46,44 @@
 .secondary {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 13px 20px;
-  border-radius: 6px;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 18px;
+  border-radius: 10px;
   text-decoration: none;
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
+  white-space: nowrap;
   transition:
-    background 200ms ease,
+    filter 200ms ease,
     border-color 200ms ease,
     color 200ms ease,
     transform 200ms ease;
 }
 
 .primary {
-  background: #f4f6f0;
-  color: #0a1210;
-  border: 1px solid #f4f6f0;
+  background: var(--cta-primary-bg);
+  color: var(--cta-primary-color);
+  border: 1px solid transparent;
 }
 
 .primary:hover {
-  background: #ffffff;
+  filter: brightness(1.05);
   transform: translateY(-1px);
 }
 
 .secondary {
-  border: 1px solid rgba(255, 255, 255, 0.55);
-  color: #f7f7f4;
+  border: 1px solid var(--border-olive);
+  color: var(--olive-light);
   background: transparent;
   cursor: pointer;
   font: inherit;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .secondary:hover {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.8);
+  border-color: var(--color-accent-bright);
+  color: var(--color-accent-bright);
   transform: translateY(-1px);
 }
 
@@ -153,7 +155,7 @@
   aspect-ratio: 16 / 10;
   max-height: 480px;
   overflow: hidden;
-  background: #071410;
+  background: #0b1b17;
 }
 
 .viewport img {

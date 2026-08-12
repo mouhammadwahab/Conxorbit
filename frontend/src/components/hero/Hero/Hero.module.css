@@ -5,7 +5,7 @@
   align-items: center;
   justify-items: center;
   padding: var(--hero-pad-top) 72px clamp(80px, 10vw, 120px);
-  background: #010f0e;
+  background: var(--page-bg);
   overflow: hidden;
   position: relative;
   z-index: 1;

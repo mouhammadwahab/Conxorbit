@@ -1,6 +1,6 @@
 .section {
   padding: var(--section-pad);
-  background: #050c0b;
+  background: var(--section-band-bg);
 }
 
 .header {
@@ -19,7 +19,7 @@
   padding: 8px 14px;
   border-radius: 999px;
   border: 1px solid rgba(184, 137, 61, 0.55);
-  color: var(--gold);
+  color: var(--olive-light);
   font-size: 0.78rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -63,7 +63,7 @@
 .icon {
   width: 36px;
   height: 36px;
-  color: var(--gold);
+  color: var(--olive-light);
   display: grid;
   place-items: center;
 }

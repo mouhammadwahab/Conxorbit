@@ -1,5 +1,9 @@
 .page {
-  background: #050c0b;
+  background:
+    radial-gradient(ellipse 70% 45% at 50% 0%, rgba(184, 137, 61, 0.14), transparent 55%),
+    radial-gradient(ellipse 55% 50% at 12% 40%, rgba(90, 107, 59, 0.2), transparent 50%),
+    radial-gradient(ellipse 50% 45% at 88% 70%, rgba(20, 48, 46, 0.55), transparent 55%),
+    linear-gradient(180deg, #0b1b17 0%, #14302e 38%, #0f2b27 68%, #0b1b17 100%);
   padding-bottom: 24px;
 }
 

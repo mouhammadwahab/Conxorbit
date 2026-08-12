@@ -1,7 +1,11 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Reveal from "../common/Reveal";
+import usePrefersReducedMotion from "../../hooks/usePrefersReducedMotion";
 import facadeHeroImg from "../../assets/trades/facade-hero.jpg";
 import styles from "./FacadeTradeHero.module.css";
+
+const CALLOUT_REVEAL_MS = 1100;
 
 export default function FacadeTradeHero({ content }) {
   const {
@@ -16,6 +20,19 @@ export default function FacadeTradeHero({ content }) {
     footerNote,
   } = content;
 
+  const reduced = usePrefersReducedMotion();
+  const [calloutsVisible, setCalloutsVisible] = useState(reduced);
+
+  useEffect(() => {
+    if (reduced) {
+      setCalloutsVisible(true);
+      return undefined;
+    }
+
+    const timer = window.setTimeout(() => setCalloutsVisible(true), CALLOUT_REVEAL_MS);
+    return () => window.clearTimeout(timer);
+  }, [reduced]);
+
   return (
     <Reveal as="section" className={styles.hero} eager aria-label={eyebrow}>
       <div className={styles.media} aria-hidden="true">
@@ -25,8 +42,8 @@ export default function FacadeTradeHero({ content }) {
         <div className={styles.grid} />
       </div>
 
-      <div className={`${styles.inner} heroStagger`}>
-        <div className={styles.copy}>
+      <div className={styles.inner}>
+        <div className={`${styles.copy} heroStagger`}>
           {eyebrow ? (
             <p className={styles.eyebrow}>
               <span className={styles.eyebrowRule} aria-hidden="true" />
@@ -54,8 +71,11 @@ export default function FacadeTradeHero({ content }) {
           </div>
         </div>
 
-        <div className={styles.annotations} aria-hidden="true">
-          {callouts.map((item) => (
+        <div
+          className={`${styles.annotations} ${calloutsVisible ? styles.calloutsVisible : ""}`}
+          aria-hidden="true"
+        >
+          {callouts.map((item, index) => (
             <div
               key={item.label}
               className={`${styles.callout} ${styles[`side${item.side}`] || ""}`}
@@ -63,6 +83,7 @@ export default function FacadeTradeHero({ content }) {
                 top: item.top,
                 left: item.left,
                 right: item.right,
+                transitionDelay: calloutsVisible ? `${index * 140}ms` : "0ms",
               }}
             >
               <div className={styles.calloutText}>
@@ -77,7 +98,12 @@ export default function FacadeTradeHero({ content }) {
           ))}
 
           {footerNote ? (
-            <div className={styles.footerNote}>
+            <div
+              className={styles.footerNote}
+              style={{
+                transitionDelay: calloutsVisible ? `${callouts.length * 140 + 80}ms` : "0ms",
+              }}
+            >
               <span className={styles.footerIcon} aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none">
                   <circle cx="5" cy="5" r="1.6" fill="currentColor" />

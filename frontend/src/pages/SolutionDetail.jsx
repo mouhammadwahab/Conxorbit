@@ -25,7 +25,7 @@ export default function SolutionDetail() {
   const { detail } = solution;
 
   return (
-    <PageShell atmosphere="services">
+    <PageShell atmosphere="products">
       <SEO
         title={`${solution.name} — ConX Orbit`}
         description={solution.description}

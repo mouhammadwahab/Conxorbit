@@ -1,8 +1,6 @@
-import { Link } from "react-router-dom";
-import Reveal from "./Reveal";
 import SectionBadge from "./SectionBadge";
+import CtaSection from "./CtaSection";
 import styles from "./PageHero.module.css";
-
 export default function PageHero({
   eyebrow,
   title,
@@ -44,22 +42,16 @@ export function CTABand({
   secondaryLabel,
 }) {
   return (
-    <Reveal as="section" className={styles.ctaBand}>
-      <div className={`${styles.ctaInner} revealHead`}>
-        <h2>{title}</h2>
-        {body ? <p>{body}</p> : null}
-        <div className={styles.ctaActions}>
-          <Link className={`${styles.ctaButton} btnMotion`} to={href}>
-            <span>{label}</span>
-            <span aria-hidden="true">→</span>
-          </Link>
-          {secondaryHref && secondaryLabel ? (
-            <Link className={`${styles.ctaButtonSecondary} btnMotion`} to={secondaryHref}>
-              <span>{secondaryLabel}</span>
-            </Link>
-          ) : null}
-        </div>
-      </div>
-    </Reveal>
+    <CtaSection
+      title={title}
+      body={body}
+      primary={href && label ? { href, label } : null}
+      secondary={
+        secondaryHref && secondaryLabel
+          ? { href: secondaryHref, label: secondaryLabel }
+          : null
+      }
+      ariaLabel={title}
+    />
   );
 }

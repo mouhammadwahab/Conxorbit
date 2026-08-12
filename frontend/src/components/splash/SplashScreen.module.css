@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: #010f0e;
+  background: #0b1b17;
   opacity: 1;
   transition: opacity 360ms ease;
 }
@@ -23,7 +23,7 @@
     radial-gradient(ellipse at 50% 38%, rgba(247, 247, 244, 0.1) 0%, transparent 42%),
     radial-gradient(ellipse at 18% 82%, rgba(90, 107, 59, 0.22) 0%, transparent 48%),
     radial-gradient(ellipse at 82% 18%, rgba(184, 137, 61, 0.18) 0%, transparent 46%),
-    linear-gradient(180deg, #0b1b17 0%, #010f0e 55%, #000806 100%);
+    linear-gradient(180deg, #0b1b17 0%, #14302e 55%, #0f2b27 100%);
 }
 
 .spotlight {

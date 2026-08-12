@@ -8,10 +8,12 @@ export default function PortfolioApproach({ content }) {
 
   return (
     <section className={styles.section} aria-label={badge}>
-      <Reveal className={`${styles.header} revealHead`}>
-        <SectionBadge>{badge}</SectionBadge>
-        <h2 className={styles.title}>{title}</h2>
-        {body ? <p className={styles.body}>{body}</p> : null}
+      <Reveal as="div" className={styles.headerWrap}>
+        <div className={`${styles.header} revealHead`}>
+          <SectionBadge>{badge}</SectionBadge>
+          <h2 className={styles.title}>{title}</h2>
+          {body ? <p className={styles.body}>{body}</p> : null}
+        </div>
       </Reveal>
 
       <Reveal className={styles.steps}>

@@ -9,27 +9,24 @@
   border-radius: 999px;
   font-size: 0.88rem;
   font-weight: 500;
-  letter-spacing: 0.01em;
-  text-transform: none;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   line-height: 1.2;
-  background: linear-gradient(
-    135deg,
-    rgba(184, 137, 61, 0.2),
-    rgba(243, 201, 105, 0.1)
-  ) !important;
-  border: 1px solid rgba(184, 137, 61, 0.55);
+  background: var(--badge-fill) !important;
+  border: 1px solid var(--badge-stroke);
   box-shadow:
-    0 8px 22px rgba(184, 137, 61, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.06);
-  color: #f3c969 !important;
-  -webkit-text-fill-color: #f3c969;
+    0 8px 22px rgba(90, 107, 59, 0.14),
+    0 0 0 1px rgba(184, 137, 61, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  color: var(--olive-light) !important;
+  -webkit-text-fill-color: var(--olive-light);
   -webkit-background-clip: border-box !important;
   background-clip: border-box !important;
 }
 
 .icon {
   flex-shrink: 0;
-  color: #f3c969;
+  color: var(--color-accent-bright);
   font-size: 0.82rem;
   line-height: 1;
 }

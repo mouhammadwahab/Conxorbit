@@ -47,8 +47,8 @@
 }
 
 .close:hover {
-  border-color: rgba(243, 201, 105, 0.55);
-  color: #f3c969;
+  border-color: rgba(138, 158, 92, 0.55);
+  color: var(--olive-light);
 }
 
 .header {
@@ -65,13 +65,13 @@
   gap: 8px;
   width: fit-content;
   padding: 6px 10px;
-  border: 1px solid rgba(184, 137, 61, 0.55);
+  border: 1px solid rgba(138, 158, 92, 0.5);
   border-radius: 4px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   font-size: 0.68rem;
   font-weight: 600;
-  color: #d4b06a;
+  color: var(--olive-light);
 }
 
 .title {
@@ -85,7 +85,7 @@
 }
 
 .highlight {
-  color: #d4b06a;
+  color: var(--olive-light);
 }
 
 .body {
@@ -109,7 +109,7 @@
   text-transform: uppercase;
   font-size: 0.7rem;
   font-weight: 600;
-  color: #d4b06a;
+  color: var(--olive-light);
 }
 
 .serviceList {
@@ -137,7 +137,7 @@
 }
 
 .serviceLink:hover strong {
-  color: #f3c969;
+  color: var(--olive-light);
 }
 
 .serviceNum {
@@ -212,7 +212,7 @@
   font-size: 0.62rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #d4b06a;
+  color: var(--olive-light);
   font-weight: 600;
 }
 
@@ -274,7 +274,7 @@
 }
 
 .primary {
-  background: linear-gradient(135deg, #d4b06a, #b8893d);
+  background: var(--cta-primary-bg);
   color: #0a100e;
 }
 
@@ -289,8 +289,8 @@
 }
 
 .secondary:hover {
-  border-color: rgba(243, 201, 105, 0.55);
-  color: #f3c969;
+  border-color: rgba(138, 158, 92, 0.55);
+  color: var(--olive-light);
 }
 
 @media (max-width: 820px) {

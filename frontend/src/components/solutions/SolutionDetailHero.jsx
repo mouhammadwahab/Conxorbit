@@ -28,7 +28,7 @@ export default function SolutionDetailHero({ solution }) {
   return (
     <Reveal as="section" className={styles.hero} eager aria-label={name}>
       <div className={`${styles.copy} heroStagger`}>
-        <SectionBadge>{name}</SectionBadge>
+        <SectionBadge icon={false}>{name}</SectionBadge>
         <h1 className={styles.title}>
           {titleHighlight != null ? (
             <>

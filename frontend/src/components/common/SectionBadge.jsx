@@ -6,6 +6,7 @@ export default function SectionBadge({
   as: Tag = "span",
   variant = "gold",
   size = "md",
+  icon = true,
 }) {
   if (!children) return null;
 
@@ -17,9 +18,11 @@ export default function SectionBadge({
         className ? ` ${className}` : ""
       }`}
     >
-      <span className={styles.icon} aria-hidden="true">
-        ✦
-      </span>
+      {icon ? (
+        <span className={styles.icon} aria-hidden="true">
+          ✦
+        </span>
+      ) : null}
       <span className={styles.label}>{children}</span>
     </Tag>
   );

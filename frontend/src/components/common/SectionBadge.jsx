@@ -6,17 +6,19 @@ export default function SectionBadge({
   as: Tag = "span",
   variant = "gold",
   size = "md",
+  tone = "dark",
   icon = true,
 }) {
   if (!children) return null;
 
   const sizeClass = size === "sm" ? styles.sm : "";
+  const toneClass = tone === "light" ? styles.light : "";
 
   return (
     <Tag
-      className={`${styles.badge}${sizeClass ? ` ${sizeClass}` : ""}${
-        className ? ` ${className}` : ""
-      }`}
+      className={`${styles.badge}${toneClass ? ` ${toneClass}` : ""}${
+        sizeClass ? ` ${sizeClass}` : ""
+      }${className ? ` ${className}` : ""}`.trim()}
     >
       {icon ? (
         <span className={styles.icon} aria-hidden="true">

@@ -10,7 +10,7 @@ export default function FAQAccordion({ content }) {
   return (
     <Reveal as="section" className={styles.section} aria-label={badge}>
       <div className={`${styles.header} revealHead`}>
-        <SectionBadge>{badge}</SectionBadge>
+        <SectionBadge tone="light">{badge}</SectionBadge>
         <h2>
           {titleBefore}
           <span className={styles.highlight}>{titleHighlight}</span>

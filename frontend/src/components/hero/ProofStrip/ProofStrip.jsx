@@ -10,7 +10,9 @@ export default function ProofStrip({ content }) {
     <Reveal as="section" className={styles.section} aria-label={title}>
       <div className={styles.inner}>
         <div className={`${styles.header} revealHead`}>
-          <SectionBadge as="p">{eyebrow}</SectionBadge>
+          <SectionBadge as="p" tone="light">
+            {eyebrow}
+          </SectionBadge>
           <h2>{title}</h2>
         </div>
         <div className={styles.marquee} aria-hidden="true">

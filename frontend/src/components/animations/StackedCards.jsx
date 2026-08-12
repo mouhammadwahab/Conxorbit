@@ -11,7 +11,11 @@ export default function StackedCards({ eyebrow, title, cards = [], tone = "dark"
       className={`${styles.section} ${tone === "light" ? styles.light : styles.dark}`}
     >
       <div className={styles.header}>
-        {eyebrow ? <SectionBadge as="p">{eyebrow}</SectionBadge> : null}
+        {eyebrow ? (
+          <SectionBadge as="p" tone={tone === "light" ? "light" : "dark"}>
+            {eyebrow}
+          </SectionBadge>
+        ) : null}
         <h2 className={styles.title}>{title}</h2>
       </div>
       <div className={styles.stack}>

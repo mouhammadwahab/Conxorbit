@@ -56,7 +56,11 @@ export default function ConnectedStoryline({
     >
       <div className={styles.inner}>
         <div className={styles.header}>
-          {eyebrow ? <SectionBadge as="p">{eyebrow}</SectionBadge> : null}
+          {eyebrow ? (
+            <SectionBadge as="p" tone={tone === "light" ? "light" : "dark"}>
+              {eyebrow}
+            </SectionBadge>
+          ) : null}
           <h2 className={styles.title}>{title}</h2>
           {body ? <p className={styles.body}>{body}</p> : null}
         </div>

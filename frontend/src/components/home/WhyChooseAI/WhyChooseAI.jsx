@@ -53,7 +53,7 @@ export default function WhyChooseAI({ content }) {
       <div className={styles.inner}>
         <div className={styles.grid}>
           <div className={`${styles.copy} revealHead`}>
-            <SectionBadge>{badge}</SectionBadge>
+            <SectionBadge tone="light">{badge}</SectionBadge>
             <h2>
               {titleBefore}
               <span className={styles.highlight}>{titleHighlight}</span>

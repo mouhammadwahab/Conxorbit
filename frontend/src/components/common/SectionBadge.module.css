@@ -24,6 +24,20 @@
   background-clip: border-box !important;
 }
 
+.light {
+  background: var(--badge-fill-on-light) !important;
+  border: 1px solid var(--badge-stroke-on-light);
+  box-shadow:
+    0 8px 20px rgba(20, 48, 46, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  color: var(--badge-text-on-light) !important;
+  -webkit-text-fill-color: var(--badge-text-on-light);
+}
+
+.light .icon {
+  color: var(--gold);
+}
+
 .icon {
   flex-shrink: 0;
   color: var(--color-accent-bright);

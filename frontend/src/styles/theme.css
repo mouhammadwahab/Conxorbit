@@ -147,6 +147,9 @@
   --accent-duo-text: linear-gradient(90deg, var(--olive-light) 0%, var(--color-accent-bright) 100%);
   --badge-fill: linear-gradient(135deg, rgba(90, 107, 59, 0.34), rgba(184, 137, 61, 0.16));
   --badge-stroke: rgba(138, 158, 92, 0.5);
+  --badge-text-on-light: var(--forest);
+  --badge-fill-on-light: #ffffff;
+  --badge-stroke-on-light: rgba(184, 137, 61, 0.55);
   --icon-fill: linear-gradient(145deg, rgba(90, 107, 59, 0.38), rgba(184, 137, 61, 0.14));
   --icon-stroke: rgba(138, 158, 92, 0.48);
   --section-band-bg:

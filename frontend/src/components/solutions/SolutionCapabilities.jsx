@@ -1,6 +1,5 @@
 import Reveal from "../common/Reveal";
 import SectionBadge from "../common/SectionBadge";
-import { SolutionIcon } from "./solutionIcons";
 import styles from "./SolutionCapabilities.module.css";
 
 export default function SolutionCapabilities({ content }) {
@@ -19,10 +18,9 @@ export default function SolutionCapabilities({ content }) {
       <div className={styles.grid}>
         {cards.map((card, index) => (
           <article key={card.title} className={`${styles.card} cardReveal`}>
-            <SolutionIcon name={card.icon} className={styles.icon} />
+            <span className={styles.index}>{String(index + 1).padStart(2, "0")}</span>
             <h3>{card.title}</h3>
             <p>{card.body}</p>
-            <span className={styles.index}>{String(index + 1).padStart(2, "0")}</span>
           </article>
         ))}
       </div>

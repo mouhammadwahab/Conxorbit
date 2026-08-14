@@ -3,9 +3,15 @@ import Reveal from "../common/Reveal";
 import SectionBadge from "../common/SectionBadge";
 import styles from "./PortfolioClientSystems.module.css";
 
-export default function PortfolioClientSystems({ content }) {
+export default function PortfolioClientSystems({ content, onOpenCaseStudy }) {
   if (!content) return null;
   const { badge, title, body, items = [] } = content;
+
+  const handleCta = (event, href) => {
+    if (!onOpenCaseStudy || !href) return;
+    event.preventDefault();
+    onOpenCaseStudy(href);
+  };
 
   return (
     <section className={styles.section} aria-label={badge}>
@@ -50,7 +56,11 @@ export default function PortfolioClientSystems({ content }) {
                   ))}
                 </div>
                 {item.cta ? (
-                  <Link className={`${styles.cta} linkDraw`} to={item.cta.href}>
+                  <Link
+                    className={`${styles.cta} linkDraw`}
+                    to={item.cta.href}
+                    onClick={(event) => handleCta(event, item.cta.href)}
+                  >
                     {item.cta.label}
                     <span aria-hidden="true">→</span>
                   </Link>

@@ -3,9 +3,15 @@ import Reveal from "../common/Reveal";
 import SectionBadge from "../common/SectionBadge";
 import styles from "./PortfolioFeatured.module.css";
 
-export default function PortfolioFeatured({ content }) {
+export default function PortfolioFeatured({ content, onOpenCaseStudy }) {
   if (!content) return null;
   const { badge, label, name, title, body, tags = [], cta, image, imageFallback } = content;
+
+  const handleCta = (event) => {
+    if (!onOpenCaseStudy || !cta?.href) return;
+    event.preventDefault();
+    onOpenCaseStudy(cta.href);
+  };
 
   return (
     <Reveal as="section" className={styles.section} aria-label={badge}>
@@ -28,7 +34,11 @@ export default function PortfolioFeatured({ content }) {
               ))}
             </div>
             {cta ? (
-              <Link className={`${styles.cta} linkDraw`} to={cta.href}>
+              <Link
+                className={`${styles.cta} linkDraw`}
+                to={cta.href}
+                onClick={handleCta}
+              >
                 {cta.label}
                 <span aria-hidden="true">→</span>
               </Link>

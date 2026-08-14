@@ -37,7 +37,7 @@ const ICONS = {
 };
 
 /** Why Choose AI — CSS sticky stacked cards (no GSAP pin). */
-export default function WhyChooseAI({ content }) {
+export default function WhyChooseAI({ content, onExplore, ctaLabel = "Explore your Workflow" }) {
   const {
     badge,
     titleBefore,
@@ -61,6 +61,12 @@ export default function WhyChooseAI({ content }) {
             </h2>
             <span className={styles.rule} aria-hidden="true" />
             <p>{body}</p>
+            {onExplore ? (
+              <button type="button" className={`${styles.cta} btnMotion`} onClick={onExplore}>
+                <span>{ctaLabel}</span>
+                <span aria-hidden="true">→</span>
+              </button>
+            ) : null}
           </div>
 
           <div className={styles.stage}>

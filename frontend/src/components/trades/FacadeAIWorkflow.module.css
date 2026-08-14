@@ -128,15 +128,30 @@
   width: 16px;
   height: 16px;
   border-radius: 3px;
-  border: 1.5px solid #d4b06a;
+  border: 1.5px solid rgba(212, 176, 106, 0.45);
   background: #071411;
-  box-shadow: 0 0 0 4px rgba(184, 137, 61, 0.1);
+  box-shadow: 0 0 0 4px rgba(184, 137, 61, 0.06);
+  transition:
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    background 0.35s ease;
+}
+
+.nodeLit {
+  border-color: #d4b06a;
+  box-shadow: 0 0 0 4px rgba(184, 137, 61, 0.18), 0 0 16px rgba(212, 176, 106, 0.35);
 }
 
 .accentOlive .node {
   border-radius: 50%;
   width: 18px;
   height: 18px;
+  border-color: rgba(138, 158, 92, 0.45);
+  background: rgba(90, 107, 59, 0.2);
+  box-shadow: 0 0 0 5px rgba(90, 107, 59, 0.08);
+}
+
+.accentOlive .nodeLit {
   border-color: #8a9e5c;
   background: rgba(90, 107, 59, 0.4);
   box-shadow: 0 0 0 5px rgba(90, 107, 59, 0.16), 0 0 18px rgba(138, 158, 92, 0.28);
@@ -165,9 +180,16 @@
 
 .segment {
   width: 1px;
-  height: 36px;
-  margin-top: 4px;
-  background: linear-gradient(180deg, #d4b06a, rgba(184, 137, 61, 0.2));
+  height: 48px;
+  margin-top: 6px;
+  background: linear-gradient(180deg, #d4b06a, rgba(184, 137, 61, 0.15));
+  transform: scaleY(0);
+  transform-origin: top center;
+  will-change: transform;
+}
+
+.segmentDrawn {
+  transform: scaleY(1);
 }
 
 .endArrow {
@@ -175,6 +197,13 @@
   font-size: 0.95rem;
   line-height: 1;
   margin-top: 2px;
+  opacity: 0;
+  transform: translateY(-6px);
+}
+
+.endArrowLit {
+  opacity: 1;
+  transform: none;
 }
 
 .callout {
@@ -187,6 +216,16 @@
   letter-spacing: 0.03em;
   color: rgba(232, 237, 216, 0.78);
   white-space: nowrap;
+  opacity: 0.28;
+  transform: translateY(6px);
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease;
+}
+
+.stepLit .callout {
+  opacity: 1;
+  transform: none;
 }
 
 .calloutLeft {
@@ -234,6 +273,11 @@
   }
 
   .segment {
-    height: 24px;
+    height: 28px;
+  }
+
+  .callout {
+    opacity: 1;
+    transform: none;
   }
 }

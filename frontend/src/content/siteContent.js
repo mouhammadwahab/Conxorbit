@@ -82,6 +82,7 @@ export const homeContent = {
     titleHighlight: "Your workflows should too",
     titleAfter: ".",
     body: "Every project depends on hundreds of repetitive decisions—from reviewing drawings and preparing quotations to tracking fabrication and documenting site progress. We build intelligent systems that remove friction from these everyday workflows.",
+    ctaLabel: "Explore your Workflow",
     closingLine:
       "Every workflow is different. That's why every solution we build starts with understanding how your team works.",
     cards: [
@@ -506,36 +507,6 @@ export const facadeContent = {
         rightCallout: "System Integration",
       },
     ],
-  },
-  painPoints: {
-    title: "What slows teams down",
-    items: [
-      "Drawings and revisions scattered across folders and inboxes",
-      "Panel status that lives in spreadsheets nobody trusts",
-      "Shop and site asking the same questions every week",
-      "Knowledge locked in a few people’s heads",
-    ],
-  },
-  platform: {
-    title: "What we build with you",
-    items: [
-      {
-        title: "DWG viewer workflows",
-        body: "Bring drawings into a shared space so teams review and mark up without endless file hunting.",
-      },
-      {
-        title: "Panel tracking",
-        body: "Follow units from fabrication through delivery and install — one source of status.",
-      },
-      {
-        title: "AI project chat",
-        body: "Ask questions against your project context instead of digging through threads and PDFs.",
-      },
-    ],
-  },
-  inDevelopment: {
-    title: "In development",
-    body: "Fabrication and bending AI — early work to assist shop decisions with clearer, faster guidance. Available as a roadmap conversation, not a finished product yet.",
   },
   cta: {
     eyebrow: "Façade Workflow",

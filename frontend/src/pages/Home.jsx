@@ -15,7 +15,9 @@ import GlanceModal, {
   markGlanceModalDismissed,
   wasGlanceModalDismissed,
 } from "../components/home/GlanceModal/GlanceModal";
+import WorkflowDiscoveryModal from "../components/home/WorkflowDiscoveryModal/WorkflowDiscoveryModal";
 import { glanceModalContent } from "../content/glanceModalContent";
+import { workflowDiscoveryContent } from "../content/workflowDiscoveryContent";
 import { homeContent } from "../content/siteContent";
 
 export default function Home() {
@@ -35,6 +37,7 @@ export default function Home() {
   } = homeContent;
 
   const [modalOpen, setModalOpen] = useState(false);
+  const [workflowOpen, setWorkflowOpen] = useState(false);
 
   useEffect(() => {
     if (wasGlanceModalDismissed()) return undefined;
@@ -48,12 +51,23 @@ export default function Home() {
     setModalOpen(false);
   }, []);
 
+  const openWorkflow = useCallback(() => {
+    markGlanceModalDismissed();
+    setModalOpen(false);
+    setWorkflowOpen(true);
+  }, []);
+  const closeWorkflow = useCallback(() => setWorkflowOpen(false), []);
+
   return (
     <>
       <SEO title={meta.title} description={meta.description} path="/" />
       <Hero content={hero} />
       <TradeShowcase content={tradeShowcase} />
-      <WhyChooseAI content={whyChooseAi} />
+      <WhyChooseAI
+        content={whyChooseAi}
+        onExplore={openWorkflow}
+        ctaLabel={whyChooseAi.ctaLabel}
+      />
       <ServicesTabs content={services} />
       <FeaturedSolutions content={featuredSolutions} />
       <FrameworkStoryline content={framework} />
@@ -73,6 +87,11 @@ export default function Home() {
         content={glanceModalContent}
         open={modalOpen}
         onClose={closeModal}
+      />
+      <WorkflowDiscoveryModal
+        content={workflowDiscoveryContent}
+        open={workflowOpen}
+        onClose={closeWorkflow}
       />
     </>
   );

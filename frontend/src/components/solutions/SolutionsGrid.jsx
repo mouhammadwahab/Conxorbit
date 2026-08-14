@@ -34,6 +34,7 @@ export default function SolutionsGrid({ items = [] }) {
                 </span>
               ))}
             </div>
+            <span className={styles.learnMore}>Learn More</span>
           </Link>
         ))}
       </div>

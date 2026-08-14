@@ -5,14 +5,34 @@ import styles from "./GlanceModal.module.css";
 
 const STORAGE_KEY = "conx-glance-modal-dismissed";
 
-function SolutionIcon() {
+function PreviewPanel({ type }) {
+  if (type === "inspect") {
+    return (
+      <div className={`${styles.preview} ${styles.previewInspect}`} aria-hidden="true">
+        <span className={styles.previewStatus}>On Track</span>
+        <span className={styles.previewLine} />
+        <span className={styles.previewLine} />
+        <span className={styles.previewLineShort} />
+      </div>
+    );
+  }
+  if (type === "drawing") {
+    return (
+      <div className={`${styles.preview} ${styles.previewDrawing}`} aria-hidden="true">
+        <span className={styles.previewFrame} />
+        <span className={styles.previewGrid} />
+      </div>
+    );
+  }
   return (
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <rect x="4" y="4" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.5" />
-      <rect x="13" y="4" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.5" />
-      <rect x="4" y="13" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.5" />
-      <rect x="13" y="13" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.5" />
-    </svg>
+    <div className={`${styles.preview} ${styles.previewPanel}`} aria-hidden="true">
+      <span />
+      <span />
+      <span />
+      <span />
+      <span />
+      <span />
+    </div>
   );
 }
 
@@ -22,17 +42,14 @@ export default function GlanceModal({ content, open, onClose }) {
   const scrollYRef = useRef(0);
   const {
     badge,
-    titleBefore,
-    titleHighlight,
-    titleAfter,
+    title,
     body,
-    servicesLabel,
     solutionsLabel,
-    services = [],
     solutions = [],
     footerPrompt,
     primaryCta,
     secondaryCta,
+    actions,
   } = content;
 
   useEffect(() => {
@@ -57,7 +74,6 @@ export default function GlanceModal({ content, open, onClose }) {
       docBody.style.paddingRight = `${scrollbar}px`;
     }
 
-    // Don't scroll the page when moving focus into the dialog
     closeRef.current?.focus({ preventScroll: true });
 
     const onKeyDown = (event) => {
@@ -98,76 +114,57 @@ export default function GlanceModal({ content, open, onClose }) {
         </button>
 
         <div className={styles.header}>
-          <p className={styles.badge}>
-            <span aria-hidden="true">•</span> {badge}
-          </p>
+          <p className={styles.badge}>{badge}</p>
           <h2 id={titleId} className={styles.title}>
-            {titleBefore}
-            <span className={styles.highlight}>{titleHighlight}</span>
-            {titleAfter}
+            {title}
           </h2>
           {body ? <p className={styles.body}>{body}</p> : null}
         </div>
 
-        <div className={styles.columns}>
-          <section className={styles.services} aria-label={servicesLabel}>
-            <h3 className={styles.colLabel}>{servicesLabel}</h3>
-            <ol className={styles.serviceList}>
-              {services.map((item, index) => (
-                <li key={item.title}>
-                  <Link to={item.href} className={styles.serviceLink} onClick={onClose}>
-                    <span className={styles.serviceNum}>
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <span className={styles.serviceCopy}>
-                      <strong>{item.title}</strong>
-                      <span>{item.body}</span>
-                    </span>
+        <section className={styles.solutions} aria-label={solutionsLabel}>
+          <h3 className={styles.colLabel}>{solutionsLabel}</h3>
+          <div className={styles.solutionGrid}>
+            {solutions.map((item) => (
+              <article key={item.title} className={styles.solutionCard}>
+                <PreviewPanel type={item.preview} />
+                <span className={styles.solutionBadge}>{item.badge}</span>
+                <strong className={styles.solutionTitle}>{item.title}</strong>
+                <p className={styles.solutionBody}>{item.body}</p>
+                <div className={styles.cardActions}>
+                  <Link
+                    className={`${styles.demoBtn} btnMotion`}
+                    to={item.demoHref || item.href}
+                    onClick={onClose}
+                  >
+                    <span>{actions?.viewDemo || "View Demo"}</span>
+                    <span aria-hidden="true">↗</span>
                   </Link>
-                </li>
-              ))}
-            </ol>
-          </section>
-
-          <section className={styles.solutions} aria-label={solutionsLabel}>
-            <h3 className={styles.colLabel}>{solutionsLabel}</h3>
-            <div className={styles.solutionGrid}>
-              {solutions.map((item) => (
-                <Link
-                  key={item.title}
-                  to={item.href}
-                  className={styles.solutionCard}
-                  onClick={onClose}
-                >
-                  <span className={styles.solutionIcon}>
-                    <SolutionIcon />
-                  </span>
-                  <span className={styles.solutionCopy}>
-                    <span className={styles.solutionBadge}>{item.badge}</span>
-                    <strong>{item.title}</strong>
-                    <span className={styles.solutionBody}>{item.body}</span>
-                  </span>
-                  <span className={styles.solutionArrow} aria-hidden="true">
-                    ↗
-                  </span>
-                </Link>
-              ))}
-            </div>
-          </section>
-        </div>
+                  <Link
+                    className={`${styles.learnBtn} btnMotion`}
+                    to={item.href}
+                    onClick={onClose}
+                  >
+                    <span>{actions?.learnMore || "Learn More"}</span>
+                    <span aria-hidden="true">→</span>
+                  </Link>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
 
         <div className={styles.footer}>
           <p className={styles.footerPrompt}>{footerPrompt}</p>
           <div className={styles.footerActions}>
-            {primaryCta ? (
-              <Link className={styles.primary} to={primaryCta.href} onClick={onClose}>
-                <span>{primaryCta.label}</span>
-                <span aria-hidden="true">→</span>
+            {secondaryCta ? (
+              <Link className={`${styles.secondary} btnMotion`} to={secondaryCta.href} onClick={onClose}>
+                {secondaryCta.label}
               </Link>
             ) : null}
-            {secondaryCta ? (
-              <Link className={styles.secondary} to={secondaryCta.href} onClick={onClose}>
-                {secondaryCta.label}
+            {primaryCta ? (
+              <Link className={`${styles.primary} btnMotion`} to={primaryCta.href} onClick={onClose}>
+                <span>{primaryCta.label}</span>
+                <span aria-hidden="true">→</span>
               </Link>
             ) : null}
           </div>

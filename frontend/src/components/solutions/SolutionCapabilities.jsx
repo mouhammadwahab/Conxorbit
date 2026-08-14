@@ -4,7 +4,8 @@ import styles from "./SolutionCapabilities.module.css";
 
 export default function SolutionCapabilities({ content }) {
   if (!content) return null;
-  const { badge, title, body, cards = [] } = content;
+  const badge = "CAPABILITIES";
+  const { title, body, cards = [] } = content;
 
   return (
     <Reveal as="section" className={styles.section} aria-label={badge}>

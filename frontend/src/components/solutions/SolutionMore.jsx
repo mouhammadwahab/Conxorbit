@@ -1,14 +1,12 @@
 import { Link } from "react-router-dom";
 import Reveal from "../common/Reveal";
 import SectionBadge from "../common/SectionBadge";
-import { getRelatedSolutions } from "../../content/solutionsContent";
 import styles from "./SolutionMore.module.css";
 
-export default function SolutionMore({ content }) {
+export default function SolutionMore({ content, items = [] }) {
   if (!content) return null;
-  const { badge, title, slugs = [] } = content;
-  const items = getRelatedSolutions(slugs);
-
+  const badge = "EXPLORE MORE";
+  const { title } = content;
   if (!items.length) return null;
 
   return (

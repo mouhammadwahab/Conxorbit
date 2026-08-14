@@ -5,7 +5,8 @@ import styles from "./SolutionBuiltFor.module.css";
 
 export default function SolutionBuiltFor({ content }) {
   if (!content) return null;
-  const { badge, title, body, audiences = [] } = content;
+  const badge = "BUILT FOR";
+  const { title, body, audiences = [] } = content;
 
   return (
     <Reveal as="section" className={styles.section} aria-label={badge}>

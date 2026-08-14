@@ -1,0 +1,2189 @@
+{
+  "solutions": [
+    {
+      "_id": "wuytfv7nfmvn9yhg",
+      "slug": "panel-x",
+      "name": "PanelX",
+      "description": "Panel lifecycle visibility across shop, logistics, and site—so everyone works from one agreed status.",
+      "listingBadge": "Client System",
+      "categories": [
+        "Façade",
+        "Panel Tracking",
+        "Documents",
+        "Web Platform"
+      ],
+      "image": "/uploads/solutions/panel-x.jpg",
+      "portfolioImage": "/uploads/portfolio/client-panelx.png",
+      "portfolioCategory": "client_system",
+      "trades": [
+        "facade"
+      ],
+      "sortOrder": 1,
+      "published": true,
+      "showOnListing": true,
+      "confidential": false,
+      "confidentialLabel": "",
+      "caseStudySlug": "facade-panel-visibility",
+      "portfolioStatus": "",
+      "portfolioLabel": "CLIENT SYSTEM",
+      "portfolioBody": "A custom platform connecting drawings, panel tracking, documentation, and installation progress for façade operations.",
+      "seo": {
+        "title": "",
+        "description": "",
+        "ogImage": ""
+      },
+      "detail": {
+        "titleBefore": "Connected Façade Operations From ",
+        "titleHighlight": "Shop to Site.",
+        "titleAfter": "",
+        "body": "PanelX is a custom-built façade management platform that connects drawings, panel information, documentation, and installation progress into a single operational workspace for engineering and site teams.",
+        "primaryCta": {
+          "label": "Book a Discovery Call",
+          "href": "/book-discovery"
+        },
+        "demoCta": {
+          "label": "Watch Demo",
+          "targetId": "demo"
+        },
+        "heroImage": "/uploads/solutions/panel-x-hero.png",
+        "stats": {
+          "bestFor": "Façade Contractors",
+          "coreFunction": "Panel & Drawing Management",
+          "platform": "Web Platform",
+          "workflow": "Design → Fabrication → Installation"
+        },
+        "challenge": {
+          "badge": "THE CHALLENGE",
+          "title": "Disconnected Workflows Slow Down Every Project.",
+          "body": "Façade teams often work across drawings, spreadsheets, documents, site photos, and disconnected project tools. Panel information becomes difficult to track, updates are scattered, and site visibility suffers.",
+          "problems": [
+            {
+              "title": "Manual Panel Tracking",
+              "body": "Panel status lives in spreadsheets that are updated by hand, days after the work happens."
+            },
+            {
+              "title": "Disconnected Drawings",
+              "body": "Elevations, shop drawings, and revisions sit in folders far away from the panels they describe."
+            },
+            {
+              "title": "Scattered Documentation",
+              "body": "RFIs, reports, and approvals are spread across email threads and shared drives."
+            },
+            {
+              "title": "Limited Site Visibility",
+              "body": "Engineering rarely sees the real state of installation until someone walks the floor."
+            }
+          ]
+        },
+        "capabilities": {
+          "badge": "CAPABILITIES",
+          "title": "Everything Needed to Manage Façade Operations.",
+          "body": "PanelX brings the information teams need into one connected operational environment.",
+          "cards": [
+            {
+              "icon": "layers",
+              "title": "Drawing Viewer",
+              "body": "Open and navigate drawings directly inside the platform."
+            },
+            {
+              "icon": "grid",
+              "title": "Panel Tracking",
+              "body": "Track every panel through fabrication and installation."
+            },
+            {
+              "icon": "docs",
+              "title": "Document Management",
+              "body": "Keep RFIs, reports and technical documents connected—at one place."
+            },
+            {
+              "icon": "camera",
+              "title": "Site Documentation",
+              "body": "Capture progress with linked photos and reports."
+            },
+            {
+              "icon": "search",
+              "title": "Search & Filtering",
+              "body": "Locate any panel or drawing instantly."
+            },
+            {
+              "icon": "pulse",
+              "title": "Installation Monitoring",
+              "body": "View live installation progress across projects."
+            }
+          ]
+        },
+        "howItWorks": {
+          "badge": "HOW IT WORKS",
+          "title": "From Drawing to Installation.",
+          "stagesLabel": "FIVE STAGES · ONE RECORD",
+          "stages": [
+            {
+              "title": "Upload Drawings",
+              "body": "Elevations and shop drawings are brought into the workspace."
+            },
+            {
+              "title": "Organize Project Data",
+              "body": "Zones, levels, and panel types are structured against the project."
+            },
+            {
+              "title": "Track Panels",
+              "body": "Each panel carries a live record through fabrication."
+            },
+            {
+              "title": "Document Site Progress",
+              "body": "Site teams log field information against the same records."
+            },
+            {
+              "title": "Monitor Installation",
+              "body": "Progress is read directly off the envelope, zone by zone."
+            }
+          ]
+        },
+        "builtFor": {
+          "badge": "BUILT FOR",
+          "title": "Built for the Teams Running the Façade, Floor to Field.",
+          "body": "PanelX is used by the people who plan, fabricate, and install—not just the ones managing from a spreadsheet.",
+          "audiences": [
+            {
+              "icon": "engineering",
+              "title": "Engineering Teams",
+              "body": "Track drawing revisions as they move, without chasing who has the current version."
+            },
+            {
+              "icon": "production",
+              "title": "Production Teams",
+              "body": "See fabrication status update in real time, without an extra call to check progress."
+            },
+            {
+              "icon": "site",
+              "title": "Site & Installation",
+              "body": "Log photos and progress from the site itself—no re-entry back at the office."
+            },
+            {
+              "icon": "pm",
+              "title": "Project Managers",
+              "body": "Get one shared view across drawings, production, and site status—not five separate ones."
+            }
+          ]
+        },
+        "demo": {
+          "title": "See it in Action",
+          "videoSrc": "/videos/hero-bg.mp4",
+          "posterSrc": "/videos/hero-poster.jpg"
+        },
+        "more": {
+          "badge": "EXPLORE MORE",
+          "title": "More Solutions From ConX Orbit.",
+          "slugs": [
+            "construction-inspection",
+            "quote-automation",
+            "drawing-intelligence"
+          ]
+        },
+        "faq": {
+          "badge": "FAQ",
+          "titleBefore": "About ",
+          "titleHighlight": "PanelX",
+          "titleAfter": "",
+          "items": [
+            {
+              "question": "Who is PanelX designed for?",
+              "answer": "PanelX is built for the teams who plan, produce, and deliver on live construction and façade projects—not just office reporting."
+            },
+            {
+              "question": "Can PanelX work with existing drawings and project documents?",
+              "answer": "Yes. We design around your current files, folders, and handoffs so adoption starts from what you already use."
+            },
+            {
+              "question": "Can the platform be customized around our workflow?",
+              "answer": "Yes. ConX Orbit builds around your process—roles, statuses, and approvals—rather than forcing a generic template."
+            },
+            {
+              "question": "Can PanelX integrate with existing systems?",
+              "answer": "Where it creates value, we connect to the tools your teams already rely on so data does not live in another silo."
+            },
+            {
+              "question": "Is PanelX available as an off-the-shelf product?",
+              "answer": "Some capabilities are productized; others are delivered as tailored systems. We clarify the best path in a discovery call."
+            },
+            {
+              "question": "Can ConX Orbit build a similar platform for our business?",
+              "answer": "Yes. If your workflow needs a different shape, we design and build a system around the way your teams actually work."
+            }
+          ]
+        },
+        "cta": {
+          "badge": "EXPLORE WHAT'S POSSIBLE",
+          "title": "Could a System Like This Work for Your Workflow?",
+          "body": "Tell us how your team works today. We'll explore the challenges you're facing and discuss what a tailored solution could look like for your business.",
+          "primary": {
+            "label": "Book a Discovery Call",
+            "href": "/book-discovery"
+          },
+          "secondary": {
+            "label": "Explore Solutions",
+            "href": "/solutions"
+          }
+        }
+      },
+      "createdAt": "2026-08-14T21:38:24.966Z",
+      "updatedAt": "2026-08-14T21:55:57.890Z"
+    },
+    {
+      "_id": "p6eoarcvmlf80x7l",
+      "slug": "electra-x",
+      "name": "ElectraX",
+      "description": "Electrical design and validation workflows that catch conflicts before they reach the field.",
+      "listingBadge": "Internal Product",
+      "categories": [
+        "Electrical",
+        "Design",
+        "Validation",
+        "AI"
+      ],
+      "image": "/uploads/solutions/electra-x.jpg",
+      "portfolioImage": "/uploads/portfolio/product-electrax.png",
+      "portfolioCategory": "internal_product",
+      "trades": [],
+      "sortOrder": 10,
+      "published": true,
+      "showOnListing": true,
+      "confidential": false,
+      "confidentialLabel": "",
+      "caseStudySlug": "",
+      "portfolioStatus": "In Development",
+      "portfolioLabel": "INTERNAL PRODUCT",
+      "portfolioBody": "Electrical design and validation workflows that catch conflicts before they reach the field.",
+      "seo": {
+        "title": "",
+        "description": "",
+        "ogImage": ""
+      },
+      "detail": {
+        "title": "Validate electrical design before it hits the site",
+        "body": "ElectraX helps engineering teams check layouts, catch coordination issues early, and keep validation evidence tied to the live design set.",
+        "primaryCta": {
+          "label": "Book a Discovery Call",
+          "href": "/book-discovery"
+        },
+        "demoCta": {
+          "label": "Watch Demo",
+          "targetId": "demo"
+        },
+        "stats": {
+          "bestFor": "Electrical Design Teams",
+          "coreFunction": "Design Validation",
+          "platform": "Web Platform",
+          "workflow": "Design → Validate → Release"
+        },
+        "challenge": {
+          "badge": "THE CHALLENGE",
+          "title": "Coordination Gaps Reach Site Too Late.",
+          "body": "Electrical packages move through multiple tools and reviewers. Conflicts surface late, evidence is hard to find, and site teams inherit unresolved design risk.",
+          "problems": [
+            {
+              "title": "Late Clash Discovery",
+              "body": "Conflicts show up after drawings leave the office."
+            },
+            {
+              "title": "Fragmented Reviews",
+              "body": "Comments live in email instead of the design record."
+            },
+            {
+              "title": "Weak Traceability",
+              "body": "Validation evidence is hard to reconstruct later."
+            },
+            {
+              "title": "Site Surprises",
+              "body": "Install teams discover issues that design already could have caught."
+            }
+          ]
+        },
+        "capabilities": {
+          "badge": "CAPABILITIES",
+          "title": "Everything Needed to Validate Electrical Design.",
+          "body": "ElectraX keeps checks, evidence, and design context in one workflow.",
+          "cards": [
+            {
+              "icon": "layers",
+              "title": "Layout Review",
+              "body": "Inspect layouts against coordination rules."
+            },
+            {
+              "icon": "search",
+              "title": "Conflict Detection",
+              "body": "Surface clashes before fabrication and install."
+            },
+            {
+              "icon": "docs",
+              "title": "Evidence Capture",
+              "body": "Keep validation notes tied to the live set."
+            },
+            {
+              "icon": "grid",
+              "title": "Issue Tracking",
+              "body": "Assign and close design issues with clear owners."
+            },
+            {
+              "icon": "pulse",
+              "title": "Status Monitoring",
+              "body": "See package readiness at a glance."
+            },
+            {
+              "icon": "camera",
+              "title": "Field Feedback",
+              "body": "Fold site findings back into the design loop."
+            }
+          ]
+        },
+        "howItWorks": {
+          "badge": "HOW IT WORKS",
+          "title": "From Design Input to Validated Package.",
+          "stagesLabel": "5 STAGES · ONE WORKFLOW",
+          "stages": [
+            {
+              "title": "Import Design Sets",
+              "body": "Bring electrical packages into the workspace."
+            },
+            {
+              "title": "Run Checks",
+              "body": "Apply validation rules across the coordinated model."
+            },
+            {
+              "title": "Triage Issues",
+              "body": "Prioritize conflicts for engineering review."
+            },
+            {
+              "title": "Resolve & Record",
+              "body": "Close issues with evidence attached."
+            },
+            {
+              "title": "Release Package",
+              "body": "Hand over a validated set for site delivery."
+            }
+          ]
+        },
+        "builtFor": {
+          "badge": "BUILT FOR",
+          "title": "Built for Teams Who Cannot Afford Late Surprises.",
+          "body": "ElectraX supports the people who design, coordinate, and deliver electrical packages.",
+          "audiences": [
+            {
+              "icon": "engineering",
+              "title": "Design Engineers",
+              "body": "Validate layouts before they leave the desk."
+            },
+            {
+              "icon": "pm",
+              "title": "Coordination Leads",
+              "body": "Keep clash resolution visible across disciplines."
+            },
+            {
+              "icon": "production",
+              "title": "Package Managers",
+              "body": "Track readiness without spreadsheet chase."
+            },
+            {
+              "icon": "site",
+              "title": "Site Teams",
+              "body": "Install from cleaner, better-checked information."
+            }
+          ]
+        },
+        "demo": {
+          "title": "See it in Action",
+          "videoSrc": "/videos/hero-bg.mp4",
+          "posterSrc": "/uploads/solutions/electra-x.jpg"
+        },
+        "more": {
+          "badge": "EXPLORE MORE",
+          "title": "More Solutions From ConX Orbit.",
+          "slugs": [
+            "panel-x",
+            "drawing-intelligence",
+            "project-intelligence"
+          ]
+        },
+        "faq": {
+          "badge": "FAQ",
+          "titleBefore": "About ",
+          "titleHighlight": "ElectraX",
+          "titleAfter": "",
+          "items": [
+            {
+              "question": "Who is ElectraX designed for?",
+              "answer": "ElectraX is built for the teams who plan, produce, and deliver on live construction and façade projects—not just office reporting."
+            },
+            {
+              "question": "Can ElectraX work with existing drawings and project documents?",
+              "answer": "Yes. We design around your current files, folders, and handoffs so adoption starts from what you already use."
+            },
+            {
+              "question": "Can the platform be customized around our workflow?",
+              "answer": "Yes. ConX Orbit builds around your process—roles, statuses, and approvals—rather than forcing a generic template."
+            },
+            {
+              "question": "Can ElectraX integrate with existing systems?",
+              "answer": "Where it creates value, we connect to the tools your teams already rely on so data does not live in another silo."
+            },
+            {
+              "question": "Is ElectraX available as an off-the-shelf product?",
+              "answer": "Some capabilities are productized; others are delivered as tailored systems. We clarify the best path in a discovery call."
+            },
+            {
+              "question": "Can ConX Orbit build a similar platform for our business?",
+              "answer": "Yes. If your workflow needs a different shape, we design and build a system around the way your teams actually work."
+            }
+          ]
+        },
+        "cta": {
+          "badge": "EXPLORE WHAT'S POSSIBLE",
+          "title": "Could a System Like This Work for Your Workflow?",
+          "body": "Tell us how your team works today. We'll explore the challenges you're facing and discuss what a tailored solution could look like for your business.",
+          "primary": {
+            "label": "Book a Discovery Call",
+            "href": "/book-discovery"
+          },
+          "secondary": {
+            "label": "Explore Solutions",
+            "href": "/solutions"
+          }
+        }
+      },
+      "createdAt": "2026-08-14T21:38:24.967Z",
+      "updatedAt": "2026-08-14T21:38:24.967Z"
+    },
+    {
+      "_id": "ppbhow7e7191mq6v",
+      "slug": "construction-inspection",
+      "name": "Construction Inspection",
+      "description": "Field inspection capture with AI-assisted checks that keep quality evidence tied to the project record.",
+      "listingBadge": "Internal Product",
+      "categories": [
+        "AI",
+        "Inspection",
+        "Quality",
+        "Mobile"
+      ],
+      "image": "/uploads/solutions/construction-inspection.jpg",
+      "portfolioImage": "/uploads/portfolio/product-inspection.png",
+      "portfolioCategory": "internal_product",
+      "trades": [],
+      "sortOrder": 11,
+      "published": true,
+      "showOnListing": true,
+      "confidential": false,
+      "confidentialLabel": "",
+      "caseStudySlug": "",
+      "portfolioStatus": "In Development",
+      "portfolioLabel": "INTERNAL PRODUCT",
+      "portfolioBody": "Field inspection capture with AI-assisted checks that keep quality evidence tied to the project record.",
+      "seo": {
+        "title": "",
+        "description": "",
+        "ogImage": ""
+      },
+      "detail": {
+        "title": "Turn site inspections into structured, shareable evidence",
+        "body": "Capture checks on mobile, flag issues with visual AI support, and sync results back to office workflows without end-of-day admin pile-ups.",
+        "primaryCta": {
+          "label": "Book a Discovery Call",
+          "href": "/book-discovery"
+        },
+        "demoCta": {
+          "label": "Watch Demo",
+          "targetId": "demo"
+        },
+        "stats": {
+          "bestFor": "Quality & Site Teams",
+          "coreFunction": "Field Inspection",
+          "platform": "Mobile + Web",
+          "workflow": "Capture → Flag → Close-Out"
+        },
+        "challenge": {
+          "badge": "THE CHALLENGE",
+          "title": "Inspection Evidence Gets Lost Between Site and Office.",
+          "body": "Checks live in notebooks, chats, and camera rolls. Defects are hard to track, and close-out becomes a scramble.",
+          "problems": [
+            {
+              "title": "Paper Trails",
+              "body": "Inspection notes never make it into the project system."
+            },
+            {
+              "title": "Photo Chaos",
+              "body": "Images lack context about location, element, or defect type."
+            },
+            {
+              "title": "Slow Close-Out",
+              "body": "Open issues linger without clear owners or status."
+            },
+            {
+              "title": "Weak Audit Trail",
+              "body": "Proving what was checked—and when—takes hours."
+            }
+          ]
+        },
+        "capabilities": {
+          "badge": "CAPABILITIES",
+          "title": "Everything Needed for Structured Site Inspection.",
+          "body": "Capture, classify, and close inspections against the live project record.",
+          "cards": [
+            {
+              "icon": "camera",
+              "title": "Mobile Capture",
+              "body": "Log checks and photos from the field."
+            },
+            {
+              "icon": "search",
+              "title": "AI Assist",
+              "body": "Flag likely defects with visual support."
+            },
+            {
+              "icon": "docs",
+              "title": "Evidence Packs",
+              "body": "Keep photos and notes tied to each check."
+            },
+            {
+              "icon": "grid",
+              "title": "Issue Register",
+              "body": "Track defects through resolution."
+            },
+            {
+              "icon": "pulse",
+              "title": "Progress Views",
+              "body": "See inspection coverage by zone or package."
+            },
+            {
+              "icon": "layers",
+              "title": "Office Sync",
+              "body": "Push results into shared project workflows."
+            }
+          ]
+        },
+        "howItWorks": {
+          "badge": "HOW IT WORKS",
+          "title": "From Field Check to Closed Issue.",
+          "stagesLabel": "5 STAGES · ONE WORKFLOW",
+          "stages": [
+            {
+              "title": "Capture on Site",
+              "body": "Run inspection checklists from mobile."
+            },
+            {
+              "title": "Attach Evidence",
+              "body": "Link photos and notes to each item."
+            },
+            {
+              "title": "Flag Defects",
+              "body": "Raise issues with owners and priority."
+            },
+            {
+              "title": "Resolve & Verify",
+              "body": "Close defects with follow-up proof."
+            },
+            {
+              "title": "Report Out",
+              "body": "Share structured status with the project team."
+            }
+          ]
+        },
+        "builtFor": {
+          "badge": "BUILT FOR",
+          "title": "Built for Quality From Floor to Desk.",
+          "body": "Construction Inspection connects site capture with office close-out.",
+          "audiences": [
+            {
+              "icon": "site",
+              "title": "Inspectors",
+              "body": "Capture checks without end-of-day rewrite."
+            },
+            {
+              "icon": "pm",
+              "title": "Quality Managers",
+              "body": "See open defects and coverage clearly."
+            },
+            {
+              "icon": "engineering",
+              "title": "Engineers",
+              "body": "Review field findings against the design intent."
+            },
+            {
+              "icon": "production",
+              "title": "Package Leads",
+              "body": "Drive close-out before handover pressure hits."
+            }
+          ]
+        },
+        "demo": {
+          "title": "See it in Action",
+          "videoSrc": "/videos/hero-bg.mp4",
+          "posterSrc": "/uploads/solutions/construction-inspection.jpg"
+        },
+        "more": {
+          "badge": "EXPLORE MORE",
+          "title": "More Solutions From ConX Orbit.",
+          "slugs": [
+            "panel-x",
+            "permit-ai",
+            "project-intelligence"
+          ]
+        },
+        "faq": {
+          "badge": "FAQ",
+          "titleBefore": "About ",
+          "titleHighlight": "Construction Inspection",
+          "titleAfter": "",
+          "items": [
+            {
+              "question": "Who is Construction Inspection designed for?",
+              "answer": "Construction Inspection is built for the teams who plan, produce, and deliver on live construction and façade projects—not just office reporting."
+            },
+            {
+              "question": "Can Construction Inspection work with existing drawings and project documents?",
+              "answer": "Yes. We design around your current files, folders, and handoffs so adoption starts from what you already use."
+            },
+            {
+              "question": "Can the platform be customized around our workflow?",
+              "answer": "Yes. ConX Orbit builds around your process—roles, statuses, and approvals—rather than forcing a generic template."
+            },
+            {
+              "question": "Can Construction Inspection integrate with existing systems?",
+              "answer": "Where it creates value, we connect to the tools your teams already rely on so data does not live in another silo."
+            },
+            {
+              "question": "Is Construction Inspection available as an off-the-shelf product?",
+              "answer": "Some capabilities are productized; others are delivered as tailored systems. We clarify the best path in a discovery call."
+            },
+            {
+              "question": "Can ConX Orbit build a similar platform for our business?",
+              "answer": "Yes. If your workflow needs a different shape, we design and build a system around the way your teams actually work."
+            }
+          ]
+        },
+        "cta": {
+          "badge": "EXPLORE WHAT'S POSSIBLE",
+          "title": "Could a System Like This Work for Your Workflow?",
+          "body": "Tell us how your team works today. We'll explore the challenges you're facing and discuss what a tailored solution could look like for your business.",
+          "primary": {
+            "label": "Book a Discovery Call",
+            "href": "/book-discovery"
+          },
+          "secondary": {
+            "label": "Explore Solutions",
+            "href": "/solutions"
+          }
+        }
+      },
+      "createdAt": "2026-08-14T21:38:24.968Z",
+      "updatedAt": "2026-08-14T21:38:24.968Z"
+    },
+    {
+      "_id": "z7gbi6nui264eb8t",
+      "slug": "quote-automation",
+      "name": "Quote Automation",
+      "description": "Turn specs and drawings into structured quotations in a fraction of the usual estimating time.",
+      "listingBadge": "Capability Showcase",
+      "categories": [
+        "AI",
+        "Estimation",
+        "Automation"
+      ],
+      "image": "/uploads/solutions/quote-automation.jpg",
+      "portfolioImage": "/uploads/portfolio/workflow-quote.png",
+      "portfolioCategory": "workflow_solution",
+      "trades": [
+        "facade"
+      ],
+      "sortOrder": 20,
+      "published": true,
+      "showOnListing": true,
+      "confidential": false,
+      "confidentialLabel": "",
+      "caseStudySlug": "",
+      "portfolioStatus": "Capability",
+      "portfolioLabel": "WORKFLOW SOLUTION",
+      "portfolioBody": "Turn specs and drawings into structured quotations in a fraction of the usual estimating time.",
+      "seo": {
+        "title": "",
+        "description": "",
+        "ogImage": ""
+      },
+      "detail": {
+        "title": "Cut estimating hours without cutting accuracy",
+        "body": "Quote Automation reads project inputs, structures line items, and gives estimators a clear draft to refine—so proposals move faster with fewer re-entry errors.",
+        "primaryCta": {
+          "label": "Book a Discovery Call",
+          "href": "/book-discovery"
+        },
+        "demoCta": {
+          "label": "Watch Demo",
+          "targetId": "demo"
+        },
+        "stats": {
+          "bestFor": "Estimating Teams",
+          "coreFunction": "Quote Generation",
+          "platform": "Web Platform",
+          "workflow": "Inputs → Draft → Proposal"
+        },
+        "challenge": {
+          "badge": "THE CHALLENGE",
+          "title": "Estimating Burns Hours on Re-Entry and Rework.",
+          "body": "Specs, drawings, and historical rates live in different places. Building a quote means copying, checking, and re-checking under deadline pressure.",
+          "problems": [
+            {
+              "title": "Manual Line Building",
+              "body": "Estimators retype quantities and descriptions by hand."
+            },
+            {
+              "title": "Inconsistent Structure",
+              "body": "Every quote looks different across people and packages."
+            },
+            {
+              "title": "Slow Revisions",
+              "body": "Scope changes force full rework instead of targeted updates."
+            },
+            {
+              "title": "Error Risk",
+              "body": "Missed items and typos slip into client-facing proposals."
+            }
+          ]
+        },
+        "capabilities": {
+          "badge": "CAPABILITIES",
+          "title": "Everything Needed to Draft Quotes Faster.",
+          "body": "From inputs to a reviewable quotation draft in one flow.",
+          "cards": [
+            {
+              "icon": "docs",
+              "title": "Input Ingest",
+              "body": "Pull from specs, BOQs, and drawing notes."
+            },
+            {
+              "icon": "grid",
+              "title": "Line Structuring",
+              "body": "Organize items into a consistent quote layout."
+            },
+            {
+              "icon": "search",
+              "title": "Rate Assist",
+              "body": "Suggest rates from prior packages where useful."
+            },
+            {
+              "icon": "layers",
+              "title": "Draft Review",
+              "body": "Give estimators a clear editable starting point."
+            },
+            {
+              "icon": "pulse",
+              "title": "Revision Diffs",
+              "body": "Update quotes when scope changes, not rebuild them."
+            },
+            {
+              "icon": "camera",
+              "title": "Export Ready",
+              "body": "Share polished outputs with commercial teams."
+            }
+          ]
+        },
+        "howItWorks": {
+          "badge": "HOW IT WORKS",
+          "title": "From Project Inputs to Quote Draft.",
+          "stagesLabel": "5 STAGES · ONE WORKFLOW",
+          "stages": [
+            {
+              "title": "Gather Inputs",
+              "body": "Collect specs, quantities, and package notes."
+            },
+            {
+              "title": "Structure Items",
+              "body": "Generate a consistent line-item draft."
+            },
+            {
+              "title": "Apply Rates",
+              "body": "Attach pricing suggestions for review."
+            },
+            {
+              "title": "Estimator Refine",
+              "body": "Adjust scope, rates, and exclusions."
+            },
+            {
+              "title": "Issue Proposal",
+              "body": "Export a client-ready quotation."
+            }
+          ]
+        },
+        "builtFor": {
+          "badge": "BUILT FOR",
+          "title": "Built for Estimators Under Time Pressure.",
+          "body": "Quote Automation protects accuracy while removing repetitive drafting work.",
+          "audiences": [
+            {
+              "icon": "pm",
+              "title": "Estimators",
+              "body": "Start from structure instead of a blank sheet."
+            },
+            {
+              "icon": "production",
+              "title": "Commercial Teams",
+              "body": "Keep quote formats consistent across bids."
+            },
+            {
+              "icon": "engineering",
+              "title": "Technical Reviewers",
+              "body": "Check scope coverage before issue."
+            },
+            {
+              "icon": "site",
+              "title": "Delivery Leads",
+              "body": "Inherit clearer priced packages after award."
+            }
+          ]
+        },
+        "demo": {
+          "title": "See it in Action",
+          "videoSrc": "/videos/hero-bg.mp4",
+          "posterSrc": "/uploads/solutions/quote-automation.jpg"
+        },
+        "more": {
+          "badge": "EXPLORE MORE",
+          "title": "More Solutions From ConX Orbit.",
+          "slugs": [
+            "boq-extraction",
+            "drawing-intelligence",
+            "waste-optimization"
+          ]
+        },
+        "faq": {
+          "badge": "FAQ",
+          "titleBefore": "About ",
+          "titleHighlight": "Quote Automation",
+          "titleAfter": "",
+          "items": [
+            {
+              "question": "Who is Quote Automation designed for?",
+              "answer": "Quote Automation is built for the teams who plan, produce, and deliver on live construction and façade projects—not just office reporting."
+            },
+            {
+              "question": "Can Quote Automation work with existing drawings and project documents?",
+              "answer": "Yes. We design around your current files, folders, and handoffs so adoption starts from what you already use."
+            },
+            {
+              "question": "Can the platform be customized around our workflow?",
+              "answer": "Yes. ConX Orbit builds around your process—roles, statuses, and approvals—rather than forcing a generic template."
+            },
+            {
+              "question": "Can Quote Automation integrate with existing systems?",
+              "answer": "Where it creates value, we connect to the tools your teams already rely on so data does not live in another silo."
+            },
+            {
+              "question": "Is Quote Automation available as an off-the-shelf product?",
+              "answer": "Some capabilities are productized; others are delivered as tailored systems. We clarify the best path in a discovery call."
+            },
+            {
+              "question": "Can ConX Orbit build a similar platform for our business?",
+              "answer": "Yes. If your workflow needs a different shape, we design and build a system around the way your teams actually work."
+            }
+          ]
+        },
+        "cta": {
+          "badge": "EXPLORE WHAT'S POSSIBLE",
+          "title": "Could a System Like This Work for Your Workflow?",
+          "body": "Tell us how your team works today. We'll explore the challenges you're facing and discuss what a tailored solution could look like for your business.",
+          "primary": {
+            "label": "Book a Discovery Call",
+            "href": "/book-discovery"
+          },
+          "secondary": {
+            "label": "Explore Solutions",
+            "href": "/solutions"
+          }
+        }
+      },
+      "createdAt": "2026-08-14T21:38:24.968Z",
+      "updatedAt": "2026-08-14T21:38:24.968Z"
+    },
+    {
+      "_id": "qsfsqfymsygvhq8o",
+      "slug": "waste-optimization",
+      "name": "Waste Optimization",
+      "description": "AI-assisted cutting and material planning that reduces waste and improves fabrication yield.",
+      "listingBadge": "Internal Product",
+      "categories": [
+        "AI",
+        "Optimization",
+        "Sustainability"
+      ],
+      "image": "/uploads/solutions/waste-optimization.jpg",
+      "portfolioImage": "/uploads/portfolio/workflow-waste.png",
+      "portfolioCategory": "workflow_solution",
+      "trades": [],
+      "sortOrder": 22,
+      "published": true,
+      "showOnListing": true,
+      "confidential": false,
+      "confidentialLabel": "",
+      "caseStudySlug": "",
+      "portfolioStatus": "Capability",
+      "portfolioLabel": "WORKFLOW SOLUTION",
+      "portfolioBody": "AI-assisted cutting and material planning that reduces waste and improves fabrication yield.",
+      "seo": {
+        "title": "",
+        "description": "",
+        "ogImage": ""
+      },
+      "detail": {
+        "title": "Plan material cuts for yield, not leftover piles",
+        "body": "Waste Optimization helps fabrication teams model nesting and material use so planning decisions reduce scrap and protect margins.",
+        "primaryCta": {
+          "label": "Book a Discovery Call",
+          "href": "/book-discovery"
+        },
+        "demoCta": {
+          "label": "Watch Demo",
+          "targetId": "demo"
+        },
+        "stats": {
+          "bestFor": "Fabrication Teams",
+          "coreFunction": "Nesting & Yield",
+          "platform": "Web Platform",
+          "workflow": "Plan → Nest → Fabricate"
+        },
+        "challenge": {
+          "badge": "THE CHALLENGE",
+          "title": "Material Waste Quietly Erodes Project Margins.",
+          "body": "Cut lists and nesting decisions are rushed. Scrap piles grow, reorders appear late, and nobody sees the pattern until the job is closed.",
+          "problems": [
+            {
+              "title": "Ad-Hoc Nesting",
+              "body": "Cut plans depend on individual habit, not shared rules."
+            },
+            {
+              "title": "Hidden Scrap",
+              "body": "Waste is noticed after material has already been ordered."
+            },
+            {
+              "title": "Reorder Friction",
+              "body": "Shortages force urgent buys at worse rates."
+            },
+            {
+              "title": "Weak Feedback",
+              "body": "Shop learnings never improve the next package."
+            }
+          ]
+        },
+        "capabilities": {
+          "badge": "CAPABILITIES",
+          "title": "Everything Needed to Improve Cut Yield.",
+          "body": "Plan, simulate, and refine material use before the shop floor commits.",
+          "cards": [
+            {
+              "icon": "grid",
+              "title": "Nesting Assist",
+              "body": "Model cut layouts for better material use."
+            },
+            {
+              "icon": "pulse",
+              "title": "Yield Forecast",
+              "body": "See waste risk before fabrication starts."
+            },
+            {
+              "icon": "docs",
+              "title": "Cut Lists",
+              "body": "Keep structured lists tied to each package."
+            },
+            {
+              "icon": "search",
+              "title": "Shortage Alerts",
+              "body": "Flag gaps before they become site delays."
+            },
+            {
+              "icon": "layers",
+              "title": "Scenario Compare",
+              "body": "Test planning options side by side."
+            },
+            {
+              "icon": "camera",
+              "title": "Shop Feedback",
+              "body": "Capture what actually happened on the floor."
+            }
+          ]
+        },
+        "howItWorks": {
+          "badge": "HOW IT WORKS",
+          "title": "From Package to Optimized Cut Plan.",
+          "stagesLabel": "5 STAGES · ONE WORKFLOW",
+          "stages": [
+            {
+              "title": "Import Requirements",
+              "body": "Bring panel and material needs into planning."
+            },
+            {
+              "title": "Generate Nesting",
+              "body": "Create candidate cut layouts."
+            },
+            {
+              "title": "Compare Yield",
+              "body": "Choose the plan that protects material."
+            },
+            {
+              "title": "Issue to Shop",
+              "body": "Hand over clear cut instructions."
+            },
+            {
+              "title": "Learn From Result",
+              "body": "Feed actual waste back into the next plan."
+            }
+          ]
+        },
+        "builtFor": {
+          "badge": "BUILT FOR",
+          "title": "Built for Fabrication Efficiency.",
+          "body": "Waste Optimization helps shop and planning teams protect both schedule and margin.",
+          "audiences": [
+            {
+              "icon": "production",
+              "title": "Shop Planners",
+              "body": "Nest with intent instead of guesswork."
+            },
+            {
+              "icon": "pm",
+              "title": "Production Managers",
+              "body": "See material risk before it hits the floor."
+            },
+            {
+              "icon": "engineering",
+              "title": "Detailers",
+              "body": "Align cut logic with the package design."
+            },
+            {
+              "icon": "site",
+              "title": "Procurement",
+              "body": "Order closer to true need, not padded estimates."
+            }
+          ]
+        },
+        "demo": {
+          "title": "See it in Action",
+          "videoSrc": "/videos/hero-bg.mp4",
+          "posterSrc": "/uploads/solutions/waste-optimization.jpg"
+        },
+        "more": {
+          "badge": "EXPLORE MORE",
+          "title": "More Solutions From ConX Orbit.",
+          "slugs": [
+            "quote-automation",
+            "panel-x",
+            "boq-extraction"
+          ]
+        },
+        "faq": {
+          "badge": "FAQ",
+          "titleBefore": "About ",
+          "titleHighlight": "Waste Optimization",
+          "titleAfter": "",
+          "items": [
+            {
+              "question": "Who is Waste Optimization designed for?",
+              "answer": "Waste Optimization is built for the teams who plan, produce, and deliver on live construction and façade projects—not just office reporting."
+            },
+            {
+              "question": "Can Waste Optimization work with existing drawings and project documents?",
+              "answer": "Yes. We design around your current files, folders, and handoffs so adoption starts from what you already use."
+            },
+            {
+              "question": "Can the platform be customized around our workflow?",
+              "answer": "Yes. ConX Orbit builds around your process—roles, statuses, and approvals—rather than forcing a generic template."
+            },
+            {
+              "question": "Can Waste Optimization integrate with existing systems?",
+              "answer": "Where it creates value, we connect to the tools your teams already rely on so data does not live in another silo."
+            },
+            {
+              "question": "Is Waste Optimization available as an off-the-shelf product?",
+              "answer": "Some capabilities are productized; others are delivered as tailored systems. We clarify the best path in a discovery call."
+            },
+            {
+              "question": "Can ConX Orbit build a similar platform for our business?",
+              "answer": "Yes. If your workflow needs a different shape, we design and build a system around the way your teams actually work."
+            }
+          ]
+        },
+        "cta": {
+          "badge": "EXPLORE WHAT'S POSSIBLE",
+          "title": "Could a System Like This Work for Your Workflow?",
+          "body": "Tell us how your team works today. We'll explore the challenges you're facing and discuss what a tailored solution could look like for your business.",
+          "primary": {
+            "label": "Book a Discovery Call",
+            "href": "/book-discovery"
+          },
+          "secondary": {
+            "label": "Explore Solutions",
+            "href": "/solutions"
+          }
+        }
+      },
+      "createdAt": "2026-08-14T21:38:24.969Z",
+      "updatedAt": "2026-08-14T21:38:24.969Z"
+    },
+    {
+      "_id": "0z3iyny96g55ccq2",
+      "slug": "drawing-intelligence",
+      "name": "Drawing Intelligence",
+      "description": "Interpret, compare, and extract information from technical drawings to reduce manual review.",
+      "listingBadge": "Capability Showcase",
+      "categories": [
+        "AI",
+        "Drawings",
+        "Analysis",
+        "Document Intelligence"
+      ],
+      "image": "/uploads/solutions/drawing-intelligence.jpg",
+      "portfolioImage": "/uploads/portfolio/workflow-drawing.png",
+      "portfolioCategory": "workflow_solution",
+      "trades": [
+        "facade"
+      ],
+      "sortOrder": 21,
+      "published": true,
+      "showOnListing": true,
+      "confidential": false,
+      "confidentialLabel": "",
+      "caseStudySlug": "",
+      "portfolioStatus": "Capability",
+      "portfolioLabel": "WORKFLOW SOLUTION",
+      "portfolioBody": "Interpret, compare, and extract information from technical drawings to reduce manual review.",
+      "seo": {
+        "title": "",
+        "description": "",
+        "ogImage": ""
+      },
+      "detail": {
+        "title": "See drawing changes without side-by-side grind",
+        "body": "Drawing Intelligence compares sets, surfaces revisions, and extracts structured data so engineering hours go to decisions—not hunting differences.",
+        "primaryCta": {
+          "label": "Book a Discovery Call",
+          "href": "/book-discovery"
+        },
+        "demoCta": {
+          "label": "Watch Demo",
+          "targetId": "demo"
+        },
+        "stats": {
+          "bestFor": "Engineering Teams",
+          "coreFunction": "Drawing Analysis",
+          "platform": "Web Platform",
+          "workflow": "Upload → Compare → Publish"
+        },
+        "challenge": {
+          "badge": "THE CHALLENGE",
+          "title": "Drawing Review Still Means Manual Hunting.",
+          "body": "Revision packs arrive dense and frequent. Teams burn hours comparing sheets, missing changes, and re-entering data that already lives on the page.",
+          "problems": [
+            {
+              "title": "Side-by-Side Fatigue",
+              "body": "Comparing revisions by eye is slow and error-prone."
+            },
+            {
+              "title": "Missed Changes",
+              "body": "Critical markups hide in dense sheets."
+            },
+            {
+              "title": "Re-Entry Work",
+              "body": "Useful data is typed again into trackers and spreadsheets."
+            },
+            {
+              "title": "Weak Handoffs",
+              "body": "Downstream teams inherit unclear revision impact."
+            }
+          ]
+        },
+        "capabilities": {
+          "badge": "CAPABILITIES",
+          "title": "Everything Needed to Read Drawings Faster.",
+          "body": "Compare, extract, and connect drawing information to project work.",
+          "cards": [
+            {
+              "icon": "layers",
+              "title": "Revision Compare",
+              "body": "Surface what changed between sets."
+            },
+            {
+              "icon": "search",
+              "title": "Change Highlight",
+              "body": "Focus attention on meaningful deltas."
+            },
+            {
+              "icon": "docs",
+              "title": "Data Extraction",
+              "body": "Pull structured fields from sheets."
+            },
+            {
+              "icon": "grid",
+              "title": "Sheet Indexing",
+              "body": "Organize packages for faster navigation."
+            },
+            {
+              "icon": "pulse",
+              "title": "Impact Views",
+              "body": "See which zones or packages are affected."
+            },
+            {
+              "icon": "camera",
+              "title": "Review Notes",
+              "body": "Capture decisions against the drawing itself."
+            }
+          ]
+        },
+        "howItWorks": {
+          "badge": "HOW IT WORKS",
+          "title": "From Drawing Pack to Clear Decisions.",
+          "stagesLabel": "5 STAGES · ONE WORKFLOW",
+          "stages": [
+            {
+              "title": "Upload Sets",
+              "body": "Bring current and prior drawings into the workspace."
+            },
+            {
+              "title": "Compare Revisions",
+              "body": "Detect and highlight meaningful changes."
+            },
+            {
+              "title": "Extract Data",
+              "body": "Structure useful fields for downstream tools."
+            },
+            {
+              "title": "Review Impact",
+              "body": "Confirm what teams need to act on."
+            },
+            {
+              "title": "Publish Insights",
+              "body": "Share a clear revision summary."
+            }
+          ]
+        },
+        "builtFor": {
+          "badge": "BUILT FOR",
+          "title": "Built for Engineering Throughput.",
+          "body": "Drawing Intelligence removes the grind between receiving a pack and acting on it.",
+          "audiences": [
+            {
+              "icon": "engineering",
+              "title": "Detailers",
+              "body": "Find revisions without endless sheet flipping."
+            },
+            {
+              "icon": "pm",
+              "title": "Design Managers",
+              "body": "See package impact before meetings."
+            },
+            {
+              "icon": "production",
+              "title": "Shop Coordinators",
+              "body": "Know which cuts and panels changed."
+            },
+            {
+              "icon": "site",
+              "title": "Field Engineers",
+              "body": "Work from clearer revision context."
+            }
+          ]
+        },
+        "demo": {
+          "title": "See it in Action",
+          "videoSrc": "/videos/hero-bg.mp4",
+          "posterSrc": "/uploads/solutions/drawing-intelligence.jpg"
+        },
+        "more": {
+          "badge": "EXPLORE MORE",
+          "title": "More Solutions From ConX Orbit.",
+          "slugs": [
+            "panel-x",
+            "boq-extraction",
+            "permit-ai"
+          ]
+        },
+        "faq": {
+          "badge": "FAQ",
+          "titleBefore": "About ",
+          "titleHighlight": "Drawing Intelligence",
+          "titleAfter": "",
+          "items": [
+            {
+              "question": "Who is Drawing Intelligence designed for?",
+              "answer": "Drawing Intelligence is built for the teams who plan, produce, and deliver on live construction and façade projects—not just office reporting."
+            },
+            {
+              "question": "Can Drawing Intelligence work with existing drawings and project documents?",
+              "answer": "Yes. We design around your current files, folders, and handoffs so adoption starts from what you already use."
+            },
+            {
+              "question": "Can the platform be customized around our workflow?",
+              "answer": "Yes. ConX Orbit builds around your process—roles, statuses, and approvals—rather than forcing a generic template."
+            },
+            {
+              "question": "Can Drawing Intelligence integrate with existing systems?",
+              "answer": "Where it creates value, we connect to the tools your teams already rely on so data does not live in another silo."
+            },
+            {
+              "question": "Is Drawing Intelligence available as an off-the-shelf product?",
+              "answer": "Some capabilities are productized; others are delivered as tailored systems. We clarify the best path in a discovery call."
+            },
+            {
+              "question": "Can ConX Orbit build a similar platform for our business?",
+              "answer": "Yes. If your workflow needs a different shape, we design and build a system around the way your teams actually work."
+            }
+          ]
+        },
+        "cta": {
+          "badge": "EXPLORE WHAT'S POSSIBLE",
+          "title": "Could a System Like This Work for Your Workflow?",
+          "body": "Tell us how your team works today. We'll explore the challenges you're facing and discuss what a tailored solution could look like for your business.",
+          "primary": {
+            "label": "Book a Discovery Call",
+            "href": "/book-discovery"
+          },
+          "secondary": {
+            "label": "Explore Solutions",
+            "href": "/solutions"
+          }
+        }
+      },
+      "createdAt": "2026-08-14T21:38:24.970Z",
+      "updatedAt": "2026-08-14T21:38:24.970Z"
+    },
+    {
+      "_id": "4evtohbzu3ic8cy0",
+      "slug": "project-intelligence",
+      "name": "Project Intelligence",
+      "description": "Operational dashboards and reports that turn project data into clear planning and delivery insight.",
+      "listingBadge": "Internal Product",
+      "categories": [
+        "Analytics",
+        "Dashboard",
+        "Reports",
+        "Web Platform"
+      ],
+      "image": "/uploads/solutions/project-intelligence.jpg",
+      "portfolioImage": "",
+      "portfolioCategory": "workflow_solution",
+      "trades": [],
+      "sortOrder": 24,
+      "published": true,
+      "showOnListing": true,
+      "confidential": false,
+      "confidentialLabel": "",
+      "caseStudySlug": "",
+      "portfolioStatus": "Capability",
+      "portfolioLabel": "WORKFLOW SOLUTION",
+      "portfolioBody": "Operational dashboards and reports that turn project data into clear planning and delivery insight.",
+      "seo": {
+        "title": "",
+        "description": "",
+        "ogImage": ""
+      },
+      "detail": {
+        "title": "One operating picture for planning and delivery",
+        "body": "Project Intelligence consolidates status, risks, and progress signals into dashboards leadership and project teams can act on together.",
+        "primaryCta": {
+          "label": "Book a Discovery Call",
+          "href": "/book-discovery"
+        },
+        "demoCta": {
+          "label": "Watch Demo",
+          "targetId": "demo"
+        },
+        "stats": {
+          "bestFor": "Project Leadership",
+          "coreFunction": "Operational Dashboards",
+          "platform": "Web Platform",
+          "workflow": "Connect → Monitor → Act"
+        },
+        "challenge": {
+          "badge": "THE CHALLENGE",
+          "title": "Status Lives in Too Many Places to Act Fast.",
+          "body": "Reports, trackers, and meetings each tell a partial story. Leaders spend time assembling the picture instead of making decisions.",
+          "problems": [
+            {
+              "title": "Scattered Status",
+              "body": "Every team updates a different spreadsheet."
+            },
+            {
+              "title": "Lagging Reports",
+              "body": "Weekly packs are already outdated when shared."
+            },
+            {
+              "title": "Hidden Risk",
+              "body": "Issues surface late because signals are disconnected."
+            },
+            {
+              "title": "Meeting Drag",
+              "body": "Standups become status collection, not decision forums."
+            }
+          ]
+        },
+        "capabilities": {
+          "badge": "CAPABILITIES",
+          "title": "Everything Needed for a Shared Operating Picture.",
+          "body": "Connect signals into dashboards teams can trust and act on.",
+          "cards": [
+            {
+              "icon": "pulse",
+              "title": "Live Dashboards",
+              "body": "See progress and blockers in one place."
+            },
+            {
+              "icon": "grid",
+              "title": "Package Views",
+              "body": "Slice status by zone, trade, or work package."
+            },
+            {
+              "icon": "docs",
+              "title": "Report Packs",
+              "body": "Generate clear summaries for leadership."
+            },
+            {
+              "icon": "search",
+              "title": "Risk Signals",
+              "body": "Highlight patterns before they become delays."
+            },
+            {
+              "icon": "layers",
+              "title": "Data Connect",
+              "body": "Pull from the systems teams already update."
+            },
+            {
+              "icon": "camera",
+              "title": "Evidence Links",
+              "body": "Jump from KPI to the underlying record."
+            }
+          ]
+        },
+        "howItWorks": {
+          "badge": "HOW IT WORKS",
+          "title": "From Raw Status to Shared Decisions.",
+          "stagesLabel": "5 STAGES · ONE WORKFLOW",
+          "stages": [
+            {
+              "title": "Connect Sources",
+              "body": "Bring project signals into one workspace."
+            },
+            {
+              "title": "Normalize Metrics",
+              "body": "Align definitions across teams."
+            },
+            {
+              "title": "Build Views",
+              "body": "Create dashboards for leadership and delivery."
+            },
+            {
+              "title": "Surface Risks",
+              "body": "Flag exceptions that need attention."
+            },
+            {
+              "title": "Drive Actions",
+              "body": "Assign follow-ups from the same picture."
+            }
+          ]
+        },
+        "builtFor": {
+          "badge": "BUILT FOR",
+          "title": "Built for Teams Who Need Clarity, Not More Spreadsheets.",
+          "body": "Project Intelligence replaces status theater with a shared operating view.",
+          "audiences": [
+            {
+              "icon": "pm",
+              "title": "Project Managers",
+              "body": "Run from one current status picture."
+            },
+            {
+              "icon": "engineering",
+              "title": "Delivery Leads",
+              "body": "Spot package risk early."
+            },
+            {
+              "icon": "production",
+              "title": "Operations",
+              "body": "Align shop and site signals."
+            },
+            {
+              "icon": "site",
+              "title": "Leadership",
+              "body": "Review progress without waiting for a pack."
+            }
+          ]
+        },
+        "demo": {
+          "title": "See it in Action",
+          "videoSrc": "/videos/hero-bg.mp4",
+          "posterSrc": "/uploads/solutions/project-intelligence.jpg"
+        },
+        "more": {
+          "badge": "EXPLORE MORE",
+          "title": "More Solutions From ConX Orbit.",
+          "slugs": [
+            "panel-x",
+            "electra-x",
+            "construction-inspection"
+          ]
+        },
+        "faq": {
+          "badge": "FAQ",
+          "titleBefore": "About ",
+          "titleHighlight": "Project Intelligence",
+          "titleAfter": "",
+          "items": [
+            {
+              "question": "Who is Project Intelligence designed for?",
+              "answer": "Project Intelligence is built for the teams who plan, produce, and deliver on live construction and façade projects—not just office reporting."
+            },
+            {
+              "question": "Can Project Intelligence work with existing drawings and project documents?",
+              "answer": "Yes. We design around your current files, folders, and handoffs so adoption starts from what you already use."
+            },
+            {
+              "question": "Can the platform be customized around our workflow?",
+              "answer": "Yes. ConX Orbit builds around your process—roles, statuses, and approvals—rather than forcing a generic template."
+            },
+            {
+              "question": "Can Project Intelligence integrate with existing systems?",
+              "answer": "Where it creates value, we connect to the tools your teams already rely on so data does not live in another silo."
+            },
+            {
+              "question": "Is Project Intelligence available as an off-the-shelf product?",
+              "answer": "Some capabilities are productized; others are delivered as tailored systems. We clarify the best path in a discovery call."
+            },
+            {
+              "question": "Can ConX Orbit build a similar platform for our business?",
+              "answer": "Yes. If your workflow needs a different shape, we design and build a system around the way your teams actually work."
+            }
+          ]
+        },
+        "cta": {
+          "badge": "EXPLORE WHAT'S POSSIBLE",
+          "title": "Could a System Like This Work for Your Workflow?",
+          "body": "Tell us how your team works today. We'll explore the challenges you're facing and discuss what a tailored solution could look like for your business.",
+          "primary": {
+            "label": "Book a Discovery Call",
+            "href": "/book-discovery"
+          },
+          "secondary": {
+            "label": "Explore Solutions",
+            "href": "/solutions"
+          }
+        }
+      },
+      "createdAt": "2026-08-14T21:38:24.970Z",
+      "updatedAt": "2026-08-14T21:38:24.970Z"
+    },
+    {
+      "_id": "487f5v9cneme9ysd",
+      "slug": "permit-ai",
+      "name": "Permit AI",
+      "description": "Compliance-oriented document review that flags gaps against permit and code requirements earlier.",
+      "listingBadge": "Capability Showcase",
+      "categories": [
+        "AI",
+        "Compliance",
+        "Permits",
+        "Document Intelligence"
+      ],
+      "image": "/uploads/solutions/permit-ai.jpg",
+      "portfolioImage": "/uploads/portfolio/workflow-permit.png",
+      "portfolioCategory": "workflow_solution",
+      "trades": [],
+      "sortOrder": 23,
+      "published": true,
+      "showOnListing": true,
+      "confidential": false,
+      "confidentialLabel": "",
+      "caseStudySlug": "",
+      "portfolioStatus": "Capability",
+      "portfolioLabel": "WORKFLOW SOLUTION",
+      "portfolioBody": "Compliance-oriented document review that flags gaps against permit and code requirements earlier.",
+      "seo": {
+        "title": "",
+        "description": "",
+        "ogImage": ""
+      },
+      "detail": {
+        "title": "Spot permit and compliance gaps before they stall work",
+        "body": "Permit AI reviews submissions and supporting documents so teams catch missing items earlier—reducing rework and approval delay.",
+        "primaryCta": {
+          "label": "Book a Discovery Call",
+          "href": "/book-discovery"
+        },
+        "demoCta": {
+          "label": "Watch Demo",
+          "targetId": "demo"
+        },
+        "stats": {
+          "bestFor": "Compliance Teams",
+          "coreFunction": "Permit Review",
+          "platform": "Web Platform",
+          "workflow": "Assemble → Review → Submit"
+        },
+        "challenge": {
+          "badge": "THE CHALLENGE",
+          "title": "Permit Gaps Surface When It Is Already Expensive.",
+          "body": "Submission packs are large and checklist-heavy. Missing items and mismatches are found late—after reviewers push the package back.",
+          "problems": [
+            {
+              "title": "Checklist Blind Spots",
+              "body": "Required documents are easy to miss under deadline."
+            },
+            {
+              "title": "Inconsistent Packs",
+              "body": "Every submission is assembled differently."
+            },
+            {
+              "title": "Late Rejection",
+              "body": "Authorities return packages for avoidable gaps."
+            },
+            {
+              "title": "Slow Rework",
+              "body": "Teams scramble to locate and replace missing files."
+            }
+          ]
+        },
+        "capabilities": {
+          "badge": "CAPABILITIES",
+          "title": "Everything Needed for Cleaner Permit Packs.",
+          "body": "Review submissions against requirements before they leave your desk.",
+          "cards": [
+            {
+              "icon": "docs",
+              "title": "Pack Review",
+              "body": "Check submissions against requirement lists."
+            },
+            {
+              "icon": "search",
+              "title": "Gap Detection",
+              "body": "Flag missing or mismatched documents early."
+            },
+            {
+              "icon": "layers",
+              "title": "Requirement Maps",
+              "body": "Keep code and permit rules visible."
+            },
+            {
+              "icon": "grid",
+              "title": "Status Tracking",
+              "body": "Follow each package through review cycles."
+            },
+            {
+              "icon": "pulse",
+              "title": "Risk Highlights",
+              "body": "Prioritize the gaps most likely to stall approval."
+            },
+            {
+              "icon": "camera",
+              "title": "Evidence Links",
+              "body": "Attach supporting files to each requirement."
+            }
+          ]
+        },
+        "howItWorks": {
+          "badge": "HOW IT WORKS",
+          "title": "From Draft Pack to Submission Ready.",
+          "stagesLabel": "5 STAGES · ONE WORKFLOW",
+          "stages": [
+            {
+              "title": "Assemble Pack",
+              "body": "Collect drawings and supporting documents."
+            },
+            {
+              "title": "Run Review",
+              "body": "Check against permit and code requirements."
+            },
+            {
+              "title": "Close Gaps",
+              "body": "Resolve missing or inconsistent items."
+            },
+            {
+              "title": "Internal Sign-Off",
+              "body": "Confirm readiness before submission."
+            },
+            {
+              "title": "Submit & Track",
+              "body": "Monitor reviewer cycles and responses."
+            }
+          ]
+        },
+        "builtFor": {
+          "badge": "BUILT FOR",
+          "title": "Built for Teams Who Own Approval Risk.",
+          "body": "Permit AI helps compliance and project teams submit cleaner packs the first time.",
+          "audiences": [
+            {
+              "icon": "pm",
+              "title": "Permit Coordinators",
+              "body": "Catch gaps before the authority does."
+            },
+            {
+              "icon": "engineering",
+              "title": "Technical Authors",
+              "body": "Align documents with requirement maps."
+            },
+            {
+              "icon": "production",
+              "title": "Project Admins",
+              "body": "Keep pack status visible across cycles."
+            },
+            {
+              "icon": "site",
+              "title": "Delivery Leads",
+              "body": "Reduce approval delays that freeze site work."
+            }
+          ]
+        },
+        "demo": {
+          "title": "See it in Action",
+          "videoSrc": "/videos/hero-bg.mp4",
+          "posterSrc": "/uploads/solutions/permit-ai.jpg"
+        },
+        "more": {
+          "badge": "EXPLORE MORE",
+          "title": "More Solutions From ConX Orbit.",
+          "slugs": [
+            "drawing-intelligence",
+            "boq-extraction",
+            "construction-inspection"
+          ]
+        },
+        "faq": {
+          "badge": "FAQ",
+          "titleBefore": "About ",
+          "titleHighlight": "Permit AI",
+          "titleAfter": "",
+          "items": [
+            {
+              "question": "Who is Permit AI designed for?",
+              "answer": "Permit AI is built for the teams who plan, produce, and deliver on live construction and façade projects—not just office reporting."
+            },
+            {
+              "question": "Can Permit AI work with existing drawings and project documents?",
+              "answer": "Yes. We design around your current files, folders, and handoffs so adoption starts from what you already use."
+            },
+            {
+              "question": "Can the platform be customized around our workflow?",
+              "answer": "Yes. ConX Orbit builds around your process—roles, statuses, and approvals—rather than forcing a generic template."
+            },
+            {
+              "question": "Can Permit AI integrate with existing systems?",
+              "answer": "Where it creates value, we connect to the tools your teams already rely on so data does not live in another silo."
+            },
+            {
+              "question": "Is Permit AI available as an off-the-shelf product?",
+              "answer": "Some capabilities are productized; others are delivered as tailored systems. We clarify the best path in a discovery call."
+            },
+            {
+              "question": "Can ConX Orbit build a similar platform for our business?",
+              "answer": "Yes. If your workflow needs a different shape, we design and build a system around the way your teams actually work."
+            }
+          ]
+        },
+        "cta": {
+          "badge": "EXPLORE WHAT'S POSSIBLE",
+          "title": "Could a System Like This Work for Your Workflow?",
+          "body": "Tell us how your team works today. We'll explore the challenges you're facing and discuss what a tailored solution could look like for your business.",
+          "primary": {
+            "label": "Book a Discovery Call",
+            "href": "/book-discovery"
+          },
+          "secondary": {
+            "label": "Explore Solutions",
+            "href": "/solutions"
+          }
+        }
+      },
+      "createdAt": "2026-08-14T21:38:24.972Z",
+      "updatedAt": "2026-08-14T21:38:24.972Z"
+    },
+    {
+      "_id": "wj53rt6znnzq96t6",
+      "slug": "boq-extraction",
+      "name": "BOQ Extraction",
+      "description": "Pull structured bill-of-quantities data straight from drawings and specifications.",
+      "listingBadge": "Capability Showcase",
+      "categories": [
+        "AI",
+        "BOQ",
+        "Extraction",
+        "Document Intelligence"
+      ],
+      "image": "/uploads/solutions/boq-extraction.jpg",
+      "portfolioImage": "",
+      "portfolioCategory": "workflow_solution",
+      "trades": [],
+      "sortOrder": 25,
+      "published": true,
+      "showOnListing": true,
+      "confidential": false,
+      "confidentialLabel": "",
+      "caseStudySlug": "",
+      "portfolioStatus": "Capability",
+      "portfolioLabel": "WORKFLOW SOLUTION",
+      "portfolioBody": "Pull structured bill-of-quantities data straight from drawings and specifications.",
+      "seo": {
+        "title": "",
+        "description": "",
+        "ogImage": ""
+      },
+      "detail": {
+        "title": "Extract BOQ data without retyping every line",
+        "body": "BOQ Extraction turns drawings and specs into structured quantities your estimating and commercial teams can review, edit, and reuse.",
+        "primaryCta": {
+          "label": "Book a Discovery Call",
+          "href": "/book-discovery"
+        },
+        "demoCta": {
+          "label": "Watch Demo",
+          "targetId": "demo"
+        },
+        "stats": {
+          "bestFor": "Commercial & Estimating",
+          "coreFunction": "BOQ Structuring",
+          "platform": "Web Platform",
+          "workflow": "Extract → Review → Hand Off"
+        },
+        "challenge": {
+          "badge": "THE CHALLENGE",
+          "title": "BOQ Building Still Starts With Manual Re-Typing.",
+          "body": "Quantities hide in drawings and long specs. Teams copy line by line into spreadsheets, introducing delay and avoidable error.",
+          "problems": [
+            {
+              "title": "Manual Transcription",
+              "body": "Quantities are retyped from PDFs and sheets."
+            },
+            {
+              "title": "Inconsistent Structure",
+              "body": "Every estimator formats BOQs differently."
+            },
+            {
+              "title": "Revision Pain",
+              "body": "Updated packs force another full extraction cycle."
+            },
+            {
+              "title": "Handoff Gaps",
+              "body": "Commercial and delivery teams inherit incomplete data."
+            }
+          ]
+        },
+        "capabilities": {
+          "badge": "CAPABILITIES",
+          "title": "Everything Needed to Structure BOQs Faster.",
+          "body": "Extract, review, and reuse quantities without starting from a blank sheet.",
+          "cards": [
+            {
+              "icon": "docs",
+              "title": "Source Ingest",
+              "body": "Read drawings and specification packs."
+            },
+            {
+              "icon": "search",
+              "title": "Quantity Extract",
+              "body": "Pull candidate BOQ lines automatically."
+            },
+            {
+              "icon": "grid",
+              "title": "Structured Tables",
+              "body": "Organize items for commercial review."
+            },
+            {
+              "icon": "layers",
+              "title": "Revision Update",
+              "body": "Refresh quantities when packs change."
+            },
+            {
+              "icon": "pulse",
+              "title": "Coverage Checks",
+              "body": "Spot missing sections before issue."
+            },
+            {
+              "icon": "camera",
+              "title": "Export Paths",
+              "body": "Send clean tables into estimating workflows."
+            }
+          ]
+        },
+        "howItWorks": {
+          "badge": "HOW IT WORKS",
+          "title": "From Documents to Structured BOQ.",
+          "stagesLabel": "5 STAGES · ONE WORKFLOW",
+          "stages": [
+            {
+              "title": "Upload Sources",
+              "body": "Bring drawings and specs into the workspace."
+            },
+            {
+              "title": "Extract Lines",
+              "body": "Generate structured quantity candidates."
+            },
+            {
+              "title": "Review & Edit",
+              "body": "Confirm items with commercial oversight."
+            },
+            {
+              "title": "Lock Structure",
+              "body": "Standardize the BOQ for reuse."
+            },
+            {
+              "title": "Hand Off",
+              "body": "Feed estimating and delivery systems."
+            }
+          ]
+        },
+        "builtFor": {
+          "badge": "BUILT FOR",
+          "title": "Built for Commercial Speed Without Losing Control.",
+          "body": "BOQ Extraction removes retyping so teams spend time validating, not copying.",
+          "audiences": [
+            {
+              "icon": "pm",
+              "title": "Estimators",
+              "body": "Start from structured quantities, not blank rows."
+            },
+            {
+              "icon": "production",
+              "title": "Commercial Teams",
+              "body": "Keep BOQ formats consistent across bids."
+            },
+            {
+              "icon": "engineering",
+              "title": "Quantity Surveyors",
+              "body": "Review extraction before it becomes a quote."
+            },
+            {
+              "icon": "site",
+              "title": "Delivery Planners",
+              "body": "Reuse quantities beyond the bid stage."
+            }
+          ]
+        },
+        "demo": {
+          "title": "See it in Action",
+          "videoSrc": "/videos/hero-bg.mp4",
+          "posterSrc": "/uploads/solutions/boq-extraction.jpg"
+        },
+        "more": {
+          "badge": "EXPLORE MORE",
+          "title": "More Solutions From ConX Orbit.",
+          "slugs": [
+            "quote-automation",
+            "drawing-intelligence",
+            "waste-optimization"
+          ]
+        },
+        "faq": {
+          "badge": "FAQ",
+          "titleBefore": "About ",
+          "titleHighlight": "BOQ Extraction",
+          "titleAfter": "",
+          "items": [
+            {
+              "question": "Who is BOQ Extraction designed for?",
+              "answer": "BOQ Extraction is built for the teams who plan, produce, and deliver on live construction and façade projects—not just office reporting."
+            },
+            {
+              "question": "Can BOQ Extraction work with existing drawings and project documents?",
+              "answer": "Yes. We design around your current files, folders, and handoffs so adoption starts from what you already use."
+            },
+            {
+              "question": "Can the platform be customized around our workflow?",
+              "answer": "Yes. ConX Orbit builds around your process—roles, statuses, and approvals—rather than forcing a generic template."
+            },
+            {
+              "question": "Can BOQ Extraction integrate with existing systems?",
+              "answer": "Where it creates value, we connect to the tools your teams already rely on so data does not live in another silo."
+            },
+            {
+              "question": "Is BOQ Extraction available as an off-the-shelf product?",
+              "answer": "Some capabilities are productized; others are delivered as tailored systems. We clarify the best path in a discovery call."
+            },
+            {
+              "question": "Can ConX Orbit build a similar platform for our business?",
+              "answer": "Yes. If your workflow needs a different shape, we design and build a system around the way your teams actually work."
+            }
+          ]
+        },
+        "cta": {
+          "badge": "EXPLORE WHAT'S POSSIBLE",
+          "title": "Could a System Like This Work for Your Workflow?",
+          "body": "Tell us how your team works today. We'll explore the challenges you're facing and discuss what a tailored solution could look like for your business.",
+          "primary": {
+            "label": "Book a Discovery Call",
+            "href": "/book-discovery"
+          },
+          "secondary": {
+            "label": "Explore Solutions",
+            "href": "/solutions"
+          }
+        }
+      },
+      "createdAt": "2026-08-14T21:38:24.973Z",
+      "updatedAt": "2026-08-14T21:38:24.973Z"
+    },
+    {
+      "_id": "mz8gjx8nqxx0pqkr",
+      "slug": "confidential-facade-platform",
+      "name": "Custom Façade Engineering Platform",
+      "description": "A purpose-built system supporting façade engineering and fabrication workflows, from component data through to production and site coordination.",
+      "listingBadge": "Client System",
+      "categories": [
+        "Façade",
+        "Engineering",
+        "Fabrication",
+        "Data Systems"
+      ],
+      "image": "/uploads/portfolio/client-confidential.png",
+      "portfolioImage": "/uploads/portfolio/client-confidential.png",
+      "portfolioCategory": "client_system",
+      "trades": [],
+      "sortOrder": 2,
+      "published": true,
+      "showOnListing": false,
+      "confidential": true,
+      "confidentialLabel": "CLIENT PROJECT — CONFIDENTIAL",
+      "caseStudySlug": "drawing-review-flow",
+      "portfolioLabel": "CLIENT SYSTEM",
+      "portfolioBody": "A purpose-built system supporting façade engineering and fabrication workflows, from component data through to production and site coordination.",
+      "seo": {
+        "title": "",
+        "description": "",
+        "ogImage": ""
+      },
+      "detail": {},
+      "createdAt": "2026-08-14T21:38:24.974Z",
+      "updatedAt": "2026-08-14T21:38:24.974Z"
+    }
+  ],
+  "caseStudies": [
+    {
+      "_id": "2k82k2d15x0pcsq9",
+      "slug": "facade-panel-visibility",
+      "title": "Panel visibility across shop and site",
+      "industry": "Façade fabrication",
+      "summary": "Replaced spreadsheet status with a shared panel tracker the whole project could trust.",
+      "problem": "A curtain wall fabricator tracked panel progress in multiple spreadsheets. Site teams called daily for updates; planners spent evenings reconciling versions.",
+      "built": "A web app for panel lifecycle status, simple filters by zone and elevation, and roles for shop, logistics, and site — fed by the team’s existing IDs.",
+      "result": "Fewer status calls, one agreed view of progress, and faster handoffs when units left the factory.",
+      "quote": {
+        "text": "We finally stopped arguing about which file was current.",
+        "author": "Operations lead (placeholder)"
+      },
+      "sortOrder": 1,
+      "published": true,
+      "seo": {
+        "title": "",
+        "description": "",
+        "ogImage": ""
+      },
+      "createdAt": "2026-08-14T21:38:24.975Z",
+      "updatedAt": "2026-08-14T21:38:24.975Z"
+    },
+    {
+      "_id": "dpzce9c4y830nqk1",
+      "slug": "drawing-review-flow",
+      "title": "Drawing review without the chase",
+      "industry": "Façade engineering",
+      "summary": "Centralized DWG review so comments and revisions lived in one place.",
+      "problem": "Review cycles lived in email. Markups got lost; newcomers couldn’t see why a detail changed.",
+      "built": "A viewer-led workflow with comment threads tied to drawings, notification digests, and a clear “current set” for each package.",
+      "result": "Shorter review loops and a trail new team members could follow without a meeting.",
+      "quote": {
+        "text": "The current set is obvious now — that alone was worth it.",
+        "author": "Project engineer (placeholder)"
+      },
+      "sortOrder": 2,
+      "published": true,
+      "seo": {
+        "title": "",
+        "description": "",
+        "ogImage": ""
+      },
+      "createdAt": "2026-08-14T21:38:24.976Z",
+      "updatedAt": "2026-08-14T21:38:24.976Z"
+    },
+    {
+      "_id": "4hsq8nhmjpr5ns5s",
+      "slug": "field-reporting-lite",
+      "title": "Field reporting that people finish",
+      "industry": "Construction",
+      "summary": "A light mobile-friendly log that cut end-of-day admin without adding process weight.",
+      "problem": "Daily reports were incomplete or late because forms felt like punishment after a long shift.",
+      "built": "A short guided form, photo attach, and auto summary for managers — designed with site supervisors, not for them.",
+      "result": "Higher completion rates and managers who could skim mornings instead of chasing evenings.",
+      "quote": {
+        "text": "It’s short enough that people actually do it.",
+        "author": "Site manager (placeholder)"
+      },
+      "sortOrder": 3,
+      "published": true,
+      "seo": {
+        "title": "",
+        "description": "",
+        "ogImage": ""
+      },
+      "createdAt": "2026-08-14T21:38:24.977Z",
+      "updatedAt": "2026-08-14T21:38:24.977Z"
+    }
+  ],
+  "team": [
+    {
+      "_id": "n1q96sfizz946x5m",
+      "name": "Ghulam Murtaza",
+      "designation": "Founder",
+      "role": "Founder | CEO",
+      "socialLinks": [
+        {
+          "platform": "linkedin",
+          "url": "https://www.linkedin.com/company/conx-orbit"
+        }
+      ],
+      "quote": "Well done is better than well said — especially on a live project.",
+      "quoteAuthor": "ConX Orbit",
+      "sortOrder": 1,
+      "published": true,
+      "image": "",
+      "createdAt": "2026-08-14T21:38:24.978Z",
+      "updatedAt": "2026-08-14T21:38:24.978Z"
+    },
+    {
+      "_id": "yytxrmcaytw6aohu",
+      "name": "Mustafa",
+      "designation": "Co-Founder",
+      "role": "Co-Founder | Ops & Technical Lead",
+      "socialLinks": [
+        {
+          "platform": "linkedin",
+          "url": "https://www.linkedin.com/company/conx-orbit"
+        }
+      ],
+      "quote": "Great systems are created by people free to solve the real problem.",
+      "quoteAuthor": "ConX Orbit",
+      "sortOrder": 2,
+      "published": true,
+      "image": "",
+      "createdAt": "2026-08-14T21:38:24.979Z",
+      "updatedAt": "2026-08-14T21:38:24.979Z"
+    },
+    {
+      "_id": "vvrjroodagy1megu",
+      "name": "Development team",
+      "designation": "Engineering",
+      "role": "Engineering & Design",
+      "socialLinks": [],
+      "quote": "Our purpose is to help teams work with less friction and more focus.",
+      "quoteAuthor": "ConX Orbit",
+      "sortOrder": 3,
+      "published": true,
+      "image": "",
+      "createdAt": "2026-08-14T21:38:24.980Z",
+      "updatedAt": "2026-08-14T21:38:24.980Z"
+    }
+  ],
+  "admin": {
+    "email": "admin@conxorbit.com",
+    "passwordHash": "$2b$10$M1HwdPF.GMPkg7tDl5BeTOGLuL1G3pGHdcUkyJEFLDD1vuKbxs77e"
+  }
+}

@@ -4,7 +4,8 @@ import styles from "./SolutionChallenge.module.css";
 
 export default function SolutionChallenge({ content }) {
   if (!content) return null;
-  const { badge, title, body, problems = [] } = content;
+  const badge = "THE CHALLENGE";
+  const { title, body, problems = [] } = content;
 
   return (
     <Reveal as="section" className={styles.section} aria-label={badge}>

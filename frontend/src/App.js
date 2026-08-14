@@ -10,6 +10,7 @@ import { routes } from "./routes";
 import { initAnalytics, track } from "./utils/analytics";
 import { ensureGsap } from "./utils/gsapSetup";
 import { scrollToTop } from "./utils/scrollToTop";
+import AdminRoot from "./admin/AdminRoot";
 
 function RouteAnalytics() {
   const location = useLocation();
@@ -17,7 +18,6 @@ function RouteAnalytics() {
   useEffect(() => {
     track("page_view", { path: location.pathname });
     scrollToTop();
-    // After paint / pageEnter remount, lock top again
     const frame = requestAnimationFrame(() => scrollToTop());
     const timer = window.setTimeout(() => scrollToTop(), 50);
     return () => {
@@ -34,6 +34,7 @@ function AppRoutes() {
     <>
       <RouteAnalytics />
       <Routes>
+        <Route path="/admin/*" element={<AdminRoot />} />
         <Route element={<Layout />}>
           {routes.map(({ path, element: Element }) => (
             <Route key={path} path={path} element={<Element />} />

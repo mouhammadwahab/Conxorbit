@@ -5,7 +5,8 @@ import usePrefersReducedMotion from "../../hooks/usePrefersReducedMotion";
 import styles from "./SolutionHowItWorks.module.css";
 
 export default function SolutionHowItWorks({ content }) {
-  const { badge, title, stagesLabel, stages = [] } = content || {};
+  const badge = "HOW IT WORKS";
+  const { title, stagesLabel, stages = [] } = content || {};
   const reduced = usePrefersReducedMotion();
   const [active, setActive] = useState(0);
 

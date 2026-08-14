@@ -6,6 +6,7 @@ import SectionBadge from "../components/common/SectionBadge";
 import PageShell from "../components/layout/PageShell/PageShell";
 import usePrefersReducedMotion from "../hooks/usePrefersReducedMotion";
 import { aboutContent } from "../content/siteContent";
+import { api } from "../api/client";
 import styles from "./About.module.css";
 
 function initials(name) {
@@ -336,19 +337,26 @@ function TeamSection({ team }) {
     <Reveal as="section" className={styles.founders} aria-label={title}>
       <h2 className={styles.foundersTitle}>{title}</h2>
       <ul className={styles.founderGrid}>
-        {members.map((member) => (
+        {members.map((member) => {
+          const linkedin =
+            member.linkedin ||
+            member.socialLinks?.find((link) => link.platform === "linkedin")?.url;
+          const image = member.image?.startsWith("/uploads")
+            ? `${process.env.REACT_APP_API_URL || "http://localhost:5000"}${member.image}`
+            : member.image;
+          return (
           <li key={member.name} className={`${styles.founderCard} interactiveCard cardReveal`}>
             <div className={styles.founderHit}>
               <div className={`${styles.portrait} mediaZoom`}>
-                {member.image ? (
-                  <img src={member.image} alt="" />
+                {image ? (
+                  <img src={image} alt="" />
                 ) : (
                   <span className={styles.portraitInitials}>{initials(member.name)}</span>
                 )}
-                {member.linkedin ? (
+                {linkedin ? (
                   <a
                     className={styles.linkedinBtn}
-                    href={member.linkedin}
+                    href={linkedin}
                     target="_blank"
                     rel="noreferrer"
                     aria-label={`${member.name} on LinkedIn`}
@@ -360,7 +368,7 @@ function TeamSection({ team }) {
               </div>
               <div className={styles.founderInfo}>
                 <span className={styles.founderName}>{member.name}</span>
-                <span className={styles.founderRole}>{member.role}</span>
+                <span className={styles.founderRole}>{member.role || member.designation}</span>
               </div>
             </div>
             <div className={styles.quotePanel}>
@@ -368,7 +376,8 @@ function TeamSection({ team }) {
               <p className={styles.quoteAuthor}>{member.quoteAuthor}</p>
             </div>
           </li>
-        ))}
+          );
+        })}
       </ul>
     </Reveal>
   );
@@ -479,6 +488,31 @@ function ValuesSection({ values }) {
 
 export default function About() {
   const { meta, glowHero, offer, story, team, values } = aboutContent;
+  const [teamMembers, setTeamMembers] = useState([]);
+  const [teamTitle, setTeamTitle] = useState(team.title);
+  const [teamError, setTeamError] = useState("");
+
+  useEffect(() => {
+    let alive = true;
+    Promise.all([
+      api.getTeam(),
+      api.getPageContent("aboutTeam").catch(() => null),
+    ])
+      .then(([rows, chrome]) => {
+        if (!alive) return;
+        setTeamMembers(rows || []);
+        if (chrome?.title) setTeamTitle(chrome.title);
+        setTeamError("");
+      })
+      .catch((err) => {
+        if (!alive) return;
+        setTeamMembers([]);
+        setTeamError(err.message || "Failed to load team.");
+      });
+    return () => {
+      alive = false;
+    };
+  }, []);
 
   return (
     <PageShell atmosphere="about">
@@ -486,7 +520,8 @@ export default function About() {
       <GlowHero glowHero={glowHero} />
       <OfferSection offer={offer} />
       <StorySection story={story} />
-      <TeamSection team={team} />
+      {teamError ? <p style={{ textAlign: "center", padding: 24 }}>{teamError}</p> : null}
+      <TeamSection team={{ ...team, title: teamTitle, members: teamMembers }} />
       <ValuesSection values={values} />
       <CTABand
         title="Want to work with us?"

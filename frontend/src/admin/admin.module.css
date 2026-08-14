@@ -1,0 +1,247 @@
+.app {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  background: #0b1210;
+  color: #e8edd8;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px 18px;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  background: #07110e;
+}
+
+.brand {
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #d4b06a;
+}
+
+.nav {
+  display: grid;
+  gap: 6px;
+}
+
+.nav a {
+  color: rgba(232, 237, 216, 0.7);
+  text-decoration: none;
+  padding: 10px 12px;
+  border-radius: 8px;
+}
+
+.nav a:hover,
+.navActive {
+  background: rgba(90, 107, 59, 0.25);
+  color: #f7f7f4;
+}
+
+.sideFoot {
+  margin-top: auto;
+  display: grid;
+  gap: 8px;
+  font-size: 0.85rem;
+}
+
+.sideFoot button,
+.sideFoot a {
+  color: #c5d48a;
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: none;
+  font: inherit;
+}
+
+.main {
+  padding: 28px clamp(16px, 3vw, 32px);
+  overflow: auto;
+}
+
+.loginPage {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: #07110e;
+  color: #e8edd8;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+
+.loginCard {
+  width: min(100%, 380px);
+  padding: 28px;
+  border-radius: 16px;
+  border: 1px solid rgba(184, 137, 61, 0.35);
+  background: #0f1a17;
+  display: grid;
+  gap: 14px;
+}
+
+.loginCard h1 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+}
+
+.field label {
+  font-size: 0.82rem;
+  color: rgba(232, 237, 216, 0.65);
+}
+
+.field input,
+.field textarea,
+.field select {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #07110e;
+  color: #f7f7f4;
+  font: inherit;
+}
+
+.field textarea {
+  min-height: 88px;
+  resize: vertical;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: none;
+  background: #5a6b3b;
+  color: #f7f7f4;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btnSecondary {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #e8edd8;
+}
+
+.btnDanger {
+  background: #6b3b3b;
+}
+
+.error {
+  color: #e8a090;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+.table th,
+.table td {
+  text-align: left;
+  padding: 10px 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.table th {
+  color: rgba(232, 237, 216, 0.55);
+  font-weight: 600;
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.tabs button {
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: transparent;
+  color: rgba(232, 237, 216, 0.7);
+  cursor: pointer;
+  font: inherit;
+}
+
+.tabsButtonActive {
+  background: rgba(184, 137, 61, 0.2);
+  border-color: rgba(184, 137, 61, 0.5);
+  color: #f7f7f4;
+}
+
+.grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.checkRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.checkRow label {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.muted {
+  color: rgba(232, 237, 216, 0.5);
+  font-size: 0.88rem;
+}
+
+@media (max-width: 800px) {
+  .app {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .sideFoot {
+    width: 100%;
+    margin-top: 0;
+  }
+
+  .grid2 {
+    grid-template-columns: 1fr;
+  }
+}

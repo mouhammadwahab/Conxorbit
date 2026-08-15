@@ -5,6 +5,7 @@ const cors = require("cors");
 const morgan = require("morgan");
 
 const authRoutes = require("./routes/auth");
+const contactRoutes = require("./routes/contact");
 const { publicRouter: solutionsPublic, adminRouter: solutionsAdmin } = require("./routes/solutions");
 const { publicRouter: casePublic, adminRouter: caseAdmin } = require("./routes/caseStudies");
 const { publicRouter: teamPublic, adminRouter: teamAdmin } = require("./routes/team");
@@ -27,6 +28,7 @@ app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
 app.get("/api/health", (_req, res) => res.json({ ok: true }));
 
 app.use("/api/auth", authRoutes);
+app.use("/api/contact", contactRoutes);
 app.use("/api/solutions", solutionsPublic);
 app.use("/api/case-studies", casePublic);
 app.use("/api/team", teamPublic);

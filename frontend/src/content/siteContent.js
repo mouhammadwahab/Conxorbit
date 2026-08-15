@@ -259,7 +259,7 @@ export const homeContent = {
     titleAfter: "",
     body: "A custom platform that unifies drawings, panel status, site photos, and project documents—so façade teams work from one live source of truth.",
     mockupLabel: "A SINGLE SOURCE OF TRUTH",
-    cta: { label: "Explore the Case Study", href: "/portfolio" },
+    cta: { label: "Explore the Case Study", href: "/case-studies/facade-panel-visibility" },
     features: [
       {
         icon: "drawing",

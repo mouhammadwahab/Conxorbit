@@ -161,64 +161,104 @@ const PORTFOLIO_META = {
 
 const CASE_STUDIES = [
   {
-    slug: "facade-panel-visibility",
-    title: "Panel visibility across shop and site",
-    industry: "Façade fabrication",
-    summary:
-      "Replaced spreadsheet status with a shared panel tracker the whole project could trust.",
-    problem:
-      "A curtain wall fabricator tracked panel progress in multiple spreadsheets. Site teams called daily for updates; planners spent evenings reconciling versions.",
-    built:
-      "A web app for panel lifecycle status, simple filters by zone and elevation, and roles for shop, logistics, and site — fed by the team’s existing IDs.",
-    result:
-      "Fewer status calls, one agreed view of progress, and faster handoffs when units left the factory.",
-    quote: {
-      text: "We finally stopped arguing about which file was current.",
-      author: "Operations lead (placeholder)",
-    },
-    sortOrder: 1,
-    published: true,
-    seo: { title: "", description: "", ogImage: "" },
+    "slug": "facade-panel-visibility",
+    "title": "PanelX",
+    "category": "Client System",
+    "shortDescription": "A web-based platform built to connect façade drawings, panel information, documentation and field reporting in one workflow.",
+    "clientName": "",
+    "industry": "Façade fabrication",
+    "trade": "facade",
+    "projectType": "Façade Intelligence Platform",
+    "heroImageUrl": "",
+    "heroImagePublicId": "",
+    "problem": "Fragmented information was slowing down everyday workflows.\n\nProject drawings, panel information, documentation and field updates were handled across disconnected processes, making information harder to find and track.",
+    "problemPoints": [
+      { "title": "Manual panel tracking", "description": "" },
+      { "title": "Disconnected project information", "description": "" },
+      { "title": "Difficult access to field updates", "description": "" }
+    ],
+    "solution": "A connected platform for façade project information.\n\nConX Orbit built PanelX to bring drawings, panel tracking, documentation and field reporting into one digital workflow.",
+    "solutionPoints": [
+      { "title": "Drawing Navigation", "description": "Access project drawings digitally." },
+      { "title": "Panel Tracking", "description": "Search and track panels by ID." },
+      { "title": "Documentation", "description": "Keep project information organized." },
+      { "title": "Field Reporting", "description": "Capture photos and updates from the field." }
+    ],
+    "mockupImageUrl": "",
+    "mockupImagePublicId": "",
+    "supportingImageUrl": "",
+    "supportingImagePublicId": "",
+    "relatedSolutionSlug": "panel-x",
+    "featured": true,
+    "published": true,
+    "displayOrder": 1
   },
   {
-    slug: "drawing-review-flow",
-    title: "Drawing review without the chase",
-    industry: "Façade engineering",
-    summary: "Centralized DWG review so comments and revisions lived in one place.",
-    problem:
-      "Review cycles lived in email. Markups got lost; newcomers couldn’t see why a detail changed.",
-    built:
-      "A viewer-led workflow with comment threads tied to drawings, notification digests, and a clear “current set” for each package.",
-    result:
-      "Shorter review loops and a trail new team members could follow without a meeting.",
-    quote: {
-      text: "The current set is obvious now — that alone was worth it.",
-      author: "Project engineer (placeholder)",
-    },
-    sortOrder: 2,
-    published: true,
-    seo: { title: "", description: "", ogImage: "" },
+    "slug": "drawing-review-flow",
+    "title": "Drawing Review",
+    "category": "Client System",
+    "shortDescription": "A centralized drawing review workspace so comments, revisions, and the current set live in one place.",
+    "clientName": "",
+    "industry": "Façade engineering",
+    "trade": "facade",
+    "projectType": "Drawing Collaboration Platform",
+    "heroImageUrl": "",
+    "heroImagePublicId": "",
+    "problem": "Drawing review was scattered across inboxes and versions.\n\nReview cycles lived in email. Markups got lost; newcomers couldn’t see why a detail changed.",
+    "problemPoints": [
+      { "title": "Comments trapped in email threads", "description": "" },
+      { "title": "Unclear current drawing set", "description": "" },
+      { "title": "Hard for new team members to catch up", "description": "" }
+    ],
+    "solution": "One place for drawings, comments, and the current set.\n\nA viewer-led workflow with comment threads tied to drawings, notification digests, and a clear current set for each package.",
+    "solutionPoints": [
+      { "title": "Drawing Viewer", "description": "Open and navigate the latest package." },
+      { "title": "Comment Threads", "description": "Keep markups tied to the drawing." },
+      { "title": "Current Set", "description": "Make the approved set obvious." },
+      { "title": "Review Digests", "description": "Notify teams without inbox chase." }
+    ],
+    "mockupImageUrl": "",
+    "mockupImagePublicId": "",
+    "supportingImageUrl": "",
+    "supportingImagePublicId": "",
+    "relatedSolutionSlug": "drawing-intelligence",
+    "featured": false,
+    "published": true,
+    "displayOrder": 2
   },
   {
-    slug: "field-reporting-lite",
-    title: "Field reporting that people finish",
-    industry: "Construction",
-    summary:
-      "A light mobile-friendly log that cut end-of-day admin without adding process weight.",
-    problem:
-      "Daily reports were incomplete or late because forms felt like punishment after a long shift.",
-    built:
-      "A short guided form, photo attach, and auto summary for managers — designed with site supervisors, not for them.",
-    result:
-      "Higher completion rates and managers who could skim mornings instead of chasing evenings.",
-    quote: {
-      text: "It’s short enough that people actually do it.",
-      author: "Site manager (placeholder)",
-    },
-    sortOrder: 3,
-    published: true,
-    seo: { title: "", description: "", ogImage: "" },
-  },
+    "slug": "field-reporting-lite",
+    "title": "Field Reporting",
+    "category": "Workflow Solution",
+    "shortDescription": "A light mobile-friendly field log that cuts end-of-day admin without adding process weight.",
+    "clientName": "",
+    "industry": "Construction",
+    "trade": "construction",
+    "projectType": "Site Reporting That Gets Finished",
+    "heroImageUrl": "",
+    "heroImagePublicId": "",
+    "problem": "Field reporting was too heavy to finish consistently.\n\nDaily reports were incomplete or late because forms felt like punishment after a long shift.",
+    "problemPoints": [
+      { "title": "Long forms after long days", "description": "" },
+      { "title": "Incomplete end-of-day submissions", "description": "" },
+      { "title": "Managers chasing missing updates", "description": "" }
+    ],
+    "solution": "Field reporting that people actually finish.\n\nA short guided form, photo attach, and auto summary for managers — designed with site supervisors, not for them.",
+    "solutionPoints": [
+      { "title": "Guided Form", "description": "Only the fields that matter on site." },
+      { "title": "Photo Capture", "description": "Attach evidence without extra steps." },
+      { "title": "Manager Summary", "description": "Skim mornings instead of chasing evenings." },
+      { "title": "Light Process", "description": "Built to complete after a long shift." }
+    ],
+    "mockupImageUrl": "",
+    "mockupImagePublicId": "",
+    "supportingImageUrl": "",
+    "supportingImagePublicId": "",
+    "relatedSolutionSlug": "construction-inspection",
+    "featured": false,
+    "published": true,
+    "displayOrder": 3
+  }
 ];
 
 function seedPageContent() {
@@ -402,7 +442,16 @@ async function seed() {
     detail: {},
   });
 
-  CASE_STUDIES.forEach((item) => caseStudies.insert(item));
+  CASE_STUDIES.forEach((item) => {
+    const { relatedSolutionSlug, ...rest } = item;
+    const related = relatedSolutionSlug
+      ? solutions.findOne({ slug: relatedSolutionSlug })
+      : null;
+    caseStudies.insert({
+      ...rest,
+      relatedSolutionId: related ? related._id : "",
+    });
+  });
 
   const linkedin = "https://www.linkedin.com/company/conx-orbit";
   team.insert({

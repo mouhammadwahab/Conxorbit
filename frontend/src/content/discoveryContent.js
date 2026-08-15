@@ -56,6 +56,7 @@ export const discoveryContent = {
     columns: [
       {
         heading: "You're dealing with",
+        tone: "problems",
         items: [
           "A workflow that's heavily manual",
           "Information spread across multiple tools",
@@ -67,6 +68,7 @@ export const discoveryContent = {
       },
       {
         heading: "You're looking for",
+        tone: "solutions",
         items: [
           "A purpose-built system",
           "AI-powered automation",

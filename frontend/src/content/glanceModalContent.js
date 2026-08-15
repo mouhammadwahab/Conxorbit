@@ -1,3 +1,7 @@
+import panelXImage from "../assets/portfolio/featured-panelx.png";
+import inspectionImage from "../assets/solutions/construction-inspection.jpg";
+import drawingImage from "../assets/solutions/drawing-intelligence.jpg";
+
 export const glanceModalContent = {
   badge: "CONX ORBIT",
   title: "AI & Technology Built Around Real Workflows.",
@@ -10,7 +14,7 @@ export const glanceModalContent = {
       body: "Façade panel visibility across shop and site.",
       href: "/solutions/panel-x",
       demoHref: "/solutions/panel-x#demo",
-      preview: "panel",
+      image: panelXImage,
     },
     {
       badge: "INTERNAL PRODUCT",
@@ -18,7 +22,7 @@ export const glanceModalContent = {
       body: "Site capture, photos, and close-out in one flow.",
       href: "/solutions/construction-inspection",
       demoHref: "/solutions/construction-inspection#demo",
-      preview: "inspect",
+      image: inspectionImage,
     },
     {
       badge: "WORKFLOW SOLUTION",
@@ -26,7 +30,7 @@ export const glanceModalContent = {
       body: "Revision compare and drawing data extraction.",
       href: "/solutions/drawing-intelligence",
       demoHref: "/solutions/drawing-intelligence#demo",
-      preview: "drawing",
+      image: drawingImage,
     },
   ],
   footerPrompt: "See what we're building.",

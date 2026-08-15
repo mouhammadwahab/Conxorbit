@@ -15,6 +15,8 @@ const EMPTY = {
   published: true,
 };
 
+const SOCIAL_PLATFORMS = ["linkedin", "twitter", "github", "instagram", "website", "email"];
+
 export default function AdminTeam() {
   const { token } = useAdminAuth();
   const [items, setItems] = useState([]);
@@ -120,8 +122,7 @@ export default function AdminTeam() {
           <span>Social links</span>
           {(form.socialLinks || []).map((link, index) => (
             <div key={index} className={styles.row} style={{ marginTop: 8 }}>
-              <input
-                placeholder="platform"
+              <select
                 value={link.platform || ""}
                 onChange={(e) => {
                   const next = [...(form.socialLinks || [])];
@@ -129,7 +130,19 @@ export default function AdminTeam() {
                   setForm({ ...form, socialLinks: next });
                 }}
                 style={{ maxWidth: 140 }}
-              />
+              >
+                <option value="">platform</option>
+                {[
+                  ...SOCIAL_PLATFORMS,
+                  ...(link.platform && !SOCIAL_PLATFORMS.includes(link.platform)
+                    ? [link.platform]
+                    : []),
+                ].map((platform) => (
+                  <option key={platform} value={platform}>
+                    {platform}
+                  </option>
+                ))}
+              </select>
               <input
                 placeholder="https://..."
                 value={link.url || ""}

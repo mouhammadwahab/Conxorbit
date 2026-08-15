@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useEffect, useMemo, useState } from "react";
+import { Navigate, useSearchParams } from "react-router-dom";
 import SEO from "../components/common/SEO";
 import PageShell from "../components/layout/PageShell/PageShell";
 import PortfolioHero from "../components/portfolio/PortfolioHero";
@@ -8,7 +8,6 @@ import PortfolioProof from "../components/portfolio/PortfolioProof";
 import PortfolioClientSystems from "../components/portfolio/PortfolioClientSystems";
 import PortfolioProductGrid from "../components/portfolio/PortfolioProductGrid";
 import PortfolioIndustries from "../components/portfolio/PortfolioIndustries";
-import CaseStudyModal from "../components/portfolio/CaseStudyModal";
 import SolutionsFinalCta from "../components/solutions/SolutionsFinalCta";
 import { portfolioContent as staticPortfolio } from "../content/portfolioContent";
 import { api, mediaUrl } from "../api/client";
@@ -43,9 +42,8 @@ function pickChrome(pageChrome) {
 }
 
 export default function Portfolio() {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const [activeSlug, setActiveSlug] = useState(null);
-  const [caseStudies, setCaseStudies] = useState([]);
+  const [searchParams] = useSearchParams();
+  const caseRedirect = searchParams.get("case");
   const [solutions, setSolutions] = useState([]);
   const [loadError, setLoadError] = useState("");
   const [pageChrome, setPageChrome] = useState(null);
@@ -55,13 +53,11 @@ export default function Portfolio() {
     let alive = true;
     Promise.all([
       api.getSolutions("?forPortfolio=1"),
-      api.getCaseStudies(),
       api.getPageContent("portfolio").catch(() => null),
     ])
-      .then(([sols, cases, chrome]) => {
+      .then(([sols, chrome]) => {
         if (!alive) return;
         setSolutions(sols || []);
-        setCaseStudies(cases || []);
         setPageChrome(chrome);
         setLoadError("");
         setChromeReady(true);
@@ -69,7 +65,6 @@ export default function Portfolio() {
       .catch((err) => {
         if (!alive) return;
         setSolutions([]);
-        setCaseStudies([]);
         setPageChrome(null);
         setChromeReady(true);
         setLoadError(err.message || "Failed to load portfolio data from API.");
@@ -91,55 +86,6 @@ export default function Portfolio() {
     cta,
     featuredSlug,
   } = useMemo(() => pickChrome(pageChrome), [pageChrome]);
-
-  const studiesBySlug = useMemo(() => {
-    const map = new Map();
-    caseStudies.forEach((item) => map.set(item.slug, item));
-    return map;
-  }, [caseStudies]);
-
-  useEffect(() => {
-    const fromQuery = searchParams.get("case");
-    if (fromQuery && studiesBySlug.has(fromQuery)) {
-      setActiveSlug(fromQuery);
-    }
-  }, [searchParams, studiesBySlug]);
-
-  const openCaseStudy = useCallback(
-    (slug) => {
-      if (!slug || !studiesBySlug.has(slug)) return;
-      setActiveSlug(slug);
-      setSearchParams(
-        (prev) => {
-          const next = new URLSearchParams(prev);
-          next.set("case", slug);
-          return next;
-        },
-        { replace: true }
-      );
-    },
-    [setSearchParams, studiesBySlug]
-  );
-
-  const closeCaseStudy = useCallback(() => {
-    setActiveSlug(null);
-    setSearchParams(
-      (prev) => {
-        const next = new URLSearchParams(prev);
-        next.delete("case");
-        return next;
-      },
-      { replace: true }
-    );
-  }, [setSearchParams]);
-
-  const openFromHref = useCallback(
-    (href) => {
-      const match = String(href || "").match(/\/case-studies\/([^/?#]+)/);
-      if (match) openCaseStudy(match[1]);
-    },
-    [openCaseStudy]
-  );
 
   const byCategory = useMemo(() => {
     const groups = {
@@ -215,7 +161,9 @@ export default function Portfolio() {
     return { ...workflowSolutions, cards };
   }, [byCategory, workflowSolutions]);
 
-  const activeStudy = activeSlug ? studiesBySlug.get(activeSlug) : null;
+  if (caseRedirect) {
+    return <Navigate to={`/case-studies/${encodeURIComponent(caseRedirect)}`} replace />;
+  }
 
   return (
     <PageShell atmosphere="cases">
@@ -225,15 +173,14 @@ export default function Portfolio() {
         {loadError ? (
           <p style={{ textAlign: "center", padding: 24 }}>{loadError}</p>
         ) : null}
-        <PortfolioFeatured content={featuredContent} onOpenCaseStudy={openFromHref} />
+        <PortfolioFeatured content={featuredContent} />
         <PortfolioProof content={proof} />
-        <PortfolioClientSystems content={clientSystemsContent} onOpenCaseStudy={openFromHref} />
+        <PortfolioClientSystems content={clientSystemsContent} />
         <PortfolioProductGrid content={internalContent} />
         <PortfolioProductGrid content={workflowContent} key="workflow-solutions" />
         <PortfolioIndustries content={industries} />
         <SolutionsFinalCta content={cta} />
       </div>
-      <CaseStudyModal study={activeStudy} open={Boolean(activeStudy)} onClose={closeCaseStudy} />
     </PageShell>
   );
 }

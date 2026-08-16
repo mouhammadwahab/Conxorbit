@@ -1,5 +1,5 @@
 const express = require("express");
-const { team } = require("../db");
+const { team } = require("../config/lowdb");
 const { requireAuth } = require("../middleware/auth");
 
 const publicRouter = express.Router();

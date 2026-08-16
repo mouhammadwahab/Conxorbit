@@ -1,5 +1,5 @@
 const express = require("express");
-const { getPageContent, setPageContent, getAllPageContent } = require("../db");
+const { getPageContent, setPageContent, getAllPageContent } = require("../config/lowdb");
 const { requireAuth } = require("../middleware/auth");
 
 const publicRouter = express.Router();

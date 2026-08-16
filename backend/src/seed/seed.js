@@ -1,8 +1,9 @@
+//db.json file
 require("dotenv").config();
 const fs = require("fs");
 const path = require("path");
 const bcrypt = require("bcryptjs");
-const { solutions, caseStudies, team, setAdmin, setPageContent, db } = require("../db");
+const { solutions, caseStudies, team, setAdmin, setPageContent, db } = require("../config/lowdb");
 
 const ROOT = path.join(__dirname, "../../..");
 const FRONTEND_ASSETS = path.join(ROOT, "frontend/src/assets");

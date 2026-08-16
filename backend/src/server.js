@@ -3,6 +3,8 @@ const path = require("path");
 const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
+require("./config/cloudinary");
+const { connectDB, checkDatabaseConnection } = require("./config/db");
 
 const authRoutes = require("./routes/auth");
 const { publicRouter: solutionsPublic, adminRouter: solutionsAdmin } = require("./routes/solutions");
@@ -24,7 +26,10 @@ app.use(morgan("dev"));
 app.use(express.json({ limit: "2mb" }));
 app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
 
-app.get("/api/health", (_req, res) => res.json({ ok: true }));
+app.get("/api/health", async (_req, res) => {
+  const db = await checkDatabaseConnection();
+  return res.json({ ok: true, database: db });
+});
 
 app.use("/api/auth", authRoutes);
 app.use("/api/solutions", solutionsPublic);
@@ -37,6 +42,17 @@ app.use("/api/admin/team", teamAdmin);
 app.use("/api/admin/page-content", pageAdmin);
 app.use("/api/admin/upload", uploadRoutes);
 
-app.listen(PORT, () => {
-  console.log(`API listening on http://localhost:${PORT}`);
-});
+
+async function startServer() {
+  try {
+    await connectDB();
+  } catch (error) {
+    console.error("MongoDB connection failed:", error.message);
+  }
+
+  app.listen(PORT, () => {
+    console.log(`API listening on http://localhost:${PORT}`);
+  });
+}
+
+startServer();

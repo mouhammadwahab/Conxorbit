@@ -1,5 +1,5 @@
 const express = require("express");
-const { caseStudies } = require("../db");
+const { caseStudies } = require("../config/lowdb");
 const { requireAuth } = require("../middleware/auth");
 
 const publicRouter = express.Router();

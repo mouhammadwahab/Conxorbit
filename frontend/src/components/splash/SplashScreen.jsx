@@ -43,7 +43,7 @@ export default function SplashScreen({ children }) {
 
               <div className={styles.wordmark}>
                 <h1 className={styles.title}>ConX Orbit</h1>
-                <p className={styles.tagline}>Clarity · Consistency · Craft</p>
+                <p className={styles.tagline}>INTELLIGENCE FOR THE BUILT WORLD</p>
               </div>
             </div>
           </div>

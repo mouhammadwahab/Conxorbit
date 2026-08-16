@@ -1,23 +1,19 @@
-const path = require("path");
-const fs = require("fs");
 const multer = require("multer");
 
-const uploadDir = path.join(__dirname, "../../uploads");
-if (!fs.existsSync(uploadDir)) {
-  fs.mkdirSync(uploadDir, { recursive: true });
-}
+const storage = multer.memoryStorage();
 
-const storage = multer.diskStorage({
-  destination: (_req, _file, cb) => cb(null, uploadDir),
-  filename: (_req, file, cb) => {
-    const safe = file.originalname.replace(/[^a-zA-Z0-9._-]/g, "_");
-    cb(null, `${Date.now()}-${safe}`);
-  },
-});
-
-const upload = multer({
+const uploadImage = multer({
   storage,
-  limits: { fileSize: 8 * 1024 * 1024 },
+  limits: { fileSize: 10 * 1024 * 1024 },
 });
 
-module.exports = { upload, uploadDir };
+const uploadVideo = multer({
+  storage,
+  limits: { fileSize: 100 * 1024 * 1024 },
+});
+
+module.exports = {
+  upload: uploadVideo,
+  uploadImage,
+  uploadVideo,
+};

@@ -1,6 +1,8 @@
 const express = require("express");
-const { solutions } = require("../db");
+const { solutions } = require("../config/lowdb");
 const { requireAuth } = require("../middleware/auth");
+const { uploadImage } = require("../middleware/upload");
+const { createSolution } = require("../controllers/solutionController");
 
 const publicRouter = express.Router();
 const adminRouter = express.Router();
@@ -54,14 +56,7 @@ adminRouter.get("/", (_req, res) => {
   res.json(sortRows(solutions.all()));
 });
 
-adminRouter.post("/", (req, res) => {
-  try {
-    const created = solutions.insert(req.body);
-    return res.status(201).json(created);
-  } catch (error) {
-    return res.status(400).json({ message: error.message });
-  }
-});
+adminRouter.post("/", uploadImage.single("mockup"), createSolution);
 
 adminRouter.put("/:id", (req, res) => {
   const updated = solutions.update(req.params.id, req.body);

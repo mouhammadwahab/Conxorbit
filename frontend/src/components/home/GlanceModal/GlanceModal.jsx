@@ -5,37 +5,6 @@ import styles from "./GlanceModal.module.css";
 
 const STORAGE_KEY = "conx-glance-modal-dismissed";
 
-function PreviewPanel({ type }) {
-  if (type === "inspect") {
-    return (
-      <div className={`${styles.preview} ${styles.previewInspect}`} aria-hidden="true">
-        <span className={styles.previewStatus}>On Track</span>
-        <span className={styles.previewLine} />
-        <span className={styles.previewLine} />
-        <span className={styles.previewLineShort} />
-      </div>
-    );
-  }
-  if (type === "drawing") {
-    return (
-      <div className={`${styles.preview} ${styles.previewDrawing}`} aria-hidden="true">
-        <span className={styles.previewFrame} />
-        <span className={styles.previewGrid} />
-      </div>
-    );
-  }
-  return (
-    <div className={`${styles.preview} ${styles.previewPanel}`} aria-hidden="true">
-      <span />
-      <span />
-      <span />
-      <span />
-      <span />
-      <span />
-    </div>
-  );
-}
-
 export default function GlanceModal({ content, open, onClose }) {
   const titleId = useId();
   const closeRef = useRef(null);
@@ -126,7 +95,11 @@ export default function GlanceModal({ content, open, onClose }) {
           <div className={styles.solutionGrid}>
             {solutions.map((item) => (
               <article key={item.title} className={styles.solutionCard}>
-                <PreviewPanel type={item.preview} />
+                <div className={styles.preview}>
+                  {item.image ? (
+                    <img src={item.image} alt="" loading="lazy" />
+                  ) : null}
+                </div>
                 <span className={styles.solutionBadge}>{item.badge}</span>
                 <strong className={styles.solutionTitle}>{item.title}</strong>
                 <p className={styles.solutionBody}>{item.body}</p>

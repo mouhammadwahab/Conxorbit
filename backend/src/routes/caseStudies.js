@@ -7,18 +7,26 @@ const adminRouter = express.Router();
 
 function sortRows(rows) {
   return [...rows].sort(
-    (a, b) => (a.sortOrder || 0) - (b.sortOrder || 0) || String(a.title).localeCompare(b.title)
+    (a, b) =>
+      (a.displayOrder || 0) - (b.displayOrder || 0) || String(a.title).localeCompare(b.title)
   );
 }
 
+function toPublic(row) {
+  return {
+    ...row,
+    id: row._id,
+  };
+}
+
 publicRouter.get("/", (_req, res) => {
-  res.json(sortRows(caseStudies.all().filter((row) => row.published)));
+  res.json(sortRows(caseStudies.all().filter((row) => row.published)).map(toPublic));
 });
 
 publicRouter.get("/:slug", (req, res) => {
   const item = caseStudies.findOne({ slug: req.params.slug, published: true });
   if (!item) return res.status(404).json({ message: "Not found" });
-  return res.json(item);
+  return res.json(toPublic(item));
 });
 
 adminRouter.use(requireAuth);

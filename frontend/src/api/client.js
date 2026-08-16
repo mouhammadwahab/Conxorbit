@@ -41,6 +41,7 @@ export const api = {
   getSolutions: (query = "") => request(`/api/solutions${query}`),
   getSolution: (slug) => request(`/api/solutions/${encodeURIComponent(slug)}`),
   getCaseStudies: () => request("/api/case-studies"),
+  getCaseStudy: (slug) => request(`/api/case-studies/${encodeURIComponent(slug)}`),
   getTeam: () => request("/api/team"),
   getPageContent: (key) => request(`/api/page-content/${encodeURIComponent(key)}`),
   login: (email, password) => request("/api/auth/login", { method: "POST", body: { email, password } }),

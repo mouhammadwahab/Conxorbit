@@ -43,3 +43,14 @@ The public site resolves absolute URLs as-is (no local upload required for CMS i
 - Case studies (incl. Published)
 - Team (Published + social links)
 - Pages → Solutions listing, Portfolio, Façade/Construction related-solutions chrome, About team title
+
+## Case study fields (`case_studies`)
+
+- `id` (`_id`), `title`, `slug`, `category`, `shortDescription`
+- `clientName`, `industry`, `trade`, `projectType`
+- `heroImageUrl`, `heroImagePublicId`
+- `problem`, `problemPoints[]` as JSON: `{ title, description }`
+- `solution`, `solutionPoints[]` as JSON: `{ title, description }`
+- `mockupImageUrl`, `mockupImagePublicId`, `supportingImageUrl`, `supportingImagePublicId`
+- `relatedSolutionId`, `featured`, `published`, `displayOrder`
+- `createdAt`, `updatedAt`

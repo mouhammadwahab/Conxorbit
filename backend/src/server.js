@@ -7,6 +7,7 @@ require("./config/cloudinary");
 const { connectDB, checkDatabaseConnection } = require("./config/db");
 
 const authRoutes = require("./routes/auth");
+const contactRoutes = require("./routes/contact");
 const { publicRouter: solutionsPublic, adminRouter: solutionsAdmin } = require("./routes/solutions");
 const { publicRouter: casePublic, adminRouter: caseAdmin } = require("./routes/caseStudies");
 const { publicRouter: teamPublic, adminRouter: teamAdmin } = require("./routes/team");
@@ -32,6 +33,7 @@ app.get("/api/health", async (_req, res) => {
 });
 
 app.use("/api/auth", authRoutes);
+app.use("/api/contact", contactRoutes);
 app.use("/api/solutions", solutionsPublic);
 app.use("/api/case-studies", casePublic);
 app.use("/api/team", teamPublic);

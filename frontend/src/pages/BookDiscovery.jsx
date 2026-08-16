@@ -238,7 +238,16 @@ export default function BookDiscovery() {
             </div>
             <div className={styles.fitGrid}>
               {fit.columns.map((column) => (
-                <div key={column.heading} className={styles.fitCol}>
+                <div
+                  key={column.heading}
+                  className={`${styles.fitCol} ${
+                    column.tone === "problems"
+                      ? styles.fitColProblems
+                      : column.tone === "solutions"
+                        ? styles.fitColSolutions
+                        : ""
+                  }`}
+                >
                   <h3 className={styles.fitColHeading}>{column.heading}</h3>
                   <ul className={styles.fitList}>
                     {column.items.map((item) => (

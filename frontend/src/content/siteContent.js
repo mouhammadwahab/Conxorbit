@@ -1,7 +1,7 @@
 export const site = {
   name: "ConX Orbit",
   tagline: "Custom software and AI for construction and façade teams",
-  email: "founder@conxorbit.com",
+  email: "Founder@conxorbit.com",
   phone: "+971 00 000 0000",
   whatsapp: "+971000000000",
   whatsappLabel: "WhatsApp",
@@ -259,7 +259,7 @@ export const homeContent = {
     titleAfter: "",
     body: "A custom platform that unifies drawings, panel status, site photos, and project documents—so façade teams work from one live source of truth.",
     mockupLabel: "A SINGLE SOURCE OF TRUTH",
-    cta: { label: "Explore the Case Study", href: "/portfolio" },
+    cta: { label: "Explore the Case Study", href: "/case-studies/facade-panel-visibility" },
     features: [
       {
         icon: "drawing",

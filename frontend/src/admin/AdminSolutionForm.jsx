@@ -60,6 +60,25 @@ const EMPTY = {
 
 const TABS = ["Basics", "Portfolio / Trades", "Detail", "SEO"];
 
+const LISTING_BADGES = ["Client system", "Internal Product", "Workflow Solutions"];
+const PORTFOLIO_LABELS = ["CLIENT SYSTEM", "INTERNAL PRODUCT", "WORKFLOW SOLUTION"];
+const PORTFOLIO_STATUSES = ["In Development", "Capability", "Live"];
+
+function SelectWithFallback({ value, onChange, options, emptyLabel = "— Select —" }) {
+  const opts = [...options];
+  if (value && !opts.includes(value)) opts.unshift(value);
+  return (
+    <select value={value || ""} onChange={onChange}>
+      <option value="">{emptyLabel}</option>
+      {opts.map((opt) => (
+        <option key={opt} value={opt}>
+          {opt}
+        </option>
+      ))}
+    </select>
+  );
+}
+
 function parseList(value) {
   return String(value || "")
     .split(",")
@@ -283,8 +302,9 @@ export default function AdminSolutionForm() {
           </label>
           <label className={styles.field}>
             <span>Listing badge</span>
-            <input
+            <SelectWithFallback
               value={form.listingBadge}
+              options={LISTING_BADGES}
               onChange={(e) => setField("listingBadge", e.target.value)}
             />
           </label>
@@ -380,15 +400,17 @@ export default function AdminSolutionForm() {
           </label>
           <label className={styles.field}>
             <span>Portfolio label</span>
-            <input
+            <SelectWithFallback
               value={form.portfolioLabel}
+              options={PORTFOLIO_LABELS}
               onChange={(e) => setField("portfolioLabel", e.target.value)}
             />
           </label>
           <label className={styles.field}>
             <span>Portfolio status</span>
-            <input
+            <SelectWithFallback
               value={form.portfolioStatus}
+              options={PORTFOLIO_STATUSES}
               onChange={(e) => setField("portfolioStatus", e.target.value)}
             />
           </label>

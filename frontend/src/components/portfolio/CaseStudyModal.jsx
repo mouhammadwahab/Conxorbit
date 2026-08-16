@@ -82,13 +82,13 @@ export default function CaseStudyModal({ study, open, onClose }) {
         <header className={styles.header}>
           <p className={styles.badge}>
             <span className={styles.badgeDot} aria-hidden="true" />
-            Case Study
+            Case Study{study.category ? ` • ${study.category}` : ""}
           </p>
-          <p className={styles.industry}>{study.industry}</p>
           <h2 id={titleId} className={styles.title}>
             {study.title}
           </h2>
-          {study.summary ? <p className={styles.summary}>{study.summary}</p> : null}
+          {study.projectType ? <p className={styles.industry}>{study.projectType}</p> : null}
+          {study.shortDescription ? <p className={styles.summary}>{study.shortDescription}</p> : null}
         </header>
 
         <div className={styles.blocks}>

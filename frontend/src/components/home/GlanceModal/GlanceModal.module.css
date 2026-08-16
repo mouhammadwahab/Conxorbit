@@ -128,88 +128,14 @@
   border: 1px solid rgba(20, 48, 46, 0.08);
   overflow: hidden;
   position: relative;
+  background: #eef1e6;
 }
 
-.previewPanel {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-  padding: 12px;
-  background: linear-gradient(160deg, rgba(90, 107, 59, 0.12), rgba(184, 137, 61, 0.1));
-}
-
-.previewPanel span {
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.85);
-  border: 1px solid rgba(90, 107, 59, 0.18);
-  min-height: 36px;
-}
-
-.previewPanel span:nth-child(2),
-.previewPanel span:nth-child(5) {
-  background: rgba(184, 137, 61, 0.22);
-}
-
-.previewInspect {
-  display: grid;
-  gap: 8px;
-  align-content: start;
-  padding: 14px;
-  background: linear-gradient(160deg, #eef1e6, #f7f7f4);
-}
-
-.previewStatus {
-  width: fit-content;
-  padding: 4px 10px;
-  border-radius: 999px;
-  background: rgba(90, 107, 59, 0.16);
-  color: var(--olive-dark);
-  font-size: 0.68rem;
-  font-weight: 650;
-}
-
-.previewLine,
-.previewLineShort {
+.preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   display: block;
-  height: 8px;
-  border-radius: 999px;
-  background: rgba(20, 48, 46, 0.1);
-}
-
-.previewLineShort {
-  width: 62%;
-}
-
-.previewDrawing {
-  background:
-    linear-gradient(90deg, rgba(20, 48, 46, 0.05) 1px, transparent 1px),
-    linear-gradient(rgba(20, 48, 46, 0.05) 1px, transparent 1px),
-    linear-gradient(145deg, #f0eee6, #e8ebe0);
-  background-size: 18px 18px, 18px 18px, auto;
-}
-
-.previewFrame {
-  position: absolute;
-  inset: 16px 18px 22px;
-  border: 1.5px solid rgba(184, 137, 61, 0.55);
-  border-radius: 6px;
-}
-
-.previewGrid {
-  position: absolute;
-  left: 28px;
-  right: 28px;
-  top: 28px;
-  height: 42px;
-  border-top: 1px solid rgba(90, 107, 59, 0.35);
-  border-bottom: 1px solid rgba(90, 107, 59, 0.35);
-  background: repeating-linear-gradient(
-    90deg,
-    transparent,
-    transparent 12px,
-    rgba(90, 107, 59, 0.12) 12px,
-    rgba(90, 107, 59, 0.12) 13px
-  );
 }
 
 .solutionBadge {

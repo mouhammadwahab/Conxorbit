@@ -345,6 +345,30 @@
   display: block;
 }
 
+.fitColProblems .fitColHeading {
+  color: #f07171;
+}
+
+.fitColProblems .fitList li {
+  color: #ffb4b4;
+}
+
+.fitColProblems .fitCheck {
+  color: #f07171;
+}
+
+.fitColSolutions .fitColHeading {
+  color: #8fbf6b;
+}
+
+.fitColSolutions .fitList li {
+  color: #c5e3a8;
+}
+
+.fitColSolutions .fitCheck {
+  color: #8fbf6b;
+}
+
 @media (max-width: 700px) {
   .fieldGrid {
     grid-template-columns: 1fr;

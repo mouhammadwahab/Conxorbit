@@ -1,154 +1,54 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { api, mediaUrl } from "../api/client";
+import { api } from "../api/client";
 import { useAdminAuth } from "./AdminAuth";
+import AdminMediaField from "./AdminMediaField";
 import styles from "./admin.module.css";
 
-const FIXED_BADGES = {
-  challenge: "THE CHALLENGE",
-  capabilities: "CAPABILITIES",
-  howItWorks: "HOW IT WORKS",
-  builtFor: "BUILT FOR",
-  more: "EXPLORE MORE",
-  faq: "FAQ",
-  cta: "EXPLORE WHAT'S POSSIBLE",
-};
+const CATEGORIES = ["client-system", "internal-product", "workflow-solution", "other"];
 
 const EMPTY = {
   slug: "",
   name: "",
-  description: "",
-  listingBadge: "",
-  categories: [],
-  image: "",
-  portfolioImage: "",
-  portfolioCategory: "workflow_solution",
+  shortDescription: "",
+  category: "other",
+  tags: [],
   trades: [],
-  sortOrder: 0,
-  published: true,
-  showOnListing: true,
-  confidential: false,
-  confidentialLabel: "",
-  caseStudySlug: "",
-  portfolioStatus: "",
-  portfolioLabel: "",
-  portfolioBody: "",
-  seo: { title: "", description: "", ogImage: "" },
-  detail: {
-    titleBefore: "",
-    titleHighlight: "",
-    titleAfter: "",
+  listingBadge: "",
+  hero: { title: "", description: "" },
+  description: "",
+  features: [],
+  capabilities: [],
+  audiences: [],
+  technologies: [],
+  mockup: { url: "", publicId: "" },
+  demo: { videoUrl: "", publicId: "" },
+  faq: [],
+  relatedSolutionIds: [],
+  relatedCaseStudyIds: [],
+  cta: {
+    badge: "",
+    title: "",
     body: "",
-    primaryCta: { label: "Book a Discovery Call", href: "/book-discovery" },
-    demoCta: { label: "Watch Demo", targetId: "demo" },
-    stats: { bestFor: "", coreFunction: "", platform: "", workflow: "" },
-    challenge: { title: "", body: "", problems: [] },
-    capabilities: { title: "", body: "", cards: [] },
-    howItWorks: { title: "", stagesLabel: "", stages: [] },
-    builtFor: { title: "", body: "", audiences: [] },
-    demo: { title: "", videoSrc: "", posterSrc: "" },
-    more: { title: "More Solutions From ConX Orbit.", slugs: [] },
-    faq: { titleBefore: "About ", titleHighlight: "", titleAfter: "", items: [] },
-    cta: {
-      title: "Could a System Like This Work for Your Workflow?",
-      body: "",
-      primary: { label: "Book a Discovery Call", href: "/book-discovery" },
-      secondary: { label: "Explore Solutions", href: "/solutions" },
-    },
+    primary: { label: "Book a Discovery Call", href: "/book-discovery" },
+    secondary: { label: "Explore Solutions", href: "/solutions" },
   },
+  published: true,
+  featured: false,
+  showOnListing: true,
+  sortOrder: 0,
+  seo: { title: "", description: "", ogImage: "" },
 };
 
-const TABS = ["Basics", "Portfolio / Trades", "Detail", "SEO"];
-
-const LISTING_BADGES = ["Client system", "Internal Product", "Workflow Solutions"];
-const PORTFOLIO_LABELS = ["CLIENT SYSTEM", "INTERNAL PRODUCT", "WORKFLOW SOLUTION"];
-const PORTFOLIO_STATUSES = ["In Development", "Capability", "Live"];
-
-function SelectWithFallback({ value, onChange, options, emptyLabel = "— Select —" }) {
-  const opts = [...options];
-  if (value && !opts.includes(value)) opts.unshift(value);
-  return (
-    <select value={value || ""} onChange={onChange}>
-      <option value="">{emptyLabel}</option>
-      {opts.map((opt) => (
-        <option key={opt} value={opt}>
-          {opt}
-        </option>
-      ))}
-    </select>
-  );
+function listToText(list) {
+  return (list || []).join(", ");
 }
 
-function parseList(value) {
+function textToList(value) {
   return String(value || "")
     .split(",")
     .map((s) => s.trim())
     .filter(Boolean);
-}
-
-function applyFixedBadges(detail) {
-  const next = { ...(detail || {}) };
-  next.challenge = { ...(next.challenge || {}), badge: FIXED_BADGES.challenge };
-  next.capabilities = { ...(next.capabilities || {}), badge: FIXED_BADGES.capabilities };
-  next.howItWorks = { ...(next.howItWorks || {}), badge: FIXED_BADGES.howItWorks };
-  next.builtFor = { ...(next.builtFor || {}), badge: FIXED_BADGES.builtFor };
-  next.more = { ...(next.more || {}), badge: FIXED_BADGES.more };
-  next.faq = { ...(next.faq || {}), badge: FIXED_BADGES.faq };
-  next.cta = { ...(next.cta || {}), badge: FIXED_BADGES.cta };
-  return next;
-}
-
-function ListEditor({ items = [], fields, onChange, addLabel }) {
-  const updateItem = (index, key, value) => {
-    const next = items.map((item, i) => (i === index ? { ...item, [key]: value } : item));
-    onChange(next);
-  };
-  const removeItem = (index) => onChange(items.filter((_, i) => i !== index));
-  const addItem = () => {
-    const blank = {};
-    fields.forEach((f) => {
-      blank[f.key] = "";
-    });
-    onChange([...items, blank]);
-  };
-  return (
-    <div style={{ display: "grid", gap: 12, gridColumn: "1 / -1" }}>
-      {items.map((item, index) => (
-        <div key={index} className={styles.grid2} style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: 12 }}>
-          {fields.map((field) => (
-            <label
-              key={field.key}
-              className={styles.field}
-              style={field.wide ? { gridColumn: "1 / -1" } : undefined}
-            >
-              <span>
-                {field.label} #{index + 1}
-              </span>
-              {field.multiline ? (
-                <textarea
-                  value={item[field.key] || ""}
-                  onChange={(e) => updateItem(index, field.key, e.target.value)}
-                />
-              ) : (
-                <input
-                  value={item[field.key] || ""}
-                  onChange={(e) => updateItem(index, field.key, e.target.value)}
-                />
-              )}
-            </label>
-          ))}
-          <div className={styles.row} style={{ gridColumn: "1 / -1" }}>
-            <button type="button" className={`${styles.btn} ${styles.btnDanger}`} onClick={() => removeItem(index)}>
-              Remove
-            </button>
-          </div>
-        </div>
-      ))}
-      <button type="button" className={`${styles.btn} ${styles.btnSecondary}`} onClick={addItem}>
-        {addLabel}
-      </button>
-    </div>
-  );
 }
 
 export default function AdminSolutionForm() {
@@ -156,10 +56,12 @@ export default function AdminSolutionForm() {
   const isNew = id === "new" || !id;
   const { token } = useAdminAuth();
   const navigate = useNavigate();
-  const [tab, setTab] = useState(0);
   const [form, setForm] = useState(EMPTY);
-  const [detailJson, setDetailJson] = useState("");
-  const [showAdvanced, setShowAdvanced] = useState(false);
+  const [tagsText, setTagsText] = useState("");
+  const [featuresText, setFeaturesText] = useState("");
+  const [capabilitiesText, setCapabilitiesText] = useState("");
+  const [audiencesText, setAudiencesText] = useState("");
+  const [technologiesText, setTechnologiesText] = useState("");
   const [allSolutions, setAllSolutions] = useState([]);
   const [error, setError] = useState("");
   const [saving, setSaving] = useState(false);
@@ -171,10 +73,14 @@ export default function AdminSolutionForm() {
         setAllSolutions(items);
         if (isNew) {
           setForm(EMPTY);
-          setDetailJson(JSON.stringify(EMPTY.detail, null, 2));
+          setTagsText("");
+          setFeaturesText("");
+          setCapabilitiesText("");
+          setAudiencesText("");
+          setTechnologiesText("");
           return;
         }
-        const item = items.find((row) => row._id === id);
+        const item = items.find((row) => String(row._id) === String(id));
         if (!item) {
           setError("Solution not found");
           return;
@@ -182,11 +88,24 @@ export default function AdminSolutionForm() {
         const merged = {
           ...EMPTY,
           ...item,
+          hero: { ...EMPTY.hero, ...(item.hero || {}) },
+          mockup: { url: "", publicId: "", ...(item.mockup || {}) },
+          demo: { videoUrl: "", publicId: "", ...(item.demo || {}) },
+          cta: {
+            ...EMPTY.cta,
+            ...(item.cta || {}),
+            primary: { ...EMPTY.cta.primary, ...(item.cta?.primary || {}) },
+            secondary: { ...EMPTY.cta.secondary, ...(item.cta?.secondary || {}) },
+          },
           seo: { ...EMPTY.seo, ...(item.seo || {}) },
-          detail: { ...EMPTY.detail, ...(item.detail || {}) },
+          faq: item.faq || [],
         };
         setForm(merged);
-        setDetailJson(JSON.stringify(merged.detail, null, 2));
+        setTagsText(listToText(merged.tags));
+        setFeaturesText(listToText(merged.features));
+        setCapabilitiesText(listToText(merged.capabilities));
+        setAudiencesText(listToText(merged.audiences));
+        setTechnologiesText(listToText(merged.technologies));
       } catch (err) {
         setError(err.message);
       }
@@ -194,54 +113,24 @@ export default function AdminSolutionForm() {
   }, [id, isNew, token]);
 
   const setField = (key, value) => setForm((prev) => ({ ...prev, [key]: value }));
-  const setDetail = (path, value) => {
-    setForm((prev) => {
-      const detail = { ...prev.detail };
-      const keys = path.split(".");
-      let cursor = detail;
-      for (let i = 0; i < keys.length - 1; i += 1) {
-        cursor[keys[i]] = { ...(cursor[keys[i]] || {}) };
-        cursor = cursor[keys[i]];
-      }
-      cursor[keys[keys.length - 1]] = value;
-      return { ...prev, detail };
-    });
-  };
-
-  const syncJsonFromForm = () => {
-    setDetailJson(JSON.stringify(form.detail || {}, null, 2));
-  };
-
-  const applyJsonToForm = () => {
-    try {
-      const parsed = JSON.parse(detailJson);
-      setForm((prev) => ({ ...prev, detail: applyFixedBadges(parsed) }));
-      setError("");
-    } catch {
-      setError("Advanced JSON is invalid");
-    }
-  };
 
   const onSave = async (event) => {
     event.preventDefault();
     setSaving(true);
     setError("");
     try {
-      let detail = form.detail;
-      if (showAdvanced) {
-        try {
-          detail = JSON.parse(detailJson);
-        } catch {
-          throw new Error("Advanced JSON is invalid");
-        }
-      }
-      detail = applyFixedBadges(detail);
-      const payload = { ...form, detail, seo: form.seo || EMPTY.seo };
+      const payload = {
+        ...form,
+        tags: textToList(tagsText),
+        features: textToList(featuresText),
+        capabilities: textToList(capabilitiesText),
+        audiences: textToList(audiencesText),
+        technologies: textToList(technologiesText),
+      };
       delete payload._id;
-      delete payload.id;
+      delete payload.__v;
       delete payload.createdAt;
       delete payload.updatedAt;
-      delete payload.badge;
       if (isNew) {
         const created = await api.admin.solutions.create(token, payload);
         navigate(`/admin/solutions/${created._id}`);
@@ -254,9 +143,6 @@ export default function AdminSolutionForm() {
       setSaving(false);
     }
   };
-
-  const detail = form.detail || EMPTY.detail;
-  const moreSlugs = detail.more?.slugs || [];
 
   return (
     <form onSubmit={onSave}>
@@ -273,548 +159,277 @@ export default function AdminSolutionForm() {
       </div>
       {error ? <p className={styles.error}>{error}</p> : null}
 
-      <div className={styles.tabs}>
-        {TABS.map((label, index) => (
-          <button
-            key={label}
-            type="button"
-            className={index === tab ? styles.tabsButtonActive : ""}
-            onClick={() => setTab(index)}
-          >
-            {label}
-          </button>
-        ))}
-      </div>
-
-      {tab === 0 ? (
-        <div className={styles.grid2}>
-          <label className={styles.field}>
-            <span>Name</span>
-            <input value={form.name} onChange={(e) => setField("name", e.target.value)} required />
-          </label>
-          <label className={styles.field}>
-            <span>Slug</span>
-            <input value={form.slug} onChange={(e) => setField("slug", e.target.value)} required />
-          </label>
-          <label className={styles.field} style={{ gridColumn: "1 / -1" }}>
-            <span>Description</span>
-            <textarea value={form.description} onChange={(e) => setField("description", e.target.value)} />
-          </label>
-          <label className={styles.field}>
-            <span>Listing badge</span>
-            <SelectWithFallback
-              value={form.listingBadge}
-              options={LISTING_BADGES}
-              onChange={(e) => setField("listingBadge", e.target.value)}
-            />
-          </label>
-          <label className={styles.field}>
-            <span>Categories (comma-separated)</span>
-            <input
-              value={(form.categories || []).join(", ")}
-              onChange={(e) => setField("categories", parseList(e.target.value))}
-            />
-          </label>
-          <label className={styles.field}>
-            <span>Sort order</span>
-            <input
-              type="number"
-              value={form.sortOrder}
-              onChange={(e) => setField("sortOrder", Number(e.target.value))}
-            />
-          </label>
+      <div className={styles.grid2}>
+        <label className={styles.field}>
+          <span>Name</span>
+          <input value={form.name} onChange={(e) => setField("name", e.target.value)} required />
+        </label>
+        <label className={styles.field}>
+          <span>Slug</span>
+          <input value={form.slug} onChange={(e) => setField("slug", e.target.value)} required />
+        </label>
+        <label className={styles.field} style={{ gridColumn: "1 / -1" }}>
+          <span>Short description</span>
+          <textarea
+            value={form.shortDescription}
+            onChange={(e) => setField("shortDescription", e.target.value)}
+          />
+        </label>
+        <label className={styles.field}>
+          <span>Category</span>
+          <select value={form.category} onChange={(e) => setField("category", e.target.value)}>
+            {CATEGORIES.map((c) => (
+              <option key={c} value={c}>
+                {c}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label className={styles.field}>
+          <span>Listing badge</span>
+          <input
+            value={form.listingBadge}
+            onChange={(e) => setField("listingBadge", e.target.value)}
+          />
+        </label>
+        <label className={styles.field} style={{ gridColumn: "1 / -1" }}>
+          <span>Tags (comma-separated — used as website filters)</span>
+          <input value={tagsText} onChange={(e) => setTagsText(e.target.value)} />
+        </label>
+        <label className={styles.field}>
+          <span>Trades</span>
           <div className={styles.checkRow}>
-            <label>
-              <input
-                type="checkbox"
-                checked={form.published}
-                onChange={(e) => setField("published", e.target.checked)}
-              />
-              Published
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                checked={form.showOnListing}
-                onChange={(e) => setField("showOnListing", e.target.checked)}
-              />
-              Show on Solutions page
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                checked={form.confidential}
-                onChange={(e) => setField("confidential", e.target.checked)}
-              />
-              Confidential
-            </label>
+            {["facade", "construction"].map((trade) => (
+              <label key={trade}>
+                <input
+                  type="checkbox"
+                  checked={(form.trades || []).includes(trade)}
+                  onChange={(e) => {
+                    const next = new Set(form.trades || []);
+                    if (e.target.checked) next.add(trade);
+                    else next.delete(trade);
+                    setField("trades", [...next]);
+                  }}
+                />
+                {trade}
+              </label>
+            ))}
           </div>
-          <label className={styles.field} style={{ gridColumn: "1 / -1" }}>
-            <span>Listing image URL</span>
+        </label>
+        <label className={styles.field}>
+          <span>Sort order</span>
+          <input
+            type="number"
+            value={form.sortOrder}
+            onChange={(e) => setField("sortOrder", Number(e.target.value))}
+          />
+        </label>
+        <div className={styles.checkRow} style={{ gridColumn: "1 / -1" }}>
+          <label>
             <input
-              type="url"
-              placeholder="https://res.cloudinary.com/..."
-              value={form.image}
-              onChange={(e) => setField("image", e.target.value)}
+              type="checkbox"
+              checked={form.published}
+              onChange={(e) => setField("published", e.target.checked)}
             />
-            {form.image ? (
-              <img src={mediaUrl(form.image)} alt="" style={{ maxWidth: 160, marginTop: 8 }} />
-            ) : null}
+            Published
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              checked={form.showOnListing}
+              onChange={(e) => setField("showOnListing", e.target.checked)}
+            />
+            Show on listing
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              checked={form.featured}
+              onChange={(e) => setField("featured", e.target.checked)}
+            />
+            Featured
           </label>
         </div>
-      ) : null}
 
-      {tab === 1 ? (
-        <div className={styles.grid2}>
-          <label className={styles.field}>
-            <span>Portfolio category</span>
-            <select
-              value={form.portfolioCategory}
-              onChange={(e) => setField("portfolioCategory", e.target.value)}
-            >
-              <option value="none">None</option>
-              <option value="client_system">Client system</option>
-              <option value="internal_product">Internal product</option>
-              <option value="workflow_solution">Workflow solution</option>
-            </select>
-          </label>
-          <label className={styles.field}>
-            <span>Trades</span>
-            <div className={styles.checkRow}>
-              {["facade", "construction"].map((trade) => (
-                <label key={trade}>
+        <h3 style={{ gridColumn: "1 / -1", marginBottom: 0 }}>Hero</h3>
+        <label className={styles.field}>
+          <span>Hero title</span>
+          <input
+            value={form.hero?.title || ""}
+            onChange={(e) => setField("hero", { ...form.hero, title: e.target.value })}
+          />
+        </label>
+        <label className={styles.field} style={{ gridColumn: "1 / -1" }}>
+          <span>Hero description</span>
+          <textarea
+            value={form.hero?.description || ""}
+            onChange={(e) => setField("hero", { ...form.hero, description: e.target.value })}
+          />
+        </label>
+        <label className={styles.field} style={{ gridColumn: "1 / -1" }}>
+          <span>Full description</span>
+          <textarea
+            value={form.description}
+            onChange={(e) => setField("description", e.target.value)}
+          />
+        </label>
+
+        <div style={{ gridColumn: "1 / -1" }}>
+          <AdminMediaField
+            label="Mockup image (hero)"
+            value={form.mockup?.url || ""}
+            folder="Conx-orbit/solutions"
+            onUploaded={({ url, publicId }) => setField("mockup", { url, publicId })}
+            onClear={() => setField("mockup", { url: "", publicId: "" })}
+          />
+        </div>
+        <div style={{ gridColumn: "1 / -1" }}>
+          <AdminMediaField
+            label="Demo video"
+            kind="video"
+            value={form.demo?.videoUrl || ""}
+            folder="Conx-orbit/solutions"
+            onUploaded={({ url, publicId }) =>
+              setField("demo", { videoUrl: url, publicId })
+            }
+            onClear={() => setField("demo", { videoUrl: "", publicId: "" })}
+          />
+        </div>
+
+        <label className={styles.field} style={{ gridColumn: "1 / -1" }}>
+          <span>Features (comma-separated)</span>
+          <input value={featuresText} onChange={(e) => setFeaturesText(e.target.value)} />
+        </label>
+        <label className={styles.field} style={{ gridColumn: "1 / -1" }}>
+          <span>Capabilities (comma-separated)</span>
+          <input value={capabilitiesText} onChange={(e) => setCapabilitiesText(e.target.value)} />
+        </label>
+        <label className={styles.field} style={{ gridColumn: "1 / -1" }}>
+          <span>Audiences (comma-separated)</span>
+          <input value={audiencesText} onChange={(e) => setAudiencesText(e.target.value)} />
+        </label>
+        <label className={styles.field} style={{ gridColumn: "1 / -1" }}>
+          <span>Technologies (comma-separated)</span>
+          <input value={technologiesText} onChange={(e) => setTechnologiesText(e.target.value)} />
+        </label>
+
+        <h3 style={{ gridColumn: "1 / -1", marginBottom: 0 }}>CTA</h3>
+        <label className={styles.field}>
+          <span>CTA title</span>
+          <input
+            value={form.cta?.title || ""}
+            onChange={(e) => setField("cta", { ...form.cta, title: e.target.value })}
+          />
+        </label>
+        <label className={styles.field} style={{ gridColumn: "1 / -1" }}>
+          <span>CTA body</span>
+          <textarea
+            value={form.cta?.body || ""}
+            onChange={(e) => setField("cta", { ...form.cta, body: e.target.value })}
+          />
+        </label>
+        <label className={styles.field}>
+          <span>Primary CTA label</span>
+          <input
+            value={form.cta?.primary?.label || ""}
+            onChange={(e) =>
+              setField("cta", {
+                ...form.cta,
+                primary: { ...form.cta.primary, label: e.target.value },
+              })
+            }
+          />
+        </label>
+        <label className={styles.field}>
+          <span>Primary CTA href</span>
+          <input
+            value={form.cta?.primary?.href || ""}
+            onChange={(e) =>
+              setField("cta", {
+                ...form.cta,
+                primary: { ...form.cta.primary, href: e.target.value },
+              })
+            }
+          />
+        </label>
+
+        <h3 style={{ gridColumn: "1 / -1", marginBottom: 0 }}>Related</h3>
+        <div className={styles.field} style={{ gridColumn: "1 / -1" }}>
+          <span>Related solutions</span>
+          <div className={styles.checkRow}>
+            {allSolutions
+              .filter((s) => String(s._id) !== String(id))
+              .map((s) => (
+                <label key={s._id}>
                   <input
                     type="checkbox"
-                    checked={(form.trades || []).includes(trade)}
+                    checked={(form.relatedSolutionIds || []).map(String).includes(String(s._id))}
                     onChange={(e) => {
-                      const next = new Set(form.trades || []);
-                      if (e.target.checked) next.add(trade);
-                      else next.delete(trade);
-                      setField("trades", [...next]);
+                      const next = new Set((form.relatedSolutionIds || []).map(String));
+                      if (e.target.checked) next.add(String(s._id));
+                      else next.delete(String(s._id));
+                      setField("relatedSolutionIds", [...next]);
                     }}
                   />
-                  {trade}
+                  {s.name}
                 </label>
               ))}
-            </div>
-          </label>
-          <label className={styles.field}>
-            <span>Portfolio label</span>
-            <SelectWithFallback
-              value={form.portfolioLabel}
-              options={PORTFOLIO_LABELS}
-              onChange={(e) => setField("portfolioLabel", e.target.value)}
-            />
-          </label>
-          <label className={styles.field}>
-            <span>Portfolio status</span>
-            <SelectWithFallback
-              value={form.portfolioStatus}
-              options={PORTFOLIO_STATUSES}
-              onChange={(e) => setField("portfolioStatus", e.target.value)}
-            />
-          </label>
-          <label className={styles.field} style={{ gridColumn: "1 / -1" }}>
-            <span>Portfolio body</span>
-            <textarea
-              value={form.portfolioBody}
-              onChange={(e) => setField("portfolioBody", e.target.value)}
-            />
-          </label>
-          <label className={styles.field}>
-            <span>Case study slug (for CTA)</span>
-            <input
-              value={form.caseStudySlug}
-              onChange={(e) => setField("caseStudySlug", e.target.value)}
-            />
-          </label>
-          <label className={styles.field}>
-            <span>Confidential label</span>
-            <input
-              value={form.confidentialLabel}
-              onChange={(e) => setField("confidentialLabel", e.target.value)}
-            />
-          </label>
-          <label className={styles.field} style={{ gridColumn: "1 / -1" }}>
-            <span>Portfolio image URL</span>
-            <input
-              type="url"
-              placeholder="https://res.cloudinary.com/..."
-              value={form.portfolioImage}
-              onChange={(e) => setField("portfolioImage", e.target.value)}
-            />
-            {form.portfolioImage ? (
-              <img src={mediaUrl(form.portfolioImage)} alt="" style={{ maxWidth: 160, marginTop: 8 }} />
-            ) : null}
-          </label>
+          </div>
         </div>
-      ) : null}
 
-      {tab === 2 ? (
-        <div className={styles.grid2}>
-          <p className={styles.muted} style={{ gridColumn: "1 / -1" }}>
-            Section badges (THE CHALLENGE, CAPABILITIES, etc.) are fixed in the public UI and cannot be
-            edited here.
-          </p>
-
-          <h3 style={{ gridColumn: "1 / -1", marginBottom: 0 }}>Hero</h3>
-          <label className={styles.field}>
-            <span>Title before</span>
-            <input
-              value={detail.titleBefore || ""}
-              onChange={(e) => setDetail("titleBefore", e.target.value)}
-            />
-          </label>
-          <label className={styles.field}>
-            <span>Title highlight</span>
-            <input
-              value={detail.titleHighlight || ""}
-              onChange={(e) => setDetail("titleHighlight", e.target.value)}
-            />
-          </label>
-          <label className={styles.field}>
-            <span>Title after</span>
-            <input
-              value={detail.titleAfter || ""}
-              onChange={(e) => setDetail("titleAfter", e.target.value)}
-            />
-          </label>
-          <label className={styles.field} style={{ gridColumn: "1 / -1" }}>
-            <span>Body</span>
-            <textarea value={detail.body || ""} onChange={(e) => setDetail("body", e.target.value)} />
-          </label>
-          <label className={styles.field}>
-            <span>Primary CTA label</span>
-            <input
-              value={detail.primaryCta?.label || ""}
-              onChange={(e) => setDetail("primaryCta.label", e.target.value)}
-            />
-          </label>
-          <label className={styles.field}>
-            <span>Primary CTA href</span>
-            <input
-              value={detail.primaryCta?.href || ""}
-              onChange={(e) => setDetail("primaryCta.href", e.target.value)}
-            />
-          </label>
-          <label className={styles.field}>
-            <span>Demo CTA label</span>
-            <input
-              value={detail.demoCta?.label || ""}
-              onChange={(e) => setDetail("demoCta.label", e.target.value)}
-            />
-          </label>
-          <label className={styles.field}>
-            <span>Demo CTA target id</span>
-            <input
-              value={detail.demoCta?.targetId || ""}
-              onChange={(e) => setDetail("demoCta.targetId", e.target.value)}
-            />
-          </label>
-
-          <h3 style={{ gridColumn: "1 / -1", marginBottom: 0 }}>Stats</h3>
-          {["bestFor", "coreFunction", "platform", "workflow"].map((key) => (
-            <label key={key} className={styles.field}>
-              <span>{key}</span>
+        <h3 style={{ gridColumn: "1 / -1", marginBottom: 0 }}>FAQ</h3>
+        {(form.faq || []).map((item, index) => (
+          <div key={index} className={styles.grid2} style={{ gridColumn: "1 / -1" }}>
+            <label className={styles.field}>
+              <span>Question</span>
               <input
-                value={detail.stats?.[key] || ""}
-                onChange={(e) => setDetail(`stats.${key}`, e.target.value)}
+                value={item.question || ""}
+                onChange={(e) => {
+                  const next = [...(form.faq || [])];
+                  next[index] = { ...next[index], question: e.target.value };
+                  setField("faq", next);
+                }}
               />
             </label>
-          ))}
-
-          <h3 style={{ gridColumn: "1 / -1", marginBottom: 0 }}>Challenge</h3>
-          <label className={styles.field} style={{ gridColumn: "1 / -1" }}>
-            <span>Title</span>
-            <input
-              value={detail.challenge?.title || ""}
-              onChange={(e) => setDetail("challenge.title", e.target.value)}
-            />
-          </label>
-          <label className={styles.field} style={{ gridColumn: "1 / -1" }}>
-            <span>Body</span>
-            <textarea
-              value={detail.challenge?.body || ""}
-              onChange={(e) => setDetail("challenge.body", e.target.value)}
-            />
-          </label>
-          <ListEditor
-            items={detail.challenge?.problems || []}
-            onChange={(problems) => setDetail("challenge.problems", problems)}
-            addLabel="Add problem"
-            fields={[
-              { key: "title", label: "Problem title" },
-              { key: "body", label: "Problem body", multiline: true, wide: true },
-            ]}
-          />
-
-          <h3 style={{ gridColumn: "1 / -1", marginBottom: 0 }}>Capabilities</h3>
-          <label className={styles.field} style={{ gridColumn: "1 / -1" }}>
-            <span>Title</span>
-            <input
-              value={detail.capabilities?.title || ""}
-              onChange={(e) => setDetail("capabilities.title", e.target.value)}
-            />
-          </label>
-          <label className={styles.field} style={{ gridColumn: "1 / -1" }}>
-            <span>Body</span>
-            <textarea
-              value={detail.capabilities?.body || ""}
-              onChange={(e) => setDetail("capabilities.body", e.target.value)}
-            />
-          </label>
-          <ListEditor
-            items={detail.capabilities?.cards || []}
-            onChange={(cards) => setDetail("capabilities.cards", cards)}
-            addLabel="Add capability card"
-            fields={[
-              { key: "title", label: "Card title" },
-              { key: "body", label: "Card body", multiline: true, wide: true },
-            ]}
-          />
-
-          <h3 style={{ gridColumn: "1 / -1", marginBottom: 0 }}>How it works</h3>
-          <label className={styles.field}>
-            <span>Title</span>
-            <input
-              value={detail.howItWorks?.title || ""}
-              onChange={(e) => setDetail("howItWorks.title", e.target.value)}
-            />
-          </label>
-          <label className={styles.field}>
-            <span>Stages label</span>
-            <input
-              value={detail.howItWorks?.stagesLabel || ""}
-              onChange={(e) => setDetail("howItWorks.stagesLabel", e.target.value)}
-            />
-          </label>
-          <ListEditor
-            items={detail.howItWorks?.stages || []}
-            onChange={(stages) => setDetail("howItWorks.stages", stages)}
-            addLabel="Add stage"
-            fields={[
-              { key: "title", label: "Stage title" },
-              { key: "body", label: "Stage body", multiline: true, wide: true },
-            ]}
-          />
-
-          <h3 style={{ gridColumn: "1 / -1", marginBottom: 0 }}>Built for</h3>
-          <label className={styles.field} style={{ gridColumn: "1 / -1" }}>
-            <span>Title</span>
-            <input
-              value={detail.builtFor?.title || ""}
-              onChange={(e) => setDetail("builtFor.title", e.target.value)}
-            />
-          </label>
-          <label className={styles.field} style={{ gridColumn: "1 / -1" }}>
-            <span>Body</span>
-            <textarea
-              value={detail.builtFor?.body || ""}
-              onChange={(e) => setDetail("builtFor.body", e.target.value)}
-            />
-          </label>
-          <ListEditor
-            items={detail.builtFor?.audiences || []}
-            onChange={(audiences) => setDetail("builtFor.audiences", audiences)}
-            addLabel="Add audience"
-            fields={[
-              { key: "title", label: "Audience title" },
-              { key: "body", label: "Audience body", multiline: true, wide: true },
-            ]}
-          />
-
-          <h3 style={{ gridColumn: "1 / -1", marginBottom: 0 }}>Demo</h3>
-          <label className={styles.field}>
-            <span>Title</span>
-            <input
-              value={detail.demo?.title || ""}
-              onChange={(e) => setDetail("demo.title", e.target.value)}
-            />
-          </label>
-          <label className={styles.field}>
-            <span>Video URL</span>
-            <input
-              value={detail.demo?.videoSrc || ""}
-              onChange={(e) => setDetail("demo.videoSrc", e.target.value)}
-            />
-          </label>
-          <label className={styles.field}>
-            <span>Poster image URL</span>
-            <input
-              type="url"
-              placeholder="https://res.cloudinary.com/..."
-              value={detail.demo?.posterSrc || ""}
-              onChange={(e) => setDetail("demo.posterSrc", e.target.value)}
-            />
-          </label>
-
-          <h3 style={{ gridColumn: "1 / -1", marginBottom: 0 }}>More solutions</h3>
-          <label className={styles.field} style={{ gridColumn: "1 / -1" }}>
-            <span>Title</span>
-            <input
-              value={detail.more?.title || ""}
-              onChange={(e) => setDetail("more.title", e.target.value)}
-            />
-          </label>
-          <div className={styles.field} style={{ gridColumn: "1 / -1" }}>
-            <span>Related solution slugs</span>
-            <div className={styles.checkRow} style={{ flexWrap: "wrap" }}>
-              {allSolutions
-                .filter((row) => row.slug !== form.slug)
-                .map((row) => (
-                  <label key={row._id || row.slug}>
-                    <input
-                      type="checkbox"
-                      checked={moreSlugs.includes(row.slug)}
-                      onChange={(e) => {
-                        const next = new Set(moreSlugs);
-                        if (e.target.checked) next.add(row.slug);
-                        else next.delete(row.slug);
-                        setDetail("more.slugs", [...next]);
-                      }}
-                    />
-                    {row.name || row.slug}
-                  </label>
-                ))}
-            </div>
+            <label className={styles.field}>
+              <span>Answer</span>
+              <input
+                value={item.answer || ""}
+                onChange={(e) => {
+                  const next = [...(form.faq || [])];
+                  next[index] = { ...next[index], answer: e.target.value };
+                  setField("faq", next);
+                }}
+              />
+            </label>
           </div>
+        ))}
+        <div className={styles.row} style={{ gridColumn: "1 / -1" }}>
+          <button
+            type="button"
+            className={`${styles.btn} ${styles.btnSecondary}`}
+            onClick={() => setField("faq", [...(form.faq || []), { question: "", answer: "" }])}
+          >
+            Add FAQ
+          </button>
+        </div>
 
-          <h3 style={{ gridColumn: "1 / -1", marginBottom: 0 }}>FAQ</h3>
-          <label className={styles.field}>
-            <span>Title before</span>
-            <input
-              value={detail.faq?.titleBefore || ""}
-              onChange={(e) => setDetail("faq.titleBefore", e.target.value)}
-            />
-          </label>
-          <label className={styles.field}>
-            <span>Title highlight</span>
-            <input
-              value={detail.faq?.titleHighlight || ""}
-              onChange={(e) => setDetail("faq.titleHighlight", e.target.value)}
-            />
-          </label>
-          <label className={styles.field}>
-            <span>Title after</span>
-            <input
-              value={detail.faq?.titleAfter || ""}
-              onChange={(e) => setDetail("faq.titleAfter", e.target.value)}
-            />
-          </label>
-          <ListEditor
-            items={detail.faq?.items || []}
-            onChange={(items) => setDetail("faq.items", items)}
-            addLabel="Add FAQ item"
-            fields={[
-              { key: "question", label: "Question", wide: true },
-              { key: "answer", label: "Answer", multiline: true, wide: true },
-            ]}
+        <h3 style={{ gridColumn: "1 / -1", marginBottom: 0 }}>SEO</h3>
+        <label className={styles.field}>
+          <span>SEO title</span>
+          <input
+            value={form.seo?.title || ""}
+            onChange={(e) => setField("seo", { ...form.seo, title: e.target.value })}
           />
-
-          <h3 style={{ gridColumn: "1 / -1", marginBottom: 0 }}>CTA</h3>
-          <label className={styles.field} style={{ gridColumn: "1 / -1" }}>
-            <span>Title</span>
-            <input
-              value={detail.cta?.title || ""}
-              onChange={(e) => setDetail("cta.title", e.target.value)}
-            />
-          </label>
-          <label className={styles.field} style={{ gridColumn: "1 / -1" }}>
-            <span>Body</span>
-            <textarea
-              value={detail.cta?.body || ""}
-              onChange={(e) => setDetail("cta.body", e.target.value)}
-            />
-          </label>
-          <label className={styles.field}>
-            <span>Primary label</span>
-            <input
-              value={detail.cta?.primary?.label || ""}
-              onChange={(e) => setDetail("cta.primary.label", e.target.value)}
-            />
-          </label>
-          <label className={styles.field}>
-            <span>Primary href</span>
-            <input
-              value={detail.cta?.primary?.href || ""}
-              onChange={(e) => setDetail("cta.primary.href", e.target.value)}
-            />
-          </label>
-          <label className={styles.field}>
-            <span>Secondary label</span>
-            <input
-              value={detail.cta?.secondary?.label || ""}
-              onChange={(e) => setDetail("cta.secondary.label", e.target.value)}
-            />
-          </label>
-          <label className={styles.field}>
-            <span>Secondary href</span>
-            <input
-              value={detail.cta?.secondary?.href || ""}
-              onChange={(e) => setDetail("cta.secondary.href", e.target.value)}
-            />
-          </label>
-
-          <div style={{ gridColumn: "1 / -1", marginTop: 12 }}>
-            <button
-              type="button"
-              className={`${styles.btn} ${styles.btnSecondary}`}
-              onClick={() => {
-                if (!showAdvanced) syncJsonFromForm();
-                setShowAdvanced((v) => !v);
-              }}
-            >
-              {showAdvanced ? "Hide advanced JSON" : "Show advanced JSON"}
-            </button>
-          </div>
-          {showAdvanced ? (
-            <>
-              <label className={styles.field} style={{ gridColumn: "1 / -1" }}>
-                <span>Advanced detail JSON</span>
-                <textarea
-                  style={{ minHeight: 280, fontFamily: "ui-monospace, monospace", fontSize: 12 }}
-                  value={detailJson}
-                  onChange={(e) => setDetailJson(e.target.value)}
-                />
-              </label>
-              <div className={styles.row} style={{ gridColumn: "1 / -1" }}>
-                <button type="button" className={`${styles.btn} ${styles.btnSecondary}`} onClick={applyJsonToForm}>
-                  Apply JSON to form
-                </button>
-              </div>
-            </>
-          ) : null}
-        </div>
-      ) : null}
-
-      {tab === 3 ? (
-        <div className={styles.grid2}>
-          <p className={styles.muted} style={{ gridColumn: "1 / -1" }}>
-            Leave empty for now — fill later when ready.
-          </p>
-          <label className={styles.field}>
-            <span>SEO title</span>
-            <input
-              value={form.seo?.title || ""}
-              onChange={(e) => setField("seo", { ...form.seo, title: e.target.value })}
-            />
-          </label>
-          <label className={styles.field}>
-            <span>SEO description</span>
-            <input
-              value={form.seo?.description || ""}
-              onChange={(e) => setField("seo", { ...form.seo, description: e.target.value })}
-            />
-          </label>
-          <label className={styles.field}>
-            <span>OG image URL</span>
-            <input
-              value={form.seo?.ogImage || ""}
-              onChange={(e) => setField("seo", { ...form.seo, ogImage: e.target.value })}
-            />
-          </label>
-        </div>
-      ) : null}
+        </label>
+        <label className={styles.field} style={{ gridColumn: "1 / -1" }}>
+          <span>SEO description</span>
+          <input
+            value={form.seo?.description || ""}
+            onChange={(e) => setField("seo", { ...form.seo, description: e.target.value })}
+          />
+        </label>
+      </div>
     </form>
   );
 }

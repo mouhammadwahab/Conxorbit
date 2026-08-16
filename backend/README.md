@@ -1,12 +1,13 @@
 # ConX Orbit API
 
-JSON-file database (LowDB) + Express. No MongoDB install required.
+MongoDB (Mongoose) + Express + Cloudinary for CMS media.
 
 ## Setup
 
 ```bash
 cd backend
 npm install
+# Ensure MONGODB_URI + Cloudinary keys are in .env
 npm run seed
 npm run dev
 ```
@@ -16,6 +17,14 @@ API: `http://localhost:5000`
 Admin login (after seed):
 - Email: `admin@conxorbit.com`
 - Password: `admin123`
+
+## Environment
+
+See [`.env.example`](.env.example). Required:
+
+- `MONGODB_URI`
+- `JWT_SECRET`
+- `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET`
 
 ## Frontend
 
@@ -28,62 +37,25 @@ npm start
 
 Admin UI: `http://localhost:3000/admin/login`
 
+## Media
+
+- Upload: `POST /api/admin/upload/image` and `/video` (auth required)
+- Entity CRUD stores Cloudinary `url` + `publicId` on the document
+- Folders: `Conx-orbit/solutions`, `Conx-orbit/case-studies`, `Conx-orbit/team`, `Conx-orbit/offers`
+- Replacing/clearing media deletes the previous Cloudinary asset
+
 ## Contact email (EmailJS)
 
 Public forms post to `POST /api/contact`:
 - Book a Discovery Call (`type: "discovery"`)
 - Workflow Discovery modal (`type: "workflow-discovery"`)
 
-Delivery is handled by **[EmailJS](https://www.emailjs.com/)**; the inbox is `CONTACT_TO` (`Founder@conxorbit.com`).
+Set `CONTACT_*` / `EMAILJS_*` in `.env`. See earlier EmailJS dashboard steps if needed.
 
-### 1. Create EmailJS account
-
-1. Sign up at [emailjs.com](https://www.emailjs.com/).
-2. **Email Services** → Add New Service → connect Gmail/Outlook (or any supported provider) that can *send* mail.
-3. **Email Templates** → Create New Template with:
-
-| Field | Value |
-| --- | --- |
-| To Email | `{{to_email}}` |
-| To Name | `{{to_name}}` |
-| Subject | `{{subject}}` |
-| Content | `{{message}}` |
-| Reply To | `{{reply_to}}` |
-
-4. **Account → API Keys** — copy Public Key and Private Key.
-5. **Account → Security** — enable *Allow EmailJS API for non-browser applications* (required for Node). Prefer *Use Private Key* (strict mode).
-
-### 2. Backend `.env`
-
-```
-CONTACT_TO=Founder@conxorbit.com
-CONTACT_MODE=emailjs
-EMAILJS_SERVICE_ID=service_xxxxxxx
-EMAILJS_TEMPLATE_ID=template_xxxxxxx
-EMAILJS_PUBLIC_KEY=xxxxxxxxxxxxxxx
-EMAILJS_PRIVATE_KEY=xxxxxxxxxxxxxxx
-```
-
-Restart the API after saving.
-
-### 3. Frontend
-
-```
-REACT_APP_CONTACT_ENDPOINT=http://localhost:5000/api/contact
-```
-
-Restart the React app after changing `.env`.
-
-### Local testing without EmailJS
-
-```
-CONTACT_MODE=log
-```
-
-Submissions print in the API terminal only.
+Local without SMTP/EmailJS: `CONTACT_MODE=log`
 
 ## Notes
 
-- Data file: `backend/data/db.json`
-- Uploads: `backend/uploads/`
-- Re-seed anytime with `npm run seed` (wipes and reloads from current static content)
+- Seed: `npm run seed` → `src/seed/seedMongo.js` (uploads real placeholder images from `frontend/src/assets/solutions`)
+- Legacy LowDB seed: `npm run seed:lowdb` (page chrome / old JSON only)
+- Health: `GET /api/health` includes Mongo connection status

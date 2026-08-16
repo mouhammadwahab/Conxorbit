@@ -28,7 +28,7 @@ export default function SolutionsGrid({ items = [] }) {
             <h2>{item.name}</h2>
             <p className={styles.description}>{item.description}</p>
             <div className={styles.tags}>
-              {item.categories.map((tag) => (
+              {(item.categories || []).map((tag) => (
                 <span key={tag} className={styles.tag}>
                   {tag}
                 </span>

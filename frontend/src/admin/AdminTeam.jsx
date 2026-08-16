@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react";
-import { api, mediaUrl } from "../api/client";
+import { api } from "../api/client";
 import { useAdminAuth } from "./AdminAuth";
+import AdminMediaField from "./AdminMediaField";
 import styles from "./admin.module.css";
 
 const EMPTY = {
   name: "",
   designation: "",
   role: "",
+  bio: "",
   socialLinks: [{ platform: "linkedin", url: "" }],
-  image: "",
+  image: { url: "", publicId: "" },
   quote: "",
-  quoteAuthor: "",
   sortOrder: 0,
   published: true,
 };
@@ -36,6 +37,10 @@ export default function AdminTeam() {
     setForm({
       ...EMPTY,
       ...item,
+      image:
+        item.image && typeof item.image === "object"
+          ? { url: item.image.url || "", publicId: item.image.publicId || "" }
+          : { url: typeof item.image === "string" ? item.image : "", publicId: "" },
       socialLinks: item.socialLinks?.length ? item.socialLinks : EMPTY.socialLinks,
     });
   };
@@ -51,6 +56,7 @@ export default function AdminTeam() {
     try {
       const payload = { ...form };
       delete payload._id;
+      delete payload.__v;
       delete payload.createdAt;
       delete payload.updatedAt;
       if (editId) await api.admin.team.update(token, editId, payload);
@@ -75,24 +81,32 @@ export default function AdminTeam() {
       {error ? <p className={styles.error}>{error}</p> : null}
       <table className={styles.table}>
         <thead>
-            <tr>
-              <th>Name</th>
-              <th>Role</th>
-              <th>Published</th>
-              <th />
-            </tr>
-          </thead>
-          <tbody>
-            {items.map((item) => (
-              <tr key={item._id}>
-                <td>{item.name}</td>
-                <td>{item.role}</td>
-                <td>{item.published ? "Yes" : "No"}</td>
+          <tr>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Published</th>
+            <th />
+          </tr>
+        </thead>
+        <tbody>
+          {items.map((item) => (
+            <tr key={item._id}>
+              <td>{item.name}</td>
+              <td>{item.role || item.designation}</td>
+              <td>{item.published ? "Yes" : "No"}</td>
               <td className={styles.row}>
-                <button type="button" className={`${styles.btn} ${styles.btnSecondary}`} onClick={() => startEdit(item)}>
+                <button
+                  type="button"
+                  className={`${styles.btn} ${styles.btnSecondary}`}
+                  onClick={() => startEdit(item)}
+                >
                   Edit
                 </button>
-                <button type="button" className={`${styles.btn} ${styles.btnDanger}`} onClick={() => onDelete(item._id)}>
+                <button
+                  type="button"
+                  className={`${styles.btn} ${styles.btnDanger}`}
+                  onClick={() => onDelete(item._id)}
+                >
                   Delete
                 </button>
               </td>
@@ -101,11 +115,15 @@ export default function AdminTeam() {
         </tbody>
       </table>
 
-      <h2 style={{ marginTop: 32 }}>{editId ? "Edit member" : "Add member"}</h2>
+      <h2 style={{ marginTop: 28 }}>{editId ? "Edit member" : "New member"}</h2>
       <form onSubmit={onSave} className={styles.grid2}>
         <label className={styles.field}>
           <span>Name</span>
-          <input value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} required />
+          <input
+            value={form.name}
+            onChange={(e) => setForm({ ...form, name: e.target.value })}
+            required
+          />
         </label>
         <label className={styles.field}>
           <span>Designation</span>
@@ -118,10 +136,21 @@ export default function AdminTeam() {
           <span>Role</span>
           <input value={form.role} onChange={(e) => setForm({ ...form, role: e.target.value })} />
         </label>
-        <div className={styles.field} style={{ gridColumn: "1 / -1" }}>
-          <span>Social links</span>
-          {(form.socialLinks || []).map((link, index) => (
-            <div key={index} className={styles.row} style={{ marginTop: 8 }}>
+        <label className={styles.field} style={{ gridColumn: "1 / -1" }}>
+          <span>Bio</span>
+          <textarea value={form.bio} onChange={(e) => setForm({ ...form, bio: e.target.value })} />
+        </label>
+        <label className={styles.field} style={{ gridColumn: "1 / -1" }}>
+          <span>Quote</span>
+          <textarea
+            value={form.quote}
+            onChange={(e) => setForm({ ...form, quote: e.target.value })}
+          />
+        </label>
+        {(form.socialLinks || []).map((link, index) => (
+          <div key={index} className={styles.grid2} style={{ gridColumn: "1 / -1" }}>
+            <label className={styles.field}>
+              <span>Social platform</span>
               <select
                 value={link.platform || ""}
                 onChange={(e) => {
@@ -129,48 +158,31 @@ export default function AdminTeam() {
                   next[index] = { ...next[index], platform: e.target.value };
                   setForm({ ...form, socialLinks: next });
                 }}
-                style={{ maxWidth: 140 }}
               >
-                <option value="">platform</option>
-                {[
-                  ...SOCIAL_PLATFORMS,
-                  ...(link.platform && !SOCIAL_PLATFORMS.includes(link.platform)
-                    ? [link.platform]
-                    : []),
-                ].map((platform) => (
+                {SOCIAL_PLATFORMS.map((platform) => (
                   <option key={platform} value={platform}>
                     {platform}
                   </option>
                 ))}
               </select>
+            </label>
+            <label className={styles.field}>
+              <span>URL</span>
               <input
-                placeholder="https://..."
                 value={link.url || ""}
                 onChange={(e) => {
                   const next = [...(form.socialLinks || [])];
                   next[index] = { ...next[index], url: e.target.value };
                   setForm({ ...form, socialLinks: next });
                 }}
-                style={{ flex: 1 }}
               />
-              <button
-                type="button"
-                className={`${styles.btn} ${styles.btnDanger}`}
-                onClick={() =>
-                  setForm({
-                    ...form,
-                    socialLinks: (form.socialLinks || []).filter((_, i) => i !== index),
-                  })
-                }
-              >
-                Remove
-              </button>
-            </div>
-          ))}
+            </label>
+          </div>
+        ))}
+        <div className={styles.row} style={{ gridColumn: "1 / -1" }}>
           <button
             type="button"
             className={`${styles.btn} ${styles.btnSecondary}`}
-            style={{ marginTop: 8 }}
             onClick={() =>
               setForm({
                 ...form,
@@ -181,17 +193,6 @@ export default function AdminTeam() {
             Add social link
           </button>
         </div>
-        <label className={styles.field} style={{ gridColumn: "1 / -1" }}>
-          <span>Quote</span>
-          <textarea value={form.quote} onChange={(e) => setForm({ ...form, quote: e.target.value })} />
-        </label>
-        <label className={styles.field}>
-          <span>Quote author</span>
-          <input
-            value={form.quoteAuthor}
-            onChange={(e) => setForm({ ...form, quoteAuthor: e.target.value })}
-          />
-        </label>
         <label className={styles.field}>
           <span>Sort order</span>
           <input
@@ -213,18 +214,15 @@ export default function AdminTeam() {
             </label>
           </div>
         </label>
-        <label className={styles.field} style={{ gridColumn: "1 / -1" }}>
-          <span>Photo image URL</span>
-          <input
-            type="url"
-            placeholder="https://res.cloudinary.com/..."
-            value={form.image}
-            onChange={(e) => setForm({ ...form, image: e.target.value })}
+        <div style={{ gridColumn: "1 / -1" }}>
+          <AdminMediaField
+            label="Profile picture"
+            value={form.image?.url || ""}
+            folder="Conx-orbit/team"
+            onUploaded={({ url, publicId }) => setForm({ ...form, image: { url, publicId } })}
+            onClear={() => setForm({ ...form, image: { url: "", publicId: "" } })}
           />
-          {form.image ? (
-            <img src={mediaUrl(form.image)} alt="" style={{ maxWidth: 120, marginTop: 8 }} />
-          ) : null}
-        </label>
+        </div>
         <div className={styles.row} style={{ gridColumn: "1 / -1" }}>
           <button className={styles.btn} type="submit">
             {editId ? "Update" : "Create"}

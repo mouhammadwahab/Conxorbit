@@ -1,55 +1,19 @@
 const express = require("express");
-const { caseStudies } = require("../config/lowdb");
 const { requireAuth } = require("../middleware/auth");
+const { requireMongo } = require("../middleware/mongo");
+const { uploadImage } = require("../middleware/upload");
+const ctrl = require("../controllers/caseStudyController");
 
 const publicRouter = express.Router();
 const adminRouter = express.Router();
 
-function sortRows(rows) {
-  return [...rows].sort(
-    (a, b) =>
-      (a.displayOrder || 0) - (b.displayOrder || 0) || String(a.title).localeCompare(b.title)
-  );
-}
+publicRouter.get("/", requireMongo, ctrl.listPublic);
+publicRouter.get("/:slug", requireMongo, ctrl.getPublicBySlug);
 
-function toPublic(row) {
-  return {
-    ...row,
-    id: row._id,
-  };
-}
-
-publicRouter.get("/", (_req, res) => {
-  res.json(sortRows(caseStudies.all().filter((row) => row.published)).map(toPublic));
-});
-
-publicRouter.get("/:slug", (req, res) => {
-  const item = caseStudies.findOne({ slug: req.params.slug, published: true });
-  if (!item) return res.status(404).json({ message: "Not found" });
-  return res.json(toPublic(item));
-});
-
-adminRouter.use(requireAuth);
-
-adminRouter.get("/", (_req, res) => {
-  res.json(sortRows(caseStudies.all()));
-});
-
-adminRouter.post("/", (req, res) => {
-  const created = caseStudies.insert(req.body);
-  return res.status(201).json(created);
-});
-
-adminRouter.put("/:id", (req, res) => {
-  const updated = caseStudies.update(req.params.id, req.body);
-  if (!updated) return res.status(404).json({ message: "Not found" });
-  return res.json(updated);
-});
-
-adminRouter.delete("/:id", (req, res) => {
-  const ok = caseStudies.remove(req.params.id);
-  if (!ok) return res.status(404).json({ message: "Not found" });
-  return res.json({ ok: true });
-});
+adminRouter.use(requireAuth, requireMongo);
+adminRouter.get("/", ctrl.listAdmin);
+adminRouter.post("/", uploadImage.single("heroImage"), ctrl.create);
+adminRouter.put("/:id", uploadImage.single("heroImage"), ctrl.update);
+adminRouter.delete("/:id", ctrl.remove);
 
 module.exports = { publicRouter, adminRouter };

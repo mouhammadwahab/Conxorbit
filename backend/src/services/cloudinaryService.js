@@ -15,7 +15,7 @@ const uploadToCloudinary = (fileBuffer, options = {}) => {
 
     const uploadStream = cloudinary.uploader.upload_stream(
       {
-        asset_folder: options.assetFolder || "conx-orbit",
+        folder: options.folder || options.assetFolder || "Conx-orbit",
         resource_type: options.resourceType || "image",
       },
       (error, result) => {

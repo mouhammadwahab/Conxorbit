@@ -12,24 +12,22 @@ export default function SolutionsFilterBar({
   return (
     <Reveal as="div" className={styles.bar} role="search">
       <div className={styles.left}>
-        <span className={styles.label}>Filter Solutions</span>
-        <div className={styles.pills} role="tablist" aria-label="Solution categories">
-          {filters.map((filter) => {
-            const selected = activeFilter === filter;
-            return (
-              <button
-                key={filter}
-                type="button"
-                role="tab"
-                aria-selected={selected}
-                className={selected ? styles.pillActive : styles.pill}
-                onClick={() => onFilterChange(filter)}
-              >
+        <label className={styles.filterField} htmlFor="solutions-category-filter">
+          <span className={styles.label}>Filter Solutions</span>
+          <select
+            id="solutions-category-filter"
+            className={styles.select}
+            value={activeFilter}
+            onChange={(event) => onFilterChange(event.target.value)}
+            aria-label="Solution categories"
+          >
+            {filters.map((filter) => (
+              <option key={filter} value={filter}>
                 {filter}
-              </button>
-            );
-          })}
-        </div>
+              </option>
+            ))}
+          </select>
+        </label>
       </div>
       <label className={styles.search}>
         <span className={styles.srOnly}>Search solutions</span>

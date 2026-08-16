@@ -341,9 +341,12 @@ function TeamSection({ team }) {
           const linkedin =
             member.linkedin ||
             member.socialLinks?.find((link) => link.platform === "linkedin")?.url;
-          const image = member.image?.startsWith("/uploads")
-            ? `${process.env.REACT_APP_API_URL || "http://localhost:5000"}${member.image}`
-            : member.image;
+          const image =
+            typeof member.image === "string"
+              ? member.image.startsWith("/uploads")
+                ? `${process.env.REACT_APP_API_URL || "http://localhost:5000"}${member.image}`
+                : member.image
+              : member.image?.url || "";
           return (
           <li key={member.name} className={`${styles.founderCard} interactiveCard cardReveal`}>
             <div className={styles.founderHit}>

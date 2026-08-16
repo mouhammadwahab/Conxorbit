@@ -1,16 +1,17 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const { getAdmin } = require("../config/lowdb");
+const Admin = require("../models/Admin");
+const { requireMongo } = require("../middleware/mongo");
 
 const router = express.Router();
 
-router.post("/login", async (req, res) => {
+router.post("/login", requireMongo, async (req, res) => {
   try {
     const email = String(req.body.email || "").toLowerCase().trim();
     const password = String(req.body.password || "");
-    const admin = getAdmin();
-    if (!admin || admin.email !== email) {
+    const admin = await Admin.findOne({ email });
+    if (!admin) {
       return res.status(401).json({ message: "Invalid credentials" });
     }
     const ok = await bcrypt.compare(password, admin.passwordHash);

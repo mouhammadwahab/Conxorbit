@@ -21,6 +21,7 @@ function normalizeSolution(item) {
   if (detail.demo) {
     detail.demo = {
       ...detail.demo,
+      videoSrc: mediaUrl(detail.demo.videoSrc || detail.demo.videoUrl),
       posterSrc: mediaUrl(detail.demo.posterSrc),
     };
   }

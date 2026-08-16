@@ -2,84 +2,29 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { api } from "../api/client";
 import { useAdminAuth } from "./AdminAuth";
+import AdminMediaField from "./AdminMediaField";
 import styles from "./admin.module.css";
 
+const EMPTY_POINT = { title: "", description: "" };
+
 const EMPTY = {
-  slug: "",
   title: "",
-  category: "Client System",
+  slug: "",
+  category: "",
   shortDescription: "",
   clientName: "",
   industry: "",
   trade: "",
   projectType: "",
-  heroImageUrl: "",
-  heroImagePublicId: "",
-  problem: "",
-  problemPoints: [
-    { title: "", description: "" },
-    { title: "", description: "" },
-    { title: "", description: "" },
-  ],
-  solution: "",
-  solutionPoints: [
-    { title: "", description: "" },
-    { title: "", description: "" },
-    { title: "", description: "" },
-    { title: "", description: "" },
-  ],
-  mockupImageUrl: "",
-  mockupImagePublicId: "",
-  supportingImageUrl: "",
-  supportingImagePublicId: "",
+  heroImage: { url: "", publicId: "" },
+  problem: { description: "", points: [{ ...EMPTY_POINT }, { ...EMPTY_POINT }] },
+  solution: { description: "", points: [{ ...EMPTY_POINT }, { ...EMPTY_POINT }] },
   relatedSolutionId: "",
   featured: false,
   published: true,
-  displayOrder: 0,
+  sortOrder: 0,
+  seo: { title: "", description: "", ogImage: "" },
 };
-
-function normalizeProblemPoints(value) {
-  const rows = Array.isArray(value) && value.length ? value : [{ title: "", description: "" }];
-  return rows.map((point) => {
-    if (typeof point === "string") return { title: point, description: "" };
-    return { title: point?.title || "", description: point?.description || "" };
-  });
-}
-
-function normalizeSolutionPoints(value) {
-  const rows = Array.isArray(value) && value.length ? value : [{ title: "", description: "" }];
-  return rows.map((point) => {
-    if (typeof point === "string") {
-      if (point.includes("|")) {
-        const [title, ...rest] = point.split("|");
-        return { title: title.trim(), description: rest.join("|").trim() };
-      }
-      return { title: point, description: "" };
-    }
-    return {
-      title: point?.title || "",
-      description: point?.description || point?.body || "",
-    };
-  });
-}
-
-const CASE_CATEGORIES = ["Client System", "Internal Product", "Workflow Solution"];
-const CASE_TRADES = ["facade", "construction"];
-
-function SelectWithFallback({ value, onChange, options, emptyLabel = "— Select —" }) {
-  const opts = [...options];
-  if (value && !opts.includes(value)) opts.unshift(value);
-  return (
-    <select value={value || ""} onChange={onChange}>
-      <option value="">{emptyLabel}</option>
-      {opts.map((opt) => (
-        <option key={opt} value={opt}>
-          {opt}
-        </option>
-      ))}
-    </select>
-  );
-}
 
 export default function AdminCaseStudies() {
   const { token } = useAdminAuth();
@@ -88,6 +33,7 @@ export default function AdminCaseStudies() {
   const [form, setForm] = useState(EMPTY);
   const [editId, setEditId] = useState(null);
   const [error, setError] = useState("");
+  const [saving, setSaving] = useState(false);
 
   const load = async () => {
     const [cases, sols] = await Promise.all([
@@ -108,8 +54,21 @@ export default function AdminCaseStudies() {
     setForm({
       ...EMPTY,
       ...item,
-      problemPoints: normalizeProblemPoints(item.problemPoints),
-      solutionPoints: normalizeSolutionPoints(item.solutionPoints),
+      heroImage: { url: "", publicId: "", ...(item.heroImage || {}) },
+      problem: {
+        description: item.problem?.description || "",
+        points: item.problem?.points?.length
+          ? item.problem.points
+          : [{ ...EMPTY_POINT }, { ...EMPTY_POINT }],
+      },
+      solution: {
+        description: item.solution?.description || "",
+        points: item.solution?.points?.length
+          ? item.solution.points
+          : [{ ...EMPTY_POINT }, { ...EMPTY_POINT }],
+      },
+      relatedSolutionId: item.relatedSolutionId ? String(item.relatedSolutionId) : "",
+      seo: { ...EMPTY.seo, ...(item.seo || {}) },
     });
   };
 
@@ -120,25 +79,15 @@ export default function AdminCaseStudies() {
 
   const onSave = async (event) => {
     event.preventDefault();
+    setSaving(true);
     setError("");
     try {
       const payload = {
         ...form,
-        problemPoints: (form.problemPoints || [])
-          .map((p) => ({
-            title: String(p.title || "").trim(),
-            description: String(p.description || "").trim(),
-          }))
-          .filter((p) => p.title || p.description),
-        solutionPoints: (form.solutionPoints || [])
-          .map((p) => ({
-            title: String(p.title || "").trim(),
-            description: String(p.description || "").trim(),
-          }))
-          .filter((p) => p.title || p.description),
+        relatedSolutionId: form.relatedSolutionId || null,
       };
       delete payload._id;
-      delete payload.id;
+      delete payload.__v;
       delete payload.createdAt;
       delete payload.updatedAt;
       if (editId) await api.admin.caseStudies.update(token, editId, payload);
@@ -147,6 +96,8 @@ export default function AdminCaseStudies() {
       await load();
     } catch (err) {
       setError(err.message);
+    } finally {
+      setSaving(false);
     }
   };
 
@@ -157,16 +108,16 @@ export default function AdminCaseStudies() {
     await load();
   };
 
-  const setSolutionPoint = (index, key, value) => {
-    const next = [...(form.solutionPoints || [])];
-    next[index] = { ...next[index], [key]: value };
-    setForm({ ...form, solutionPoints: next });
+  const setProblemPoint = (index, key, value) => {
+    const points = [...(form.problem.points || [])];
+    points[index] = { ...points[index], [key]: value };
+    setForm({ ...form, problem: { ...form.problem, points } });
   };
 
-  const setProblemPoint = (index, key, value) => {
-    const next = [...(form.problemPoints || [])];
-    next[index] = { ...next[index], [key]: value };
-    setForm({ ...form, problemPoints: next });
+  const setSolutionPoint = (index, key, value) => {
+    const points = [...(form.solution.points || [])];
+    points[index] = { ...points[index], [key]: value };
+    setForm({ ...form, solution: { ...form.solution, points } });
   };
 
   return (
@@ -209,10 +160,10 @@ export default function AdminCaseStudies() {
         </tbody>
       </table>
 
-      <h2 style={{ marginTop: 32 }}>{editId ? "Edit case study" : "Add case study"}</h2>
+      <h2 style={{ marginTop: 28 }}>{editId ? "Edit case study" : "New case study"}</h2>
       <form onSubmit={onSave} className={styles.grid2}>
         <label className={styles.field}>
-          <span>title</span>
+          <span>Title</span>
           <input
             value={form.title}
             onChange={(e) => setForm({ ...form, title: e.target.value })}
@@ -220,7 +171,7 @@ export default function AdminCaseStudies() {
           />
         </label>
         <label className={styles.field}>
-          <span>slug</span>
+          <span>Slug</span>
           <input
             value={form.slug}
             onChange={(e) => setForm({ ...form, slug: e.target.value })}
@@ -228,51 +179,49 @@ export default function AdminCaseStudies() {
           />
         </label>
         <label className={styles.field}>
-          <span>category</span>
-          <SelectWithFallback
+          <span>Category</span>
+          <input
             value={form.category}
-            options={CASE_CATEGORIES}
             onChange={(e) => setForm({ ...form, category: e.target.value })}
           />
         </label>
         <label className={styles.field}>
-          <span>projectType (hero heading)</span>
+          <span>Project type</span>
           <input
             value={form.projectType}
             onChange={(e) => setForm({ ...form, projectType: e.target.value })}
           />
         </label>
         <label className={styles.field} style={{ gridColumn: "1 / -1" }}>
-          <span>shortDescription</span>
+          <span>Short description</span>
           <textarea
             value={form.shortDescription}
             onChange={(e) => setForm({ ...form, shortDescription: e.target.value })}
           />
         </label>
         <label className={styles.field}>
-          <span>clientName</span>
+          <span>Client name</span>
           <input
             value={form.clientName}
             onChange={(e) => setForm({ ...form, clientName: e.target.value })}
           />
         </label>
         <label className={styles.field}>
-          <span>industry</span>
+          <span>Industry</span>
           <input
             value={form.industry}
             onChange={(e) => setForm({ ...form, industry: e.target.value })}
           />
         </label>
         <label className={styles.field}>
-          <span>trade</span>
-          <SelectWithFallback
+          <span>Trade</span>
+          <input
             value={form.trade}
-            options={CASE_TRADES}
             onChange={(e) => setForm({ ...form, trade: e.target.value })}
           />
         </label>
         <label className={styles.field}>
-          <span>relatedSolutionId</span>
+          <span>Related solution</span>
           <select
             value={form.relatedSolutionId || ""}
             onChange={(e) => setForm({ ...form, relatedSolutionId: e.target.value })}
@@ -280,76 +229,44 @@ export default function AdminCaseStudies() {
             <option value="">— none —</option>
             {solutions.map((sol) => (
               <option key={sol._id} value={sol._id}>
-                {sol.name} ({sol.slug})
+                {sol.name}
               </option>
             ))}
           </select>
         </label>
-        <label className={styles.field}>
-          <span>heroImageUrl</span>
-          <input
-            type="url"
-            value={form.heroImageUrl}
-            onChange={(e) => setForm({ ...form, heroImageUrl: e.target.value })}
-            placeholder="https://res.cloudinary.com/..."
+
+        <div style={{ gridColumn: "1 / -1" }}>
+          <AdminMediaField
+            label="Hero mockup image"
+            value={form.heroImage?.url || ""}
+            folder="Conx-orbit/case-studies"
+            onUploaded={({ url, publicId }) =>
+              setForm({ ...form, heroImage: { url, publicId } })
+            }
+            onClear={() => setForm({ ...form, heroImage: { url: "", publicId: "" } })}
           />
-        </label>
-        <label className={styles.field}>
-          <span>heroImagePublicId</span>
-          <input
-            value={form.heroImagePublicId}
-            onChange={(e) => setForm({ ...form, heroImagePublicId: e.target.value })}
-          />
-        </label>
-        <label className={styles.field}>
-          <span>mockupImageUrl</span>
-          <input
-            type="url"
-            value={form.mockupImageUrl}
-            onChange={(e) => setForm({ ...form, mockupImageUrl: e.target.value })}
-          />
-        </label>
-        <label className={styles.field}>
-          <span>mockupImagePublicId</span>
-          <input
-            value={form.mockupImagePublicId}
-            onChange={(e) => setForm({ ...form, mockupImagePublicId: e.target.value })}
-          />
-        </label>
-        <label className={styles.field}>
-          <span>supportingImageUrl</span>
-          <input
-            type="url"
-            value={form.supportingImageUrl}
-            onChange={(e) => setForm({ ...form, supportingImageUrl: e.target.value })}
-          />
-        </label>
-        <label className={styles.field}>
-          <span>supportingImagePublicId</span>
-          <input
-            value={form.supportingImagePublicId}
-            onChange={(e) => setForm({ ...form, supportingImagePublicId: e.target.value })}
-          />
-        </label>
+        </div>
+
         <label className={styles.field} style={{ gridColumn: "1 / -1" }}>
-          <span>problem (title then blank line then body)</span>
+          <span>Problem description</span>
           <textarea
-            style={{ minHeight: 120 }}
-            value={form.problem}
-            onChange={(e) => setForm({ ...form, problem: e.target.value })}
+            value={form.problem?.description || ""}
+            onChange={(e) =>
+              setForm({ ...form, problem: { ...form.problem, description: e.target.value } })
+            }
           />
         </label>
-        {(form.problemPoints || []).map((point, index) => (
+        {(form.problem?.points || []).map((point, index) => (
           <div key={`pp-${index}`} className={styles.grid2} style={{ gridColumn: "1 / -1" }}>
             <label className={styles.field}>
-              <span>problemPoints[{index}].title</span>
+              <span>Problem point title</span>
               <input
                 value={point.title || ""}
                 onChange={(e) => setProblemPoint(index, "title", e.target.value)}
               />
             </label>
             <label className={styles.field}>
-              <span>problemPoints[{index}].description</span>
+              <span>Problem point description</span>
               <input
                 value={point.description || ""}
                 onChange={(e) => setProblemPoint(index, "description", e.target.value)}
@@ -357,39 +274,27 @@ export default function AdminCaseStudies() {
             </label>
           </div>
         ))}
-        <div className={styles.row} style={{ gridColumn: "1 / -1" }}>
-          <button
-            type="button"
-            className={`${styles.btn} ${styles.btnSecondary}`}
-            onClick={() =>
-              setForm({
-                ...form,
-                problemPoints: [...(form.problemPoints || []), { title: "", description: "" }],
-              })
-            }
-          >
-            Add problemPoints
-          </button>
-        </div>
+
         <label className={styles.field} style={{ gridColumn: "1 / -1" }}>
-          <span>solution (title then blank line then body)</span>
+          <span>Solution description</span>
           <textarea
-            style={{ minHeight: 120 }}
-            value={form.solution}
-            onChange={(e) => setForm({ ...form, solution: e.target.value })}
+            value={form.solution?.description || ""}
+            onChange={(e) =>
+              setForm({ ...form, solution: { ...form.solution, description: e.target.value } })
+            }
           />
         </label>
-        {(form.solutionPoints || []).map((point, index) => (
+        {(form.solution?.points || []).map((point, index) => (
           <div key={`sp-${index}`} className={styles.grid2} style={{ gridColumn: "1 / -1" }}>
             <label className={styles.field}>
-              <span>solutionPoints[{index}].title</span>
+              <span>Solution point title</span>
               <input
                 value={point.title || ""}
                 onChange={(e) => setSolutionPoint(index, "title", e.target.value)}
               />
             </label>
             <label className={styles.field}>
-              <span>solutionPoints[{index}].description</span>
+              <span>Solution point description</span>
               <input
                 value={point.description || ""}
                 onChange={(e) => setSolutionPoint(index, "description", e.target.value)}
@@ -397,60 +302,46 @@ export default function AdminCaseStudies() {
             </label>
           </div>
         ))}
-        <div className={styles.row} style={{ gridColumn: "1 / -1" }}>
-          <button
-            type="button"
-            className={`${styles.btn} ${styles.btnSecondary}`}
-            onClick={() =>
-              setForm({
-                ...form,
-                solutionPoints: [...(form.solutionPoints || []), { title: "", description: "" }],
-              })
-            }
-          >
-            Add solutionPoints
-          </button>
-        </div>
+
         <label className={styles.field}>
-          <span>displayOrder</span>
+          <span>Sort order</span>
           <input
             type="number"
-            value={form.displayOrder}
-            onChange={(e) => setForm({ ...form, displayOrder: Number(e.target.value) })}
+            value={form.sortOrder}
+            onChange={(e) => setForm({ ...form, sortOrder: Number(e.target.value) })}
           />
         </label>
         <div className={styles.checkRow}>
           <label>
             <input
               type="checkbox"
-              checked={form.featured}
-              onChange={(e) => setForm({ ...form, featured: e.target.checked })}
+              checked={form.published}
+              onChange={(e) => setForm({ ...form, published: e.target.checked })}
             />
-            featured
+            Published
           </label>
           <label>
             <input
               type="checkbox"
-              checked={form.published}
-              onChange={(e) => setForm({ ...form, published: e.target.checked })}
+              checked={form.featured}
+              onChange={(e) => setForm({ ...form, featured: e.target.checked })}
             />
-            published
+            Featured
           </label>
         </div>
+
         <div className={styles.row} style={{ gridColumn: "1 / -1" }}>
-          <button className={styles.btn} type="submit">
-            {editId ? "Update" : "Create"}
+          <button className={styles.btn} type="submit" disabled={saving}>
+            {saving ? "Saving…" : editId ? "Update" : "Create"}
           </button>
           {editId ? (
             <button type="button" className={`${styles.btn} ${styles.btnSecondary}`} onClick={reset}>
               Cancel
             </button>
           ) : null}
-          {form.slug ? (
-            <Link to={`/case-studies/${form.slug}`} className={styles.muted}>
-              Preview page
-            </Link>
-          ) : null}
+          <Link className={styles.muted} to="/admin/solutions">
+            Manage solutions
+          </Link>
         </div>
       </form>
     </div>

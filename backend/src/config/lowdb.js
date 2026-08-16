@@ -20,9 +20,14 @@ db.defaults({
   solutions: [],
   caseStudies: [],
   team: [],
+  offers: [],
   pageContent: {},
   admin: null,
 }).write();
+
+if (!db.has("offers").value()) {
+  db.set("offers", []).write();
+}
 
 function getPageContent(key) {
   const all = db.get("pageContent").value() || {};
@@ -110,6 +115,7 @@ module.exports = {
   solutions: collection("solutions"),
   caseStudies: collection("caseStudies"),
   team: collection("team"),
+  offers: collection("offers"),
   getAdmin,
   setAdmin,
   getPageContent,

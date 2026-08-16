@@ -43,6 +43,7 @@ export const api = {
   getCaseStudies: () => request("/api/case-studies"),
   getCaseStudy: (slug) => request(`/api/case-studies/${encodeURIComponent(slug)}`),
   getTeam: () => request("/api/team"),
+  getOffers: () => request("/api/offers"),
   getPageContent: (key) => request(`/api/page-content/${encodeURIComponent(key)}`),
   login: (email, password) => request("/api/auth/login", { method: "POST", body: { email, password } }),
   admin: {
@@ -67,6 +68,13 @@ export const api = {
       update: (token, id, body) => request(`/api/admin/team/${id}`, { method: "PUT", token, body }),
       remove: (token, id) => request(`/api/admin/team/${id}`, { method: "DELETE", token }),
     },
+    offers: {
+      list: (token) => request("/api/admin/offers", { token }),
+      create: (token, body) => request("/api/admin/offers", { method: "POST", token, body }),
+      update: (token, id, body) =>
+        request(`/api/admin/offers/${id}`, { method: "PUT", token, body }),
+      remove: (token, id) => request(`/api/admin/offers/${id}`, { method: "DELETE", token }),
+    },
     pageContent: {
       get: (token, key) =>
         request(`/api/admin/page-content/${encodeURIComponent(key)}`, { token }),
@@ -77,10 +85,23 @@ export const api = {
           body,
         }),
     },
-    upload: async (token, file) => {
+    upload: async (token, file, folder = "Conx-orbit/images") => {
       const formData = new FormData();
       formData.append("file", file);
-      return request("/api/admin/upload", { method: "POST", token, formData });
+      formData.append("folder", folder);
+      return request("/api/admin/upload/image", { method: "POST", token, formData });
+    },
+    uploadImage: async (token, file, folder = "Conx-orbit/images") => {
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("folder", folder);
+      return request("/api/admin/upload/image", { method: "POST", token, formData });
+    },
+    uploadVideo: async (token, file, folder = "Conx-orbit/videos") => {
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("folder", folder);
+      return request("/api/admin/upload/video", { method: "POST", token, formData });
     },
   },
 };

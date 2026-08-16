@@ -72,6 +72,13 @@
   line-height: 1.65;
 }
 
+.empty {
+  max-width: var(--max-width);
+  margin: 0 auto 24px;
+  text-align: center;
+  color: #3a4530;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hidden .card,
   .visible .card,

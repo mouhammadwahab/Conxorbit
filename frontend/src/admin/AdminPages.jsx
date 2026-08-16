@@ -136,7 +136,19 @@ export default function AdminPages() {
     setError("");
     setSaved(false);
     try {
-      const savedData = await api.admin.pageContent.put(token, key, form);
+      let payload = form;
+      for (const field of def.fields) {
+        if (!field.list) continue;
+        const raw = getAt(payload, field.path);
+        const list = Array.isArray(raw)
+          ? raw
+          : String(raw || "")
+              .split(",")
+              .map((s) => s.trim())
+              .filter(Boolean);
+        payload = setAt(payload, field.path, list);
+      }
+      const savedData = await api.admin.pageContent.put(token, key, payload);
       setForm(savedData);
       setSaved(true);
     } catch (err) {
@@ -190,13 +202,9 @@ export default function AdminPages() {
                 <input
                   value={value}
                   onChange={(e) => {
-                    const nextValue = field.list
-                      ? e.target.value
-                          .split(",")
-                          .map((s) => s.trim())
-                          .filter(Boolean)
-                      : e.target.value;
-                    setForm(setAt(form, field.path, nextValue));
+                    // Keep list fields as raw text while typing so commas work;
+                    // parse to array on save.
+                    setForm(setAt(form, field.path, e.target.value));
                   }}
                 />
               )}

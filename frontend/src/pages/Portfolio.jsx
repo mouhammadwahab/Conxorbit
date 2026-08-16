@@ -93,8 +93,14 @@ export default function Portfolio() {
       internal_product: [],
       workflow_solution: [],
     };
+    const mapKey = {
+      "client-system": "client_system",
+      "internal-product": "internal_product",
+      "workflow-solution": "workflow_solution",
+    };
     solutions.forEach((row) => {
-      if (groups[row.portfolioCategory]) groups[row.portfolioCategory].push(row);
+      const key = mapKey[row.category] || row.portfolioCategory;
+      if (groups[key]) groups[key].push(row);
     });
     return groups;
   }, [solutions]);
@@ -110,9 +116,7 @@ export default function Portfolio() {
       body: featuredRow.portfolioBody || featuredRow.description,
       tags: featuredRow.categories || featured.tags,
       image: mediaUrl(featuredRow.portfolioImage || featuredRow.image) || featured.image,
-      cta: featuredRow.caseStudySlug
-        ? { label: "Explore Case Study", href: `/case-studies/${featuredRow.caseStudySlug}` }
-        : featured.cta,
+      cta: featured.cta,
     };
   }, [byCategory, featured, featuredSlug, solutions]);
 
@@ -126,11 +130,7 @@ export default function Portfolio() {
       confidential: row.confidential,
       confidentialLabel: row.confidentialLabel,
       image: mediaUrl(row.portfolioImage || row.image),
-      cta: row.caseStudySlug
-        ? { label: "View Case Study", href: `/case-studies/${row.caseStudySlug}` }
-        : row.showOnListing
-          ? { label: "View Solution", href: `/solutions/${row.slug}` }
-          : null,
+      cta: { label: "View Solution", href: `/solutions/${row.slug}` },
     }));
     return { ...clientSystems, items };
   }, [byCategory, clientSystems]);

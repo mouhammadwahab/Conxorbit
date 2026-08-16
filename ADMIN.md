@@ -22,35 +22,44 @@ npm start
 
 ## Data locations
 
-- Database: `backend/data/db.json` (JSON file store; no MongoDB required)
-- Page chrome (listing/portfolio/trade section titles, About team title): `pageContent` keys in the same DB
-- Seeded demo assets may still use local `backend/uploads/` paths; new content should use external image URLs
+- **Primary database:** MongoDB (`MONGODB_URI` in `backend/.env`)
+- Solutions, case studies, team, offers, admin login → Mongo
+- Page chrome (listing/portfolio section titles): still `backend/data/db.json` (LowDB `pageContent`)
 
-Re-seed (wipes and reloads from current static content): `cd backend && npm run seed`
+Re-seed Mongo (wipes solutions / cases / team / offers / admin and reloads):  
+`cd backend && npm run seed`  
+(`seed` runs [`src/seed/seedMongo.js`](backend/src/seed/seedMongo.js) and uploads placeholder images to Cloudinary.)
 
-## Images (Cloudinary / CDN)
+## Images (Cloudinary)
 
-Upload images in Cloudinary (or any host), then paste the full `https://...` URL into admin:
+Admin **Choose file** uploads to Cloudinary; `{ url, publicId }` is saved on the Mongo document. Replacing or clearing media updates the DB and deletes the previous Cloudinary asset.
 
-- Solutions → **Listing image URL**, **Portfolio image URL**, demo poster URL, SEO OG image
-- Team → **Photo image URL**
+Required `backend/.env`:
 
-The public site resolves absolute URLs as-is (no local upload required for CMS images).
+```
+MONGODB_URI=mongodb+srv://...
+CLOUDINARY_CLOUD_NAME=...
+CLOUDINARY_API_KEY=...
+CLOUDINARY_API_SECRET=...
+```
+
+Folders (under root **Conx-orbit**):
+
+| Entity | Cloudinary folder | Fields |
+|--------|-------------------|--------|
+| Solutions | `Conx-orbit/solutions` | `mockup` (hero image), `demo` (video) |
+| Case studies | `Conx-orbit/case-studies` | `heroImage` |
+| Team | `Conx-orbit/team` | `image` (profile) |
+| Offers | `Conx-orbit/offers` | `image` (optional) |
 
 ## Admin areas
 
-- Solutions (structured detail editors; section badges fixed in public UI)
-- Case studies (incl. Published)
-- Team (Published + social links)
-- Pages → Solutions listing, Portfolio, Façade/Construction related-solutions chrome, About team title
+- Solutions (schema fields only: mockup + demo media)
+- Case studies (hero mockup image)
+- Team (profile picture)
+- Offers (optional image; public site UI not wired yet)
+- Pages → listing/portfolio chrome (LowDB)
 
-## Case study fields (`case_studies`)
+## Public site
 
-- `id` (`_id`), `title`, `slug`, `category`, `shortDescription`
-- `clientName`, `industry`, `trade`, `projectType`
-- `heroImageUrl`, `heroImagePublicId`
-- `problem`, `problemPoints[]` as JSON: `{ title, description }`
-- `solution`, `solutionPoints[]` as JSON: `{ title, description }`
-- `mockupImageUrl`, `mockupImagePublicId`, `supportingImageUrl`, `supportingImagePublicId`
-- `relatedSolutionId`, `featured`, `published`, `displayOrder`
-- `createdAt`, `updatedAt`
+Content is fetched from the API (`/api/solutions`, `/api/case-studies`, `/api/team`, etc.), not from static seed JSON.

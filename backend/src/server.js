@@ -12,6 +12,7 @@ const { publicRouter: solutionsPublic, adminRouter: solutionsAdmin } = require("
 const { publicRouter: casePublic, adminRouter: caseAdmin } = require("./routes/caseStudies");
 const { publicRouter: teamPublic, adminRouter: teamAdmin } = require("./routes/team");
 const { publicRouter: pagePublic, adminRouter: pageAdmin } = require("./routes/pageContent");
+const { publicRouter: offersPublic, adminRouter: offersAdmin } = require("./routes/offers");
 const uploadRoutes = require("./routes/upload");
 
 const app = express();
@@ -38,10 +39,12 @@ app.use("/api/solutions", solutionsPublic);
 app.use("/api/case-studies", casePublic);
 app.use("/api/team", teamPublic);
 app.use("/api/page-content", pagePublic);
+app.use("/api/offers", offersPublic);
 app.use("/api/admin/solutions", solutionsAdmin);
 app.use("/api/admin/case-studies", caseAdmin);
 app.use("/api/admin/team", teamAdmin);
 app.use("/api/admin/page-content", pageAdmin);
+app.use("/api/admin/offers", offersAdmin);
 app.use("/api/admin/upload", uploadRoutes);
 
 

@@ -5,6 +5,7 @@ import AdminSolutionsList from "./AdminSolutionsList";
 import AdminSolutionForm from "./AdminSolutionForm";
 import AdminCaseStudies from "./AdminCaseStudies";
 import AdminTeam from "./AdminTeam";
+import AdminOffers from "./AdminOffers";
 import AdminPages from "./AdminPages";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import styles from "./admin.module.css";
@@ -29,6 +30,9 @@ function Shell() {
           </NavLink>
           <NavLink className={({ isActive }) => (isActive ? styles.navActive : undefined)} to="/admin/team">
             Team
+          </NavLink>
+          <NavLink className={({ isActive }) => (isActive ? styles.navActive : undefined)} to="/admin/offers">
+            Offers
           </NavLink>
           <NavLink
             className={({ isActive }) => (isActive ? styles.navActive : undefined)}
@@ -62,6 +66,7 @@ function AdminRoutes() {
         <Route path="solutions/:id" element={<AdminSolutionForm />} />
         <Route path="case-studies" element={<AdminCaseStudies />} />
         <Route path="team" element={<AdminTeam />} />
+        <Route path="offers" element={<AdminOffers />} />
         <Route path="pages" element={<Navigate to="solutionsListing" replace />} />
         <Route path="pages/:key" element={<AdminPages />} />
       </Route>

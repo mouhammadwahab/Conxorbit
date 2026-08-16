@@ -28,7 +28,7 @@ export default function CaseStudyDetail() {
           try {
             const solutions = await api.getSolutions("?listing=all");
             related =
-              solutions.find((row) => row._id === item.relatedSolutionId) ||
+              solutions.find((row) => String(row._id) === String(item.relatedSolutionId)) ||
               solutions.find((row) => row.slug === item.relatedSolutionId) ||
               null;
           } catch {

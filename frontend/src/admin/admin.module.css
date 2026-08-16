@@ -220,6 +220,33 @@
   font-size: 0.88rem;
 }
 
+.mediaRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.mediaPath {
+  font-size: 0.82rem;
+  color: rgba(232, 237, 216, 0.55);
+  max-width: min(100%, 280px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mediaPreview {
+  display: block;
+  max-width: 200px;
+  max-height: 140px;
+  margin-top: 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  object-fit: cover;
+  background: #050a08;
+}
+
 @media (max-width: 800px) {
   .app {
     grid-template-columns: 1fr;

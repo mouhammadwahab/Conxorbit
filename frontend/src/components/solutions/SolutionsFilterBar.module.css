@@ -21,45 +21,43 @@
   flex: 1;
 }
 
+.filterField {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
 .label {
   color: rgba(232, 237, 216, 0.7);
   font-size: 0.9rem;
   white-space: nowrap;
 }
 
-.pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.pill,
-.pillActive {
+.select {
+  min-width: min(240px, 100%);
+  max-width: 100%;
+  padding: 10px 36px 10px 14px;
   border-radius: 999px;
-  padding: 8px 14px;
-  font-size: 0.86rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition:
-    background 180ms ease,
-    border-color 180ms ease,
-    color 180ms ease;
-}
-
-.pill {
-  background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.14);
-  color: rgba(232, 237, 216, 0.78);
-}
-
-.pill:hover {
-  border-color: rgba(184, 137, 61, 0.45);
+  background: rgba(5, 12, 11, 0.55)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23e8edd8' d='M1.4.6 6 5.2 10.6.6 12 2 6 8 0 2z'/%3E%3C/svg%3E")
+    no-repeat right 14px center;
   color: #f7f7f4;
+  font: inherit;
+  outline: none;
+  appearance: none;
+  cursor: pointer;
 }
 
-.pillActive {
-  background: rgba(90, 107, 59, 0.85);
-  border: 1px solid rgba(90, 107, 59, 0.95);
+.select:hover,
+.select:focus {
+  border-color: rgba(184, 137, 61, 0.55);
+}
+
+.select option {
+  background: #0b1210;
   color: #f7f7f4;
 }
 
@@ -105,7 +103,14 @@
     align-items: stretch;
   }
 
+  .filterField {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .select,
   .search {
     min-width: 0;
+    width: 100%;
   }
 }

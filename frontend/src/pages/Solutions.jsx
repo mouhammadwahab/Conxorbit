@@ -17,21 +17,17 @@ function mapSolution(item) {
   };
 }
 
-function mergeFilters(cmsFilters, solutions) {
-  const base = Array.isArray(cmsFilters) && cmsFilters.length ? cmsFilters : staticListing.filters;
-  const seen = new Set(base.map((f) => f.toLowerCase()));
-  const extras = [];
+function categoriesFromSolutions(solutions) {
+  const seen = new Map();
   solutions.forEach((item) => {
     (item.categories || []).forEach((tag) => {
-      const key = String(tag).toLowerCase();
-      if (!seen.has(key)) {
-        seen.add(key);
-        extras.push(tag);
-      }
+      const label = String(tag || "").trim();
+      if (!label) return;
+      const key = label.toLowerCase();
+      if (!seen.has(key)) seen.set(key, label);
     });
   });
-  const withoutAll = base.filter((f) => f.toLowerCase() !== "all");
-  return ["All", ...withoutAll, ...extras];
+  return ["All", ...Array.from(seen.values()).sort((a, b) => a.localeCompare(b))];
 }
 
 export default function Solutions() {
@@ -63,10 +59,13 @@ export default function Solutions() {
     };
   }, []);
 
-  const filters = useMemo(
-    () => mergeFilters(listing.filters, solutions),
-    [listing.filters, solutions]
-  );
+  const filters = useMemo(() => categoriesFromSolutions(solutions), [solutions]);
+
+  useEffect(() => {
+    if (!filters.some((f) => f.toLowerCase() === activeFilter.toLowerCase())) {
+      setActiveFilter("All");
+    }
+  }, [filters, activeFilter]);
 
   const filtered = useMemo(() => {
     const query = search.trim().toLowerCase();

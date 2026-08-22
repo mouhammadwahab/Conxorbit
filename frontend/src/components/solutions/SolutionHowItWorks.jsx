@@ -6,22 +6,22 @@ import styles from "./SolutionHowItWorks.module.css";
 
 export default function SolutionHowItWorks({ content }) {
   const badge = "HOW IT WORKS";
-  const { title, stagesLabel, stages = [] } = content || {};
+  const { title, steps = [] } = content || {};
   const reduced = usePrefersReducedMotion();
   const [active, setActive] = useState(0);
 
   useEffect(() => {
-    if (!stages.length) return undefined;
-    setActive(Math.min(2, stages.length - 1));
-  }, [stages.length]);
+    if (!steps.length) return undefined;
+    setActive(Math.min(2, steps.length - 1));
+  }, [steps.length]);
 
   useEffect(() => {
-    if (reduced || stages.length < 2) return undefined;
+    if (reduced || steps.length < 2) return undefined;
     const id = window.setInterval(() => {
-      setActive((prev) => (prev + 1) % stages.length);
+      setActive((prev) => (prev + 1) % steps.length);
     }, 2800);
     return () => window.clearInterval(id);
-  }, [reduced, stages.length]);
+  }, [reduced, steps.length]);
 
   if (!content) return null;
 
@@ -35,11 +35,11 @@ export default function SolutionHowItWorks({ content }) {
             </SectionBadge>
             <h2>{title}</h2>
           </div>
-          {stagesLabel ? (
+          {steps.length ? (
             <p className={styles.meta}>
-              {stagesLabel}{" "}
+              {`${steps.length} STEPS · ONE WORKFLOW`}{" "}
               <span>
-                {String(active + 1).padStart(2, "0")}/{String(stages.length).padStart(2, "0")}
+                {String(active + 1).padStart(2, "0")}/{String(steps.length).padStart(2, "0")}
               </span>
             </p>
           ) : null}
@@ -49,23 +49,23 @@ export default function SolutionHowItWorks({ content }) {
           <div className={styles.track} />
           <div
             className={styles.progress}
-            style={{ width: `${((active + 1) / stages.length) * 100}%` }}
+            style={{ width: `${steps.length ? ((active + 1) / steps.length) * 100 : 0}%` }}
           />
         </div>
 
         <ol className={styles.stages}>
-          {stages.map((stage, index) => {
+          {steps.map((step, index) => {
             const on = index <= active;
             return (
               <li
-                key={stage.title}
+                key={`${step.title}-${index}`}
                 className={`${styles.stage} ${on ? styles.stageOn : styles.stageOff} cardReveal`}
               >
                 <button
                   type="button"
                   className={styles.node}
                   onClick={() => setActive(index)}
-                  aria-label={`Stage ${index + 1}: ${stage.title}`}
+                  aria-label={`Step ${index + 1}: ${step.title}`}
                 >
                   {on ? (
                     <span className={styles.nodeActive} aria-hidden="true" />
@@ -76,8 +76,8 @@ export default function SolutionHowItWorks({ content }) {
                   )}
                 </button>
                 <span className={styles.num}>{String(index + 1).padStart(2, "0")}</span>
-                <h3>{stage.title}</h3>
-                <p>{stage.body}</p>
+                <h3>{step.title}</h3>
+                <p>{step.description}</p>
               </li>
             );
           })}

@@ -3,7 +3,9 @@ import Reveal from "../common/Reveal";
 import styles from "./SolutionDemo.module.css";
 
 export default function SolutionDemo({ content, fallbackPoster }) {
-  const { title, videoSrc, posterSrc } = content || {};
+  const title = "Product demo";
+  const videoSrc = content?.video?.url || "";
+  const posterSrc = content?.poster?.url || "";
   const videoRef = useRef(null);
   const [playing, setPlaying] = useState(false);
   const poster = posterSrc || fallbackPoster;

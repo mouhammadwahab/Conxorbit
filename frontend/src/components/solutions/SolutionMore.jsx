@@ -4,9 +4,8 @@ import SectionBadge from "../common/SectionBadge";
 import styles from "./SolutionMore.module.css";
 
 export default function SolutionMore({ content, items = [] }) {
-  if (!content) return null;
   const badge = "EXPLORE MORE";
-  const { title } = content;
+  const title = "More Solutions From ConX Orbit.";
   if (!items.length) return null;
 
   return (

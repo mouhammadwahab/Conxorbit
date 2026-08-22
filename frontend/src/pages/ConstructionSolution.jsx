@@ -7,6 +7,15 @@ import FacadeSolutions from "../components/trades/FacadeSolutions";
 import { constructionContent } from "../content/siteContent";
 import { api, mediaUrl } from "../api/client";
 
+function categoryLabel(category) {
+  const value = String(category || "").trim();
+  if (!value) return "Solution";
+  return value
+    .split("-")
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(" ");
+}
+
 const DEFAULT_CHROME = {
   eyebrow: "Our Construction Solutions",
   title: "Purpose-Built Systems for Live Construction Work.",
@@ -29,12 +38,12 @@ export default function ConstructionSolution() {
         if (!alive) return;
         setSolutionCards(
           (rows || []).map((row) => ({
-            badge: row.listingBadge || row.badge,
+            badge: categoryLabel(row.category),
             title: row.name,
-            body: row.portfolioBody || row.description,
+            body: row.shortDescription || row.description || "",
             href: `/solutions/${row.slug}`,
             ctaLabel: "View Solution",
-            image: mediaUrl(row.image),
+            image: mediaUrl(row.hero?.mockup?.url || row.image),
           }))
         );
         if (chrome) {

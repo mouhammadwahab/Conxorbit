@@ -7,8 +7,8 @@ import styles from "./admin.module.css";
 export default function AdminLogin() {
   const { isAuthed, login } = useAdminAuth();
   const navigate = useNavigate();
-  const [email, setEmail] = useState("admin@conxorbit.com");
-  const [password, setPassword] = useState("admin123");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 

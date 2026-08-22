@@ -9,18 +9,29 @@ import { solutionsListing as staticListing } from "../content/solutionsContent";
 import { api, mediaUrl } from "../api/client";
 import styles from "./Solutions.module.css";
 
+function categoryLabel(category) {
+  const value = String(category || "").trim();
+  if (!value) return "Solution";
+  return value
+    .split("-")
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(" ");
+}
+
 function mapSolution(item) {
   return {
     ...item,
-    badge: item.listingBadge || item.badge,
-    image: mediaUrl(item.image),
+    badge: categoryLabel(item.category),
+    image: mediaUrl(item.hero?.mockup?.url || item.image),
+    description: item.shortDescription || "",
+    tags: Array.isArray(item.tags) ? item.tags : item.categories || [],
   };
 }
 
 function categoriesFromSolutions(solutions) {
   const seen = new Map();
   solutions.forEach((item) => {
-    (item.categories || []).forEach((tag) => {
+    (item.tags || []).forEach((tag) => {
       const label = String(tag || "").trim();
       if (!label) return;
       const key = label.toLowerCase();
@@ -72,12 +83,12 @@ export default function Solutions() {
     return solutions.filter((item) => {
       const matchesFilter =
         activeFilter === "All" ||
-        (item.categories || []).some(
+        (item.tags || []).some(
           (tag) => tag.toLowerCase() === activeFilter.toLowerCase()
         );
       if (!matchesFilter) return false;
       if (!query) return true;
-      const haystack = [item.name, item.description, item.badge, ...(item.categories || [])]
+      const haystack = [item.name, item.description, item.badge, ...(item.tags || [])]
         .join(" ")
         .toLowerCase();
       return haystack.includes(query);

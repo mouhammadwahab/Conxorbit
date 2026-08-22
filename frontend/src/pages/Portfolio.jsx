@@ -99,7 +99,7 @@ export default function Portfolio() {
       "workflow-solution": "workflow_solution",
     };
     solutions.forEach((row) => {
-      const key = mapKey[row.category] || row.portfolioCategory;
+      const key = mapKey[row.category];
       if (groups[key]) groups[key].push(row);
     });
     return groups;
@@ -113,9 +113,9 @@ export default function Portfolio() {
     return {
       ...featured,
       name: featuredRow.name,
-      body: featuredRow.portfolioBody || featuredRow.description,
-      tags: featuredRow.categories || featured.tags,
-      image: mediaUrl(featuredRow.portfolioImage || featuredRow.image) || featured.image,
+      body: featuredRow.shortDescription || featuredRow.description,
+      tags: featuredRow.tags || featured.tags,
+      image: mediaUrl(featuredRow.hero?.mockup?.url || featuredRow.image) || featured.image,
       cta: featured.cta,
     };
   }, [byCategory, featured, featuredSlug, solutions]);
@@ -124,12 +124,12 @@ export default function Portfolio() {
     const items = byCategory.client_system.map((row, index, arr) => ({
       index: `${String(index + 1).padStart(2, "0")} / ${String(arr.length).padStart(2, "0")}`,
       name: row.name,
-      body: row.portfolioBody || row.description,
-      tags: row.categories || [],
-      badge: row.portfolioLabel || "CLIENT SYSTEM",
+      body: row.shortDescription || row.description,
+      tags: row.tags || [],
+      badge: "CLIENT SYSTEM",
       confidential: row.confidential,
       confidentialLabel: row.confidentialLabel,
-      image: mediaUrl(row.portfolioImage || row.image),
+      image: mediaUrl(row.hero?.mockup?.url || row.image),
       cta: { label: "View Solution", href: `/solutions/${row.slug}` },
     }));
     return { ...clientSystems, items };
@@ -137,26 +137,26 @@ export default function Portfolio() {
 
   const internalContent = useMemo(() => {
     const cards = byCategory.internal_product.map((row) => ({
-      label: row.portfolioLabel || "INTERNAL PRODUCT",
-      status: row.portfolioStatus || "In Development",
+      label: "INTERNAL PRODUCT",
+      status: "In Development",
       name: row.name,
-      body: row.portfolioBody || row.description,
-      tags: row.categories || [],
+      body: row.shortDescription || row.description,
+      tags: row.tags || [],
       href: `/solutions/${row.slug}`,
-      image: mediaUrl(row.portfolioImage || row.image),
+      image: mediaUrl(row.hero?.mockup?.url || row.image),
     }));
     return { ...internalProducts, cards };
   }, [byCategory, internalProducts]);
 
   const workflowContent = useMemo(() => {
     const cards = byCategory.workflow_solution.map((row) => ({
-      label: row.portfolioLabel || "WORKFLOW SOLUTION",
-      status: row.portfolioStatus || "Capability",
+      label: "WORKFLOW SOLUTION",
+      status: "Capability",
       name: row.name,
-      body: row.portfolioBody || row.description,
-      tags: row.categories || [],
+      body: row.shortDescription || row.description,
+      tags: row.tags || [],
       href: `/solutions/${row.slug}`,
-      image: mediaUrl(row.portfolioImage || row.image),
+      image: mediaUrl(row.hero?.mockup?.url || row.image),
     }));
     return { ...workflowSolutions, cards };
   }, [byCategory, workflowSolutions]);

@@ -16,20 +16,25 @@ import { api, mediaUrl } from "../api/client";
 import styles from "./SolutionDetail.module.css";
 
 function normalizeSolution(item) {
-  const detail = { ...(item.detail || {}) };
-  if (detail.heroImage) detail.heroImage = mediaUrl(detail.heroImage);
-  if (detail.demo) {
-    detail.demo = {
-      ...detail.demo,
-      videoSrc: mediaUrl(detail.demo.videoSrc || detail.demo.videoUrl),
-      posterSrc: mediaUrl(detail.demo.posterSrc),
-    };
-  }
+  const hero = {
+    ...(item.hero || {}),
+    mockup: {
+      ...(item.hero?.mockup || {}),
+      url: mediaUrl(item.hero?.mockup?.url || item.image),
+    },
+  };
+  const demo = {
+    ...(item.demo || {}),
+    video: {
+      ...(item.demo?.video || {}),
+      url: mediaUrl(item.demo?.video?.url || item.demo?.videoUrl),
+    },
+  };
   return {
     ...item,
-    badge: item.listingBadge || item.badge,
     image: mediaUrl(item.image),
-    detail,
+    hero,
+    demo,
   };
 }
 
@@ -48,12 +53,16 @@ export default function SolutionDetail() {
         if (!alive) return;
         const normalized = normalizeSolution(item);
         setSolution(normalized);
-        const slugs = item.detail?.more?.slugs || [];
-        if (slugs.length) {
+        const relatedIds = new Set(
+          (normalized.relatedSolutionIds || []).map((value) => String(value))
+        );
+        if (relatedIds.size) {
           const all = await api.getSolutions();
           if (!alive) return;
           setRelated(
-            all.filter((row) => slugs.includes(row.slug)).map(normalizeSolution)
+            all
+              .filter((row) => relatedIds.has(String(row._id)))
+              .map(normalizeSolution)
           );
         } else {
           setRelated([]);
@@ -82,25 +91,42 @@ export default function SolutionDetail() {
     );
   }
 
-  const { detail } = solution;
   const seoTitle = solution.seo?.title || `${solution.name} — ConX Orbit`;
-  const seoDescription = solution.seo?.description || solution.description;
+  const seoDescription = solution.seo?.description || solution.shortDescription;
 
   return (
     <PageShell atmosphere="products">
       <SEO title={seoTitle} description={seoDescription} path={`/solutions/${solution.slug}`} />
       <div className={styles.page}>
         <SolutionDetailHero solution={solution} />
-        <SolutionStats stats={detail.stats} />
-        <SolutionChallenge content={detail.challenge} />
-        <SolutionCapabilities content={detail.capabilities} />
-        <SolutionHowItWorks content={detail.howItWorks} />
-        <SolutionBuiltFor content={detail.builtFor} />
-        <SolutionDemo content={detail.demo} fallbackPoster={solution.image} />
-        <SolutionMore content={detail.more} items={related} />
-        {detail.faq ? <FAQAccordion content={{ ...detail.faq, badge: "FAQ" }} /> : null}
-        {detail.cta ? (
-          <SolutionsFinalCta content={{ ...detail.cta, badge: "EXPLORE WHAT'S POSSIBLE" }} />
+        <SolutionStats stats={solution.snapshot} />
+        <SolutionChallenge content={solution.challenge} />
+        <SolutionCapabilities content={solution.capabilities} />
+        <SolutionHowItWorks content={solution.howItWorks} />
+        <SolutionBuiltFor content={solution.builtFor} />
+        <SolutionDemo content={solution.demo} fallbackPoster={solution.hero?.mockup?.url || solution.image} />
+        <SolutionMore items={related} />
+        {Array.isArray(solution.faq) && solution.faq.length ? (
+          <FAQAccordion
+            content={{
+              badge: "FAQ",
+              titleBefore: "About ",
+              titleHighlight: solution.name,
+              titleAfter: "",
+              items: solution.faq,
+            }}
+          />
+        ) : null}
+        {solution.cta ? (
+          <SolutionsFinalCta
+            content={{
+              badge: "EXPLORE WHAT'S POSSIBLE",
+              title: solution.cta.title,
+              body: solution.cta.body,
+              primary: { label: "Book a Discovery Call", href: "/book-discovery" },
+              secondary: { label: "Explore Solutions", href: "/solutions" },
+            }}
+          />
         ) : null}
       </div>
     </PageShell>

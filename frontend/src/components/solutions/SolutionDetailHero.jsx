@@ -5,22 +5,19 @@ import usePrefersReducedMotion from "../../hooks/usePrefersReducedMotion";
 import styles from "./SolutionDetailHero.module.css";
 
 export default function SolutionDetailHero({ solution }) {
-  const { name, image, detail } = solution;
+  const { name, image, hero, shortDescription } = solution;
   const {
-    title,
     titleBefore,
     titleHighlight,
     titleAfter,
-    body,
-    primaryCta,
-    demoCta,
-  } = detail;
+    description,
+  } = hero || {};
   const reduced = usePrefersReducedMotion();
-  const heroImage = detail.heroImage || image;
+  const heroImage = hero?.mockup?.url || image;
 
   const scrollToDemo = (event) => {
     event.preventDefault();
-    const target = document.getElementById(demoCta?.targetId || "demo");
+    const target = document.getElementById("demo");
     if (!target) return;
     target.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" });
   };
@@ -30,32 +27,24 @@ export default function SolutionDetailHero({ solution }) {
       <div className={`${styles.copy} heroStagger`}>
         <SectionBadge icon={false}>{name}</SectionBadge>
         <h1 className={styles.title}>
-          {titleHighlight != null ? (
-            <>
-              {titleBefore}
-              <span className={styles.highlight}>{titleHighlight}</span>
-              {titleAfter}
-            </>
-          ) : (
-            title
-          )}
+          {titleBefore}
+          <span className={styles.highlight}>{titleHighlight || name}</span>
+          {titleAfter}
         </h1>
-        {body ? <p className={styles.body}>{body}</p> : null}
+        {shortDescription || description ? (
+          <p className={styles.body}>{shortDescription || description}</p>
+        ) : null}
         <div className={styles.actions}>
-          {primaryCta ? (
-            <Link className={`${styles.primary} btnMotion`} to={primaryCta.href}>
-              <span>{primaryCta.label}</span>
-              <span aria-hidden="true">→</span>
-            </Link>
-          ) : null}
-          {demoCta ? (
-            <button type="button" className={`${styles.secondary} btnMotion`} onClick={scrollToDemo}>
-              <span className={styles.play} aria-hidden="true">
-                ▶
-              </span>
-              <span>{demoCta.label}</span>
-            </button>
-          ) : null}
+          <Link className={`${styles.primary} btnMotion`} to="/book-discovery">
+            <span>Book a Discovery Call</span>
+            <span aria-hidden="true">→</span>
+          </Link>
+          <button type="button" className={`${styles.secondary} btnMotion`} onClick={scrollToDemo}>
+            <span className={styles.play} aria-hidden="true">
+              ▶
+            </span>
+            <span>Watch Demo</span>
+          </button>
         </div>
       </div>
       <div className={styles.media}>

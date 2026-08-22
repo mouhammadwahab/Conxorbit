@@ -42,8 +42,9 @@ export default function AdminSolutionsList() {
           <tr>
             <th>Name</th>
             <th>Slug</th>
-            <th>Portfolio</th>
+            <th>Category</th>
             <th>Trades</th>
+            <th>Published</th>
             <th />
           </tr>
         </thead>
@@ -52,8 +53,9 @@ export default function AdminSolutionsList() {
             <tr key={item._id}>
               <td>{item.name}</td>
               <td>{item.slug}</td>
-              <td>{item.portfolioCategory}</td>
+              <td>{item.category}</td>
               <td>{(item.trades || []).join(", ")}</td>
+              <td>{item.published ? "Yes" : "No"}</td>
               <td className={styles.row}>
                 <Link className={`${styles.btn} ${styles.btnSecondary}`} to={`/admin/solutions/${item._id}`}>
                   Edit

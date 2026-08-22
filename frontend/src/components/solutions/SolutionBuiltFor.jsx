@@ -6,7 +6,7 @@ import styles from "./SolutionBuiltFor.module.css";
 export default function SolutionBuiltFor({ content }) {
   if (!content) return null;
   const badge = "BUILT FOR";
-  const { title, body, audiences = [] } = content;
+  const { title, description, audiences = [] } = content;
 
   return (
     <Reveal as="section" className={styles.section} aria-label={badge}>
@@ -16,11 +16,11 @@ export default function SolutionBuiltFor({ content }) {
             {badge}
           </SectionBadge>
           <h2>{title}</h2>
-          {body ? <p>{body}</p> : null}
+          {description ? <p>{description}</p> : null}
         </div>
         <div className={styles.panel}>
-          {audiences.map((item) => (
-            <article key={item.title} className={`${styles.row} cardReveal`}>
+          {audiences.map((item, index) => (
+            <article key={`${item.title}-${index}`} className={`${styles.row} cardReveal`}>
               <SolutionIcon name={item.icon} className={styles.icon} />
               <div>
                 <h3>{item.title}</h3>
